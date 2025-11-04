@@ -1,0 +1,166 @@
+.platestyle {
+    margin-right: 5px;
+    border: 3px solid black;
+
+}
+
+.red25 {
+    width: 100px;
+    height: 400px;
+    background-color: #f00;
+}
+
+.blue20 {    
+    width: 90px;
+    height: 400px;                                           
+    background-color: #00f;
+}
+
+.yellow15 {
+    width: 80px;
+    height: 320px;
+    background-color: #ff0;
+}
+
+.green10 {
+    width: 70px;
+    height: 245px;
+    background-color: rgb(0, 190, 0);
+}
+
+.red5kg {
+    width: 60px;
+    height: 210px;
+    background-color: rgb(250, 88, 88);
+}
+
+.yellow25kg {
+    width: 50px;
+    height: 140px;
+    background-color: rgb(252, 252, 100);
+}
+
+.green125kg {
+    width: 40px;
+    height: 120px;
+    background-color: rgb(0, 255, 0);
+}
+
+.grip {
+    width: 10px;
+    height: 80px;
+    background: repeating-linear-gradient(
+        45deg,
+        #bbb,
+        #bbb 3px,
+        #eee 3px,
+        #eee 4px
+    );
+    border: 2px solid black;
+    float: left;
+}
+
+.cylinder {
+    width: 20px;
+    height: 70px;
+    margin-top: 5px;
+    background: linear-gradient(to right, #ccc, #999);
+    border: 2px solid black;
+    float: left;
+}
+
+.rabbet {
+    width: 3px;
+    height: 50px;
+    margin-top: 15px;
+    background-color: black;
+    float: left;
+}
+
+.cylinder_2 {
+    position: relative;
+    width: 12px;
+    height: 60px;
+    margin-top: 10px;
+    background: linear-gradient(to right, #ccc, #999);
+    border: 2px solid black;
+    float: left;
+}
+
+.end {
+    position: relative;
+    width: 20px;
+    height: 70px;
+    margin-top: 5px;
+    background: radial-gradient(circle at center,
+        #aaa 30%,
+        #9e9e9e 100%
+    );
+    border: 2px solid black;
+    float: left;
+}
+
+.latch {
+    position: absolute;
+    margin-top: 15px;
+    top: 10px;
+    right: 0px;
+    width: 37px;
+    height: 15px;
+    background: linear-gradient(to right, #ccc, #848484);
+    border: 1px solid black;                
+    z-index: 10;
+    float: left;
+}
+
+.cutout-top {
+    position: absolute;
+    margin-top: 1px;
+    top: 4px;
+    right: 3px;
+    width: 13px;
+    height: 13px;
+    border-radius: 6px 6px 0 0;
+    background: linear-gradient(to right, 
+        #474646 0%, 
+        #474646 15%,
+        #897f7f 15%,
+        #897f7f 30%,
+        #ccc 30%,
+        white 50%,
+        #ccc 70%,
+        #897f7f 70%,
+        #897f7f 85%,
+        #474646 85%, 
+        #474646 100%
+    );
+    border: 1px solid black;                
+    z-index: 10;
+    float: left;
+}
+
+.cutout-bottom {
+    position: absolute;
+    margin-bottom: 1px;
+    top: 48px;
+    right: 3px;
+    width: 13px;
+    height: 13px;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(to right, 
+        #474646 0%, 
+        #474646 15%,
+        #897f7f 15%,
+        #897f7f 30%,
+        #ccc 30%,
+        white 50%,
+        #ccc 70%,
+        #897f7f 70%,
+        #897f7f 85%,
+        #474646 85%, 
+        #474646 100%
+    );
+    border: 1px solid black;                
+    z-index: 10;
+    float: left;
+}

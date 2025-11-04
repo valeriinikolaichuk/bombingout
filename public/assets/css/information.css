@@ -1,0 +1,72 @@
+body {
+    margin: 0px;
+    background-color: rgb(30, 229, 63);
+    padding: 0;
+    overflow: hidden;
+}
+
+.redirection {
+    display: grid;
+}
+
+.info {
+    height: 90px;
+    font-size: 500%;
+    color: rgb(0, 0, 100);
+    float: left;
+}
+
+.attempt_discipline {
+    width: 70%;
+    padding-left: 5%;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.category {
+    width: 25%;
+    font-weight: 600;
+}
+
+.surname_name {
+    padding-left: 2%;
+    color: crimson;
+    font-size: 310%;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 7px;
+    box-sizing: border-box;
+}
+
+.surname {
+    height: 190px;
+    margin-bottom: 5%;
+}
+
+.name {
+    height: 190px;
+    white-space: nowrap;
+    transform-origin: left center;
+}
+
+.region {
+    width: 55%;
+    margin-bottom: 2%;
+    padding-top: 3%;
+    padding-left: 4%;
+    color: rgb(0, 0, 100);
+    align-items: flex-end;
+    font-size: 600%;
+    float: left;
+}
+
+.weight {
+    height: 200px;
+    margin-right: 7%;
+    margin-top: 0%;
+    text-align: right;
+    font-size: 1100%;
+    color: crimson;
+    font-weight: bolder;
+    float: left;
+}

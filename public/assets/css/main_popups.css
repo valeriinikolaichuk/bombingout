@@ -1,0 +1,79 @@
+.create-dialog {
+    width: 480px;
+    height: 310px;
+    background-color: rgb(230, 225, 225);
+    box-shadow: 0px 0px 0px 7px rgb(143, 143, 143);
+}
+
+.buttonstyle_2 {
+    width: 150px;
+    height: 30px;
+    display: inline;
+    padding: 5px;
+    background-color: rgb(180, 180, 255);
+    border-radius: 5px;
+}
+
+.competition_name {
+    width: 435px;
+}
+
+.width_1 {
+    width: 100px;
+}
+
+#width_2 {
+    width: 100px;
+    margin: auto;
+}
+
+.width_3 {
+    width: 105px;
+}
+
+#empty {
+    clear: both;
+}
+
+#open-dialog {
+    width: 850px;
+    height: 550px;
+    background-color: rgb(230, 225, 225);
+    box-shadow: 0px 0px 0px 7px rgb(143, 143, 143);
+}
+
+#left_open {
+    float: left;
+    width: 75%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(214, 214, 214);
+}
+
+#open-list {
+    max-height: 485px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(143, 143, 143);
+}
+
+.btn-block {
+    width: 100%;
+    display: block;
+    text-align: left;
+}
+
+.btn-in-color {
+    width: 100%;
+    display: block;
+    text-align: left;
+    background-color: rgb(255, 255, 215);
+}
+
+#right_open {
+    float: left;
+    width: 24%;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+}

@@ -1,0 +1,163 @@
+body {
+    width: 100%;          
+    height: 100%;
+    margin: 0px;
+    background-color: rgb(92, 92, 159);
+}
+
+.header_sess {
+    width: 100%;          
+    background-color: rgb(200, 200, 200);
+    display: grid;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.hd {
+    background-color: rgb(200, 200, 200);
+    font-size: 18px;
+    position: sticky;
+    top: 1px;
+    z-index: 1;
+}
+
+.sessions_left {
+    width: 85%;
+    max-height: 595px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+}
+
+.grouping_table {
+    table-layout: auto;
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: large;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+table, tr, td {
+    border: 1px black solid;
+}
+
+td {
+    padding: 0;
+    height: 25px;
+}
+
+td input[type="number"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.name {
+    text-align: left; 
+    padding-left: 4px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+    max-width: 230px;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.sessions_right {
+    height: 560px;
+    background-color: rgb(92, 92, 159);
+    margin: 0px;
+    margin-top: 35px;
+}
+
+.checkboxes {
+    width: auto;
+    height: auto;
+    position: absolute;
+    background-color: rgb(254, 254, 254);
+    text-align: center;
+    border-radius: 7px;
+}
+
+.checkbox {
+    transform: scale(1.65);
+}
+
+.sess_table{
+    font-size: 18px;
+    text-align: center;
+}
+
+.checkBoxSubmit {
+    position: relative;
+    top: 290px;
+}
+
+.buttonsTable {
+    border-collapse: collapse;
+    border: none;
+}
+
+.button {
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.groups {
+    margin: 15px;
+    text-align: center;
+}
+
+select {
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+
+}
+
+.footerSess{
+    width: 100%;
+    height: 62px;
+    background-color: rgb(92, 92, 159);
+    margin: 0px;
+    display: inline-block;
+}
+
+.submitSess {
+    float: left;
+    margin: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 50% 0;
+}
+
+.sessCancel {
+    width: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 10px;
+}

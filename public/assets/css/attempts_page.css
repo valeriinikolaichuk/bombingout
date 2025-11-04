@@ -1,0 +1,172 @@
+body {
+    width: 100%;          
+    height: 100%;
+    margin: 0px;
+    overflow: auto;
+}
+
+.buttonstyle {
+    width: 120px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    padding: 0px;
+    background-color: rgb(180, 180, 255);
+}
+
+.buttontext {
+    font-weight: 700;
+}
+
+.att_num {
+    width: 50px;
+}
+
+.att_res {
+    width: 110px;
+}
+
+.att_res[data-uk] {
+    font-stretch: 85%;
+}
+
+#scorePage {
+    display: flex;
+    align-items: flex-start;
+}
+
+.table-wrapper {
+    width: 980px;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: calc(100vh - 105px);
+}
+
+.table-wrapper form {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.table-wrapper table {
+  margin-bottom: 0;
+  border-collapse: collapse;
+}
+
+.tableHeadOne {
+    position: sticky;
+    top: 1px;
+    z-index: 1;
+}
+
+.tableHeadTwo {
+    position: sticky;
+    top: 30px;
+    z-index: 1;
+}
+
+.hd {
+    background-color: rgb(200, 200, 200);
+    font-size: 18px;
+}
+
+.side-panel {
+    position: sticky;
+    top: 0;
+    flex: 1;
+    min-width: 250px;
+    height: calc(100vh - 105px);
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #f0f0f0;
+    border-left: 2px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.panel-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #aaa;
+    background-color: #ededed;
+}
+
+.info, .info_block {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.info_style{
+    font-size: larger;
+    font-weight: 800;
+    color: rgb(203, 82, 82);
+}
+
+.info_line{
+    margin-left: 10px;
+}
+
+dialog {
+    position: fixed;
+    top: 32px;
+    left: 982px;
+
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    width: 510px;
+    margin: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.menu {
+    margin-top: 15px;
+    text-align: right;
+}
+
+.footerScore {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+
+    background-color: rgb(92, 92, 159);
+    min-height: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.footerScore form {
+    margin: 0;
+}
+
+.footerScore button {
+    height: 27px;
+    padding: 4px 14px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.attempt-number {
+    text-align: center;
+    background-color: rgba(252, 252, 234, 1);
+}
+
+.attempt-number::-webkit-inner-spin-button,
+.attempt-number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

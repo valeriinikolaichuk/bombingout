@@ -1,0 +1,71 @@
+.main {
+    width: max-content;
+    min-height: 643px;
+    background-color: white;
+}
+
+.second_toolbar {
+    width: 100%;
+    height: 30px;
+}
+
+.hd_btns {
+    width: 100%;
+    height: 30px;
+    margin: 0;
+    background-color: red;
+}
+
+tr.input_line {
+    position: sticky;
+    top: 40px;
+    background: white;
+    z-index: 2;
+}
+
+th {
+    position: relative;
+    background-color: rgb(200, 200, 200);
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+}
+
+th[draggable="true"] {
+    cursor: default;
+    user-select: none;
+}
+
+.sticky {
+    position: sticky;
+    left: 0;
+}
+
+.resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+    z-index: 1;
+    background-color: rgb(122, 122, 122);
+}
+
+.table_border {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: rgb(151, 150, 150);
+}
+
+.input_colore {
+    background-color: rgb(200, 200, 200);
+}
+
+.yellowline {
+    background-color: rgb(255, 255, 215);
+}

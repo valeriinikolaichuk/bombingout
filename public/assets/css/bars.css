@@ -1,0 +1,81 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-color: rgb(250, 229, 182);
+}
+
+table {
+    width: 100%;
+    margin: 0px;
+}
+
+tr, td {
+    border: 3px solid rgb(250, 229, 182);
+}
+
+.plates_box {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plates {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.barbell {
+    width: 100px;
+    height: 30px;
+    margin-left: 70px;
+    background: radial-gradient(#fff 40%, #000 85%);
+    background-color: #fff;
+}
+
+.white {
+    width: 20px;
+    height: 70px;
+    margin-right: 5px;
+    background: radial-gradient(#fff 40%, #000 85%);
+    background-color: #fff;
+}
+
+.platestext {
+    writing-mode: vertical-rl;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 25%;
+    height: 100%;
+    color: #f00;
+    text-align: center;
+}
+
+.attemptstyle {
+    margin-top: 50px;
+    font-size: 300%;
+}
+
+.weightstyle {
+    margin-top: 150px;
+    font-size: 500%;
+}
+
+.load {
+    background-color: rgb(123, 123, 250);
+}
+
+.linePadding {
+    padding-left: 7px;
+}
+
+.next {
+    background-color: aqua;
+}
