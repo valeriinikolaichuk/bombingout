@@ -5,28 +5,35 @@
     use App\Service\CheckStatusClient;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    class SetStatus extends InsertStatus {
-        private $checkStatusClient;
+    class SetStatus {
+        private CheckStatusClient $checkStatusClient;
 
-        public function __construct(){
-            $id_status = (int)$_SESSION['id_status'];
+        public function __construct(
+            private InsertStatus $insertStatus, 
+            private CheckStatusClient $checkStatusClientService
+        ){}
 
-            if (isset($_POST['comp_status'])){
-                $comp_status = $_POST['comp_status'];
-            } elseif (isset($_SESSION['comp_status'])){
-                $comp_status = $_SESSION['comp_status'];
-                unset($_SESSION['comp_status']);
-            } else {
-                session_unset();
-                header('Location: index.php');
+        public function handle(SessionInterface $session, ?string $compStatus = null): void{
+            $idStatus = (int) $session->get('id_status');
+
+            if ($compStatus === null) {
+                if ($session -> has('comp_status')) {
+                    $compStatus = $session -> get('comp_status');
+                    $session->remove('comp_status');
+                } else {
+                    $session->clear();
+                    throw new \RuntimeException('Computer status is undefined.');
+                }
             }
 
-            unset($_SESSION['id']);
-            unset($_SESSION['status']);
-            unset($_SESSION['language']);
+            $session -> remove('id');
+            $session -> remove('status');
+            $session -> remove('language');
 
-            $this -> insert_status($comp_status, $id_status);
-            $this -> checkStatusClient = new CheckStatusClient($comp_status);
+            $this -> insertStatus -> insertStatus($compStatus, $idStatus);
+
+            $this -> checkStatusClient = $this -> checkStatusClientService;
+            $this -> checkStatusClient -> check($compStatus);
         }
     }
 ?>
