@@ -1,0 +1,16 @@
+<div class="login">
+    <form id="loginForm" method="POST">
+        <br/>
+        <h5 data-en="LOGIN" data-uk="ЛОГІН" data-pl="LOGIN">LOGIN</h5>
+        <input id="login" type="text" name="login">
+        <h5 data-en="PASSWORD" data-uk="ПАРОЛЬ" data-pl="HASŁO">PASSWORD</h5>
+        <input id="password" type="password" name="password">
+        <br/><br/><br/>
+        <input id="language" type="hidden" name="language" value="en">
+        <button type="submit" data-en="SING IN" data-uk="РЕЄСТРАЦІЯ" data-pl="ZAŁOGUJ SIĘ">SING IN</button>
+    </form>
+    <br/> 
+    {% if error_log_in %}
+        <b>{{ error_log_in }}</b>
+    {% endif %}
+</div>
