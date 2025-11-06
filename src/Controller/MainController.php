@@ -30,14 +30,52 @@
 
                 if ($compStatus || $session -> has('comp_status')){
                     try {
-                        $setStatus -> handle($session, $compStatus);
+                        $route = $setStatus -> handle($session, $compStatus);
+                        return $this -> redirectToRoute($route);
                     } catch (\RuntimeException $e) {
-                        return $this -> render('error_page.html.twig', ['message' => $e -> getMessage()]);
+                        return $this -> render('error_page.html.twig', [
+                            'message' => $e -> getMessage()
+                        ]);
                     }
                 } else {
                     return $this -> render('redirection_page.html.twig');
                 }
             }
+        }
+
+        #[Route('/admin', name: 'admin_page')]
+        public function admin(): Response {
+            return $this->render('admin.html.twig');
+        }
+
+        #[Route('/scoreboard', name: 'scoreboard_page')]
+        public function scoreboard(): Response {
+            return $this->render('scoreboard.html.twig');
+        }
+
+        #[Route('/order', name: 'order_page')]
+        public function order(): Response {
+            return $this->render('order.html.twig');
+        }
+
+        #[Route('/bars', name: 'bars_page')]
+        public function bars(): Response {
+            return $this->render('bars.html.twig');
+        }
+
+        #[Route('/information', name: 'information_page')]
+        public function information(): Response {
+            return $this->render('information.html.twig');
+        }
+        
+        #[Route('/timer', name: 'timer_page')]
+        public function timer(): Response {
+            return $this->render('timer.html.twig');
+        }
+
+        #[Route('/weighingIn', name: 'weighingIn_page')]
+        public function weighingIn(): Response {
+            return $this->render('weighingIn.html.twig');
         }
     }
 ?>

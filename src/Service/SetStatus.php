@@ -6,22 +6,20 @@
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class SetStatus {
-        private CheckStatusClient $checkStatusClient;
-
         public function __construct(
             private InsertStatus $insertStatus, 
-            private CheckStatusClient $checkStatusClientService
+            private CheckStatusClient $checkStatusClient
         ){}
 
-        public function handle(SessionInterface $session, ?string $compStatus = null): void{
+        public function handle(SessionInterface $session, ?string $compStatus = null): string{
             $idStatus = (int) $session->get('id_status');
 
             if ($compStatus === null) {
                 if ($session -> has('comp_status')) {
                     $compStatus = $session -> get('comp_status');
-                    $session->remove('comp_status');
+                    $session -> remove('comp_status');
                 } else {
-                    $session->clear();
+                    $session -> clear();
                     throw new \RuntimeException('Computer status is undefined.');
                 }
             }
@@ -32,8 +30,12 @@
 
             $this -> insertStatus -> insertStatus($compStatus, $idStatus);
 
-            $this -> checkStatusClient = $this -> checkStatusClientService;
-            $this -> checkStatusClient -> check($compStatus);
+            $route = $this -> checkStatusClient -> getRouteFor($compStatus);
+            if ($route === null) {
+                throw new \RuntimeException("Unknown status: ".$compStatus);
+            }
+
+            return $route;
         }
     }
 ?>
