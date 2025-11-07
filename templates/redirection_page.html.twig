@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>redirection page</title>
+    <link rel="stylesheet" href="assets/css/redirection.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="admin">
+                <button class="button_comp_status" type="button" data-en="ADMIN" data-uk="АДМІН" data-pl="ADMIN"></button>
+            </div>
+            <div class="weighingIn">
+                <button class="button_comp_status" type="button" data-en="WEIGHING IN" data-uk="ЗВАЖУВАННЯ" data-pl="WAŻENIE"></button>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="scoreboard">
+                <button class="button_comp_status" type="button" data-en="SCOREBOARD" data-uk="ПРОТОКОЛ ЗМАГАНЬ" data-pl="PROTOKÓŁ ZAWODÓW"></button>
+            </div>
+            <div class="order">
+                <button class="button_comp_status" type="button" data-en="LIFTING ORDER" data-uk="ПОРЯДОК ВИХОДУ" data-pl="KOLEJNOŚĆ PODEJŚĆ"></button>
+            </div>
+            <div class="bars">
+                <button class="button_comp_status" type="button" data-en="DISCS SEQUENCE" data-uk="ПОРЯДОК ДИСКІВ" data-pl="KOLEJNOŚĆ TALERZY"></button>
+            </div>
+            <div class="information">
+                <button class="button_comp_status" type="button" data-en="INFORMATION" data-uk="ІНФОРМАЦІЯ" data-pl="INFORMACJA"></button>
+            </div>
+            <div class="timer">
+                <button class="button_comp_status" type="button" data-en="TIMER" data-uk="ТАЙМЕР" data-pl="TIMER"></button>
+            </div>
+        </div>
+        <div class="logout">
+            <button class="button_comp_status" type="button" data-en="LOG OUT" data-uk="ВИЙТИ" data-pl="WYLOGUJ SIĘ"></button>
+        </div>
+    </div>
+    <dialog id="loginDialog">
+        <div class="popup-content">
+            <span id="close">&times;</span>
+            {% include 'components/loginForm.html.twig' %}
+            <button id="comp_status" style="display: none;" type="button"></button>
+            <button id="cancel" type="button" data-en="CANCEL" data-uk="ВІДМІНА" data-pl="ANULUJ">CANCEL</button>
+        </div>
+    </dialog>
+    <script>
+        let lang = "{{ lang }}";
+        const num = "{{ users_id }}";
+        const num_st = "{{ id_status }}";
+    </script>
+    {% if not is_redirection %}
+        <script src="{{ asset('assets/checkSessionData.js') }}"></script>
+    {% endif %}
+    <script src="{{ asset('assets/switchLanguage.js') }}"></script>
+    <script src="{{ asset('assets/view/viewRedirection.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModelRedirection.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof checkSessionData === "function") {
+                await checkSessionData();
+            }
+
+            switchLanguage(lang);
+            const viewRedirection = new ViewRedirection();
+        });
+    </script>
+</body>
+</html>
