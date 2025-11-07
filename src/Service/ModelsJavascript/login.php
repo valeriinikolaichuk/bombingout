@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class Login extends GetData {
         use Registration;
