@@ -1,4 +1,6 @@
 <?php
+    namespace App\Service\ModelsJavascript;
+
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class Login extends GetData {
