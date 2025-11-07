@@ -9,6 +9,8 @@
     use Symfony\Component\Routing\Annotation\Route;
 
     class MainController extends AbstractController {
+//        session_status_actions.php
+
         #[Route('/', name: 'home')]
         public function index(
             Request $request, 
@@ -38,44 +40,49 @@
                         ]);
                     }
                 } else {
-                    return $this -> render('redirection_page.html.twig');
+                    return $this -> render('redirection_page.html.twig', [
+                        'lang'           => $session -> get('language'),
+                        'users_id'       => $session -> get('id'),
+                        'id_status'      => $session -> get('id_status'),
+                        'is_redirection' => $request -> request -> has('redirection')
+                    ]);
                 }
             }
         }
 
         #[Route('/admin', name: 'admin_page')]
         public function admin(): Response {
-            return $this->render('admin.html.twig');
+            return $this -> render('admin.html.twig');
         }
 
         #[Route('/scoreboard', name: 'scoreboard_page')]
         public function scoreboard(): Response {
-            return $this->render('scoreboard.html.twig');
+            return $this -> render('scoreboard.html.twig');
         }
 
         #[Route('/order', name: 'order_page')]
         public function order(): Response {
-            return $this->render('order.html.twig');
+            return $this -> render('order.html.twig');
         }
 
         #[Route('/bars', name: 'bars_page')]
         public function bars(): Response {
-            return $this->render('bars.html.twig');
+            return $this -> render('bars.html.twig');
         }
 
         #[Route('/information', name: 'information_page')]
         public function information(): Response {
-            return $this->render('information.html.twig');
+            return $this -> render('information.html.twig');
         }
         
         #[Route('/timer', name: 'timer_page')]
         public function timer(): Response {
-            return $this->render('timer.html.twig');
+            return $this -> render('timer.html.twig');
         }
 
         #[Route('/weighingIn', name: 'weighingIn_page')]
         public function weighingIn(): Response {
-            return $this->render('weighingIn.html.twig');
+            return $this -> render('weighingIn.html.twig');
         }
     }
 ?>

@@ -8,12 +8,12 @@ loginForm.addEventListener("submit", async function(e) {
         language: document.getElementById("language").value
     };
 
-    let response = await fetch("assets/models_js/login_json.php", {
+    let response = await fetch("/api/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     });
 
     await response.json();
-    window.location.href = "index.php";
+    window.location.href = "/";
 });
