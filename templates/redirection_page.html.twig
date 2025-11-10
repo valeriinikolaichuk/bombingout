@@ -40,7 +40,11 @@
     <dialog id="loginDialog">
         <div class="popup-content">
             <span id="close">&times;</span>
-            {% include 'components/loginForm.html.twig' %}
+
+            {% include 'components/loginForm.html.twig' with {
+                error_log_in: error_log_in|default(null)
+            } %}
+
             <button id="comp_status" style="display: none;" type="button"></button>
             <button id="cancel" type="button" data-en="CANCEL" data-uk="ВІДМІНА" data-pl="ANULUJ">CANCEL</button>
         </div>
@@ -51,7 +55,7 @@
         const num_st = "{{ id_status }}";
     </script>
     {% if not is_redirection %}
-        <script src="{{ asset('assets/checkSessionData.js') }}"></script>
+<!--        <script src="{{ asset('assets/checkSessionData.js') }}"></script>-->
     {% endif %}
     <script src="{{ asset('assets/switchLanguage.js') }}"></script>
     <script src="{{ asset('assets/view/viewRedirection.js') }}"></script>

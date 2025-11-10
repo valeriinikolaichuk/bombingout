@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\CompetitionsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\User;
+use App\Entity\UserReg;
 
 #[ORM\Entity(repositoryClass: CompetitionsRepository::class)]
 class Competitions {
@@ -44,9 +44,9 @@ class Competitions {
     #[ORM\Column(name: "categories", length: 30, nullable: true)]
     private ?string $categories = null;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'competitions')]
+    #[ORM\ManyToOne(targetEntity: UserReg::class, inversedBy: 'competitions')]
     #[ORM\JoinColumn(name: 'users_id', referencedColumnName: 'id', nullable: false)]
-    private ?User $user = null;
+    private ?UserReg $user = null;
 
     #[ORM\Column(name: "nomination", length: 45, nullable: true)]
     private ?string $nomination = null;
@@ -120,8 +120,8 @@ class Competitions {
         return $this;
     }
 
-    public function getUser(): ?User { return $this->user; }
-    public function setUser(?User $user): static {
+    public function getUser(): ?UserReg { return $this->user; }
+    public function setUser(?UserReg $user): static {
         $this->user = $user;
         return $this;
     }

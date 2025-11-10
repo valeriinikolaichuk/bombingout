@@ -1,3 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +14,9 @@
 <body>
     <div class="index">
         <div class="languageBox">
-            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changeData('en')">EN</button>
-            <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), changeData('uk')">UK</button>
-            <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), changeData('pl')">PL</button>
+            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changText('en')">EN</button>
+            <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), changeText('uk')">UK</button>
+            <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), changeText('pl')">PL</button>
         </div>
         <div class="bars_box" style="flex-direction: row-reverse;">
             {% include 'components/platesImage.html.twig' with {
@@ -22,7 +26,9 @@
                 latchStyle: 'style="float: right; left: 0px;"'
             } %}
         </div>
-        {% include 'components/loginForm.html.twig' %}
+        {% include 'components/loginForm.html.twig' with {
+            error_log_in: error_log_in
+        } %}
         <div class="bars_box">
             {% include 'components/platesImage.html.twig' with {
                 plateStyle: 'platestyle',
@@ -44,3 +50,5 @@
     <script src="{{ asset('assets/login.js') }}"></script>
 </body>
 </html>
+
+{% endblock %}

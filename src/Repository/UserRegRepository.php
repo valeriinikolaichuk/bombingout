@@ -2,22 +2,40 @@
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Entity\UserReg;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<User>
+ * @extends ServiceEntityRepository<UserReg>
  */
-class UserRepository extends ServiceEntityRepository
-{
+
+class UserRegRepository extends ServiceEntityRepository {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, User::class);
+        parent::__construct($registry, UserReg::class);
+    }
+
+    public function checkLogin(string $login, string $password): ?UserReg {
+        $user = $this->createQueryBuilder('u')
+            ->andWhere('u.username = :login')
+            ->setParameter('login', $login)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        if (!$user){
+            return null;
+        }
+
+        if (!password_verify($password, $user -> getPassword())){
+            return null;
+        }
+
+        return $user;
     }
 
     //    /**
-    //     * @return User[] Returns an array of User objects
+    //     * @return UserReg[] Returns an array of UserReg objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +49,7 @@ class UserRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?User
+    //    public function findOneBySomeField($value): ?UserReg
     //    {
     //        return $this->createQueryBuilder('u')
     //            ->andWhere('u.exampleField = :val')
@@ -41,3 +59,4 @@ class UserRepository extends ServiceEntityRepository
     //        ;
     //    }
 }
+?>

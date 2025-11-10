@@ -1,3 +1,5 @@
+{% set error_log_in = error_log_in|default(null) %}
+
 <div class="login">
     <form id="loginForm" method="POST">
         <br/>
@@ -11,6 +13,6 @@
     </form>
     <br/> 
     {% if error_log_in %}
-        <b>{{ error_log_in }}</b>
+    <b>{{ error_log_in|raw }}</b>
     {% endif %}
 </div>

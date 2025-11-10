@@ -2,13 +2,13 @@
     namespace App\Service;
 
     use App\Service\InsertStatus;
-    use App\Service\CheckStatusClient;
+//    use App\Service\CheckStatusClient;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class SetStatus {
         public function __construct(
             private InsertStatus $insertStatus, 
-            private CheckStatusClient $checkStatusClient
+//            private CheckStatusClient $checkStatusClient
         ){}
 
         public function handle(SessionInterface $session, ?string $compStatus = null): string{
@@ -30,10 +30,10 @@
 
             $this -> insertStatus -> insertStatus($compStatus, $idStatus);
 
-            $route = $this -> checkStatusClient -> getRouteFor($compStatus);
-            if ($route === null) {
-                throw new \RuntimeException("Unknown status: ".$compStatus);
-            }
+//            $route = $this -> checkStatusClient -> getRouteFor($compStatus);
+//            if ($route === null) {
+//                throw new \RuntimeException("Unknown status: ".$compStatus);
+//            }
 
             return $route;
         }
