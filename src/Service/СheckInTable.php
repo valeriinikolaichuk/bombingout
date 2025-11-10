@@ -15,9 +15,6 @@
                 "SELECT id_status FROM powerliftingsymfony.computer_status WHERE id_status = :id_status", 
                 ['id_status' => $id_status]
             );
-//            $check_id_status_result = $this -> getData($sql);
-//            $this -> connect() -> close();
-//            return $check_id_status_result;
         }
     }
 ?>

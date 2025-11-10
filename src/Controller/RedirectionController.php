@@ -4,6 +4,7 @@
     use App\Repository\UserRegRepository;
     use App\Service\ModelsJavascript\Login;
     use App\Service\CheckInTable;
+    use App\Service\CheckSession;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,6 +36,27 @@
             }
 
             return $this -> json($user);
+        }
+
+        #[Route('/api/check_session', methods: ['POST'])]
+        public function checkSession(
+            Request $request, 
+            CheckSession $checkSession): JsonResponse {
+
+            $data = json_decode($request -> getContent(), true);
+
+            $idUser = (int)$data['id_user'];
+            $idStatus = (int)$data['id_status'];
+
+            $old_sessions = $checkSession -> checkSession($idUser, $idStatus);
+
+            $previousClient = [];
+            if (!empty($old_sessions)){
+                $previousClient['id_status'] = $old_sessions['id_status'];
+                $previousClient['lang'] = $old_sessions['lang'];
+            }
+
+            return $this -> json($previousClient);
         }
     }
 ?>

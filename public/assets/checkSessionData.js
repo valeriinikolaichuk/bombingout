@@ -4,14 +4,14 @@ async function checkSessionData(){
             id_status : num_st
         };
 
-    let response = await fetch("assets/models_js/redirection_models/checkSession_json.php", {
+    let response = await fetch("/api/check_session", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     })
 
     if (!response.ok){
-        throw new Error("error by path: assets/models_js/redirection_models/checkSession_json.php");
+        throw new Error("error by path: /api/check_session");
     }
 
     let previousClient = await response.json();
