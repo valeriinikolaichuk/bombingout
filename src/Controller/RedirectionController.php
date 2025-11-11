@@ -4,7 +4,8 @@
     use App\Repository\UserRegRepository;
     use App\Service\ModelsJavascript\Login;
     use App\Service\CheckInTable;
-    use App\Service\CheckSession;
+    use App\Service\ModelsJavascript\redirectionModels\CheckSession;
+//    use App\Service\ModelsJavascript\CheckSession;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\JsonResponse;
@@ -58,5 +59,12 @@
 
             return $this -> json($previousClient);
         }
+
+        #[Route('/api/changeLanguage', methods: ['POST'])]
+        public function change_language(
+            Request $request, 
+            CheckSession $checkSession): JsonResponse {
+
+            $data = json_decode($request -> getContent(), true);
     }
 ?>

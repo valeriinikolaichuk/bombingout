@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\ModelsJavascript;
+    namespace App\Service\ModelsJavascript\redirectionModels;
 
     use Doctrine\DBAL\Connection;
 
@@ -10,7 +10,7 @@
             $this -> db = $db;
         }
 
-        public function check_session(int $id_user, int $id_status): array {
+        public function checkSession(int $id_user, int $id_status): array {
             $result = $this -> db -> fetchAssociative(
                 "SELECT id_status, lang FROM powerliftingsymfony.computer_status 
                 WHERE users_ID = :id_user AND id_status < :id_status LIMIT 1", [

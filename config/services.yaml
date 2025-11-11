@@ -20,6 +20,11 @@ services:
     App\Service\CheckInTable:
         arguments:
             $db: '@doctrine.dbal.default_connection'
+    
+    App\Service\ModelsJavascript\redirectionModels\CheckSession:
+        arguments:
+            $db: '@doctrine.dbal.default_connection'
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
