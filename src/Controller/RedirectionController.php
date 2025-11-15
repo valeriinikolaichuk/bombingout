@@ -59,12 +59,12 @@
 
             return $this -> json($previousClient);
         }
-
+/*
         #[Route('/api/changeLanguage', methods: ['POST'])]
         public function change_language(
             Request $request, 
             CheckSession $checkSession): JsonResponse {
 
-            $data = json_decode($request -> getContent(), true);
+            $data = json_decode($request -> getContent(), true);*/
     }
 ?>
