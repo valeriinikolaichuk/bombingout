@@ -1,13 +1,12 @@
 <?php
     namespace App\Service;
 
-    use App\Service\InsertStatus;
 //    use App\Service\CheckStatusClient;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    class SetStatus {
+    class SetStatus implements SetStatusInterface {
         public function __construct(
-            private InsertStatus $insertStatus, 
+            private InsertStatusInterface $insertStatus, 
 //            private CheckStatusClient $checkStatusClient
         ){}
 

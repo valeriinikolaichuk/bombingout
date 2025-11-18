@@ -1,7 +1,7 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\SetStatus;
+    use App\Service\SetStatusInterface;
     use App\Service\CheckInTable;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -10,13 +10,16 @@
     use Symfony\Component\Routing\Annotation\Route;
 
     class MainController extends AbstractController {
+
+
 //        session_status_actions.php
+
 
         #[Route('/', name: 'home')]
         public function index(
             Request $request, 
             SessionInterface $session,
-            SetStatus $setStatus): Response {
+            SetStatusInterface $setStatus): Response {
 
             if (!$session -> has('id') || !$session -> has('status') || !$session -> has('language')){
 
