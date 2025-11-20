@@ -1,20 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>log in</title>
+{% block title %}login{% endblock %}
+{% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plates.css') }}">
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
     <div class="index">
         <div class="languageBox">
-            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changText('en')">EN</button>
+            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changeText('en')">EN</button>
             <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), changeText('uk')">UK</button>
             <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), changeText('pl')">PL</button>
         </div>
@@ -26,9 +21,14 @@
                 latchStyle: 'style="float: right; left: 0px;"'
             } %}
         </div>
+
         {% include 'components/loginForm.html.twig' with {
             error_log_in: error_log_in
         } %}
+
+        <!-- for React app -->
+        <div id="react-root"></div>
+
         <div class="bars_box">
             {% include 'components/platesImage.html.twig' with {
                 plateStyle: 'platestyle',
@@ -44,11 +44,10 @@
         <div id="lineTwo"><p>weight selection, and real-time result display. The interface is optimized for use on the competition platform.</p></div>
         <div id="access"><p>🔒 Access is restricted to authorized users only. 📩 Please contact us to request access or technical support: 📧 powerlift.rv@gmail.com</p></div>
     </div>
+{% endblock %}
 
+{% block javascripts %}
     <script src="{{ asset('assets/switchLanguage.js') }}"></script>
     <script src="{{ asset('assets/changeText.js') }}"></script>
     <script src="{{ asset('assets/login.js') }}"></script>
-</body>
-</html>
-
 {% endblock %}
