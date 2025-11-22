@@ -12,9 +12,9 @@
     </video>
     <div class="index">
         <div class="languageBox">
-            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changeText('en')">EN</button>
-            <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), changeText('uk')">UK</button>
-            <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), changeText('pl')">PL</button>
+            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), setText('en')">EN</button>
+            <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), setText('uk')">UK</button>
+            <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), setText('pl')">PL</button>
 
         </div>
         <div class="buttons_box">
@@ -42,6 +42,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/js/login/updateVisibility.js') }}"></script>
-    <script src="{{ asset('assets/js/login/setText.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/login/setText.js') }}"></script>
     <script src="{{ asset('assets/js/login/login.js') }}"></script>
 {% endblock %}
