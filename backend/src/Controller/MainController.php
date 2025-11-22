@@ -11,9 +11,7 @@
 
     class MainController extends AbstractController {
 
-
 //        session_status_actions.php
-
 
         #[Route('/', name: 'home')]
         public function index(
