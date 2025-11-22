@@ -1,8 +1,8 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\SetStatusInterface;
-    use App\Service\CheckInTable;
+//    use App\Service\SetStatusInterface;
+//    use App\Service\CheckInTable;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
@@ -19,16 +19,11 @@
         public function index(
             Request $request, 
             SessionInterface $session,
-            SetStatusInterface $setStatus): Response {
+//            SetStatusInterface $setStatus
+            ): Response {
 
             if (!$session -> has('id') || !$session -> has('status') || !$session -> has('language')){
-
-                $error = $session -> has('error_log_in') ? $session -> get('error_log_in') : null;
-                $session -> remove('error_log_in');
-            
-                return $this -> render('login_page.html.twig', [
-                    'error_log_in' => $error,
-                ]);
+                return $this -> render('login_page.html.twig');
             }
 
             if ($session -> get('status') !== 'participant'){
@@ -36,8 +31,9 @@
 
                 if ($compStatus || $session -> has('comp_status')){
                     try {
-                        $route = $setStatus -> handle($session, $compStatus);
-                        return $this -> redirectToRoute($route);
+//                        $route = $setStatus -> handle($session, $compStatus);
+                        return 0;
+//                        $this -> redirectToRoute($route);
                     } catch (\RuntimeException $e) {
                         return $this -> render('error_page.html.twig', [
                             'message' => $e -> getMessage()

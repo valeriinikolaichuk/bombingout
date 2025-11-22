@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import LoginPage from './pages/LoginPage/Login';
+// import LoginPage from './pages/RedirectionPage/Redirection';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const path = window.location.pathname;
+    switch (path) {
+      case '/login':
+        return <Login />;
+//      case '/redirection':
+//        return <Redirection />;
+      default:
+        return <div>Page not found</div>;
+    }
 }
 
 export default App;

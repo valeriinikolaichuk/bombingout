@@ -7,35 +7,28 @@
 {% endblock %}
 
 {% block body %}
+    <video class="video-bg" autoPlay muted loop playsInline>
+            <source src="{{ asset('assets/barVideo.mp4') }}" type="video/mp4" />
+    </video>
     <div class="index">
         <div class="languageBox">
             <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), changeText('en')">EN</button>
             <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), changeText('uk')">UK</button>
             <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), changeText('pl')">PL</button>
+
         </div>
-        <div class="bars_box" style="flex-direction: row-reverse;">
-            {% include 'components/platesImage.html.twig' with {
-                plateStyle: 'platestyle2',
-                redPlate: 'style="float: right; margin-right: 15px;"',
-                float: 'style="float: right;"',
-                latchStyle: 'style="float: right; left: 0px;"'
-            } %}
+        <div class="buttons_box">
+            <button id="showCreateDialog" class="buttonStyle" type="button" data-en="ABOUT" data-uk="ІНФО" data-pl="INFO">ABOUT</button>
+            <button id="showCreateDialog" class="buttonStyle" type="button" data-en="CLIENTS" data-uk="КЛІЄНТИ" data-pl="CLIENCI">CLIENTS</button>
+            <button id="showCreateDialog" class="buttonStyle" type="button" data-en="SETUP" data-uk="КОНФІГ" data-pl="KONFIG">SETUP</button>
         </div>
 
-        {% include 'components/loginForm.html.twig' with {
-            error_log_in: error_log_in
-        } %}
+        {% include 'components/loginForm.html.twig' %}
 
-        <!-- for React app -->
-        <div id="react-root"></div>
-
-        <div class="bars_box">
-            {% include 'components/platesImage.html.twig' with {
-                plateStyle: 'platestyle',
-                redPlate: 'style="margin-left: 15px;"',
-                float: '',
-                latchStyle: ''
-            } %}
+        <div class="buttons_box">
+        <button id="showCreateDialog" class="buttonStyle" type="button" data-en="DATA" data-uk="ДАНІ" data-pl="DANE">DATA</button>
+            <button id="showCreateDialog" class="buttonStyle" type="button" data-en="RUN" data-uk="ХІД" data-pl="BIEG">RUN</button>
+            <button id="showCreateDialog" class="buttonStyle" type="button" data-en="EXTRAS" data-uk="EKCTPA" data-pl="EXTRAS">EXTRAS</button>
         </div>
     </div>
     <div class="footer">
@@ -47,7 +40,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('assets/switchLanguage.js') }}"></script>
-    <script src="{{ asset('assets/changeText.js') }}"></script>
+    {{ parent() }}
+    <script src="{{ asset('assets/updateVisibility.js') }}"></script>
+    <script src="{{ asset('assets/setText.js') }}"></script>
     <script src="{{ asset('assets/login.js') }}"></script>
 {% endblock %}

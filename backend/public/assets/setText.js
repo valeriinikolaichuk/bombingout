@@ -1,4 +1,4 @@
-function changeText(lang){
+function setText(lang){
     document.getElementById('language').value = lang;
     const enButton = document.getElementById('en');
     const ukButton = document.getElementById('uk');

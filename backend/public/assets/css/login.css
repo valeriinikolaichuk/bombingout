@@ -9,12 +9,24 @@ body {
     width: 100%;          
     height: 85vh;
     margin: 0px;
-    background-color: rgb(110, 110, 254);
+    overflow: hidden;
+    z-index: 1;
     position: relative;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.5;
 }
 
 .languageBox {
@@ -24,7 +36,6 @@ body {
     top: 0px;
     right: 0px;
     z-index: 3;
-    background-color: blue;
 }
 
 .languageButton {
@@ -35,27 +46,40 @@ body {
 }
 
 .login {
-    width: 12%;          
+    width: 22%;          
     height: 300px;
-    text-align: center;
-    background-color: rgb(110, 110, 254);
     position: relative;
     z-index: 2;
+    text-align: center;
+    flex-direction: column;
 }
 
-.bars_box {
+.buttons_box {
     width: 44%;          
     height: 460px;
     position: relative;
     z-index: 2;
-    background-color: rgb(110, 110, 254);
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
 }
 
-.platestyle2 {
-    margin-left: 5px;
-    border: 3px solid black;
+.buttons_box button:hover {
+    background-color: blue;
+}
+
+.buttonStyle {
+    width: 80%;
+    height: 60px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    background-color: rgba(0, 0, 135, 0.2);
 }
 
 p {

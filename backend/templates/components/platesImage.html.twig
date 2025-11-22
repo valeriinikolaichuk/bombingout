@@ -17,3 +17,21 @@
         <div class="cutout-bottom" {{ float|raw }}></div>
     </div>
 </div>
+
+        <div class="bars_box" style="flex-direction: row-reverse;">
+            {% include 'components/platesImage.html.twig' with {
+                plateStyle: 'platestyle2',
+                redPlate: 'style="float: right; margin-right: 15px;"',
+                float: 'style="float: right;"',
+                latchStyle: 'style="float: right; left: 0px;"'
+            } %}
+        </div>
+
+                <div class="bars_box">
+            {% include 'components/platesImage.html.twig' with {
+                plateStyle: 'platestyle',
+                redPlate: 'style="margin-left: 15px;"',
+                float: '',
+                latchStyle: ''
+            } %}
+        </div>

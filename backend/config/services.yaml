@@ -20,16 +20,16 @@ services:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
     
-    App\Service\SetStatusInterface: '@App\Service\SetStatus'
-    App\Service\InsertStatusInterface: '@App\Service\InsertStatus'
+#    App\Service\SetStatusInterface: '@App\Service\SetStatus'
+#    App\Service\InsertStatusInterface: '@App\Service\InsertStatus'
 
-    App\Service\CheckInTable:
-        arguments:
-            $db: '@doctrine.dbal.default_connection'
+#    App\Service\CheckInTable:
+#        arguments:
+#            $db: '@doctrine.dbal.default_connection'
     
-    App\Service\ModelsJavascript\redirectionModels\CheckSession:
-        arguments:
-            $db: '@doctrine.dbal.default_connection'
+#    App\Service\ModelsJavascript\redirectionModels\CheckSession:
+#        arguments:
+#            $db: '@doctrine.dbal.default_connection'
 
 
     # add more service definitions when explicit configuration is needed
