@@ -15,7 +15,7 @@ function updateVisibility() {
         buttonsBoxes.forEach(el => el.style.height = '300px');
 
         const buttonsIn = document.querySelectorAll('.buttonStyle');
-        buttonsIn.forEach(el => {el.style.marginTop ='25px'; el.style.backgroundColor = 'blue';});
+        buttonsIn.forEach(el => el.style.marginTop ='25px');
     }
 }
 
