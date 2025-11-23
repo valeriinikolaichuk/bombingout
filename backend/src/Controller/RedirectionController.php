@@ -3,6 +3,7 @@
 
     use App\Repository\UserRegRepository;
     use App\Service\Login;
+    use App\Service\CheckUserInTable;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +16,7 @@
         public function login(
             UserRegRepository $userRepo,
             Login $loginService,
+            CheckUserInTable $checker,
             Request $request,
             SessionInterface $session
             ): JsonResponse {
@@ -34,7 +36,17 @@
                 ]);
             }
 
-            $loginService -> loginUser($session, $user, $language);
+            $ip = $request -> getClientIp();
+            $agent = $request -> headers -> get('User-Agent');
+
+            if ($checker -> existsForUser($user->getId(), $ip, $agent)) {
+                return new JsonResponse([
+                    'success' => false, 
+                    'message' => 'You are already logged in from this browser.'
+                ]);
+            }
+
+            $loginService -> loginUser($session, $user, $language, $ip, $agent);
             return new JsonResponse(['success' => true]);
         }    
     }

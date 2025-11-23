@@ -7,14 +7,16 @@
     class ComputerStatusService {
         public function __construct(private Connection $db) {}
 
-        public function createStatus(UserReg $user, string $language): int {
+        public function createStatus(UserReg $user, string $language, string $ip, string $agent): int {
             $this -> db -> executeStatement(
-                "INSERT INTO powerliftingsymfony.computer_status (users_ID, users_status, lang)
+                "INSERT INTO powerliftingsymfony.computer_status (users_ID, users_status, lang, ip_address, user_agent)
                  VALUES (:id_user, :users_status, :lang)",
                 [
                     'id_user'      => $user -> getId(),
                     'users_status' => $user -> getStatus(),
                     'lang'         => $language,
+                    'ip'           => $ip,
+                    'agent'        => $agent
                 ]
             );
 
