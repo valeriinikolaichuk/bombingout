@@ -40,6 +40,12 @@ class ComputerStatus
     #[ORM\Column(name: "grp_page", length: 120)]
     private ?string $grp_page = null;
 
+    #[ORM\Column(name: "ip_address", length: 45)]
+    private ?string $ipAddress = null;
+
+    #[ORM\Column(name: "user_agent", length: 255)]
+    private ?string $userAgent = null;
+
     #[ORM\Column(nullable: true)]
     private ?\DateTime $realtime = null;
 
@@ -104,4 +110,15 @@ class ComputerStatus
         $this->realtime = $realtime;
         return $this;
     }
+
+    public function getIpAddress(): ?string { return $this->ip_address; }
+    public function setIpAddress(?string $ip): self { 
+        $this->ip_address = $ip; 
+        return $this; }
+
+    public function getUserAgent(): ?string { return $this->user_agent; }
+    public function setUserAgent(?string $ua): self { 
+        $this->user_agent = $ua; 
+        return $this; }
+
 }

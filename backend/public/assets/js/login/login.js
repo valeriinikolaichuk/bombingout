@@ -27,9 +27,9 @@ loginForm.addEventListener("submit", async function(e) {
             mess = json.message;
         }
 
-        alert(mess);
         document.getElementById("login").value = '';
         document.getElementById("password").value = '';
+        alert(mess);
 
         return;
     }
