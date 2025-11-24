@@ -1,8 +1,6 @@
 <?php
     namespace App\Controller;
 
-//    use App\Service\SetStatusInterface;
-//    use App\Service\CheckInTable;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +15,6 @@
         public function index(
             Request $request, 
             SessionInterface $session,
-//            SetStatusInterface $setStatus
             ): Response {
 
             if (!$session -> has('id') || !$session -> has('status') || !$session -> has('language')){
