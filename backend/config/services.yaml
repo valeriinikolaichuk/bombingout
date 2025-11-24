@@ -19,7 +19,20 @@ services:
     App\:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
-    
+
+    App\Service\Login\LoginInterface:
+        alias: App\Service\Login\LoginStrategyLocal
+        public: true
+
+    # production:
+    # App\Service\Login\LoginInterface:
+    #    alias: App\Service\Login\LoginStrategyProd
+    #    public: true
+
+
+
+
+
 #    App\Service\SetStatusInterface: '@App\Service\SetStatus'
 #    App\Service\InsertStatusInterface: '@App\Service\InsertStatus'
 
