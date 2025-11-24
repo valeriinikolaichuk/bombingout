@@ -1,10 +1,10 @@
 <?php
-    namespace App\Service;
+    namespace App\Service\Login;
 
     use App\Entity\UserReg;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    class Login {
+    class LoginService {
         public function __construct(
             private LoginSessionService $sessionService,
             private ComputerStatusService $computerStatusService

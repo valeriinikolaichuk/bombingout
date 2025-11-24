@@ -2,21 +2,19 @@
     namespace App\Controller;
 
     use App\Repository\UserRegRepository;
-    use App\Service\Login;
-    use App\Service\CheckUserInTable;
+    use App\Service\Login\LoginInterface;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-    use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
+    use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\Routing\Annotation\Route;
 
     class RedirectionController extends AbstractController {
         #[Route('/api/login', name: 'login', methods: ['POST'])]
         public function login(
             UserRegRepository $userRepo,
-            Login $loginService,
-            CheckUserInTable $checker,
+            LoginInterface $loginStrategy,
             Request $request,
             SessionInterface $session
             ): JsonResponse {
@@ -30,6 +28,7 @@
 
             if (!$user || !password_verify($password, $user -> getPassword())) {
                 $session -> clear();
+
                 return new JsonResponse([
                     'success' => false,
                     'message' => 'login or password is not correct'
@@ -39,15 +38,9 @@
             $ip = $request -> getClientIp();
             $agent = $request -> headers -> get('User-Agent');
 
-            if ($checker -> existsForUser($user->getId(), $ip, $agent)) {
-                return new JsonResponse([
-                    'success' => false, 
-                    'message' => 'You are already logged in from this browser.'
-                ]);
-            }
+            $result = $loginStrategy -> login($session, $user, $language, $ip, $agent);
 
-            $loginService -> loginUser($session, $user, $language, $ip, $agent);
-            return new JsonResponse(['success' => true]);
+            return new JsonResponse($result);
         }    
     }
 ?>

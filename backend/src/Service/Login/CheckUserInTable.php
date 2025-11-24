@@ -1,11 +1,9 @@
 <?php
-
-    namespace App\Service;
+    namespace App\Service\Login;
 
     use Doctrine\DBAL\Connection;
 
-    class CheckUserInTable
-    {
+    class CheckUserInTable {
         public function __construct(private Connection $db) {}
 
         public function existsForUser(int $userId, string $ip, string $agent): bool {

@@ -1,8 +1,8 @@
 <?php
-    namespace App\Service;
+    namespace App\Service\Login;
 
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
     use App\Entity\UserReg;
+    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class LoginSessionService {
         public function setUserSession(SessionInterface $session, UserReg $user, string $language): void {

@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service;
+    namespace App\Service\Login;
 
     use Doctrine\DBAL\Connection;
     use App\Entity\UserReg;
