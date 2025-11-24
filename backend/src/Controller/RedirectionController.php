@@ -3,6 +3,7 @@
 
     use App\Repository\UserRegRepository;
     use App\Service\Login\LoginInterface;
+    use App\Service\Login\DelPreviousRegService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +42,30 @@
             $result = $loginStrategy -> login($session, $user, $language, $ip, $agent);
 
             return new JsonResponse($result);
-        }    
+        }
+        
+        #[Route('/api/delPreviousReg', name: 'del_previous_reg', methods: ['POST'])]
+        public function deletePrevious(
+            Request $request,
+            DelPreviousRegService $delPreviousRegService
+            ): JsonResponse {
+
+            $data = json_decode($request->getContent(), true);
+
+            $usersId = $data['usersId'] ?? null;
+            $usersIp = $data['usersIp'] ?? null;
+            $usersAgent = $data['usersAgent'] ?? null;
+
+            if (!$usersId || !$usersIp || !$usersAgent) {
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Missing required data'
+                ]);
+            }
+
+            $delPreviousRegService -> deleteEntry($usersId, $usersIp, $usersAgent);
+
+            return new JsonResponse(['success' => true]);
+        }
     }
 ?>

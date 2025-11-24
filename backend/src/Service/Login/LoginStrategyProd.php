@@ -14,7 +14,10 @@
             if ($this -> checker -> existsForUser($user->getId(), $ip, $agent)) {
                 return [
                     'success' => false,
-                    'message' => 'You are already logged in from this browser.'
+                    'message' => 'You are already logged in from this browser',
+                    'id'      => $user->getId(),
+                    'ip'      => $ip,
+                    'agent'   => $agent
                 ];
             }
 

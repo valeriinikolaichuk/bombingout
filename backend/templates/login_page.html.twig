@@ -37,11 +37,15 @@
         <div id="lineTwo"><p>weight selection, and real-time result display. The interface is optimized for use on the competition platform.</p></div>
         <div id="access"><p>🔒 Access is restricted to authorized users only. 📩 Please contact us to request access or technical support: 📧 powerlift.rv@gmail.com</p></div>
     </div>
+
+    {% include 'components/errorLoginPopup.html.twig' %}
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('assets/js/login/updateVisibility.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/setText.js') }}"></script>
-    <script src="{{ asset('assets/js/login/login.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/login/login.js') }}"></script>
+    <script src="{{ asset('assets/js/login/delPreviousReg.js') }}"></script>
 {% endblock %}

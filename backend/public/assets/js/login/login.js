@@ -1,3 +1,5 @@
+import { errorLoginMessage } from './errorLoginMessage.js';
+
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", async function(e) {
@@ -15,21 +17,30 @@ loginForm.addEventListener("submit", async function(e) {
         body: JSON.stringify(data)
     });
 
-    await response.json();
+    if (!response.ok){
+        throw new Error('error by path: /api/login');
+    }
+
+    let json = await response.json();
 
     if (!json.success) {
-        let mess;
-        if (lang === 'uk'){
-            mess = 'невірний логін a6o пароль';
-        } else if (lang === 'pl'){
-            mess = 'невірний логін a6o пароль';
-        } else {
-            mess = json.message;
-        }
-
         document.getElementById("login").value = '';
         document.getElementById("password").value = '';
-        alert(mess);
+
+        if (json.message === 'login or password is not correct'){
+            let mess;
+            if (lang === 'uk'){
+                mess = 'невірний логін a6o пароль';
+            } else if (lang === 'pl'){
+                mess = 'nieprawidłowy login lub hasło';
+            } else {
+                mess = json.message;
+            }
+
+            alert(mess);
+        } else {
+            errorLoginMessage(json.id, json.ip, json.agent);
+        }
 
         return;
     }
