@@ -8,99 +8,25 @@
     use Symfony\Component\Routing\Annotation\Route;
 
     class MainController extends AbstractController {
-
-//        session_status_actions.php
-
         #[Route('/', name: 'home')]
         public function index(
             Request $request, 
-            SessionInterface $session,
+            SessionInterface $session
             ): Response {
 
             if (!$session -> has('id') || !$session -> has('status') || !$session -> has('language')){
                 return $this -> render('login_page.html.twig');
             }
 
-            if ($session->get('status') === 'participant') {
+            if ($session -> has('status') && $session -> get('status') === 'participant') {
                 return $this -> redirectToRoute('dashboard');
             }
-/*
-return $this->render('redirection_page.html.twig', [
-            'lang'      => $session->get('language'),
-            'users_id'  => $session->get('id'),
-            'id_status' => $session->get('id_status'),
-        ]);
-*/
 
-
-/*            
-
-
-            if ($session -> get('status') !== 'participant'){
-                $compStatus = $request -> request -> get('comp_status');
-
-                if ($compStatus || $session -> has('comp_status')){
-                    try {*/
-//                        $route = $setStatus -> handle($session, $compStatus);
-//                        return 0;
-//                        $this -> redirectToRoute($route);
-/*                    } catch (\RuntimeException $e) {
-                        return $this -> render('error_page.html.twig', [
-                            'message' => $e -> getMessage()
-                        ]);
-                    }
-                } else {
-                    return $this -> render('redirection_page.html.twig', [
-                        'lang'           => $session -> get('language'),
-                        'users_id'       => $session -> get('id'),
-                        'id_status'      => $session -> get('id_status'),
-                        'is_redirection' => $request -> request -> has('redirection')
-                    ]);
-                }
-            }*/
-
-
-
-
+            return $this -> render('redirection_page.html.twig', [
+                    'lang'      => $session -> get('language'),
+                    'users_id'  => $session -> get('id'),
+                    'id_status' => $session -> get('id_status'),
+                ]);
         }
-
-
-
-
-/*
-        #[Route('/admin', name: 'admin_page')]
-        public function admin(): Response {
-            return $this -> render('admin.html.twig');
-        }
-
-        #[Route('/scoreboard', name: 'scoreboard_page')]
-        public function scoreboard(): Response {
-            return $this -> render('scoreboard.html.twig');
-        }
-
-        #[Route('/order', name: 'order_page')]
-        public function order(): Response {
-            return $this -> render('order.html.twig');
-        }
-
-        #[Route('/bars', name: 'bars_page')]
-        public function bars(): Response {
-            return $this -> render('bars.html.twig');
-        }
-
-        #[Route('/information', name: 'information_page')]
-        public function information(): Response {
-            return $this -> render('information.html.twig');
-        }
-        
-        #[Route('/timer', name: 'timer_page')]
-        public function timer(): Response {
-            return $this -> render('timer.html.twig');
-        }
-
-        #[Route('/weighingIn', name: 'weighingIn_page')]
-        public function weighingIn(): Response {
-            return $this -> render('weighingIn.html.twig');
-        }*/
     }
 ?>
