@@ -3,7 +3,7 @@
 
     use App\Repository\UserRegRepository;
     use App\Service\Login\LoginInterface;
-    use App\Service\Login\DelPreviousRegService;
+    use App\Service\Login\StatusTableLogin\DelPreviousRegService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;

@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Login;
+    namespace App\Service\Login\StatusTableLogin;
 
     use Doctrine\DBAL\Connection;
 
@@ -7,12 +7,10 @@
         public function __construct(private Connection $db) {}
 
         public function existsForUser(int $userId, string $ip, string $agent): bool {
-            $sql = "
-                SELECT COUNT(*) FROM computer_status 
+            $sql = "SELECT COUNT(*) FROM computer_status 
                 WHERE user_ID = :user_id 
                 AND ip_address = :ip 
-                AND user_agent = :agent
-            ";
+                AND user_agent = :agent";
 
             $count = $this -> db -> fetchOne($sql, [
                 'user_id' => $userId,

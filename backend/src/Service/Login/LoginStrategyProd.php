@@ -1,6 +1,7 @@
 <?php
     namespace App\Service\Login;
 
+    use App\Service\Login\StatusTableLogin\CheckUserInTable;
     use App\Entity\UserReg;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

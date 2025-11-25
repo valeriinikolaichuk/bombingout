@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Login;
+    namespace App\Service\Login\StatusTableLogin;
 
     use Doctrine\DBAL\Connection;
     use App\Entity\UserReg;
