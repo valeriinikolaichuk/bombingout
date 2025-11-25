@@ -1,10 +1,10 @@
 async function checkSessionData(){
     let data = {
-            id_user: window.appData.num,
-            id_status : window.appData.num_st
+            id_user: window.appData.num
         };
 
-    let response = await fetch("assets/models_js/redirection_models/checkSession_json.php", {
+
+    let response = await fetch("/api/showConnections", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
@@ -25,28 +25,6 @@ async function checkSessionData(){
 
         alert(messages[lang]);
     } else {
-        if (lang != previousClient["lang"]){
-            lang = previousClient["lang"];
-
-            dataLang = {
-                newLang: lang,
-                id_status : num_st
-            };
-        
-            let response = await fetch("assets/models_js/redirection_models/changeLanguage_json.php", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(dataLang)
-            })
-
-            if (!response.ok){
-                throw new Error("error by path: assets/models_js/redirection_models/changeLanguage_json.php");
-            }
-
-            changedLang = await response.json();
-            console.log("current language: "+changedLang);
-        }
-
         const messages = {
             en: " A connection already exists. \n Establish a new connection? (the session will be terminated) - Y \n Continue the existing session - N",
             uk: " 3'єднання вже існує. \n Встановити нове з'єднання? (сесію буде знищено) - Y \n Продовжити існуючу сесію - N",

@@ -11,7 +11,7 @@
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\Routing\Annotation\Route;
 
-    class RedirectionController extends AbstractController {
+    class LoginController extends AbstractController {
         #[Route('/api/login', name: 'login', methods: ['POST'])]
         public function login(
             UserRegRepository $userRepo,
@@ -25,9 +25,9 @@
             $password = $data['password'] ?? null;
             $language = $data['language'] ?? 'en';
 
-            $user = $userRepo -> findOneBy(['username' => $loginData]);
+            $user = $userRepo -> checkLogin($loginData, $password);
 
-            if (!$user || !password_verify($password, $user -> getPassword())) {
+            if (!$user) {
                 $session -> clear();
 
                 return new JsonResponse([
