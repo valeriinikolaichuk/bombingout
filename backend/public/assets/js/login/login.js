@@ -1,4 +1,4 @@
-import { errorLoginMessage } from './errorLoginMessage.js';
+import { errorLoginMessage } from './modules/errorLoginMessage.js';
 
 const loginForm = document.getElementById("loginForm");
 

@@ -1,5 +1,5 @@
-import { buttonsColor } from './buttons.js';
-import { messages } from './content.js';
+import { buttonsColor } from './modules/buttons.js';
+import { messages } from './modules/content.js';
 
 window.setText = function(lang){
     document.getElementById('language').value = lang;

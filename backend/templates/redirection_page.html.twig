@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>redirection page</title>
-    <link rel="stylesheet" href="assets/css/redirection.css">
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{% block title %}redirection page{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/redirection.css') }}">
+{% endblock %}
+
+{% block body %}
     <div class="container">
         <div class="top">
             <div class="admin">
@@ -41,34 +40,30 @@
         <div class="popup-content">
             <span id="close">&times;</span>
 
-            {% include 'components/loginForm.html.twig' with {
-                error_log_in: error_log_in|default(null)
-            } %}
+            {% include 'components/loginForm.html.twig' %}
 
             <button id="comp_status" style="display: none;" type="button"></button>
             <button id="cancel" type="button" data-en="CANCEL" data-uk="ВІДМІНА" data-pl="ANULUJ">CANCEL</button>
         </div>
     </dialog>
-    <script>
-        let lang = "{{ lang }}";
-        const num = "{{ users_id }}";
-        const num_st = "{{ id_status }}";
-    </script>
-    {% if not is_redirection %}
-        <script src="{{ asset('assets/checkSessionData.js') }}"></script>
-    {% endif %}
-    <script src="{{ asset('assets/switchLanguage.js') }}"></script>
-    <script src="{{ asset('assets/view/viewRedirection.js') }}"></script>
-    <script src="{{ asset('assets/viewModels/viewModelRedirection.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            if (typeof checkSessionData === "function") {
-                await checkSessionData();
-            }
+{% endblock %}
+<script>
+    window.appData = {
+        lang = "{{ lang }}";
+        num = "{{ users_id }}";
+        num_st = "{{ id_status }}";
+        isRedirection: {{ is_redirection ? 'true' : 'false' }};
+    }
+</script>
+{% block javascripts %}
+    {{ parent() }}
 
-            switchLanguage(lang);
-            const viewRedirection = new ViewRedirection();
-        });
-    </script>
-</body>
-</html>
+    {% if not is_redirection %}
+        <script src="{{ asset('assets/js/redirection/checkSessionData.js') }}"></script>
+    {% endif %}
+
+    <script src="{{ asset('assets/js/redirection/viewRedirection.js') }}"></script>
+    <script src="{{ asset('assets/js/redirection/viewModelRedirection.js') }}"></script>
+
+    <script src="{{ asset('assets/js/redirection/initRedirectionPage.js') }}"></script>
+{% endblock %}
