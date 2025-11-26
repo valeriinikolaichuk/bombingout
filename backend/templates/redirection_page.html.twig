@@ -46,20 +46,20 @@
             <button id="cancel" type="button" data-en="CANCEL" data-uk="ВІДМІНА" data-pl="ANULUJ">CANCEL</button>
         </div>
     </dialog>
+
+    {% include 'components/dialog_connections.html.twig' %}
+
 {% endblock %}
 <script>
     window.appData = {
         lang = "{{ lang }}";
         num = "{{ users_id }}";
-        isRedirection: {{ is_redirection ? 'true' : 'false' }};
     }
 </script>
 {% block javascripts %}
     {{ parent() }}
-
-    {% if not is_redirection %}
-        <script src="{{ asset('assets/js/redirection/checkSessionData.js') }}"></script>
-    {% endif %}
+    <script type="module" src="{{ asset('assets/js/redirection/checkConnectionsData.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/redirection/checkConnectionsButtons.js') }}"></script>
 
     <script src="{{ asset('assets/js/redirection/viewRedirection.js') }}"></script>
     <script src="{{ asset('assets/js/redirection/viewModelRedirection.js') }}"></script>

@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    if (!appData.isRedirection && typeof checkSessionData === "function") {
-        await checkSessionData();
-    }
-
+    await checkConnectionsData();
+    checkConnectionsButtons();
     switchLanguage(window.appData.lang);
     const viewRedirection = new ViewRedirection();
 });

@@ -13,8 +13,8 @@ class ComputerStatus
     #[ORM\Column(name: "id_status")]
     private ?int $id_status = null;
 
-    #[ORM\Column(name: "user_ID")]
-    private ?int $user_ID = null;
+    #[ORM\Column(name: "users_ID")]
+    private ?int $users_ID = null;
 
     #[ORM\Column(name: "comp_status", length: 60)]
     private ?string $comp_status = null;

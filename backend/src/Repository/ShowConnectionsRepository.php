@@ -11,4 +11,14 @@
         {
             parent::__construct($registry, ComputerStatus::class);
         }
-}
+
+        public function getConnectionsByUser(int $userId): array {
+            return $this ->createQueryBuilder('c')
+                ->select('c.ipAddress', 'c.userAgent', 'c.users_status')
+                ->where('c.users_ID = :uid')
+                ->setParameter('uid', $userId)
+                ->getQuery()
+                ->getArrayResult();
+        }
+    }
+?>
