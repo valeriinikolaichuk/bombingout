@@ -1,10 +1,12 @@
 import { showConnections } from './modules/showConnections.js';
 import { dialogContent } from './modules/dialogContent.js';
 
-async function checkConnectionsData(){
+const dialog = document.getElementById('connectionDialog');
+
+export async function checkConnectionsData(){
     let data = {
-            id_user: window.appData.num
-        };
+        id_user: window.appData.num
+    };
 
     let response = await fetch("/api/showConnections", {
         method: "POST",
@@ -25,7 +27,5 @@ async function checkConnectionsData(){
 
     showConnections(json);
     dialogContent(window.appData.lang);
-
-    const dialog = document.getElementById('connectionDialog');
     dialog.showModal();
 }

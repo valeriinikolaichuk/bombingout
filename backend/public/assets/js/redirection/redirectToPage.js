@@ -1,0 +1,23 @@
+export function redirectToPage(json){
+    if (!json.success) {
+        document.getElementById("login").value = '';
+        document.getElementById("password").value = '';
+
+        if (json.message === 'login or password is not correct'){
+            let mess;
+            if (lang === 'uk'){
+                mess = 'невірний логін a6o пароль';
+            } else if (lang === 'pl'){
+                mess = 'nieprawidłowy login lub hasło';
+            } else {
+                mess = json.message;
+            }
+
+            alert(mess);
+            return;
+
+        } else {
+            window.location.href = json.page;
+        }
+    }
+}

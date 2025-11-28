@@ -41,20 +41,28 @@
             DeleteOldConnectionsRepository $deleteOldConnRepo
             ): JsonResponse {
 
-            $data = json_decode($request->getContent(), true);
+            $data = json_decode($request -> getContent(), true);
             $idUser = $data['id_user'] ?? null;
             $currentIp = $request -> getClientIp();
             $userAgent = $request -> headers -> get('User-Agent');
 
             if (!$idUser) {
-                return new JsonResponse(['status' => 'error', 'message' => 'Missing user id'], 400);
+                return new JsonResponse([
+                    'status' => 'error', 
+                    'message' => 'Missing user id'
+                ], 400);
             }
 
             try {
-                $deleteOldConnRepo->deleteOldConnectionsExceptCurrent($idUser, $currentIp, $userAgent);
-                return new JsonResponse(['status' => 'ok']);
+                $deleteOldConnRepo -> deleteOldConnectionsExceptCurrent($idUser, $currentIp, $userAgent);
+                return new JsonResponse([
+                    'status' => 'ok'
+                ]);
             } catch (\Exception $e) {
-                return new JsonResponse(['status' => 'error', 'message' => $e -> getMessage()], 500);
+                return new JsonResponse([
+                    'status' => 'error', 
+                    'message' => $e -> getMessage()
+                ], 500);
             }
         }    
     }

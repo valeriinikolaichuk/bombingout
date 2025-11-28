@@ -1,4 +1,6 @@
-async function deleteOldConnections() {
+import { checkConnectionsData } from './checkConnectionsData.js';
+
+export async function deleteOldConnections(){
     let data = {
         id_user: window.appData.num
     };
@@ -26,4 +28,6 @@ async function deleteOldConnections() {
     } else {
         alert("error: not deleted");
     }
+
+    checkConnectionsData();
 }

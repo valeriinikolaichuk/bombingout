@@ -20,30 +20,18 @@ services:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
-    App\Service\Login\LoginInterface:
-        alias: App\Service\Login\LoginStrategyLocal
-        public: true
+    App\Service\Login\LoginStrategyLocal:
+        tags: ['app.login_strategy', { alias: 'local' }]
 
-    # production:
-    # App\Service\Login\LoginInterface:
-    #    alias: App\Service\Login\LoginStrategyProd
-    #    public: true
+    App\Service\Login\LoginStrategyProd:
+        tags: ['app.login_strategy', { alias: 'prod' }]
 
-
-
-
-
-#    App\Service\SetStatusInterface: '@App\Service\SetStatus'
-#    App\Service\InsertStatusInterface: '@App\Service\InsertStatus'
-
-#    App\Service\CheckInTable:
-#        arguments:
-#            $db: '@doctrine.dbal.default_connection'
+    App\Service\Login\LoginStrategyAlternate:
+        tags: ['app.login_strategy', { alias: 'redirect' }]
     
-#    App\Service\ModelsJavascript\redirectionModels\CheckSession:
-#        arguments:
-#            $db: '@doctrine.dbal.default_connection'
-
+    App\Service\Login\LoginFactory:
+        arguments:
+            - !tagged_iterator { tag: 'app.login_strategy', index_by: 'alias' }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -2,7 +2,8 @@
     namespace App\Controller;
 
     use App\Repository\UserRegRepository;
-    use App\Service\Login\LoginInterface;
+//    use App\Service\Login\LoginInterface;
+    use App\Service\Login\LoginFactory;
     use App\Service\Login\StatusTableLogin\DelPreviousRegService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,14 +14,17 @@
 
     class LoginController extends AbstractController {
         #[Route('/api/login', name: 'login', methods: ['POST'])]
+        #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
         public function login(
             UserRegRepository $userRepo,
-            LoginInterface $loginStrategy,
+//            LoginInterface $loginStrategy,
+            LoginFactory $factory,
             Request $request,
             SessionInterface $session
             ): JsonResponse {
 
             $data = json_decode($request -> getContent(), true);
+
             $loginData = $data['login'] ?? null;
             $password = $data['password'] ?? null;
             $language = $data['language'] ?? 'en';
@@ -39,7 +43,15 @@
             $ip = $request -> getClientIp();
             $agent = $request -> headers -> get('User-Agent');
 
-            $result = $loginStrategy -> login($session, $user, $language, $ip, $agent);
+            $route = $request -> attributes -> get('_route');
+
+            $strategy = match ($route) {
+                'login'          => $factory -> get('local'),
+                'login_redirect' => $factory -> get('redirect'),
+                default          => $factory -> get('local')
+            };
+
+            $result = $strategy -> login($session, $user, $language, $ip, $agent);
 
             return new JsonResponse($result);
         }
