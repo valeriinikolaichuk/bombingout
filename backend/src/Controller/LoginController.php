@@ -2,8 +2,7 @@
     namespace App\Controller;
 
     use App\Repository\UserRegRepository;
-//    use App\Service\Login\LoginInterface;
-    use App\Service\Login\LoginFactory;
+    use App\Service\Login\LoginInterface;
     use App\Service\Login\StatusTableLogin\DelPreviousRegService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,8 +16,7 @@
         #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
         public function login(
             UserRegRepository $userRepo,
-//            LoginInterface $loginStrategy,
-            LoginFactory $factory,
+            LoginInterface $loginStrategy,
             Request $request,
             SessionInterface $session
             ): JsonResponse {
@@ -43,15 +41,7 @@
             $ip = $request -> getClientIp();
             $agent = $request -> headers -> get('User-Agent');
 
-            $route = $request -> attributes -> get('_route');
-
-            $strategy = match ($route) {
-                'login'          => $factory -> get('local'),
-                'login_redirect' => $factory -> get('redirect'),
-                default          => $factory -> get('local')
-            };
-
-            $result = $strategy -> login($session, $user, $language, $ip, $agent);
+            $result = $loginStrategy -> login($session, $user, $language, $ip, $agent);
 
             return new JsonResponse($result);
         }

@@ -26,12 +26,17 @@ services:
     App\Service\Login\LoginStrategyProd:
         tags: ['app.login_strategy', { alias: 'prod' }]
 
-    App\Service\Login\LoginStrategyAlternate:
+    App\Service\Login\LoginStrategyRedirect:
         tags: ['app.login_strategy', { alias: 'redirect' }]
     
     App\Service\Login\LoginFactory:
         arguments:
-            - !tagged_iterator { tag: 'app.login_strategy', index_by: 'alias' }
+            $local: '@App\Service\Login\LoginStrategyLocal'
+            $prod: '@App\Service\Login\LoginStrategyProd'
+            $redirect: '@App\Service\Login\LoginStrategyRedirect'
+
+    App\Service\Login\LoginInterface:
+        factory: ['@App\Service\Login\LoginFactory', 'get']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

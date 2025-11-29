@@ -24,7 +24,10 @@
 
             $this -> loginService -> loginUser($session, $user, $language, $ip, $agent);
 
-            return ['success' => true];
+            return [
+                'success' => true,
+                'message' => 'true'
+            ];
         }
     }
 ?>
