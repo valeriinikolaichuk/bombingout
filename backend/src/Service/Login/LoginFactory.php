@@ -1,24 +1,34 @@
 <?php
     namespace App\Service\Login;
 
-    use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
     use Symfony\Component\HttpFoundation\RequestStack;
 
     class LoginFactory {
-        private array $strategies;
-        private RequestStack $requestStack;
-
         public function __construct(
-            #[TaggedIterator('app.login_strategy')] iterable $strategies){
-            foreach ($strategies as $service) {
-                $alias = $service::class === StandardLoginService::class ? 'standard' : 'alternate';
-                $this->strategies[$alias] = $service;
-            }
-        }
+            private LoginStrategyLocal $local,
+            private LoginStrategyProd $prod,
+            private LoginStrategyRedirect $redirect,
+            private RequestStack $requestStack
+        ) {}
 
-        public function get(string $alias): LoginInterface
-        {
-            return $this->strategies[$alias] ?? $this->strategies['standard'];
+        public function get(): LoginInterface {
+            $request = $this -> requestStack -> getCurrentRequest();
+            if (!$request) {
+                return $this -> local;
+            }
+
+            $path = $request -> getPathInfo();
+            $host = $request -> getHost();
+
+            if ($path === '/api/login_redirect') {
+                return $this -> redirect;
+            }
+
+            if ($host === 'localhost') {
+                return $this -> local;
+            }
+
+            return $this -> prod;
         }
     }
 ?>
