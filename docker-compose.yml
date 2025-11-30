@@ -46,12 +46,13 @@ services:
       - db
 
   react:
-    build: ./frontend
-    container_name: react_app
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
+  image: node:20
+  working_dir: /app
+  ports:
+    - "5173:5173"
+  volumes:
+    - ./frontend:/app
+  command: ["npm", "run", "dev"]
 
   node:
     build: ./node

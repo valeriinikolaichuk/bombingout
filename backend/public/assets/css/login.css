@@ -95,3 +95,72 @@ dialog {
 dialog::backdrop {
     background: rgba(0,0,0,0.4);
 }
+
+.text-dialog {
+    width: 92vw;
+    height: 90vh;
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: none;
+    padding: 0;
+    background-color: blanchedalmond;
+    box-shadow: 0 0 50px rgba(8, 0, 112, 0.9);
+    z-index: 5;
+}
+
+.btn-close {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    background: rgb(255, 217, 80);
+    color: #000;
+    font-weight: 1000;
+    font-size: xx-large;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.wrapper button {
+    width: 100%;
+    height: 35px;
+    align-self: center;
+    padding: 8px 20px;
+    background-color: rgb(255, 217, 80);
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    margin: 70px;
+    font-size: x-large;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.container p {
+    margin: 0;
+    padding: 5px;
+    text-align: left;
+}
+
+li {
+    padding: 5px;
+}
