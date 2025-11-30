@@ -10,4 +10,18 @@ export default defineConfig({
       },
     }),
   ],
+
+root: './src',
+
+build: {
+  outDir: '../public/build',  // ← Symfony public/build
+  emptyOutDir: true,
+  manifest: true,
+},
+
+server: {
+    host: true,   // Docker
+    port: 5173,
+    strictPort: true,
+  },
 })

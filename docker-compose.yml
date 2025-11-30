@@ -46,13 +46,13 @@ services:
       - db
 
   react:
-  image: node:20
-  working_dir: /app
-  ports:
-    - "5173:5173"
-  volumes:
-    - ./frontend:/app
-  command: ["npm", "run", "dev"]
+    image: node:20
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    command: ["npm", "run", "dev"]
 
   node:
     build: ./node
