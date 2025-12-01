@@ -12,7 +12,7 @@
 
     class RedirectionController extends AbstractController {
         #[Route('/redirect', name: 'redirection', methods: ['POST'])]
-        public function redirect(
+        public function redirectWithStatus(
             Request $request,
             SessionInterface $session,
             AddStatusToTable $addStatusToTable

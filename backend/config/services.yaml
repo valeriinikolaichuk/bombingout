@@ -32,3 +32,13 @@ services:
 
     App\Service\Login\LoginInterface:
         factory: ['@App\Service\Login\LoginFactory', 'get']
+
+    App\Service\Login\StatusManager\ParticipantStatusHandler:
+        tags: ['app.status_handler']
+
+    App\Service\Login\StatusManager\UserStatusManager:
+        arguments:
+            $handlers: !tagged_iterator app.status_handler
+
+    App\Service\Login\StatusManager\DefaultStatusHandler:
+        tags: ['app.status_handler']
