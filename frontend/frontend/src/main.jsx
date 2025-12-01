@@ -12,5 +12,12 @@ const mounts = [
 
 mounts.forEach(({ id, component }) => {
     const el = document.getElementById(id);
-    if (el) ReactDOM.createRoot(el).render(component);
+    if (el) {
+        const root = createRoot(el);
+        root.render(
+            <StrictMode>
+                {component}
+            </StrictMode>
+        );
+    }
 });

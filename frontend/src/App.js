@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginPage from './pages/LoginPage/Login';
+//import LoginPage from './pages/LoginPage/Login';
 // import LoginPage from './pages/RedirectionPage/Redirection';
 
 function App() {

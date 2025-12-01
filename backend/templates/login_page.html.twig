@@ -45,6 +45,12 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {% if app.environment == 'dev' %}
+        <script type="module" src="http://localhost:5173/main.jsx"></script>
+    {% else %}
+        <script type="module" src="{{ asset('build/assets/main.js') }}"></script>
+    {% endif %}
+
     <script src="{{ asset('assets/js/login/updateVisibility.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/setText.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/loginFirst.js') }}"></script>

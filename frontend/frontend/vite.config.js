@@ -11,17 +11,23 @@ export default defineConfig({
     }),
   ],
 
-root: './src',
+  root: './src',
 
-build: {
-  outDir: '../public/build',  // ← Symfony public/build
-  emptyOutDir: true,
-  manifest: true,
-},
+  build: {
+    outDir: '../backend/public/build',  // ← Symfony public/build
+    emptyOutDir: true,
+    manifest: true,
+  },
 
-server: {
-    host: true,   // Docker
-    port: 5173,
-    strictPort: true,
+  server: {
+      host: true,   // Docker
+      port: 5173,
+      strictPort: true,
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
 })
