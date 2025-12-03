@@ -1,7 +1,7 @@
 <?php
     namespace App\Controller;
 
-    use App\Repository\AdminStatusRepository;
+    use App\Service\Redirection\AdminStatusChecker;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,7 +12,7 @@
         #[Route('/api/check_admin', name: 'check_admin', methods: ['POST'])]
         public function checkAdmin(
             Request $request, 
-            AdminStatusRepository $repo
+            AdminStatusChecker $checker
             ): JsonResponse {
 
             $data = json_decode($request -> getContent(), true);
@@ -25,16 +25,11 @@
                 ], 400);
             }
 
-            $status = $repo -> findBy([
-                'users_ID'    => $users_ID,
-                'comp_status' => 'admin'
+            $isAdmin = $checker -> isAdmin($userId);
+
+            return new JsonResponse([
+                'status' => $isAdmin ? 'found' : 'not found'
             ]);
-
-            if (!$status) {
-                return new JsonResponse(['status' => 'not found']);
-            }
-
-            return new JsonResponse(['status' => 'found']);
         }
     }
 ?>

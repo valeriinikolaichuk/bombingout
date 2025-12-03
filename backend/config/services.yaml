@@ -58,3 +58,7 @@ services:
     App\Service\Login\StatusManager\UserStatusManager:
         arguments:
             $handlers: !tagged_iterator app.status_handler
+
+    App\Service\Admin\AdminStatusChecker:
+        arguments:
+            $repo: '@App\Repository\AdminStatusRepository'
