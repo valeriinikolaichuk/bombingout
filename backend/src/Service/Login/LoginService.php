@@ -2,8 +2,6 @@
     namespace App\Service\Login;
 
     use App\Service\Login\StatusTableLogin\ComputerStatusService;
-    use App\Entity\UserReg;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class LoginService {
         public function __construct(
@@ -11,12 +9,17 @@
             private ComputerStatusService $computerStatusService
         ) {}
 
-        public function loginUser(SessionInterface $session, UserReg $user, string $language, string $ip, string $agent): void {
-            $this -> sessionService -> setUserSession($session, $user, $language);
+        public function loginUser(LoginContext $context): void {
+
+            $session  = $context -> session;
+            $user     = $context -> user;
+
+            $this -> sessionService -> setUserSession($context);
 
             if ($user -> getStatus() !== 'participant' && !$session -> has('id_status')) {
-                $idStatus = $this -> computerStatusService -> createStatus($user, $language, $ip, $agent);
+                $idStatus = $this -> computerStatusService -> createStatus($context);
                 $session -> set('id_status', $idStatus);
+                $session -> save();
             }
         }
     }

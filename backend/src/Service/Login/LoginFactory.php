@@ -1,34 +1,35 @@
 <?php
     namespace App\Service\Login;
 
+    use App\Service\Login\Strategy\LoginInterface;
+
     use Symfony\Component\HttpFoundation\RequestStack;
 
     class LoginFactory {
+        /**
+         * @param iterable<LoginInterface> $strategies
+         */
+
         public function __construct(
-            private LoginStrategyLocal $local,
-            private LoginStrategyProd $prod,
-            private LoginStrategyRedirect $redirect,
+            private iterable $strategies,
             private RequestStack $requestStack
         ) {}
 
-        public function get(): LoginInterface {
+        public function get(): LoginInterface 
+        {
             $request = $this -> requestStack -> getCurrentRequest();
-            if (!$request) {
-                return $this -> local;
+
+            if (!$request){
+                throw new \RuntimeException('No request available');
             }
 
-            $path = $request -> getPathInfo();
-            $host = $request -> getHost();
-
-            if ($path === '/api/login_redirect') {
-                return $this -> redirect;
+            foreach ($this -> strategies as $strategy){
+                if ($strategy -> supports($request)){
+                    return $strategy;
+                }
             }
 
-            if ($host === 'localhost') {
-                return $this -> local;
-            }
-
-            return $this -> prod;
+            throw new \RuntimeException('No login strategy supports this request');
         }
     }
 ?>

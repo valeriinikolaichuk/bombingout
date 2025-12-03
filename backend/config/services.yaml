@@ -11,24 +11,40 @@ services:
     App\:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+    
+    App\Service\Login\Filler\:
+        resource: '../src/Service/Login/Filler/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_filler']
 
-    App\Service\Login\LoginStrategyLocal:
+    App\Service\Login\LoginContextBuilder:
+        arguments:
+            $fillers: !tagged_iterator app.login_filler
+
+    App\Service\Login\:
+        resource: '../src/Service/Login/*'
+        exclude: '../src/Service/Login/Filler/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Login\Strategy\LoginStrategyLocal:
         tags:
             - { name: 'app.login_strategy', alias: 'local' }
 
-    App\Service\Login\LoginStrategyProd:
+    App\Service\Login\Strategy\LoginStrategyProd:
         tags:
             - { name: 'app.login_strategy', alias: 'prod' }
 
-    App\Service\Login\LoginStrategyRedirect:
+    App\Service\Login\Strategy\LoginStrategyRedirect:
         tags:
             - { name: 'app.login_strategy', alias: 'redirect' }
 
     App\Service\Login\LoginFactory:
         arguments:
-            $local: '@App\Service\Login\LoginStrategyLocal'
-            $prod: '@App\Service\Login\LoginStrategyProd'
-            $redirect: '@App\Service\Login\LoginStrategyRedirect'
+            $local: '@App\Service\Login\Strategy\LoginStrategyLocal'
+            $prod: '@App\Service\Login\Strategy\LoginStrategyProd'
+            $redirect: '@App\Service\Login\Strategy\LoginStrategyRedirect'
 
     App\Service\Login\LoginInterface:
         factory: ['@App\Service\Login\LoginFactory', 'get']
@@ -36,9 +52,9 @@ services:
     App\Service\Login\StatusManager\ParticipantStatusHandler:
         tags: ['app.status_handler']
 
+    App\Service\Login\StatusManager\DefaultStatusHandler:
+        tags: ['app.status_handler']
+
     App\Service\Login\StatusManager\UserStatusManager:
         arguments:
             $handlers: !tagged_iterator app.status_handler
-
-    App\Service\Login\StatusManager\DefaultStatusHandler:
-        tags: ['app.status_handler']

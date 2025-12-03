@@ -13,8 +13,11 @@
             return $status === 'participant';
         }
 
-        public function handle(Request $request, SessionInterface $session): Response
-        {
+        public function handle(
+            Request $request, 
+            SessionInterface $session
+            ): Response {
+
             return new RedirectResponse('/dashboard');
         }
     }

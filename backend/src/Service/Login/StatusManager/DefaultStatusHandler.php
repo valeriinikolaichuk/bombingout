@@ -12,7 +12,7 @@
     
         public function __construct(Environment $twig)
         {
-            $this->twig = $twig;
+            $this -> twig = $twig;
         }
 
         public function supports(string $status): bool
@@ -26,9 +26,9 @@
             ): Response {
 
             $content = $this -> twig -> render('redirection_page.html.twig', [
-                'lang' => $session->get('language'),
-                'users_id' => $session->get('id'),
-                'id_status' => $session->get('id_status'),
+                'lang'      => $session -> get('language'),
+                'users_id'  => $session -> get('id'),
+                'id_status' => $session -> get('id_status'),
             ]);
 
             return new Response($content);

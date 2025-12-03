@@ -1,17 +1,12 @@
 <?php
     namespace App\Controller;
 
-use App\Service\Login\LoginRequestDTO;
-use App\Service\Login\LoginService;
-
-
-
-//    use App\Repository\UserRegRepository;
-//    use App\Service\Login\LoginInterface;
+    use App\Service\Login\LoginContextBuilder;
+    use App\Service\Login\LoginFactory;
+    use App\Repository\UserRegRepository;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
-//    use Symfony\Component\HttpFoundation\Session\SessionInterface;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,38 +14,26 @@ use App\Service\Login\LoginService;
         #[Route('/api/login', name: 'login', methods: ['POST'])]
         #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
         public function login(
-//            UserRegRepository $userRepo,
-//            LoginInterface $loginStrategy,
-            Request $request,
-//            SessionInterface $session
-LoginService $loginService
+            LoginContextBuilder $contextBuilder,
+            LoginFactory $factory,
+            UserRegRepository $userRepo,
+            Request $request
             ): JsonResponse {
 
-$dto = LoginRequestDTO::fromRequest($request);
+            $context = $contextBuilder -> build($request);
+            $context -> user = $userRepo -> checkLogin($context -> login, $context -> password);
 
-            $data = json_decode($request -> getContent(), true);
-
-            $loginData = $data['login'] ?? null;
-            $password = $data['password'] ?? null;
-            $language = $data['language'] ?? 'en';
-
-            $user = $userRepo -> checkLogin($loginData, $password);
-
-            if (!$user) {
-                $session -> clear();
-
+            if (!$context -> user){
                 return new JsonResponse([
                     'success' => false,
                     'message' => 'login or password is not correct'
                 ]);
             }
 
-            $ip = $request -> getClientIp();
-            $agent = $request -> headers -> get('User-Agent');
-
-            $result = $loginStrategy -> login($session, $user, $language, $ip, $agent);
-
-            return new JsonResponse($result);
+            $loginStrategy = $factory -> get();
+            return new JsonResponse(
+                $loginStrategy -> login($context)
+            );
         }
     }
 ?>

@@ -15,7 +15,7 @@
 
             $user = $this -> findOneBy(['username' => $login]);
 
-            if (!$user || !password_verify($password, $user->getPassword())) {
+            if (!$user || !password_verify($password, $user -> getPassword())) {
                 return null;
             }
 

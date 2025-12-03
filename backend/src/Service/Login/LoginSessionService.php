@@ -1,11 +1,13 @@
 <?php
     namespace App\Service\Login;
 
-    use App\Entity\UserReg;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
-
     class LoginSessionService {
-        public function setUserSession(SessionInterface $session, UserReg $user, string $language): void {
+        public function setUserSession(LoginContext $context): void {
+
+            $session  = $context -> session;
+            $user     = $context -> user;
+            $language = $context -> language;
+
             $session -> set('id', $user -> getId());
             $session -> set('status', $user -> getStatus());
             $session -> set('language', $language);
