@@ -59,6 +59,6 @@ services:
         arguments:
             $handlers: !tagged_iterator app.status_handler
 
-    App\Service\Admin\AdminStatusChecker:
+    App\Service\Admin\ComputerStatusChecker:
         arguments:
-            $repo: '@App\Repository\AdminStatusRepository'
+            $repo: '@App\Repository\ComputerStatusRepository'

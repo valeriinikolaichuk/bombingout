@@ -5,7 +5,7 @@
     use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
     use Doctrine\Persistence\ManagerRegistry;
 
-    class AdminStatusRepository extends ServiceEntityRepository
+    class ComputerStatusRepository extends ServiceEntityRepository
     {
         public function __construct(ManagerRegistry $registry)
         {

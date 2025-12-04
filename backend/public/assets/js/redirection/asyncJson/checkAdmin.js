@@ -3,7 +3,7 @@ async function checkAdmin(){
         id_user: window.appData.num
     };
 
-    let response = await fetch("/api/check_admin", {
+    let response = await fetch("/api/check_computer_status", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)

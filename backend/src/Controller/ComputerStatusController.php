@@ -1,18 +1,18 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\Redirection\AdminStatusChecker;
+    use App\Service\Redirection\ComputerStatusChecker;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\Routing\Annotation\Route;
 
-    class AdminStatusController extends AbstractController
+    class ComputerStatusController extends AbstractController
     {
-        #[Route('/api/check_admin', name: 'check_admin', methods: ['POST'])]
-        public function checkAdmin(
+        #[Route('/api/check_computer_status', name: 'check_computer_status', methods: ['POST'])]
+        public function checkStatus(
             Request $request, 
-            AdminStatusChecker $checker
+            ComputerStatusChecker $checker
             ): JsonResponse {
 
             $data = json_decode($request -> getContent(), true);
@@ -25,10 +25,10 @@
                 ], 400);
             }
 
-            $isAdmin = $checker -> isAdmin($userId);
+            $isStatus = $checker -> isStatus($userId);
 
             return new JsonResponse([
-                'status' => $isAdmin ? 'found' : 'not found'
+                'status' => $isStatus ? 'found' : 'not found'
             ]);
         }
     }
