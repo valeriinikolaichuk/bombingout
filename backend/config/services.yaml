@@ -59,6 +59,24 @@ services:
         arguments:
             $handlers: !tagged_iterator app.status_handler
 
+    App\Service\Login\StatusTableLogin\:
+        resource: '../src/Service/Login/StatusTableLogin/*'
+        exclude: '../src/Service/Login/StatusTableLogin/DeletePrevRegFiller/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Login\StatusTableLogin\DeletePrevRegFiller\:
+        resource: '../src/Service/Login/StatusTableLogin/DeletePrevRegFiller/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Login\StatusTableLogin\DeletePrevRegFiller\DeletePrevRegFiller:
+        tags: ['app.delete_prev_reg_filler']
+    
+    App\Service\Login\StatusTableLogin\DeletePrevRegContextBuilder:
+        arguments:
+            $fillers: !tagged_iterator app.delete_prev_reg_filler
+
     App\Service\Redirection\StatusTableRedirection\ComputerStatusChecker:
         arguments:
             $repo: '@App\Repository\ComputerStatusRepository'
@@ -76,3 +94,5 @@ services:
 
     App\Service\Redirection\StatusTableRedirection\Filler\UserIdComputerStatusFiller:
         tags: ['app.computer_status_filler']
+
+    

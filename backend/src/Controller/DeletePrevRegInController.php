@@ -1,6 +1,7 @@
 <?php
     namespace App\Controller;
 
+    use App\Service\Login\StatusTableLogin\DeletePrevRegContextBuilder;
     use App\Service\Login\StatusTableLogin\DelPreviousRegService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,23 +13,20 @@
         #[Route('/api/delPreviousReg', name: 'del_previous_reg', methods: ['POST'])]
         public function deletePrevious(
             Request $request,
-            DelPreviousRegService $delPreviousRegService
+            DeletePrevRegContextBuilder $builder,
+            DelPreviousRegService $delService
             ): JsonResponse {
 
-            $data = json_decode($request->getContent(), true);
+            $context = $builder -> build($request);
 
-            $usersId = $data['usersId'] ?? null;
-            $usersIp = $data['usersIp'] ?? null;
-            $usersAgent = $data['usersAgent'] ?? null;
-
-            if (!$usersId || !$usersIp || !$usersAgent) {
+            if (!$context->valid){
                 return new JsonResponse([
                     'success' => false,
                     'message' => 'Missing required data'
                 ]);
             }
 
-            $delPreviousRegService -> deleteEntry($usersId, $usersIp, $usersAgent);
+            $delService -> deleteEntry($context);
 
             return new JsonResponse(['success' => true]);
         }
