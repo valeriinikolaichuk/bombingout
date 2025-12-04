@@ -59,6 +59,20 @@ services:
         arguments:
             $handlers: !tagged_iterator app.status_handler
 
-    App\Service\Admin\ComputerStatusChecker:
+    App\Service\Redirection\StatusTableRedirection\ComputerStatusChecker:
         arguments:
             $repo: '@App\Repository\ComputerStatusRepository'
+
+    App\Service\Redirection\StatusTableRedirection\Filler\:
+        resource: '../src/Service/Redirection/StatusTableRedirection/Filler/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Request\UserIdContextBuilder:
+        arguments:
+            $fillers: !tagged_iterator app.computer_status_filler
+
+    # App\Service\Redirection\StatusTableRedirection\Filler\ComputerStatusFillerInterface:
+
+    App\Service\Redirection\StatusTableRedirection\Filler\UserIdComputerStatusFiller:
+        tags: ['app.computer_status_filler']
