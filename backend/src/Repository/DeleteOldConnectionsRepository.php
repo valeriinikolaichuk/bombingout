@@ -13,20 +13,13 @@ class DeleteOldConnectionsRepository extends ServiceEntityRepository
         parent::__construct($registry, ComputerStatus::class);
     }
 
-public function deleteOldConnectionsExceptCurrent(int $idUser, string $ipAddress, string $userAgent): void
+    public function deleteOldConnectionsExceptCurrent(int $idUser): int
     {
-        $qb = $this -> createQueryBuilder('c');
-
-        $qb->delete()
+        return $this->createQueryBuilder('c')
+            ->delete()
             ->where('c.users_ID = :idUser')
-            ->andWhere('c.ip_address != :ip')
-            ->andWhere('c.user_agent != :agent')
-            ->setParameters([
-                'idUser' => $idUser,
-                'ip' => $ipAddress,
-                'agent' => $userAgent
-            ]);
-
-        $qb -> getQuery() -> execute();
+            ->setParameter('idUser', $idUser)
+            ->getQuery()
+            ->execute();
     }
 }

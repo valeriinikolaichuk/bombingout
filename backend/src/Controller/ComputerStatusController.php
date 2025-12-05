@@ -23,7 +23,7 @@
             if (!$context -> valid){
                 return new JsonResponse([
                     'success' => false,
-                    'message' => 'Missing user id'
+                    'message' => 'Missing required data'
                 ], 400);
             }
 
