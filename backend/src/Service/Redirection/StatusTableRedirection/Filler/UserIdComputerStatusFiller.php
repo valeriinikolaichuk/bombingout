@@ -22,11 +22,13 @@
 
             $context -> userId =
                 $json['id_user']
-                ?? $request->request->get('id_user')
-                ?? $request->query->get('id_user');
+                ?? $request -> request ->get('id_user')
+                ?? $request -> query ->get('id_user');
 
             $context -> userId = (int) $context -> userId;
             $context -> comp_status = 'admin';
+
+            $context -> valid = $context -> userId;
         }
     }
 ?>

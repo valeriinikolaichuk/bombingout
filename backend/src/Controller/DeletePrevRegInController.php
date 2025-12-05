@@ -19,7 +19,7 @@
 
             $context = $builder -> build($request);
 
-            if (!$context->valid){
+            if (!$context -> valid){
                 return new JsonResponse([
                     'success' => false,
                     'message' => 'Missing required data'

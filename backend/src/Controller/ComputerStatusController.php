@@ -20,7 +20,7 @@
 
             $context = $builder -> build($request);
 
-            if (!$context -> userId) {
+            if (!$context -> valid){
                 return new JsonResponse([
                     'success' => false,
                     'message' => 'Missing user id'
