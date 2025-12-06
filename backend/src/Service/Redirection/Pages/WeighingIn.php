@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Redirection;
+    namespace App\Service\Redirection\Pages;
 
     class WeighingIn implements RedirectionInterface {
         public function render(): string

@@ -3,7 +3,7 @@
 {% block title %}login{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
-    {{ vite_entry_script_tags('main.jsx') }}
+{#    {{ vite_entry_script_tags('main.jsx') }} #}
 {% endblock %}
 
 {% block body %}
@@ -45,12 +45,12 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {% if app.environment == 'dev' %}
+{#    {% if app.environment == 'dev' %}
         <script type="module" src="http://localhost:5173/main.jsx"></script>
     {% else %}
         <script type="module" src="{{ asset('build/assets/main.js') }}"></script>
     {% endif %}
-
+ #}
     <script src="{{ asset('assets/js/login/updateVisibility.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/setText.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/loginFirst.js') }}"></script>

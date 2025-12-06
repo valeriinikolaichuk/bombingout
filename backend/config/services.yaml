@@ -40,14 +40,16 @@ services:
         tags:
             - { name: 'app.login_strategy', alias: 'redirect' }
 
+    App\Service\Login\Strategy\:
+        resource: '../src/Service/Login/Strategy/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_strategy']
+
     App\Service\Login\LoginFactory:
         arguments:
-            $local: '@App\Service\Login\Strategy\LoginStrategyLocal'
-            $prod: '@App\Service\Login\Strategy\LoginStrategyProd'
-            $redirect: '@App\Service\Login\Strategy\LoginStrategyRedirect'
+            $strategies: !tagged_iterator app.login_strategy
 
-    App\Service\Login\LoginInterface:
-        factory: ['@App\Service\Login\LoginFactory', 'get']
 
     App\Service\Login\StatusManager\ParticipantStatusHandler:
         tags: ['app.status_handler']
@@ -86,7 +88,7 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Service\Request\UserIdContextBuilder:
+    App\Service\Redirection\StatusTableRedirection\ComputerStatusContextBuilder:
         arguments:
             $fillers: !tagged_iterator app.computer_status_filler
 

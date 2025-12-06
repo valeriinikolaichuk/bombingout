@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Redirection;
+    namespace App\Service\Redirection\Pages;
 
     class Admin implements RedirectionInterface {
         public function render(): string
