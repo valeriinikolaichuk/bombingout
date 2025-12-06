@@ -1,6 +1,7 @@
 <?php
     namespace App\Controller;
 
+    use App\Service\Login\LoginPage\LoginPageInterface;
     use App\Service\Login\StatusManager\UserStatusManager;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,14 +15,21 @@
         public function index(
             Request $request, 
             SessionInterface $session,
+            LoginPageInterface $loginResolver,
             UserStatusManager $statusManager
             ): Response {
 
-            if (!$session -> has('id') || !$session -> has('status') || !$session -> has('language')){
-                return $this -> render('login_page.html.twig');
+            if ($loginResolver -> supports($session)){
+                return $this -> render($loginResolver -> getLoginPage());
             }
 
-            return $statusManager -> handleStatus($request, $session);
+            $givePage = $statusManager -> handleStatus($request, $session);
+
+            if ($givePage === 'error.html.twig'){
+                throw $this -> createNotFoundException($givePage);
+            }
+
+            return $this -> render($givePage);
         }
     }
 ?>

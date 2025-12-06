@@ -2,7 +2,6 @@
     namespace App\Service\Login\StatusManager;
 
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class UserStatusManager
@@ -18,7 +17,7 @@
         public function handleStatus(
             Request $request, 
             SessionInterface $session
-            ): Response {
+            ): ?string {
 
             $status = $session -> get('status');
 
@@ -28,7 +27,7 @@
                 }
             }
 
-            return new Response('No handler found for status: '.$status);
+            return 'error.html.twig';
         }
     }
 ?>

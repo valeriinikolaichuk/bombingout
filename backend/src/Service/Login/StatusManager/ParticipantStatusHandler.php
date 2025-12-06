@@ -18,7 +18,7 @@
             SessionInterface $session
             ): Response {
 
-            return new RedirectResponse('/dashboard');
+            return new RedirectResponse('dashboard.html.twig');
         }
     }
 ?>
