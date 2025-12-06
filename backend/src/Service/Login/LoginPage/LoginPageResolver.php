@@ -13,7 +13,7 @@
                 !$session->has('language');
         }
 
-        public function getLoginPage(SessionInterface $session): ?string
+        public function getLoginPage(): ?string
         {
             return 'login_page.html.twig';
         }

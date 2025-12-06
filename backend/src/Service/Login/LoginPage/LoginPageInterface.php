@@ -7,6 +7,6 @@
     {
         public function supports(SessionInterface $session): bool;
 
-        public function getLoginPage(SessionInterface $session): ?string;
+        public function getLoginPage(): ?string;
     }
 ?>
