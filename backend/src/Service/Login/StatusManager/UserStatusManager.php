@@ -14,6 +14,10 @@
             $this -> handlers = $handlers;
         }
 
+        /**
+        * @return array{template: string, data: array<string, mixed>}
+        */
+
         public function handleStatus(
             Request $request, 
             SessionInterface $session
@@ -27,7 +31,10 @@
                 }
             }
 
-            return 'error.html.twig';
+            return [
+                'template' => 'error.html.twig',
+                'data'     => []
+            ];
         }
     }
 ?>

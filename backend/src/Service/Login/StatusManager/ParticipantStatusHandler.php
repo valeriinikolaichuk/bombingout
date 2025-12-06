@@ -2,7 +2,6 @@
     namespace App\Service\Login\StatusManager;
 
     use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
     use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -16,9 +15,12 @@
         public function handle(
             Request $request, 
             SessionInterface $session
-            ): Response {
+            ): array {
 
-            return new RedirectResponse('dashboard.html.twig');
+            return [
+                'template' => 'dashboard.html.twig',
+                'data'     => []
+            ];
         }
     }
 ?>

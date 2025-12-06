@@ -25,11 +25,11 @@
 
             $givePage = $statusManager -> handleStatus($request, $session);
 
-            if ($givePage === 'error.html.twig'){
+            if ($givePage['template'] === 'error.html.twig'){
                 throw $this -> createNotFoundException($givePage);
             }
 
-            return $this -> render($givePage);
+            return $this -> render($givePage['template'], $givePage['data']);
         }
     }
 ?>

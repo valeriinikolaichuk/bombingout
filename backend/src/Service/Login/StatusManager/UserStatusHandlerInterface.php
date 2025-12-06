@@ -8,6 +8,10 @@
     {
         public function supports(string $status): bool;
 
-        public function handle(Request $request, SessionInterface $session): ?string;
+        /**
+        * @return array{template: string, data: array<string, mixed>}
+        */
+
+        public function handle(Request $request, SessionInterface $session): array;
     }
 ?>

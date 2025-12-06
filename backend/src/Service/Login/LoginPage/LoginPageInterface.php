@@ -3,7 +3,7 @@
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    interface LoginPageResolverInterface
+    interface LoginPageInterface
     {
         public function supports(SessionInterface $session): bool;
 
