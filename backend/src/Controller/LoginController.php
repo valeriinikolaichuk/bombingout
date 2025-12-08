@@ -28,10 +28,10 @@
                 ]);
             }
 
-            $postCheckLoginStrategy = $postLoginFactory -> get();
+            $postLoginStrategy = $postLoginFactory -> get();
 
             return new JsonResponse(
-                $postCheckLoginStrategy -> login($result -> context)
+                $postLoginStrategy -> login($result -> context)
             );
         }
     }
