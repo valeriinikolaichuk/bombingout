@@ -12,8 +12,8 @@ services:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
     
-    App\Service\Login\LoginByRequest\Filler\:
-        resource: '../src/Service/Login/LoginByRequest/Filler/*'
+    App\Service\Login\Filler\:
+        resource: '../src/Service/Login/Filler/*'
         autowire: true
         autoconfigure: true
         tags: ['app.login_filler']
@@ -24,7 +24,7 @@ services:
 
     App\Service\Login\:
         resource: '../src/Service/Login/*'
-        exclude: '../src/Service/Login/LoginByRequest/Filler/*'
+        exclude: '../src/Service/Login/Filler/*'
         autowire: true
         autoconfigure: true
 

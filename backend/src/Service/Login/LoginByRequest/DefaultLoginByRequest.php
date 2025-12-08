@@ -21,15 +21,7 @@
             ): array {
 
             $context = $this -> contextBuilder -> build($request);
-
-            try {
-                $user = $this -> checkerResolver -> check($context);
-            } catch (NoVerificationCheckerFound $e) {
-                return [
-                    'success' => false,
-                    'message' => 'Unsupported login method'
-                ];
-            }
+            $user = $this -> checkerResolver -> check($context);
 
 
 //            $user = $this -> checkerResolver -> check($context);
@@ -37,17 +29,17 @@
 //            $context -> user = $userRepo -> checkLogin($context -> login, $context -> password);
 
             if (!$user){
-                return [
-                    'success' => false,
-                    'message' => 'login or password is not correct'
-                ];
+                return new LoginResultDTO(
+                    success: false,
+                    message: 'login or password is not correct'
+                );
             }
 
-            return [
-                'success' => true,
-                'user'    => $user,
-                'context' => $context
-            ];
+            return new LoginResultDTO(
+                success: true,
+                user: $user,
+                context: $context
+            );
 /*
             $loginStrategy = $factory -> get();
                 return new JsonResponse(

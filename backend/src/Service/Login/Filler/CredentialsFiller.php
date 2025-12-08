@@ -1,21 +1,24 @@
 <?php
-    namespace App\Service\Login\LoginByRequest\Filler;
+    namespace App\Service\Login\Filler;
 
     use App\Service\Login\LoginContext;
+
     use Symfony\Component\HttpFoundation\Request;
 
-    class PageFiller implements ContextFillerInterface
+    class CredentialsFiller implements ContextFillerInterface
     {
         public function supports(Request $request): bool
         {
-            return $request -> getPathInfo() === '/api/login_redirect';
+            return true;
         }
 
         public function fill(LoginContext $context, Request $request): void
         {
             $data = json_decode($request -> getContent(), true);
 
-            $context -> page = $data['language'] ?? null;
-        }
+            $context -> login = $data['login'] ?? null;
+            $context -> password = $data['password'] ?? null;
+            $context -> type = $data['type'] ?? null;
+        } 
     }
 ?>

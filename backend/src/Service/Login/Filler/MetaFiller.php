@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Login\LoginByRequest\Filler;
+    namespace App\Service\Login\Filler;
 
     use App\Service\Login\LoginContext;
 
