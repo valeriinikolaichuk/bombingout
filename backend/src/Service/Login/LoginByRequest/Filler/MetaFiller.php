@@ -1,7 +1,8 @@
 <?php
-    namespace App\Service\Login\Filler;
+    namespace App\Service\Login\LoginByRequest\Filler;
 
     use App\Service\Login\LoginContext;
+
     use Symfony\Component\HttpFoundation\Request;
 
     class MetaFiller implements ContextFillerInterface

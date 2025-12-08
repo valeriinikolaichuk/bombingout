@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Login\LoginPage;
+    namespace App\Service\Login\Pages;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

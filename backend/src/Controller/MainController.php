@@ -1,7 +1,7 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\Login\LoginPage\LoginPageInterface;
+    use App\Service\Login\Pages\LoginPageResolver;
     use App\Service\Login\StatusManager\UserStatusManager;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +15,7 @@
         public function index(
             Request $request, 
             SessionInterface $session,
-            LoginPageInterface $loginResolver,
+            LoginPageResolver $loginResolver,
             UserStatusManager $statusManager
             ): Response {
 

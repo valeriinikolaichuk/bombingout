@@ -6,6 +6,8 @@
 
     class LoginContext
     {
+        public ?string $type = null;
+
         public ?string $login = null;
         public ?string $password = null;
 

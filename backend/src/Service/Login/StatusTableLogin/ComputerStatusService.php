@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Login\StatusTableLogin;
 
+    use App\Service\Login\LoginContext;
+
     use Doctrine\DBAL\Connection;
 
     class ComputerStatusService {

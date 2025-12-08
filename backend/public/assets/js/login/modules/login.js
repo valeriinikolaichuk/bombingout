@@ -6,7 +6,8 @@ export async function login(url){
         login: document.getElementById("login").value,
         password: document.getElementById("password").value,
         language: document.getElementById("language").value,
-        page: document.getElementById("language").value
+        page: document.getElementById("language").value,
+        type: 'check by login and password'
     };
 
     let response = await fetch(url, {

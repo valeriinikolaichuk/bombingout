@@ -12,8 +12,8 @@ services:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
     
-    App\Service\Login\Filler\:
-        resource: '../src/Service/Login/Filler/*'
+    App\Service\Login\LoginByRequest\Filler\:
+        resource: '../src/Service/Login/LoginByRequest/Filler/*'
         autowire: true
         autoconfigure: true
         tags: ['app.login_filler']
@@ -24,7 +24,7 @@ services:
 
     App\Service\Login\:
         resource: '../src/Service/Login/*'
-        exclude: '../src/Service/Login/Filler/*'
+        exclude: '../src/Service/Login/LoginByRequest/Filler/*'
         autowire: true
         autoconfigure: true
 
@@ -49,7 +49,6 @@ services:
     App\Service\Login\LoginFactory:
         arguments:
             $strategies: !tagged_iterator app.login_strategy
-
 
     App\Service\Login\StatusManager\ParticipantStatusHandler:
         tags: ['app.status_handler']
