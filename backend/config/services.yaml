@@ -28,18 +28,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Service\Login\Strategy\LoginStrategyLocal:
-        tags:
-            - { name: 'app.login_strategy', alias: 'local' }
-
-    App\Service\Login\Strategy\LoginStrategyProd:
-        tags:
-            - { name: 'app.login_strategy', alias: 'prod' }
-
-    App\Service\Login\Strategy\LoginStrategyRedirect:
-        tags:
-            - { name: 'app.login_strategy', alias: 'redirect' }
-
     App\Service\Login\Strategy\:
         resource: '../src/Service/Login/Strategy/*'
         autowire: true

@@ -1,25 +1,32 @@
 <?php
     namespace App\Service\Login;
 
-    use App\Service\Login\StatusTableLogin\ComputerStatusService;
+//    use App\Service\Login\StatusTableLogin\ComputerStatusService;
 
     class LoginService {
         public function __construct(
             private LoginSessionService $sessionService,
-            private ComputerStatusService $computerStatusService
+            private iterable $postLogin
+//            private ComputerStatusService $computerStatusService
         ) {}
 
         public function loginUser(LoginContext $context): void {
 
-            $session  = $context -> session;
-            $user     = $context -> user;
+//            $session  = $context -> session;
+//            $user     = $context -> user;
 
             $this -> sessionService -> setUserSession($context);
-
+/*
             if ($user -> getStatus() !== 'participant' && !$session -> has('id_status')) {
                 $idStatus = $this -> computerStatusService -> createStatus($context);
                 $session -> set('id_status', $idStatus);
                 $session -> save();
+            }
+                */
+            foreach ($this -> postLogin as $handler) {
+                if ($handler -> supports($context)) {
+                    $handler -> handle($context);
+                }
             }
         }
     }

@@ -11,7 +11,7 @@
 
     class LoginController extends AbstractController {
         #[Route('/api/login', name: 'login', methods: ['POST'])]
-//        #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
+        #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
         public function login(
             LoginByRequestFactory $factory,
             LoginFactory $postLoginFactory,
@@ -28,7 +28,7 @@
                 ]);
             }
 
-            $postLoginStrategy = $postLoginFactory -> get();
+            $postLoginStrategy = $postLoginFactory -> get($request);
 
             return new JsonResponse(
                 $postLoginStrategy -> login($result -> context)

@@ -3,10 +3,10 @@ import { redirectToPage } from '../../redirection/redirectToPage.js';
 
 export async function login(url){
     let data = {
-        login: document.getElementById("login").value,
-        password: document.getElementById("password").value,
-        language: document.getElementById("language").value,
-        page: document.getElementById("language").value,
+        login: document.getElementById("login")?.value ?? null,
+        password: document.getElementById("password")?.value ?? null,
+        language: document.getElementById("language")?.value ?? null,
+        page: document.getElementById("page")?.value ?? null,
         type: 'check by login and password'
     };
 

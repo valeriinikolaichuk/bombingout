@@ -15,7 +15,7 @@
         {
             $data = json_decode($request -> getContent(), true);
 
-            $context -> page = $data['language'] ?? null;
+            $context -> page = $data['page'] ?? null;
         }
     }
 ?>

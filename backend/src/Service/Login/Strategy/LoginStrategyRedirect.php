@@ -3,14 +3,12 @@
 
     use App\Service\Login\LoginContext;
 
-    use Symfony\Component\HttpFoundation\Request;
-
     class LoginStrategyRedirect implements LoginInterface {
         public function __construct() {}
 
-        public function supports(Request $request): bool
+        public function supports(LoginContext $context): bool
         {
-            return $request -> getPathInfo() === '/api/login_redirect';
+            return !empty($context -> page);
         }
 
         public function login(LoginContext $context): array

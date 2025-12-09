@@ -5,17 +5,17 @@
     use App\Service\Login\LoginService;
     use App\Service\Login\StatusTableLogin\CheckUserInTable;
 
-    use Symfony\Component\HttpFoundation\Request;
-
     class LoginStrategyProd implements LoginInterface {
         public function __construct(
             private CheckUserInTable $checker,
             private LoginService $loginService
         ) {}
 
-        public function supports(Request $request): bool
+        public function supports(LoginContext $context): bool
         {
-            return true;
+            return empty($context -> page)
+                && !empty($context -> ip)
+                && !empty($context -> agent);
         }
 
         public function login(LoginContext $context): array {

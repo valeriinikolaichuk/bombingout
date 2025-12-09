@@ -3,28 +3,19 @@
 
     use App\Service\Login\Strategy\LoginInterface;
 
-    use Symfony\Component\HttpFoundation\RequestStack;
-
     class LoginFactory {
         /**
          * @param iterable<LoginInterface> $strategies
          */
 
         public function __construct(
-            private iterable $strategies,
-            private RequestStack $requestStack
+            private iterable $strategies
         ) {}
 
-        public function get(): LoginInterface 
+        public function get(LoginContext $context): LoginInterface 
         {
-            $request = $this -> requestStack -> getCurrentRequest();
-
-            if (!$request){
-                throw new \RuntimeException('No request available');
-            }
-
             foreach ($this -> strategies as $strategy){
-                if ($strategy -> supports($request)){
+                if ($strategy -> supports($context)){
                     return $strategy;
                 }
             }
