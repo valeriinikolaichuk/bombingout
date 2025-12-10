@@ -23,11 +23,6 @@
             $context = $this -> contextBuilder -> build($request);
             $user = $this -> checkerResolver -> check($context);
 
-
-//            $user = $this -> checkerResolver -> check($context);
-            
-//            $context -> user = $userRepo -> checkLogin($context -> login, $context -> password);
-
             if (!$user){
                 return new LoginResultDTO(
                     success: false,
@@ -40,13 +35,6 @@
                 user: $user,
                 context: $context
             );
-/*
-            $loginStrategy = $factory -> get();
-                return new JsonResponse(
-                    $loginStrategy -> login($context)
-                );
-*/
-//            return $context;
         }
     }
 ?>

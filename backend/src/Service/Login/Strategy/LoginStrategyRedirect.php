@@ -3,7 +3,7 @@
 
     use App\Service\Login\LoginContext;
 
-    class LoginStrategyRedirect implements LoginInterface {
+    class LoginStrategyRedirect implements PostLoginInterface {
         public function __construct() {}
 
         public function supports(LoginContext $context): bool

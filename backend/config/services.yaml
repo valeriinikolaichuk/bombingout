@@ -11,6 +11,10 @@ services:
     App\:
         resource: '../src/'
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
     
     App\Service\Login\Filler\:
         resource: '../src/Service/Login/Filler/*'
@@ -34,9 +38,19 @@ services:
         autoconfigure: true
         tags: ['app.login_strategy']
 
-    App\Service\Login\LoginFactory:
+    App\Service\Login\PostLoginFactory:
         arguments:
             $strategies: !tagged_iterator app.login_strategy
+
+    App\Service\Login\Strategy\Sessions\:
+        resource: '../src/Service/Login/Strategy/Sessions/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_session_service']
+
+    App\Service\Login\LoginService:
+        arguments:
+            $sessionStrategies: !tagged_iterator app.login_session_service
 
     App\Service\Login\StatusManager\ParticipantStatusHandler:
         tags: ['app.status_handler']

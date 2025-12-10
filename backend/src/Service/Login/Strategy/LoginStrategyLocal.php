@@ -4,7 +4,7 @@
     use App\Service\Login\LoginService;
     use App\Service\Login\LoginContext;
 
-    class LoginStrategyLocal implements LoginInterface {
+    class LoginStrategyLocal implements PostLoginInterface {
         public function __construct(private LoginService $loginService) {}
 
         public function supports(LoginContext $context): bool

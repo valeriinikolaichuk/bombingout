@@ -1,8 +1,7 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\Login\Pages\LoginPageResolver;
-    use App\Service\Login\StatusManager\UserStatusManager;
+    use App\Service\Main\ResolverFactory;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -12,24 +11,15 @@
 
     class MainController extends AbstractController {
         #[Route('/', name: 'home')]
-        public function index(
+        public function index (
             Request $request, 
             SessionInterface $session,
-            LoginPageResolver $loginResolver,
-            UserStatusManager $statusManager
+            ResolverFactory $factory
             ): Response {
 
-            if ($loginResolver -> supports($session)){
-                return $this -> render($loginResolver -> getLoginPage());
-            }
+            $result = $factory -> resolve($request, $session);
 
-            $givePage = $statusManager -> handleStatus($request, $session);
-
-            if ($givePage['template'] === 'error.html.twig'){
-                throw $this -> createNotFoundException($givePage);
-            }
-
-            return $this -> render($givePage['template'], $givePage['data']);
+            return $this -> render($result -> template, $result -> data);
         }
     }
 ?>

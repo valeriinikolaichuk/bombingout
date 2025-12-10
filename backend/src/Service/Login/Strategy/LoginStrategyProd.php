@@ -5,7 +5,7 @@
     use App\Service\Login\LoginService;
     use App\Service\Login\StatusTableLogin\CheckUserInTable;
 
-    class LoginStrategyProd implements LoginInterface {
+    class LoginStrategyProd implements PostLoginInterface {
         public function __construct(
             private CheckUserInTable $checker,
             private LoginService $loginService

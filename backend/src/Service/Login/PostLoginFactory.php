@@ -1,18 +1,18 @@
 <?php
     namespace App\Service\Login;
 
-    use App\Service\Login\Strategy\LoginInterface;
+    use App\Service\Login\Strategy\PostLoginInterface;
 
-    class LoginFactory {
+    class PostLoginFactory {
         /**
-         * @param iterable<LoginInterface> $strategies
+         * @param iterable<PostLoginInterface> $strategies
          */
 
         public function __construct(
             private iterable $strategies
         ) {}
 
-        public function get(LoginContext $context): LoginInterface 
+        public function get(LoginContext $context): PostLoginInterface 
         {
             foreach ($this -> strategies as $strategy){
                 if ($strategy -> supports($context)){

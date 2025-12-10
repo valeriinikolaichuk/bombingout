@@ -3,7 +3,7 @@
 
     use App\Service\Login\LoginContext;
 
-    interface LoginInterface
+    interface PostLoginInterface
     {
         public function supports(LoginContext $context): bool;
 

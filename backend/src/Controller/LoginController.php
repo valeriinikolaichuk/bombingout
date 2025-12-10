@@ -2,7 +2,7 @@
     namespace App\Controller;
 
     use App\Service\Login\LoginByRequestFactory;
-    use App\Service\Login\LoginFactory;
+    use App\Service\Login\PostLoginFactory;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@
         #[Route('/api/login_redirect', name: 'login_redirect', methods: ['POST'])]
         public function login(
             LoginByRequestFactory $factory,
-            LoginFactory $postLoginFactory,
+            PostLoginFactory $postLoginFactory,
             Request $request
             ): JsonResponse {
 
