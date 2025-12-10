@@ -15,6 +15,21 @@ services:
     App\EventListener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+
+# Main Service
+
+    App\Service\Main\:
+        resource: '../src/Service/Main/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.page_resolver']
+
+    App\Service\Main\ResolverFactory:
+        arguments:
+            $resolvers: !tagged_iterator app.page_resolver
+
+
+
     
     App\Service\Login\Filler\:
         resource: '../src/Service/Login/Filler/*'
@@ -52,15 +67,7 @@ services:
         arguments:
             $sessionStrategies: !tagged_iterator app.login_session_service
 
-    App\Service\Login\StatusManager\ParticipantStatusHandler:
-        tags: ['app.status_handler']
 
-    App\Service\Login\StatusManager\DefaultStatusHandler:
-        tags: ['app.status_handler']
-
-    App\Service\Login\StatusManager\UserStatusManager:
-        arguments:
-            $handlers: !tagged_iterator app.status_handler
 
     App\Service\Login\StatusTableLogin\:
         resource: '../src/Service/Login/StatusTableLogin/*'
