@@ -1,0 +1,32 @@
+<?php
+    namespace App\Service\Login\StatusTableLogin;
+
+    use App\Service\Login\LoginResultDTO;
+
+    use Doctrine\DBAL\Connection;
+
+    class SaveLoginDataLocal {
+        public function __construct(private Connection $db) {}
+
+        public function saveData(LoginResultDTO $result): int {
+
+            $context = $result -> context;
+            $user    = $result -> user;
+
+            $this -> db -> executeStatement(
+                "INSERT INTO computer_status (users_ID, users_status, lang, ip_address, user_agent)
+                 VALUES (:id_user, :users_status, :lang)",
+                [
+                    'id_user'      => $user -> getId(),
+                    'users_status' => $user -> getStatus(),
+                    'lang'         => $context -> language
+                ]
+            );
+
+            return (int) $this -> db -> fetchOne(
+                "SELECT MAX(id_status) FROM computer_status WHERE users_ID = :id_user",
+                ['id_user' => $user -> getId()]
+            );
+        }
+    }
+?>

@@ -2,14 +2,17 @@
     namespace App\Service\Login\Strategy;
 
     use App\Service\Login\LoginContext;
-    use App\Service\Login\LoginService;
-    use App\Service\Login\StatusTableLogin\CheckUserInTable;
+use App\Service\Login\LoginResultDTO;
 
-    class LoginStrategyProd implements PostLoginInterface {
-        public function __construct(
-            private CheckUserInTable $checker,
-            private LoginService $loginService
-        ) {}
+//    use App\Service\Login\LoginService;
+//    use App\Service\Login\StatusTableLogin\CheckUserInTable;
+
+    class LoginStrategyProd implements StrategyAbstract {
+
+//        public function __construct(
+//            private CheckUserInTable $checker,
+//            private LoginService $loginService
+//        ) {}
 
         public function supports(LoginContext $context): bool
         {
@@ -18,7 +21,12 @@
                 && !empty($context -> agent);
         }
 
-        public function login(LoginContext $context): array {
+        public function strategy(LoginContext $context): LoginResultDTO
+        {
+$user = $this -> login($context);
+
+
+/*
             $user  = $context -> user;
             $ip    = $context -> ip;
             $agent = $context -> agent;
@@ -32,13 +40,14 @@
                     'agent'   => $agent
                 ];
             }
-
-            $this -> loginService -> loginUser($context);
-
+*/
+//            $this -> loginService -> loginUser($context); // set sessions
+/*
             return [
                 'success' => true,
                 'message' => 'Logged in successfully'
             ];
+*/
         }
     }
 ?>

@@ -1,24 +1,21 @@
 <?php
     namespace App\Service\Login;
 
-    use App\Service\Login\LoginPasswordVerification\VerificationInterface;
-    use App\Service\Login\Exception\NoVerificationCheckerFound;
-    use App\Entity\User;
+    use App\Service\Login\LoginVerification\VerificationInterface;
+    use App\Entity\UserReg;
 
-    class LoginPasswordCheckerResolver
+    class LoginCheckerResolver
     {
         /** @var iterable<VerificationInterface> */
         public function __construct(private iterable $checkers) {}
 
-        public function check(LoginContext $context): ?User
+        public function check(LoginContext $context): ?UserReg
         {
             foreach ($this -> checkers as $checker) {
                 if ($checker -> supports($context)) {
                     return $checker -> check($context);
                 }
             }
-
-            throw new NoVerificationCheckerFound('No checker supports this context');
         }
     }
 ?>

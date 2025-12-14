@@ -1,10 +1,10 @@
 <?php
-    namespace App\Service\Login\LoginPasswordVerification;
+    namespace App\Service\Login\LoginVerification;
 
     use App\Service\Login\LoginContext;
 
     use App\Repository\UserRegRepository;
-    use App\Entity\User;
+    use App\Entity\UserReg;
 
     class LoginPasswordChecker implements VerificationInterface
     {
@@ -15,9 +15,9 @@
             return $context -> type === 'check by login and password';
         }
 
-        public function check(LoginContext $context): ?User
+        public function check(LoginContext $context): ?UserReg
         {
-            return $this -> userRepo -> checkLogin($context -> login, $context -> password);
+            $this -> userRepo -> checkLogin($context -> login, $context -> password);
         }
     }
 ?>

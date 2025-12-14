@@ -2,7 +2,7 @@
     namespace App\Service\Login;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
-    use App\Entity\User;
+    use App\Entity\UserReg;
 
     class LoginContext
     {
@@ -18,6 +18,6 @@
         public ?string $agent = null;
 
         public SessionInterface $session;
-        public ?User $user = null;
+        public ?UserReg $user = null;
     }
 ?>

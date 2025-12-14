@@ -1,13 +1,13 @@
 <?php
-    namespace App\Service\Login\LoginPasswordVerification;
+    namespace App\Service\Login\LoginVerification;
 
     use App\Service\Login\LoginContext;
-    use App\Entity\User;
+    use App\Entity\UserReg;
 
     interface VerificationInterface
     {
         public function supports(LoginContext $context): bool;
 
-        public function check(LoginContext $context): ?User;
+        public function check(LoginContext $context): ?UserReg;
     }
 ?>

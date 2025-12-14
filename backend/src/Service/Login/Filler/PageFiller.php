@@ -8,7 +8,9 @@
     {
         public function supports(Request $request): bool
         {
-            return $request -> getPathInfo() === '/api/login_redirect';
+            $data = json_decode($request -> getContent(), true);
+
+            return isset($data['page']);
         }
 
         public function fill(LoginContext $context, Request $request): void

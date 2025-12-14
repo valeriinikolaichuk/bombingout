@@ -1,12 +1,11 @@
 <?php
     namespace App\Service\Login\Strategy;
 
-    use App\Service\Login\LoginService;
     use App\Service\Login\LoginContext;
+    use App\Service\Login\LoginResultDTO;
 
-    class LoginStrategyLocal implements PostLoginInterface {
-        public function __construct(private LoginService $loginService) {}
-
+    class LoginStrategyLocal extends StrategyAbstract 
+    {
         public function supports(LoginContext $context): bool
         {
             return empty($context -> page)
@@ -14,14 +13,24 @@
                 && empty($context -> agent);
         }
 
-        public function login(LoginContext $context): array
+        public function strategy(LoginContext $context): LoginResultDTO
         {
-            $this -> loginService -> loginUser($context);
+            $user = $this -> login($context);
 
-            return [
-                'success' => true,
-                'message' => 'Logged in successfully'
-            ];
+            $loginResult = new LoginResultDTO();
+
+            if (!$user){
+                $loginResult -> success = false;
+                $loginResult -> message = 'login or password is not correct';
+
+                return $loginResult;
+            }
+
+            $loginResult -> success = true;
+            $loginResult -> context = $context;
+            $loginResult -> createSession = 'login';
+
+            return $loginResult;
         }
     }
 ?>
