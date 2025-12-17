@@ -2,7 +2,7 @@
     namespace App\Service\AllSessions\SessionService;
 
     use App\Service\AllSessions\SessionContextInterface;
-    use App\Service\Login\LoginResultDTO;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -10,10 +10,7 @@
     {
         public function supports(SessionContextInterface $context): bool
         {
-            return 
-                $context instanceof LoginResultDTO && 
-                $context -> createSession === 'login' && 
-                !$context -> statusId;
+            return $context instanceof LoginResultDTO;
         }
 
         public function apply(

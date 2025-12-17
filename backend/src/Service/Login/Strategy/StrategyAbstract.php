@@ -3,8 +3,8 @@
 
     use App\Service\Login\LoginCheckerResolver;
     use App\Entity\UserReg;
-    use App\Service\Login\LoginContext;
-    use App\Service\Login\LoginResultDTO;
+    use App\Service\Login\LoginDTO\LoginContext;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     abstract class StrategyAbstract
     {

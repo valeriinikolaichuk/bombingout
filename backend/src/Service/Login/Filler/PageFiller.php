@@ -1,7 +1,7 @@
 <?php
     namespace App\Service\Login\Filler;
 
-    use App\Service\Login\LoginContext;
+    use App\Service\Login\LoginDTO\LoginContext;
     use Symfony\Component\HttpFoundation\Request;
 
     class PageFiller implements ContextFillerInterface

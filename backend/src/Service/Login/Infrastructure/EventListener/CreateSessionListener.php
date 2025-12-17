@@ -1,7 +1,7 @@
 <?php
-    namespace App\EventListener\Login;
+    namespace App\Infrastructure\Persistence\EventListener;
 
-    use App\Event\Login\LoginCompletedEvent;
+    use App\Service\Login\Event\LoginCompletedEvent;
     use App\Service\AllSessions\SessionFactory;
 
     class CreateSessionListener
@@ -14,8 +14,7 @@
         {
             $result = $event -> result;
 
-            if (!$result -> success || 
-                !$result -> createSession || 
+            if (!$result -> success ||  
                 $result -> context -> page) 
             {
                 return;

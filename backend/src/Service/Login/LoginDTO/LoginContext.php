@@ -1,11 +1,12 @@
 <?php
-    namespace App\Service\Login;
+    namespace App\Service\Login\LoginDTO;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
     use App\Entity\UserReg;
 
     class LoginContext
     {
+        public ?string $loginMethod = null;
         public ?string $type = null;
 
         public ?string $login = null;

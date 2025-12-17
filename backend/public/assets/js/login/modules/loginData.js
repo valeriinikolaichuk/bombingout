@@ -4,5 +4,5 @@ export let loginData = {
     language: document.getElementById("language")?.value ?? null,
     page: document.getElementById("page")?.value ?? null,
     type: 'check by login and password',
-    loginMethod: 'ContextBuilder'
+    loginMethod: 'default'
 };

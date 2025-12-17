@@ -20,7 +20,6 @@
             return new JsonResponse(
                 $result -> toArray()
             );
-
         }
     }
 ?>

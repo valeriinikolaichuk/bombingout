@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Login;
 
+    use App\Service\Login\LoginDTO\LoginContext;
+
     use App\Service\Login\LoginVerification\VerificationInterface;
     use App\Entity\UserReg;
 

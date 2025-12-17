@@ -1,7 +1,7 @@
 <?php
-    namespace App\Event\Login;
+    namespace App\Service\Login\Event;
 
-    use App\Service\Login\LoginResultDTO;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Contracts\EventDispatcher\Event;
 

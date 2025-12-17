@@ -5,7 +5,7 @@
 
     use Symfony\Component\HttpFoundation\Request;
 
-    class CredentialsFiller implements ContextFillerInterface
+    class LoginMethodFiller implements ContextFillerInterface
     {
         public function supports(Request $request): bool
         {
@@ -16,8 +16,7 @@
         {
             $data = json_decode($request -> getContent(), true);
 
-            $context -> login = $data['login'] ?? null;
-            $context -> password = $data['password'] ?? null;
+            $context -> type = $data['loginMethod'] ?? null;
         } 
     }
 ?>

@@ -2,6 +2,7 @@
     namespace App\Service\Login;
 
     use App\Service\Login\LoginMethod\LoginMethodInterface;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Component\HttpFoundation\Request;
 

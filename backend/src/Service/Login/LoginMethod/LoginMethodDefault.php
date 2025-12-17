@@ -1,15 +1,15 @@
 <?
     namespace App\Service\Login\LoginMethod;
 
-    use App\Service\Login\LoginContextBuilder;
+    use App\Service\Login\LoginDTO\LoginContext;
     use App\Service\Login\StrategyFactory;
-    use App\Event\Login\LoginCompletedEvent;
-    use App\Service\Login\LoginResultDTO;
+    use App\Service\Login\Event\LoginCompletedEvent;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-    class LoginMethodContextBuilder implements LoginMethodInterface
+    class LoginMethodDefault implements LoginMethodInterface
     {
         public function __construct(
             private LoginContextBuilder $contextBuilder,
@@ -23,7 +23,7 @@
 
             return 
                 isset($data['loginMethod']) && 
-                $data['loginMethod'] === 'ContextBuilder';
+                $data['loginMethod'] === 'default';
         }
 
         public function getMethod(Request $request): LoginResultDTO

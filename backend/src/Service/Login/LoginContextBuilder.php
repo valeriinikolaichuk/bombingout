@@ -2,6 +2,7 @@
     namespace App\Service\Login;
 
     use App\Service\Login\Filler\ContextFillerInterface;
+    use App\Service\Login\LoginDTO\LoginContext;
 
     use Symfony\Component\HttpFoundation\Request;
 

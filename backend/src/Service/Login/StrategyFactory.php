@@ -2,6 +2,8 @@
     namespace App\Service\Login;
 
     use App\Service\Login\Strategy\StrategyAbstract;
+    use App\Service\Login\LoginDTO\LoginContext;
+    use App\Service\Login\LoginDTO\LoginResultDTO;
 
     class StrategyFactory
     {
