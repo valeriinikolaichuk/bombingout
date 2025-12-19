@@ -18,7 +18,7 @@ services:
 
 # Main Service
 
-    App\Service\Main\:
+    App\Service\Main\Page\:
         resource: '../src/Service/Main/Page/*'
         autowire: true
         autoconfigure: true
@@ -36,21 +36,21 @@ services:
 
 # AllSessions Service
 
-    App\Service\AllSessions\:
-        resource: '../src/Service/AllSessions/SessionService/*'
-        autowire: true
-        autoconfigure: true
-        tags: ['app.all_sessions']
+#    App\Service\AllSessions\SessionService\:
+#        resource: '../src/Service/AllSessions/SessionService/*'
+#        autowire: true
+#        autoconfigure: true
+#        tags: ['app.session_action']
 
-    App\Service\AllSessions\SessionFactory:
-        arguments:
-            $resolvers: !tagged_iterator app.all_sessions
+#    App\Service\AllSessions\SessionFactory:
+#        arguments:
+#            $actions: !tagged_iterator app.session_action
 
-    App\Service\AllSessions\:
-        resource: '../src/Service/AllSessions/*'
-        exclude: '../src/Service/AllSessions/SessionService/*'
-        autowire: true
-        autoconfigure: true
+#    App\Service\AllSessions\:
+#        resource: '../src/Service/AllSessions/*'
+#        exclude: '../src/Service/AllSessions/SessionService/*'
+#        autowire: true
+#        autoconfigure: true
 
 # Login Service
 
@@ -74,7 +74,7 @@ services:
 
     App\Service\Login\LoginFactory:
         arguments:
-            $fillers: !tagged_iterator app.login_method
+            $checkers: !tagged_iterator app.login_method
 
     App\Service\Login\Filler\:
         resource: '../src/Service/Login/Filler/*'
@@ -94,7 +94,7 @@ services:
 
     App\Service\Login\StrategyFactory:
         arguments:
-            $fillers: !tagged_iterator app.login_strategy
+            $checkers: !tagged_iterator app.login_strategy
 
     App\Service\Login\LoginVerification\:
         resource: '../src/Service/Login/LoginVerification/*'
@@ -104,7 +104,7 @@ services:
 
     App\Service\Login\LoginCheckerResolver:
         arguments:
-            $fillers: !tagged_iterator app.login_checker
+            $checkers: !tagged_iterator app.login_checker
 
     App\Service\Login\Result\:
         resource: '../src/Service/Login/Result/*'
@@ -124,7 +124,7 @@ services:
 
     App\Service\Login\Strategy\LoginPolicyResolver:
         arguments:
-            $fillers: !tagged_iterator app.login_policy
+            $policies: !tagged_iterator app.login_policy
 
     App\Service\Login\Infrastructure\EventListener\CreateSessionListener:
         tags:

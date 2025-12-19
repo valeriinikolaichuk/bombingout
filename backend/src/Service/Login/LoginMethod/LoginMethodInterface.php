@@ -1,4 +1,4 @@
-<?
+<?php
     namespace App\Service\Login\LoginMethod;
 
     use App\Service\Login\LoginDTO\LoginResultDTO;

@@ -1,5 +1,7 @@
 <?php
-    namespace App\Service\AllSessions\SessionService;
+    namespace App\Service\AllSessions;
+
+    use App\Service\AllSessions\SessionContextInterface;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

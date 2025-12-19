@@ -1,6 +1,6 @@
 <?php
     namespace App\Service\AllSessions\SessionService;
-
+use App\Service\AllSessions\SessionActionInterface;
     use App\Service\AllSessions\SessionContextInterface;
     use App\Service\Login\LoginDTO\LoginResultDTO;
 
