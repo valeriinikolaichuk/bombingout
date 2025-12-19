@@ -4,6 +4,7 @@
     use App\Service\Login\Strategy\StrategyAbstract;
     use App\Service\Login\LoginDTO\LoginContext;
     use App\Service\Login\LoginDTO\LoginResultDTO;
+    use App\Exception\UnprocessableEntityException;
 
     class StrategyFactory
     {
@@ -17,6 +18,8 @@
                     return $checker -> strategy($context);
                 }
             }
+
+            throw new UnprocessableEntityException('No login strategy supports given context');
         }
     }
 ?>

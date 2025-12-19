@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\PageFlow;
+    namespace App\Service\Main;
 
     class PageResultDTO
     {

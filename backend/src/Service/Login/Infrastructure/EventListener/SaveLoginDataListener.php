@@ -1,8 +1,8 @@
 <?php
-    namespace App\Infrastructure\Persistence\EventListener;
+    namespace App\Service\Login\Infrastructure\EventListener;
 
     use App\Service\Login\Event\LoginCompletedEvent;
-    use App\Infrastructure\Persistence\ComputerStatus\ComputerStatusWriter;
+    use App\Service\Login\Infrastructure\Persistence\ComputerStatus\ComputerStatusWriter;
     use App\Service\AllSessions\SessionFactory;
 
     class SaveLoginDataListener

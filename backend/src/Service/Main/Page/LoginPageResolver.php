@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Main;
+    namespace App\Service\Main\Page;
 
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;

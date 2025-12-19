@@ -1,5 +1,5 @@
 <?php
-    namespace App\Infrastructure\Persistence\ComputerStatus;
+    namespace App\Service\Login\Infrastructure\Persistence\ComputerStatus;
 
     use App\Service\Login\LoginDTO\LoginResultDTO;
 

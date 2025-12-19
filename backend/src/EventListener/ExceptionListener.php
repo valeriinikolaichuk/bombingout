@@ -20,23 +20,32 @@
                 ? $e -> getStatusCode()
                 : 500;
 
+            $accept = $request -> headers ->get('Accept', '');
+
+            $message = $statusCode >= 500
+            ? 'Internal server error'
+            : $e -> getMessage();
+
             if ($request -> isXmlHttpRequest() || 
-                str_contains($request -> headers -> get('Accept'), 'application/json')){
-                $event->setResponse(new JsonResponse([
+                str_contains($accept, 'application/json'))
+            {
+                $event -> setResponse(new JsonResponse([
                     'success' => false,
-                    'error'   => $e -> getMessage(),
+                    'error'   => $message
                 ], $statusCode));
+
                 return;
             }
 
             $template = match ($statusCode) {
                 403     => 'errors/403.html.twig',
                 404     => 'errors/404.html.twig',
-                default => 'errors/500.html.twig',
+                422     => 'errors/422.html.twig',
+                default => 'errors/500.html.twig'
             };
 
             $html = $this -> twig -> render($template, [
-                'message' => $e->getMessage()
+                'message' => $message
             ]);
 
             $event -> setResponse(new Response($html, $statusCode));

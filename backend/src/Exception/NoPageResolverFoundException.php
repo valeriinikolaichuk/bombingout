@@ -5,9 +5,9 @@
 
     class NoPageResolverFoundException extends HttpException
     {
-        public function __construct()
+        public function __construct(string $page)
         {
-            parent::__construct(404, 'Page not found');
+            parent::__construct(404, "Page {$page} not found");
         }
     }
 ?>

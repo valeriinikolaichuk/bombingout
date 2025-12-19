@@ -1,7 +1,7 @@
 <?php
     namespace App\Service\Login\Strategy\Policy;
 
-    use App\Infrastructure\Persistence\ComputerStatus\ComputerStatusReader;
+    use App\Service\Login\Infrastructure\Persistence\ComputerStatus\ComputerStatusReader;
     use App\Service\Login\LoginDTO\LoginContext;
     use App\Service\Login\LoginDTO\LoginResultDTO;
 

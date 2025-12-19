@@ -19,7 +19,7 @@ services:
 # Main Service
 
     App\Service\Main\:
-        resource: '../src/Service/Main/*'
+        resource: '../src/Service/Main/Page/*'
         autowire: true
         autoconfigure: true
         tags: ['app.page_resolver']
@@ -28,9 +28,54 @@ services:
         arguments:
             $resolvers: !tagged_iterator app.page_resolver
 
+    App\Service\Main\:
+        resource: '../src/Service/Main/*'
+        exclude: '../src/Service/Main/Page/*'
+        autowire: true
+        autoconfigure: true
 
+# AllSessions Service
 
-    
+    App\Service\AllSessions\:
+        resource: '../src/Service/AllSessions/SessionService/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.all_sessions']
+
+    App\Service\AllSessions\SessionFactory:
+        arguments:
+            $resolvers: !tagged_iterator app.all_sessions
+
+    App\Service\AllSessions\:
+        resource: '../src/Service/AllSessions/*'
+        exclude: '../src/Service/AllSessions/SessionService/*'
+        autowire: true
+        autoconfigure: true
+
+# Login Service
+
+    App\Service\Login\:
+        resource: '../src/Service/Login/*'
+        exclude: 
+            - '../src/Service/Login/LoginMethod/*'
+            - '../src/Service/Login/Filler/*'
+            - '../src/Service/Login/Strategy/Implementation/*'
+            - '../src/Service/Login/LoginVerification/*'
+            - '../src/Service/Login/Result/*'
+            - '../src/Service/Login/Strategy/Policy/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Login\LoginMethod\:
+        resource: '../src/Service/Login/LoginMethod/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_method']
+
+    App\Service\Login\LoginFactory:
+        arguments:
+            $fillers: !tagged_iterator app.login_method
+
     App\Service\Login\Filler\:
         resource: '../src/Service/Login/Filler/*'
         autowire: true
@@ -41,68 +86,51 @@ services:
         arguments:
             $fillers: !tagged_iterator app.login_filler
 
-    App\Service\Login\:
-        resource: '../src/Service/Login/*'
-        exclude: '../src/Service/Login/Filler/*'
-        autowire: true
-        autoconfigure: true
-
-    App\Service\Login\Strategy\:
-        resource: '../src/Service/Login/Strategy/*'
+    App\Service\Login\Strategy\Implementation\:
+        resource: '../src/Service/Login/Strategy/Implementation/*'
         autowire: true
         autoconfigure: true
         tags: ['app.login_strategy']
 
-    App\Service\Login\PostLoginFactory:
+    App\Service\Login\StrategyFactory:
         arguments:
-            $strategies: !tagged_iterator app.login_strategy
+            $fillers: !tagged_iterator app.login_strategy
 
-    App\Service\Login\Strategy\Sessions\:
-        resource: '../src/Service/Login/Strategy/Sessions/*'
+    App\Service\Login\LoginVerification\:
+        resource: '../src/Service/Login/LoginVerification/*'
         autowire: true
         autoconfigure: true
-        tags: ['app.login_session_service']
+        tags: ['app.login_checker']
 
-    App\Service\Login\LoginService:
+    App\Service\Login\LoginCheckerResolver:
         arguments:
-            $sessionStrategies: !tagged_iterator app.login_session_service
+            $fillers: !tagged_iterator app.login_checker
 
-
-
-    App\Service\Login\StatusTableLogin\:
-        resource: '../src/Service/Login/StatusTableLogin/*'
-        exclude: '../src/Service/Login/StatusTableLogin/DeletePrevRegFiller/*'
+    App\Service\Login\Result\:
+        resource: '../src/Service/Login/Result/*'
         autowire: true
         autoconfigure: true
+        tags: ['app.login_result']
 
-    App\Service\Login\StatusTableLogin\DeletePrevRegFiller\:
-        resource: '../src/Service/Login/StatusTableLogin/DeletePrevRegFiller/*'
+    App\Service\Login\LoginResultBuilder:
+        arguments:
+            $fillers: !tagged_iterator app.login_result
+
+    App\Service\Login\Strategy\Policy\:
+        resource: '../src/Service/Login/Strategy/Policy/*'
         autowire: true
         autoconfigure: true
+        tags: ['app.login_policy']
 
-    App\Service\Login\StatusTableLogin\DeletePrevRegFiller\DeletePrevRegFiller:
-        tags: ['app.delete_prev_reg_filler']
-    
-    App\Service\Login\StatusTableLogin\DeletePrevRegContextBuilder:
+    App\Service\Login\Strategy\LoginPolicyResolver:
         arguments:
-            $fillers: !tagged_iterator app.delete_prev_reg_filler
+            $fillers: !tagged_iterator app.login_policy
 
-    App\Service\Redirection\StatusTableRedirection\ComputerStatusChecker:
-        arguments:
-            $repo: '@App\Repository\ComputerStatusRepository'
+    App\Service\Login\Infrastructure\EventListener\CreateSessionListener:
+        tags:
+            - { name: kernel.event_listener, event: App\Service\Login\Event\LoginCompletedEvent }
 
-    App\Service\Redirection\StatusTableRedirection\Filler\:
-        resource: '../src/Service/Redirection/StatusTableRedirection/Filler/*'
-        autowire: true
-        autoconfigure: true
+    App\Service\Login\Infrastructure\EventListener\SaveLoginDataListener:
+        tags:
+            - { name: kernel.event_listener, event: App\Service\Login\Event\LoginCompletedEvent }
 
-    App\Service\Redirection\StatusTableRedirection\ComputerStatusContextBuilder:
-        arguments:
-            $fillers: !tagged_iterator app.computer_status_filler
-
-    # App\Service\Redirection\StatusTableRedirection\Filler\ComputerStatusFillerInterface:
-
-    App\Service\Redirection\StatusTableRedirection\Filler\UserIdComputerStatusFiller:
-        tags: ['app.computer_status_filler']
-
-    

@@ -3,6 +3,7 @@
 
     use App\Service\Login\LoginMethod\LoginMethodInterface;
     use App\Service\Login\LoginDTO\LoginResultDTO;
+    use App\Exception\UnprocessableEntityException;
 
     use Symfony\Component\HttpFoundation\Request;
 
@@ -18,6 +19,8 @@
                     return $checker -> getMethod($request);
                 }
             }
+
+            throw new UnprocessableEntityException('Unable to determine login method');
         }
     }
 ?>

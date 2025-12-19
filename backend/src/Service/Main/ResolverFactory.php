@@ -1,6 +1,7 @@
 <?php
     namespace App\Service\Main;
 
+    use App\Main\Page\PageResolverInterface;
     use App\Exception\NoPageResolverFoundException;
 
     use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@
                 }
             }
 
-            throw new NoPageResolverFoundException('Login page could not be resolved');
+            throw new NoPageResolverFoundException($request -> getPathInfo());
         }
     }
 ?>

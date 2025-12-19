@@ -1,8 +1,10 @@
 <?php
-    namespace App\Service\Login\Strategy;
+    namespace App\Service\Login\Strategy\Implementation;
 
+    use App\Service\Login\Strategy\StrategyAbstract;
     use App\Service\Login\LoginCheckerResolver;
     use App\Service\Login\LoginResultBuilder;
+    use App\Service\Login\Strategy\LoginPolicyResolver;
     use App\Service\Login\LoginDTO\LoginContext;
     use App\Service\Login\LoginDTO\LoginResultDTO;
 

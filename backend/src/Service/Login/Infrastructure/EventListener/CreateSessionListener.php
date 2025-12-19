@@ -1,5 +1,5 @@
 <?php
-    namespace App\Infrastructure\Persistence\EventListener;
+    namespace App\Service\Login\Infrastructure\EventListener;
 
     use App\Service\Login\Event\LoginCompletedEvent;
     use App\Service\AllSessions\SessionFactory;
