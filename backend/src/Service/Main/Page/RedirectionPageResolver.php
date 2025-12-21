@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Main\Page;
 
+    use App\Service\Main\PageResolverInterface;
+
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -13,16 +15,16 @@
                 $session -> get('status') !== 'participant';
         }
 
-        public function resolve(Request $request, SessionInterface $session): PageResultDTO
+        public function resolve(Request $request, SessionInterface $session): array
         {
-            return new PageResultDTO(
-                template: 'redirection_page.html.twig', 
-                data: [
-                    'lang'      => $session -> get('language'),
-                    'users_id'  => $session -> get('id'),
-                    'id_status' => $session -> get('id_status')
-                ]
-            );
+            return [
+                'template' => 'redirection_page.html.twig',
+                'data' => [
+                    'lang'      => $session->get('language'),
+                    'users_id'  => $session->get('id'),
+                    'id_status' => $session->get('id_status'),
+                ],
+            ];
         }
     }
 ?>

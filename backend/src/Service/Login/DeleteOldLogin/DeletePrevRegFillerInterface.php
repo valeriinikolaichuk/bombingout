@@ -1,7 +1,5 @@
 <?php
-    namespace App\Service\Login\StatusTableLogin\DeletePrevRegFiller;
-
-    use App\Service\Login\StatusTableLogin\DeletePrevRegContext;
+    namespace App\Service\Login\DeleteOldLogin;
 
     use Symfony\Component\HttpFoundation\Request;
 

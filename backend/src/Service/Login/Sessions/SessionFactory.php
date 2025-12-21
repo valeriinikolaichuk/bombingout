@@ -1,19 +1,21 @@
 <?php
-    namespace App\Service\AllSessions;
+    namespace App\Service\Login\Sessions;
 
 //    use App\Service\AllSessions\SessionService\SessionActionInterface;
+use App\Service\Login\Sessions\SessionService\SessionActionInterface;
+use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class SessionFactory
     {
-        /** @var iterable<SessionActionInterface> */
+        /** @var iterable<SessionActionInterface[]> */
         public function __construct(private iterable $actions) {}
 
-        public function create(SessionInterface $session, SessionContextInterface $context): void
+        public function create(SessionInterface $session, LoginResultDTO $context): void
         {
             foreach ($this -> actions as $action) {
-                if ($action -> supports($context)) {
+                if ($action -> supports($session, $context)) {
                     $action -> apply($session, $context);
                 }
             }

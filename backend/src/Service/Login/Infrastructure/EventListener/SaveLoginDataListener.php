@@ -3,7 +3,7 @@
 
     use App\Service\Login\Event\LoginCompletedEvent;
     use App\Service\Login\Infrastructure\Persistence\ComputerStatus\ComputerStatusWriter;
-    use App\Service\AllSessions\SessionFactory;
+    use App\Service\Login\Sessions\SessionFactory;
 
     class SaveLoginDataListener
     {

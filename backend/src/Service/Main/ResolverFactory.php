@@ -1,7 +1,6 @@
 <?php
     namespace App\Service\Main;
 
-    use App\Main\Page\PageResolverInterface;
     use App\Exception\NoPageResolverFoundException;
 
     use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +11,7 @@
         /** @var iterable<PageResolverInterface> */
         public function __construct(private iterable $resolvers) {}
 
-        public function resolve(Request $request, SessionInterface $session): PageResultDTO
+        public function resolve(Request $request, SessionInterface $session): array
         {
             foreach ($this -> resolvers as $resolver) {
                 if ($resolver -> supports($request, $session)) {

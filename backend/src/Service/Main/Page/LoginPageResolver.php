@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Main\Page;
 
+    use App\Service\Main\PageResolverInterface;
+
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -14,9 +16,12 @@
                 !$session -> has('language');
         }
 
-        public function resolve(Request $request, SessionInterface $session): PageResultDTO
+        public function resolve(Request $request, SessionInterface $session): array
         {
-            return new PageResultDTO(template: 'login_page.html.twig');
+            return [
+                'template' => 'login_page.html.twig',
+                'data' => [],
+            ];
         }
     }
 ?>

@@ -19,7 +19,10 @@
 
             $result = $factory -> resolve($request, $session);
 
-            return $this -> render($result -> template, $result -> data);
+            return $this -> render(
+                $result['template'],
+                $result['data'] ?? []
+            );
         }
     }
 ?>

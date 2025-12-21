@@ -1,21 +1,21 @@
 <?php
-    namespace App\Service\Login\StatusTableLogin;
+    namespace App\Service\Login\DeleteOldLogin;
 
     use Symfony\Component\HttpFoundation\Request;
-    use App\Service\Login\StatusTableLogin\DeletePrevRegFiller\DeletePrevRegFillerInterface;
 
     class DeletePrevRegContextBuilder
     {
         /** @var DeletePrevRegFillerInterface[] */
-        public function __construct(private iterable $fillers) {}
+        public function __construct(private iterable $fillersDel) {}
 
         public function build(Request $request): DeletePrevRegContext
         {
             $context = new DeletePrevRegContext();
 
-            foreach ($this -> fillers as $filler) {
+            foreach ($this -> fillersDel as $filler) {
                 if ($filler -> supports($request)) {
                     $filler -> fill($context, $request);
+                    break;
                 }
             }
 

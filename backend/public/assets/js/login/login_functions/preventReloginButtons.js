@@ -32,7 +32,7 @@ dialogDelete.addEventListener('click', async  function() {
         } else if (lang === 'pl'){
             mess = 'wpis został usunięty';
         } else {
-            mess = 'entry deleted';
+            mess = json.message;
         }
     } else {
         if (lang === 'uk'){
@@ -40,7 +40,7 @@ dialogDelete.addEventListener('click', async  function() {
         } else if (lang === 'pl'){
             mess = 'błąd usuwania';
         } else {
-            mess = 'deletion error';
+            mess = json.message;
         } 
     }
 

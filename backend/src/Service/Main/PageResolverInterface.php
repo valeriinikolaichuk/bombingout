@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Main\Page;
+    namespace App\Service\Main;
 
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -8,6 +8,6 @@
     {
         public function supports(Request $request, SessionInterface $session): bool;
 
-        public function resolve(Request $request, SessionInterface $session): PageResultDTO;
+        public function resolve(Request $request, SessionInterface $session): array;
     }
 ?>

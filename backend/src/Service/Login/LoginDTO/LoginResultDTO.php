@@ -1,9 +1,7 @@
 <?php
     namespace App\Service\Login\LoginDTO;
 
-    use App\Service\AllSessions\SessionContextInterface;
-
-    class LoginResultDTO implements SessionContextInterface
+    class LoginResultDTO
     {
         public bool $success;
         public ?string $message = null;

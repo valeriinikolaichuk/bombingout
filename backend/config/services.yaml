@@ -1,6 +1,3 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
 parameters:
 
 services:
@@ -17,43 +14,18 @@ services:
             - { name: kernel.event_listener, event: kernel.exception }
 
 # Main Service
-
-    App\Service\Main\Page\:
-        resource: '../src/Service/Main/Page/*'
-        autowire: true
-        autoconfigure: true
-        tags: ['app.page_resolver']
+    App\Service\Main\Page\LoginPageResolver: ~
+    App\Service\Main\Page\ParticipantPageResolver: ~
+    App\Service\Main\Page\RedirectionPageResolver: ~
 
     App\Service\Main\ResolverFactory:
         arguments:
-            $resolvers: !tagged_iterator app.page_resolver
-
-    App\Service\Main\:
-        resource: '../src/Service/Main/*'
-        exclude: '../src/Service/Main/Page/*'
-        autowire: true
-        autoconfigure: true
-
-# AllSessions Service
-
-#    App\Service\AllSessions\SessionService\:
-#        resource: '../src/Service/AllSessions/SessionService/*'
-#        autowire: true
-#        autoconfigure: true
-#        tags: ['app.session_action']
-
-#    App\Service\AllSessions\SessionFactory:
-#        arguments:
-#            $actions: !tagged_iterator app.session_action
-
-#    App\Service\AllSessions\:
-#        resource: '../src/Service/AllSessions/*'
-#        exclude: '../src/Service/AllSessions/SessionService/*'
-#        autowire: true
-#        autoconfigure: true
+            $resolvers:
+                - '@App\Service\Main\Page\LoginPageResolver'
+                - '@App\Service\Main\Page\ParticipantPageResolver'
+                - '@App\Service\Main\Page\RedirectionPageResolver'
 
 # Login Service
-
     App\Service\Login\:
         resource: '../src/Service/Login/*'
         exclude: 
@@ -63,6 +35,9 @@ services:
             - '../src/Service/Login/LoginVerification/*'
             - '../src/Service/Login/Result/*'
             - '../src/Service/Login/Strategy/Policy/*'
+            - '../src/Service/Login/Sessions/SessionService/*'
+            - '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
+            - '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
         autowire: true
         autoconfigure: true
 
@@ -134,3 +109,39 @@ services:
         tags:
             - { name: kernel.event_listener, event: App\Service\Login\Event\LoginCompletedEvent }
 
+    App\Service\Login\Sessions\SessionService\:
+        resource: '../src/Service/Login/Sessions/SessionService/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_session_action']
+
+    App\Service\Login\Sessions\SessionFactory:
+        arguments:
+            $actions: !tagged_iterator app.login_session_action
+
+    App\Service\Login\DeleteOldLogin\DeleteFiller\:
+        resource: '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.delete_filler']
+
+    App\Service\Login\DeleteOldLogin\DeletePrevRegContextBuilder:
+        arguments:
+            $fillersDel: !tagged_iterator app.delete_filler
+
+    App\Service\Login\DeleteOldLogin\DeletePreviousReg\:
+        resource: '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
+        autowire: true
+        autoconfigure: true
+    
+    App\Service\Login\DeleteOldLogin\DeletePreviousReg\DeletePreviousRegFailure:
+        tags:
+            - { name: 'app.delete_checker', priority: -1000 }
+
+    App\Service\Login\DeleteOldLogin\DeletePreviousReg\DeletePreviousRegService:
+        tags:
+            - { name: 'app.delete_checker', priority: 100 }
+
+    App\Service\Login\DeleteOldLogin\DeletePrevRegChecker:
+        arguments:
+            $checkersDel: !tagged_iterator app.delete_checker

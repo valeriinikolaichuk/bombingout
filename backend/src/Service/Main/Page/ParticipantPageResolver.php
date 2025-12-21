@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Main\Page;
 
+    use App\Service\Main\PageResolverInterface;
+
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -13,9 +15,12 @@
                 $session -> get('status') === 'participant';
         }
 
-        public function resolve(Request $request, SessionInterface $session): PageResultDTO
+        public function resolve(Request $request, SessionInterface $session): array
         {
-            return new PageResultDTO(template: 'dashboard_page.html.twig');
+            return [
+                'template' => 'dashboard_page.html.twig',
+                'data' => [],
+            ];
         }
     }
 ?>

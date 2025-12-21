@@ -1,5 +1,5 @@
 import { checkAndRoute } from './modules/checkAndRoute.js';
-import { redirectToPage } from '../redirection/redirectToPage.js';
+import { redirectToPage } from '../../redirection/redirectToPage.js';
 import { loginData } from './modules/loginData.js';
 
 const loginForm = document.getElementById("loginForm");
@@ -19,9 +19,9 @@ loginForm.addEventListener("submit", async (e) => {
 
     let json = await response.json();
 
-    if (url === "/api/login"){
-        checkAndRoute(json);
-    } else {
+    if (json.page){
         redirectToPage(json);
     }
+
+    checkAndRoute(json);
 });
