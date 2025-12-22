@@ -8,7 +8,7 @@ export function showConnections(json){
     json.connections.forEach((item, index) => {
         const row = document.createElement('tr');
 
-        row.innerHTML = `<td>${index + 1}</td><td>💻</td><td>${item.ipAddress}</td><td>${item.userAgent}</td><td>${item.users_status}</td>`;
+        row.innerHTML = `<td>${index + 1}</td><td>💻</td><td>${item.ip}</td><td>${item.agent}</td><td>${item.userStatus}</td>`;
 
         tableBody.appendChild(row);
     }); 
