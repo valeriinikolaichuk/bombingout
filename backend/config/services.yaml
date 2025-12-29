@@ -36,7 +36,7 @@ services:
             - '../src/Service/Login/Result/*'
             - '../src/Service/Login/Strategy/Policy/*'
             - '../src/Service/Login/LoginCompleted/*'
-#            - '../src/Service/Login/Sessions/SessionService/*'
+            - '../src/Service/Login/Sessions/SessionService/*'
             - '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
             - '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
         autowire: true
@@ -141,18 +141,18 @@ services:
         arguments:
             $postLoginActions: !tagged_iterator app.post_login
 
-#    App\Service\Login\Sessions\SessionService\:
-#        resource: '../src/Service/Login/Sessions/SessionService/*'
-#        autowire: true
-#        autoconfigure: true
-#        tags: ['app.login_session_action']
+    App\Service\Login\Sessions\SessionService\:
+        resource: '../src/Service/Login/Sessions/SessionService/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.login_session_action']
 
-#    App\Service\Login\Sessions\SessionFactory:
-#        public: true
-#        autowire: true
-#        autoconfigure: true
-#        arguments:
-#            $actions: !tagged_iterator app.login_session_action
+    App\Service\Login\Sessions\SessionFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $actions: !tagged_iterator app.login_session_action
 
     App\Service\Login\DeleteOldLogin\DeleteFiller\:
         resource: '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'

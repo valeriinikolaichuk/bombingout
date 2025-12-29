@@ -9,15 +9,17 @@
         /** @var iterable<LoginCompletedInterface> */
         public function __construct(private iterable $postLoginActions) {}
 
-        public function loginCompletedActions(LoginResultDTO $context): LoginResultDTO
+        public function postLoginProcessor(LoginResultDTO $context): LoginResultDTO
         {
-            if (!$context -> success) {
-                return $context;
+            $result = $context;
+
+            if (!$result -> success) {
+                return $result;
             }
 
             foreach ($this -> postLoginActions as $action) {
-                if ($action -> supports($context)) {
-                    $result = $action -> actions($context);
+                if ($action -> supports($result)) {
+                    $result = $action -> actions($result);
                 }
             }
 

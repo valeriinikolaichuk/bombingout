@@ -5,8 +5,9 @@
     use App\Service\Login\StrategyFactory;
     use App\Service\Login\LoginCompleted;
     use App\Service\Login\LoginDTO\LoginResultDTO;
+
     use Symfony\Component\HttpFoundation\Request;
-//use Symfony\Component\VarDumper\VarDumper;
+
     class LoginMethodDefault implements LoginMethodInterface
     {
         public function __construct(
@@ -30,8 +31,8 @@
 
             $loginResult = $this -> factory -> chooseStrategy($context);
 
-            $result = $this -> loginCompleted -> loginCompletedActions($loginResult);
-//dd($result);
+            $result = $this -> loginCompleted -> postLoginProcessor($loginResult);
+
             return $result;
         }
     }

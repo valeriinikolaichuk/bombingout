@@ -2,14 +2,12 @@
     namespace App\Service\Login\LoginCompleted;
 
     use App\Service\Login\Persistence\ComputerStatusWriter;
-//    use App\Service\Login\Sessions\SessionFactory;
     use App\Service\Login\LoginDTO\LoginResultDTO;
 
     class SaveLoginData implements LoginCompletedInterface
     {
         public function __construct(
             private ComputerStatusWriter $writer,
-//            private SessionFactory $sessionFactory
         ) {}
 
         public function supports(LoginResultDTO $result): bool
@@ -33,11 +31,6 @@
             $result -> statusId = $id;
 
             return $result;
-
-//            $this -> sessionFactory -> create(
-//                $result -> context -> session,
-//                $result
-//            );
         }
     }
 ?>
