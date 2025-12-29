@@ -20,8 +20,7 @@
 
         public function supports(LoginContext $context): bool
         {
-            return $context -> loginMethod &&
-                $context -> loginMethod === 'default';
+            return $context -> loginMethod === 'default';
         }
 
         public function strategy(LoginContext $context): LoginResultDTO

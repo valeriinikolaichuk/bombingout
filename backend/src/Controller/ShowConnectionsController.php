@@ -1,8 +1,9 @@
 <?php
     namespace App\Controller;
 
-    use App\Service\ShowConnections\GetIdParser;
-    use App\Service\ShowConnections\GetAllConnections;
+    use App\Service\ShowConnections\UserDataFactory;
+    use App\Service\ShowConnections\ConnectionsFactory;
+    use App\Service\ShowConnections\ShowConnectionsPresenter;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -13,14 +14,17 @@
         #[Route('/api/showConnections', name: 'show_connections', methods: ['POST'])]
         public function showConnections(
             Request $request,
-            GetIdParser $parser,
-            GetAllConnections $service
+            UserDataFactory $factory,
+            ConnectionsFactory $service,
+            ShowConnectionsPresenter $presenter
             ): JsonResponse {
 
-            $userId = $parser -> getUserId($request);
-            $result = $service -> getConnections($userId);
+            $usersData = $factory -> getUsersData($request);
+            $result = $service -> getConnections($usersData);
 
-            return new JsonResponse($result);
+            return new JsonResponse(
+                $presenter -> success($result)
+            );
         }
     }
 ?>

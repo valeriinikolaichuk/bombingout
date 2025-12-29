@@ -7,9 +7,9 @@ export function checkAndRoute(json){
 
         if (json.message === 'login or password is not correct'){
             let mess;
-            if (lang === 'uk'){
+            if (json.language === 'uk'){
                 mess = 'невірний логін a6o пароль';
-            } else if (lang === 'pl'){
+            } else if (json.language === 'pl'){
                 mess = 'nieprawidłowy login lub hasło';
             } else {
                 mess = json.message;
@@ -22,6 +22,6 @@ export function checkAndRoute(json){
 
         return;
     }
-
-    window.location.href = "/";
+console.log(json);
+//    window.location.href = "/";
 }

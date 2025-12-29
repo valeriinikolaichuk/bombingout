@@ -35,7 +35,8 @@ services:
             - '../src/Service/Login/LoginVerification/*'
             - '../src/Service/Login/Result/*'
             - '../src/Service/Login/Strategy/Policy/*'
-            - '../src/Service/Login/Sessions/SessionService/*'
+            - '../src/Service/Login/LoginCompleted/*'
+#            - '../src/Service/Login/Sessions/SessionService/*'
             - '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
             - '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
         autowire: true
@@ -48,6 +49,9 @@ services:
         tags: ['app.login_method']
 
     App\Service\Login\LoginFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $checkers: !tagged_iterator app.login_method
 
@@ -58,6 +62,9 @@ services:
         tags: ['app.login_filler']
 
     App\Service\Login\LoginContextBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $fillers: !tagged_iterator app.login_filler
 
@@ -68,6 +75,9 @@ services:
         tags: ['app.login_strategy']
 
     App\Service\Login\StrategyFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $checkers: !tagged_iterator app.login_strategy
 
@@ -78,6 +88,9 @@ services:
         tags: ['app.login_checker']
 
     App\Service\Login\LoginCheckerResolver:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $checkers: !tagged_iterator app.login_checker
 
@@ -88,6 +101,9 @@ services:
         tags: ['app.login_result']
 
     App\Service\Login\LoginResultBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $fillers: !tagged_iterator app.login_result
 
@@ -98,26 +114,45 @@ services:
         tags: ['app.login_policy']
 
     App\Service\Login\Strategy\LoginPolicyResolver:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $policies: !tagged_iterator app.login_policy
 
-    App\Service\Login\Infrastructure\EventListener\CreateSessionListener:
-        tags:
-            - { name: kernel.event_listener, event: App\Service\Login\Event\LoginCompletedEvent }
-
-    App\Service\Login\Infrastructure\EventListener\SaveLoginDataListener:
-        tags:
-            - { name: kernel.event_listener, event: App\Service\Login\Event\LoginCompletedEvent }
-
-    App\Service\Login\Sessions\SessionService\:
-        resource: '../src/Service/Login/Sessions/SessionService/*'
+    App\Service\Login\LoginCompleted\:
+        resource: '../src/Service/Login/LoginCompleted/*'
         autowire: true
         autoconfigure: true
-        tags: ['app.login_session_action']
+        tags: ['app.post_login']
 
-    App\Service\Login\Sessions\SessionFactory:
+    App\Service\Login\LoginCompleted\CreateSession:
+        tags:
+            - { name: 'app.post_login', priority: -1000 }
+
+    App\Service\Login\LoginCompleted\SaveLoginData:
+        tags:
+            - { name: 'app.post_login', priority: 100 }
+
+    App\Service\Login\LoginCompleted:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
-            $actions: !tagged_iterator app.login_session_action
+            $postLoginActions: !tagged_iterator app.post_login
+
+#    App\Service\Login\Sessions\SessionService\:
+#        resource: '../src/Service/Login/Sessions/SessionService/*'
+#        autowire: true
+#        autoconfigure: true
+#        tags: ['app.login_session_action']
+
+#    App\Service\Login\Sessions\SessionFactory:
+#        public: true
+#        autowire: true
+#        autoconfigure: true
+#        arguments:
+#            $actions: !tagged_iterator app.login_session_action
 
     App\Service\Login\DeleteOldLogin\DeleteFiller\:
         resource: '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
@@ -126,6 +161,9 @@ services:
         tags: ['app.delete_filler']
 
     App\Service\Login\DeleteOldLogin\DeletePrevRegContextBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $fillersDel: !tagged_iterator app.delete_filler
 
@@ -143,5 +181,10 @@ services:
             - { name: 'app.delete_checker', priority: 100 }
 
     App\Service\Login\DeleteOldLogin\DeletePrevRegChecker:
+        public: true
+        autowire: true
+        autoconfigure: true
         arguments:
             $checkersDel: !tagged_iterator app.delete_checker
+
+# ShowConnections Service

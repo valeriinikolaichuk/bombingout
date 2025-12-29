@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Login\Infrastructure\Persistence\ComputerStatus;
+    namespace App\Service\Login\Persistence;
 
     use Doctrine\DBAL\Connection;
 
@@ -9,8 +9,10 @@
             private Connection $db
         ) {}
 
-        public function existsForUser(string $ip, string $agent): bool
-        {
+        public function existsForUser(
+            string $ip, 
+            string $agent
+        ): bool {
             $sql = "SELECT COUNT(*) FROM computer_status 
                 WHERE ip_address = :ip 
                 AND user_agent = :agent 

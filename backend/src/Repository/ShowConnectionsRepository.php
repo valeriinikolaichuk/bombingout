@@ -12,6 +12,9 @@
             parent::__construct($registry, ComputerStatus::class);
         }
 
+        /**
+         * @return ComputerStatus[]
+         */
         public function getConnectionsByUser(int $userId): array
         {
             return $this->createQueryBuilder('c')

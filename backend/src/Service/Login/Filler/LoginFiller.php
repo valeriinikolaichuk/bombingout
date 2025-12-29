@@ -5,18 +5,20 @@
 
     use Symfony\Component\HttpFoundation\Request;
 
-    class LoginMethodFiller implements ContextFillerInterface
+    class LoginFiller implements ContextFillerInterface
     {
         public function supports(Request $request): bool
         {
-            return true;
+            $data = json_decode($request -> getContent(), true);
+
+            return isset($data['login']);
         }
 
         public function fill(LoginContext $context, Request $request): void
         {
             $data = json_decode($request -> getContent(), true);
 
-            $context -> loginMethod = $data['loginMethod'] ?? null;
+            $context -> login = $data['login'] ?? null;
         } 
     }
 ?>

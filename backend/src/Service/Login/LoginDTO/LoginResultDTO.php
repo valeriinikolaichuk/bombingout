@@ -13,10 +13,12 @@
             return [
                 'success' => $this -> success,
                 'message' => $this -> message,
-                'page'    => $this -> context -> page,
-                'ip'      => $this -> context -> ip,
-                'agent'   => $this -> context -> agent,
-                'id'      => $this -> context -> user -> getId()
+                'language'=> $this -> context?-> language ?? null,
+                'page'    => $this -> context?-> page ?? null,
+                'ip'      => $this -> context?-> ip ?? null,
+                'agent'   => $this -> context?-> agent ?? null,
+                'id'      => $this -> context?-> user?-> getId() ?? null,
+                'statusId'=> $this -> statusId
             ];
         }
     }

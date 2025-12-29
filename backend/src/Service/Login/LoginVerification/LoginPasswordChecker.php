@@ -17,7 +17,16 @@
 
         public function check(LoginContext $context): ?UserReg
         {
-            $this -> userRepo -> checkLogin($context -> login, $context -> password);
+            $user = $this -> userRepo -> findByUsername($context -> login);
+
+            if (!$user) {
+                return null;
+            }
+
+            return password_verify($context -> password, $user -> getPassword())
+                ? $user
+                : null;
+
         }
     }
 ?>

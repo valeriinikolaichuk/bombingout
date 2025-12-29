@@ -20,9 +20,9 @@
             return [
                 'template' => 'redirection_page.html.twig',
                 'data' => [
-                    'lang'      => $session->get('language'),
-                    'users_id'  => $session->get('id'),
-                    'id_status' => $session->get('id_status'),
+                    'lang'      => $session -> get('language'),
+                    'users_id'  => $session -> get('id'),
+                    'id_status' => $session -> get('id_status'),
                 ],
             ];
         }

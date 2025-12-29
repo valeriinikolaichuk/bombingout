@@ -3,7 +3,7 @@
 
     use App\Entity\ComputerStatus;
 
-    class ShowConnectionsDTO
+    class ShowConnectionsPresenter
     {
         public function success(array $connections): array
         {
@@ -26,14 +26,6 @@
                     ],
                     $connections
                 )
-            ];
-        }
-
-        public function failure(string $message): array
-        {
-            return [
-                'success' => false,
-                'message' => $message
             ];
         }
     }
