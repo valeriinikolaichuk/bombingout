@@ -188,3 +188,37 @@ services:
             $checkersDel: !tagged_iterator app.delete_checker
 
 # ShowConnections Service
+
+    App\Service\ShowConnections\:
+        resource: '../src/Service/ShowConnections/*'
+        exclude: 
+            - '../src/Service/ShowConnections/GetData/*'
+            - '../src/Service/ShowConnections/Connections/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\ShowConnections\GetData\:
+        resource: '../src/Service/ShowConnections/GetData/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.conn_data']
+
+    App\Service\ShowConnections\UserDataFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $policies: !tagged_iterator app.conn_data
+
+    App\Service\ShowConnections\Connections\:
+        resource: '../src/Service/ShowConnections/Connections/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.connections']
+
+    App\Service\ShowConnections\ConnectionsFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $policies: !tagged_iterator app.connections
