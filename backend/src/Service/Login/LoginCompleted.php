@@ -9,8 +9,8 @@
         /** @var iterable<LoginCompletedInterface> */
         public function __construct(private iterable $postLoginActions) {}
 
-        public function postLoginProcessor(LoginResultDTO $context): LoginResultDTO
-        {
+        public function postLoginProcessor(LoginResultDTO $context): LoginResultDTO {
+
             $result = $context;
 
             if (!$result -> success) {

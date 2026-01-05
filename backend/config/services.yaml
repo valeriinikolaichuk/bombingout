@@ -208,7 +208,7 @@ services:
         autowire: true
         autoconfigure: true
         arguments:
-            $policies: !tagged_iterator app.conn_data
+            $getData: !tagged_iterator app.conn_data
 
     App\Service\ShowConnections\Connections\:
         resource: '../src/Service/ShowConnections/Connections/*'
@@ -221,4 +221,40 @@ services:
         autowire: true
         autoconfigure: true
         arguments:
-            $policies: !tagged_iterator app.connections
+            $connections: !tagged_iterator app.connections
+
+# Redirection Service
+
+    App\Service\Redirection\:
+        resource: '../src/Service/Redirection/*'
+        exclude: 
+            - '../src/Service/Redirection/Actions/*'
+            - '../src/Service/Redirection/RequestHandler/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Redirection\Actions\:
+        resource: '../src/Service/Redirection/Actions/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.redirect_actions']
+
+    App\Service\Redirection\ActionFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $actions: !tagged_iterator app.redirect_actions
+
+    App\Service\Redirection\RequestHandler\:
+        resource: '../src/Service/Redirection/RequestHandler/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.request_handler']
+
+    App\Service\Redirection\RequestHandler:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $handlers: !tagged_iterator app.request_handler

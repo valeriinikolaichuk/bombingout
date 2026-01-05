@@ -11,6 +11,7 @@ loginForm.addEventListener("submit", async (e) => {
 
     let response = await fetch("/api/login", {
         method: "POST",
+        credentials: "include",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(loginData)
     });

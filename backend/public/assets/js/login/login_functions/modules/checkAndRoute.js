@@ -22,6 +22,6 @@ export function checkAndRoute(json){
 
         return;
     }
-console.log(json);
-//    window.location.href = "/";
+
+    window.location.href = "/";
 }

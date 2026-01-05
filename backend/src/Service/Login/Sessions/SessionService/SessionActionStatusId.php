@@ -7,12 +7,9 @@
 
     class SessionActionStatusId implements SessionActionInterface
     {
-        public function supports(
-            SessionInterface $session, 
-            LoginResultDTO $result
-        ): bool {
-            return !$session -> has('id_status') && 
-                $result -> statusId;
+        public function supports(LoginResultDTO $result): bool 
+        {
+            return $result -> statusId !== null;
         }
 
         public function apply(

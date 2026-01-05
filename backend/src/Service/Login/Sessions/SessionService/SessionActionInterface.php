@@ -7,7 +7,7 @@
 
     interface SessionActionInterface
     {
-        public function supports(SessionInterface $session, LoginResultDTO $result): bool;
+        public function supports(LoginResultDTO $result): bool;
 
         public function apply(SessionInterface $session, LoginResultDTO $result): void;
     }

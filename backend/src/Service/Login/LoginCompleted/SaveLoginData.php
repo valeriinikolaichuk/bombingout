@@ -12,8 +12,7 @@
 
         public function supports(LoginResultDTO $result): bool
         {
-            return $result -> success ||  
-                !$result -> context -> page;
+            return $result -> context -> page === null;
         }
 
         public function actions(LoginResultDTO $result): LoginResultDTO

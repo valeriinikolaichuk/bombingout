@@ -26,7 +26,6 @@
             return password_verify($context -> password, $user -> getPassword())
                 ? $user
                 : null;
-
         }
     }
 ?>

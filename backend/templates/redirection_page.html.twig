@@ -6,6 +6,13 @@
 {% endblock %}
 
 {% block body %}
+    <script>
+        window.appData = {{ {
+            lang: lang,
+            num: users_id,
+            num_st: id_status
+        }|json_encode|raw }};
+    </script>
     <div class="container">
         <div class="top">
             <div class="admin">
@@ -50,13 +57,6 @@
     {% include 'components/dialog_connections.html.twig' %}
 
 {% endblock %}
-<script>
-    window.appData = {
-        lang = "{{ lang }}";
-        num = "{{ users_id }}";
-        num_st = "{{ id_status }}";
-    }
-</script>
 {% block javascripts %}
     {{ parent() }}
     <script type="module" src="{{ asset('assets/js/redirection/asyncJson/checkConnectionsData.js') }}"></script>
@@ -66,7 +66,7 @@
 
     <script type="module" src="{{ asset('assets/js/redirection/listenersActions.js') }}"></script>
     <script src="{{ asset('assets/js/redirection/eventsListeners.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/login/login.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/login/login_functions/login.js') }}"></script>
 
     <script src="{{ asset('assets/js/redirection/initRedirectionPage.js') }}"></script>
 {% endblock %}

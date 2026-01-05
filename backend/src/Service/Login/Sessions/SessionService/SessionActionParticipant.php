@@ -7,23 +7,21 @@
 
     class SessionActionParticipant implements SessionActionInterface
     {
-        public function supports(
-            SessionInterface $session, 
-            LoginResultDTO $result
-        ): bool {
-            $user = $result -> context -> user;
-
-            return $user -> getStatus() === 'participant';
+        public function supports(LoginResultDTO $result): bool 
+        {
+            return $result -> context -> user !== null;
         }
 
         public function apply(
             SessionInterface $session, 
             LoginResultDTO $result
-            ): void {
+        ): void {
 
             $user = $result -> context -> user;
 
-            $session -> set('nominations_id', $user -> getNominationsId());
+            if ($user -> getStatus() === 'participant'){
+                $session -> set('nominations_id', $user -> getNominationsId());
+            }      
         }
     }
 ?>

@@ -10,12 +10,8 @@ RedirectionActions.prototype.createForm = function(parentClass, btn){
     submitBtn.value = parentClass;
     submitBtn.textContent = btn.textContent;
     submitBtn.style.backgroundColor = "rgba(254, 90, 90, 1)";
+    submitBtn.name = "action";
 
-    if (parentClass == "logout"){
-        submitBtn.name = "logout";
-    } else {
-        submitBtn.name = "comp_status";
-    }
 
     if (parentClass == "admin" || parentClass == "weighingIn"){
         submitBtn.setAttribute("data-listener", "off");

@@ -10,7 +10,7 @@
     {
         public function supports(Request $request, SessionInterface $session): bool
         {
-            return
+            return 
                 !$session -> has('id') ||
                 !$session -> has('status') ||
                 !$session -> has('language');

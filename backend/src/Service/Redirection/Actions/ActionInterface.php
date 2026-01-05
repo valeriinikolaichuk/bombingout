@@ -8,6 +8,6 @@
     {
         public function supports(string $action): bool;
 
-        public function handle(Request $request): Response;
+        public function action(Request $request, string $action): Response;
     }
 ?>

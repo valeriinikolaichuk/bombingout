@@ -1,7 +1,6 @@
 <?php
     namespace App\Service\Login\LoginDTO;
 
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
     use App\Entity\UserReg;
 
     class LoginContext
@@ -18,7 +17,6 @@
         public ?string $ip = null;
         public ?string $agent = null;
 
-        public SessionInterface $session;
         public ?UserReg $user = null;
     }
 ?>

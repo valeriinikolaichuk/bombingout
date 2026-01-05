@@ -1,13 +1,13 @@
 <?php
     namespace App\Service\ShowConnections\Connections;
 
-    use App\Repository\ShowConnectionsRepository;
+    use App\Repository\ComputerStatusRepository;
     use App\Service\ShowConnections\UserDataDTO;
 
     class GetConnectionsById implements GetConnectionsInterface
     {
         public function __construct(
-            private ShowConnectionsRepository $repo
+            private ComputerStatusRepository $repo
         ) {} 
 
         public function supports(UserDataDTO $context): bool

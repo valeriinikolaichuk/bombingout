@@ -19,7 +19,7 @@
 
             foreach ($this -> actions as $handler) {
                 if ($handler -> supports($action)) {
-                    return $handler -> handle($request);
+                    return $handler -> action($request, $action);
                 }
             }
 

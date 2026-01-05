@@ -5,7 +5,7 @@
     use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
     use Doctrine\Persistence\ManagerRegistry;
 
-    class ShowConnectionsRepository extends ServiceEntityRepository
+    class ComputerStatusRepository extends ServiceEntityRepository
     {
         public function __construct(ManagerRegistry $registry)
         {
@@ -22,6 +22,18 @@
                 ->setParameter('uid', $userId)
                 ->getQuery()
                 ->getResult();
+        }
+
+        public function updateCompStatus(int $idStatus, string $status): void
+        {
+            $entity = $this -> find($idStatus);
+
+            if (!$entity) {
+                return;
+            }
+
+            $entity -> setCompStatus($status);
+            $this->_em->flush();
         }
     }
 ?>

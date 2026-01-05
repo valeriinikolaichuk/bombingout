@@ -7,19 +7,15 @@
 
     class SessionActionLogin implements SessionActionInterface
     {
-        public function supports(
-            SessionInterface $session, 
-            LoginResultDTO $result
-        ): bool {
-            return !$session -> has('id') &&
-                !$session -> has('status') &&
-                !$session -> has('language');
+        public function supports(LoginResultDTO $result): bool 
+        {
+            return $result -> context -> user !== null;
         }
 
         public function apply(
             SessionInterface $session, 
             LoginResultDTO $result
-            ): void {
+        ): void {
                 $user = $result -> context -> user;
 
                 $session -> set('id', $user -> getId());
