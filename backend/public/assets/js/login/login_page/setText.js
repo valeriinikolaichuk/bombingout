@@ -1,7 +1,7 @@
 import { buttonsColor } from './modules/buttons.js';
 import { messages } from './modules/content.js';
 
-window.setText = function(lang){
+export function setText(lang){
     document.getElementById('language').value = lang;
     
     buttonsColor(lang);

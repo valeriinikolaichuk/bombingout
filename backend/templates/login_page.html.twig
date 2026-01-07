@@ -3,7 +3,6 @@
 {% block title %}login{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
-{#    {{ vite_entry_script_tags('main.jsx') }} #}
 {% endblock %}
 
 {% block body %}
@@ -12,9 +11,9 @@
     </video>
     <div class="index">
         <div class="languageBox">
-            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button" onclick="switchLanguage('en'), setText('en')">EN</button>
-            <button id="uk" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('uk'), setText('uk')">UK</button>
-            <button id="pl" class="languageButton" style="background-color: white;" type="button" onclick="switchLanguage('pl'), setText('pl')">PL</button>
+            <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button">EN</button>
+            <button id="uk" class="languageButton" style="background-color: white;" type="button">UK</button>
+            <button id="pl" class="languageButton" style="background-color: white;" type="button">PL</button>
 
         </div>
         <div class="buttons_box">
@@ -45,14 +44,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-{#    {% if app.environment == 'dev' %}
-        <script type="module" src="http://localhost:5173/main.jsx"></script>
-    {% else %}
-        <script type="module" src="{{ asset('build/assets/main.js') }}"></script>
-    {% endif %}
- #}
-    <script src="{{ asset('assets/js/login/login_page/updateVisibility.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/login/login_page/setText.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/login/initLoginPage.js') }}"></script>
     <script type="module" src="{{ asset('assets/js/login/login_functions/login.js') }}"></script>
     <script src="{{ asset('assets/js/login/login_functions/preventReloginButtons.js') }}"></script>
     <script src="{{ asset('assets/js/login/login_functions/infoPopup.js') }}"></script>

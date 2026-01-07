@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    await checkConnectionsData();
+document.addEventListener('DOMContentLoaded', () => {
+//    await checkConnectionsData();
     checkConnectionsButtons();
     switchLanguage(window.appData.lang);
     eventsListeners();

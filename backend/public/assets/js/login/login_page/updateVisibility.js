@@ -1,4 +1,4 @@
-function updateVisibility() {
+export function updateVisibility() {
     if (window.innerWidth < 768) {
         const index = document.querySelector('.index');
         index.style.height = 'auto';
@@ -16,7 +16,7 @@ function updateVisibility() {
 
         const buttonsIn = document.querySelectorAll('.buttonStyle');
         buttonsIn.forEach(el => el.style.marginTop ='25px');
+
+        console.log('visibility updated');        
     }
 }
-
-updateVisibility();
