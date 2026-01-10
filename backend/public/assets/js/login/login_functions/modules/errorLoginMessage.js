@@ -1,4 +1,4 @@
-export function errorLoginMessage(id, ip, agent){
+export function errorLoginMessage(json){
     const errorMess = {
         en: {
             messOne: "<p>The program prevents repeated login from the same browser.</p>",
@@ -20,15 +20,13 @@ export function errorLoginMessage(id, ip, agent){
         }
     }
 
-    document.getElementById('messOne').innerHTML = errorMess[lang].messOne;
-    document.getElementById('messTwo').innerHTML = errorMess[lang].messTwo;
-    document.getElementById('messThree').innerHTML = errorMess[lang].messThree;
-    document.getElementById('messFour').innerHTML = errorMess[lang].messFour;
+    document.getElementById('messOne').innerHTML = errorMess[json.language].messOne;
+    document.getElementById('messTwo').innerHTML = errorMess[json.language].messTwo;
+    document.getElementById('messThree').innerHTML = errorMess[json.language].messThree;
+    document.getElementById('messFour').innerHTML = errorMess[json.language].messFour;
 
-    document.getElementById('usersId').value = id;
-    document.getElementById('usersIp').value = ip;
-    document.getElementById('usersAgent').value = agent;
-
-    const dialog = document.getElementById("errorLoginDialog");
-    dialog.showModal();    
+    document.getElementById('usersId').value = json.id;
+    document.getElementById('usersIp').value = json.ip;
+    document.getElementById('usersAgent').value = json.agent;
+    document.getElementById('usersLang').value = json.language;
 }

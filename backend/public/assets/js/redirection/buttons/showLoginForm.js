@@ -1,6 +1,4 @@
-import { RedirectionActions } from "./redirectionActions.js";
-
-RedirectionActions.prototype.showLoginForm = function(form, parentClass, btn){
+export function showLoginForm(form, parentClass, btn){
     const parentDiv = btn.closest("div");
     if (parentDiv.dataset.listener === 'off'){
         parentDiv.dataset.listener = 'on';

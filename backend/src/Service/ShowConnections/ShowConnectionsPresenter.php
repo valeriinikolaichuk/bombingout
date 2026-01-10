@@ -22,7 +22,7 @@
                         'discipline' => $c->getDiscipline(),
                         'attempt'    => $c->getAttempt(),
                         'lang'       => $c->getLang(),
-                        'grpPage'    => $c->getGrpPage()
+                        'grpPage'    => $c->getGrpPage(),
                     ],
                     $connections
                 )

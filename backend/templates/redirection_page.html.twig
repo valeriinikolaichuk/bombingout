@@ -60,14 +60,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="module" src="{{ asset('assets/js/redirection/asyncJson/checkConnectionsData.js') }}"></script>
-    <script src="{{ asset('assets/js/redirection/asyncJson/checkAdmin.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/redirection/asyncJson/deleteOldConnections.js') }}"></script>
-    <script src="{{ asset('assets/js/redirection/checkConnectionsButtons.js') }}"></script>
-
-    <script type="module" src="{{ asset('assets/js/redirection/listenersActions.js') }}"></script>
-    <script src="{{ asset('assets/js/redirection/eventsListeners.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/login/login_functions/login.js') }}"></script>
-
-    <script src="{{ asset('assets/js/redirection/initRedirectionPage.js') }}"></script>
+    <script type="module" src="{{ asset('assets/js/redirection/initRedirectionPage.js') }}"></script>
 {% endblock %}

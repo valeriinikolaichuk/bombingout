@@ -1,4 +1,4 @@
-import { checkConnectionsData } from './checkConnectionsData.js';
+import { checkConnectionsData } from '../../checkConnectionsData.js';
 
 export async function deleteOldConnections(){
     let data = {

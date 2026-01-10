@@ -1,6 +1,4 @@
-import { RedirectionActions } from "./redirectionActions.js";
-
-RedirectionActions.prototype.handleClick = function(btn, parentClass){
+export function handleClick(btn, parentClass){
     if (this.activeForm) {
         this.activeForm.replaceWith(this.originalBtn);
         this.activeForm = null;

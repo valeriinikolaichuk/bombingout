@@ -21,7 +21,7 @@
 
             $usersData = $factory -> getUsersData($request);
             $result = $service -> getConnections($usersData);
-
+//dd($result);
             return new JsonResponse(
                 $presenter -> success($result)
             );

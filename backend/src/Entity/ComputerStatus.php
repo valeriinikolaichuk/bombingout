@@ -111,12 +111,12 @@ class ComputerStatus
         return $this;
     }
 
-    public function getIpAddress(): ?string { return $this->ip_address; }
+    public function getIpAddress(): ?string { return $this->ip_address ?? ''; }
     public function setIpAddress(?string $ip_address): static { 
         $this->ip_address = $ip_address; 
         return $this; }
 
-    public function getUserAgent(): ?string { return $this->user_agent; }
+    public function getUserAgent(): ?string { return $this->user_agent ?? ''; }
     public function setUserAgent(?string $user_agent): static { 
         $this->user_agent = $user_agent; 
         return $this; }

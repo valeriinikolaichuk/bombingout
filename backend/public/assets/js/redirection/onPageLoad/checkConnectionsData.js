@@ -1,7 +1,6 @@
 import { showConnections } from './modules/showConnections.js';
 import { dialogContent } from './modules/dialogContent.js';
-
-const dialog = document.getElementById('connectionDialog');
+import { checkConnectionsButtons } from './modules/checkConnectionsButtons.js';
 
 export async function checkConnectionsData(){
     let data = {
@@ -27,5 +26,9 @@ export async function checkConnectionsData(){
 
     showConnections(json);
     dialogContent(window.appData.lang);
+
+    const dialog = document.getElementById('connectionDialog');
     dialog.showModal();
+
+    checkConnectionsButtons(dialog);
 }

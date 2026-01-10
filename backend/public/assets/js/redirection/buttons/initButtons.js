@@ -1,4 +1,6 @@
-function eventsListeners(){
+import { RedirectionActions } from './redirectionActions.js';
+
+export function initButtons(){
     const redirectionAction = new RedirectionActions();
 
     document.querySelectorAll('.button_comp_status').forEach((btn) => {

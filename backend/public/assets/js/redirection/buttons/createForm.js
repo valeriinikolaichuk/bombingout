@@ -1,6 +1,4 @@
-import { RedirectionActions } from "./redirectionActions.js";
-
-RedirectionActions.prototype.createForm = function(parentClass, btn){
+export function createForm(parentClass, btn){
     const form = document.createElement("form");
     form.method = "POST";
 

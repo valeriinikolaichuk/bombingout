@@ -1,4 +1,4 @@
-async function checkAdmin(){
+export async function checkAdmin(){
     let data = {
         id_user: window.appData.num
     };

@@ -3,7 +3,6 @@
 {% block title %}login{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
-{#    {{ vite_entry_script_tags('main') }}#}
 {% endblock %}
 
 {% block body %}
@@ -15,8 +14,8 @@
             <button id="en" class="languageButton" style="background-color: rgb(252, 78, 78);" type="button">EN</button>
             <button id="uk" class="languageButton" style="background-color: white;" type="button">UK</button>
             <button id="pl" class="languageButton" style="background-color: white;" type="button">PL</button>
-
         </div>
+
         <div class="buttons_box">
             <button class="buttonStyle" type="button" data-popup="about" data-en="ABOUT" data-uk="ІНФО" data-pl="INFO">ABOUT</button>
             <button class="buttonStyle" type="button" data-popup="clients" data-en="CLIENTS" data-uk="КЛІЄНТИ" data-pl="CLIENCI">CLIENTS</button>
@@ -40,7 +39,6 @@
 
     {% include 'components/info.html.twig' %}
     {% include 'components/errorLoginPopup.html.twig' %}
-
 {% endblock %}
 
 {% block javascripts %}
@@ -53,11 +51,7 @@
             window.$RefreshSig$ = () => (type) => type
             window.__vite_plugin_react_preamble_installed__ = true
         </script>
-
         <script type="module" src="http://localhost:5173/src/main.jsx"></script>
     {% endif %}
-
     <script type="module" src="{{ asset('assets/js/login/initLoginPage.js') }}"></script>
-    <script type="module" src="{{ asset('assets/js/login/login_functions/login.js') }}"></script>
-    <script src="{{ asset('assets/js/login/login_functions/preventReloginButtons.js') }}"></script>
 {% endblock %}
