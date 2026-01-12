@@ -1,5 +1,5 @@
 <?php
-    namespace App\Controller;
+    namespace App\Controller\Redirection;
 
     use App\Service\Redirection\ActionFactory;
 

@@ -2,7 +2,8 @@ import { checkConnectionsData } from '../../checkConnectionsData.js';
 
 export async function deleteOldConnections(){
     let data = {
-        id_user: window.appData.num
+        id_user: window.appData.num,
+        id_status: window.appData.num_st
     };
 
     let response = await fetch("/api/delete_old_connections", {

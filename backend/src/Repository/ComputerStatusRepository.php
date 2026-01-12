@@ -35,5 +35,16 @@
             $entity -> setCompStatus($status);
             $this->_em->flush();
         }
+
+        public function findByIdStatus(array $criteria): ?ComputerStatus
+        {
+            return $this->createQueryBuilder('cs')
+                ->andWhere('cs.users_ID = :userId')
+                ->andWhere('cs.comp_status = :compStatus')
+                ->setParameter('userId', $criteria['users_ID'])
+                ->setParameter('compStatus', $criteria['comp_status'])
+                ->getQuery()
+                ->getOneOrNullResult();
+        }
     }
 ?>

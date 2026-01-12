@@ -8,8 +8,10 @@ export function initButtons(){
             event.stopPropagation();
 
             const parentDiv = btn.closest("div");
-            if (parentDiv){
-                if (parentDiv.style.backgroundColor === "rgb(200,200,200)"){
+
+            if (btn){
+                if (btn.style.backgroundColor === "rgb(200, 200, 200)"){
+                   console.log(btn.style.backgroundColor); 
                     return;
                 }
 

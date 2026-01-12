@@ -1,5 +1,5 @@
 <?php
-    namespace App\Controller;
+    namespace App\Controller\Login;
 
     use App\Service\Login\DeleteOldLogin\DeletePrevRegContextBuilder;
     use App\Service\Login\DeleteOldLogin\DeletePrevRegChecker;

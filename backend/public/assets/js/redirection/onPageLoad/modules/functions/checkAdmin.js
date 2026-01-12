@@ -3,7 +3,7 @@ export async function checkAdmin(){
         id_user: window.appData.num
     };
 
-    let response = await fetch("/api/check_computer_status", {
+    let response = await fetch("/api/check_admin", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
@@ -11,5 +11,8 @@ export async function checkAdmin(){
 
     let statusValue = await response.json();
 
-    return statusValue.status;
+    if (statusValue.status !== 'not found'){
+        const admin = document.getElementById('admin');
+        admin.style.backgroundColor = "rgb(200,200,200)";
+   }
 }
