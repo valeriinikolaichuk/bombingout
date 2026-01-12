@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\ShowConnections;
+    namespace App\Service\Redirection\ShowConnections;
 
     use App\Entity\ComputerStatus;
 

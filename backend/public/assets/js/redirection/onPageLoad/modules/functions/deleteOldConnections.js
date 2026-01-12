@@ -2,18 +2,19 @@ import { checkConnectionsData } from '../../checkConnectionsData.js';
 
 export async function deleteOldConnections(){
     let data = {
-        id_user: window.appData.num,
-        id_status: window.appData.num_st
+        usersId: window.appData.num,
+        id_status: window.appData.num_st,
+        hasDeleteCriteria: 'delete all by usersId'
     };
 
-    let response = await fetch("/api/delete_old_connections", {
+    let response = await fetch("/api/deleteConnection", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     })
 
     if (!response.ok){
-        throw new Error("error by path: /api/delete_old_connections");
+        throw new Error("error by path: /api/deleteConnection");
     }
 
     let tableData = await response.json();

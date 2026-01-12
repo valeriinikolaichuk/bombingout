@@ -1,25 +1,25 @@
 <?php
-    namespace App\Service\Login\DeleteOldLogin\DeletePreviousReg;
+    namespace App\Service\DeleteConnection\CleanConnection;
 
-    use App\Service\Login\DeleteOldLogin\DeletePreviousRegInterface;
-    use App\Service\Login\DeleteOldLogin\DeletePrevRegContext;
+    use App\Service\DeleteConnection\DeleteConnectionInterface;
+    use App\Service\DeleteConnection\DeleteConnectionContext;
 
     use Doctrine\DBAL\Connection;
 
-    class DeletePreviousRegService implements DeletePreviousRegInterface
+    class DeletePreviousRegService implements DeleteConnectionInterface
     {
         public function __construct(private Connection $db) {}
 
-        public function supports(DeletePrevRegContext $context): bool
+        public function supports(DeleteConnectionContext $context): bool
         {
             return 
-                $context -> hasDeleteCriteria && 
+                $context -> hasDeleteCriteria === 'del previous registration' && 
                 $context -> usersId !== null && 
                 $context -> usersIp !== null &&
                 $context -> usersAgent !== null;
         }
 
-        public function execute(DeletePrevRegContext $context): array 
+        public function execute(DeleteConnectionContext $context): array 
         {
             $usersId = $context -> usersId;
             $usersIp = $context -> usersIp;

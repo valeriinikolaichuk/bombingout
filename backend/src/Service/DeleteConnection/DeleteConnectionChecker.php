@@ -1,12 +1,12 @@
 <?php
-    namespace App\Service\Login\DeleteOldLogin;
+    namespace App\Service\DeleteConnection;
 
-    class DeletePrevRegChecker
+    class DeleteConnectionChecker
     {
-        /** @var DeletePreviousRegInterface[] */
+        /** @var DeleteConnectionInterface[] */
         public function __construct(private iterable $checkersDel) {}
 
-        public function deleteEntry(DeletePrevRegContext $context): array
+        public function deleteEntry(DeleteConnectionContext $context): array
         {
             foreach ($this -> checkersDel as $checker) {
                 if ($checker -> supports($context)) {

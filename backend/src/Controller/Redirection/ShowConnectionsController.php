@@ -1,9 +1,9 @@
 <?php
     namespace App\Controller\Redirection;
 
-    use App\Service\ShowConnections\UserDataFactory;
-    use App\Service\ShowConnections\ConnectionsFactory;
-    use App\Service\ShowConnections\ShowConnectionsPresenter;
+    use App\Service\Redirection\ShowConnections\UserDataFactory;
+    use App\Service\Redirection\ShowConnections\ConnectionsFactory;
+    use App\Service\Redirection\ShowConnections\ShowConnectionsPresenter;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;

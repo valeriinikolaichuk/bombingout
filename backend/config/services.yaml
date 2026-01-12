@@ -37,8 +37,6 @@ services:
             - '../src/Service/Login/Strategy/Policy/*'
             - '../src/Service/Login/LoginCompleted/*'
             - '../src/Service/Login/Sessions/SessionService/*'
-            - '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
-            - '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
         autowire: true
         autoconfigure: true
 
@@ -154,74 +152,52 @@ services:
         arguments:
             $actions: !tagged_iterator app.login_session_action
 
-    App\Service\Login\DeleteOldLogin\DeleteFiller\:
-        resource: '../src/Service/Login/DeleteOldLogin/DeleteFiller/*'
+# DeleteConnection Service
+
+    App\Service\DeleteConnection\:
+        resource: '../src/Service/DeleteConnection/*'
+        exclude: 
+            - '../src/Service/DeleteConnection/DeleteFiller/*'
+            - '../src/Service/DeleteConnection/CleanConnection/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\DeleteConnection\DeleteFiller\:
+        resource: '../src/Service/DeleteConnection/DeleteFiller/*'
         autowire: true
         autoconfigure: true
         tags: ['app.delete_filler']
 
-    App\Service\Login\DeleteOldLogin\DeletePrevRegContextBuilder:
+    App\Service\DeleteConnection\DeleteConnectionContextBuilder:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
             $fillersDel: !tagged_iterator app.delete_filler
 
-    App\Service\Login\DeleteOldLogin\DeletePreviousReg\:
-        resource: '../src/Service/Login/DeleteOldLogin/DeletePreviousReg/*'
+    App\Service\DeleteConnection\CleanConnection\:
+        resource: '../src/Service/DeleteConnection/CleanConnection/*'
         autowire: true
         autoconfigure: true
     
-    App\Service\Login\DeleteOldLogin\DeletePreviousReg\DeletePreviousRegFailure:
+    App\Service\DeleteConnection\CleanConnection\DeleteConnectionFailure:
+        tags:
+            - { name: 'app.delete_checker', priority: 1000 }
+    
+    App\Service\DeleteConnection\CleanConnection\DeleteAllConnections:
+        tags:
+            - { name: 'app.delete_checker', priority: 0 }
+
+    App\Service\DeleteConnection\CleanConnection\DeletePreviousRegService:
         tags:
             - { name: 'app.delete_checker', priority: -1000 }
 
-    App\Service\Login\DeleteOldLogin\DeletePreviousReg\DeletePreviousRegService:
-        tags:
-            - { name: 'app.delete_checker', priority: 100 }
-
-    App\Service\Login\DeleteOldLogin\DeletePrevRegChecker:
+    App\Service\DeleteConnection\DeleteConnectionChecker:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
             $checkersDel: !tagged_iterator app.delete_checker
-
-# ShowConnections Service
-
-    App\Service\ShowConnections\:
-        resource: '../src/Service/ShowConnections/*'
-        exclude: 
-            - '../src/Service/ShowConnections/GetData/*'
-            - '../src/Service/ShowConnections/Connections/*'
-        autowire: true
-        autoconfigure: true
-
-    App\Service\ShowConnections\GetData\:
-        resource: '../src/Service/ShowConnections/GetData/*'
-        autowire: true
-        autoconfigure: true
-        tags: ['app.conn_data']
-
-    App\Service\ShowConnections\UserDataFactory:
-        public: true
-        autowire: true
-        autoconfigure: true
-        arguments:
-            $getData: !tagged_iterator app.conn_data
-
-    App\Service\ShowConnections\Connections\:
-        resource: '../src/Service/ShowConnections/Connections/*'
-        autowire: true
-        autoconfigure: true
-        tags: ['app.connections']
-
-    App\Service\ShowConnections\ConnectionsFactory:
-        public: true
-        autowire: true
-        autoconfigure: true
-        arguments:
-            $connections: !tagged_iterator app.connections
 
 # Redirection Service
 
@@ -231,6 +207,8 @@ services:
             - '../src/Service/Redirection/Actions/*'
             - '../src/Service/Redirection/RequestHandler/*'
             - '../src/Service/Redirection/CheckAdmin/Filler/*'
+            - '../src/Service/Redirection/ShowConnections/GetData/*'
+            - '../src/Service/Redirection/ShowConnections/Connections/*'
         autowire: true
         autoconfigure: true
 
@@ -272,3 +250,29 @@ services:
         autoconfigure: true
         arguments:
             $fillers: !tagged_iterator app.check_admin
+
+    App\Service\Redirection\ShowConnections\GetData\:
+        resource: '../src/Service/Redirection/ShowConnections/GetData/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.conn_data']
+
+    App\Service\Redirection\ShowConnections\UserDataFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $getData: !tagged_iterator app.conn_data
+
+    App\Service\Redirection\ShowConnections\Connections\:
+        resource: '../src/Service/Redirection/ShowConnections/Connections/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.connections']
+
+    App\Service\Redirection\ShowConnections\ConnectionsFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $connections: !tagged_iterator app.connections

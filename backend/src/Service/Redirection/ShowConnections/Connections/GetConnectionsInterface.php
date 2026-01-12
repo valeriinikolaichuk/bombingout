@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\ShowConnections\Connections;
+    namespace App\Service\Redirection\ShowConnections\Connections;
 
-    use App\Service\ShowConnections\UserDataDTO;
+    use App\Service\Redirection\ShowConnections\UserDataDTO;
 
     interface GetConnectionsInterface
     {

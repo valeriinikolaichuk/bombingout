@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\ShowConnections;
+    namespace App\Service\Redirection\ShowConnections;
 
     use Symfony\Component\HttpFoundation\Request;
 

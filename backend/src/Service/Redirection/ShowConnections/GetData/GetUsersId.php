@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\ShowConnections\GetData;
+    namespace App\Service\Redirection\ShowConnections\GetData;
 
-    use App\Service\ShowConnections\UserDataDTO;
+    use App\Service\Redirection\ShowConnections\UserDataDTO;
 
     use Symfony\Component\HttpFoundation\Request;
 

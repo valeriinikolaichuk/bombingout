@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\ShowConnections;
+    namespace App\Service\Redirection\ShowConnections;
 
-    use App\Service\ShowConnections\Connections\GetConnectionsInterface;
+    use App\Service\Redirection\ShowConnections\Connections\GetConnectionsInterface;
     use App\Exception\UnprocessableEntityException;
 
     class ConnectionsFactory

@@ -11,17 +11,18 @@ export function deletePreviousReg(){
         let data = {
             usersId: document.getElementById("usersId").value,
             usersIp: document.getElementById("usersIp").value,
-            usersAgent: document.getElementById("usersAgent").value
+            usersAgent: document.getElementById("usersAgent").value,
+            hasDeleteCriteria: 'del previous registration'
         };
 
-        let response = await fetch("/api/delPreviousReg", {
+        let response = await fetch("/api/deleteConnection", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)
         });
 
         if (!response.ok){
-            throw new Error('error by path: /api/delPreviousReg');
+            throw new Error('error by path: /api/deleteConnection');
         }
 
         let json = await response.json();

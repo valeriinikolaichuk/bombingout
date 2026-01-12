@@ -1,21 +1,20 @@
 <?php
-    namespace App\Service\Login\DeleteOldLogin;
+    namespace App\Service\DeleteConnection;
 
     use Symfony\Component\HttpFoundation\Request;
 
-    class DeletePrevRegContextBuilder
+    class DeleteConnectionContextBuilder
     {
-        /** @var DeletePrevRegFillerInterface[] */
+        /** @var DeleteConnectionFillerInterface[] */
         public function __construct(private iterable $fillersDel) {}
 
-        public function build(Request $request): DeletePrevRegContext
+        public function build(Request $request): DeleteConnectionContext
         {
-            $context = new DeletePrevRegContext();
+            $context = new DeleteConnectionContext();
 
             foreach ($this -> fillersDel as $filler) {
                 if ($filler -> supports($request)) {
                     $filler -> fill($context, $request);
-                    break;
                 }
             }
 

@@ -1,6 +1,7 @@
 export function createForm(parentClass, btn){
     const form = document.createElement("form");
     form.method = "POST";
+    form.action = "/redirection";
 
     const submitBtn = document.createElement("button");
     submitBtn.className = "button_comp_status";

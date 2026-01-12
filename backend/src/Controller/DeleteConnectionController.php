@@ -1,20 +1,20 @@
 <?php
-    namespace App\Controller\Login;
+    namespace App\Controller;
 
-    use App\Service\Login\DeleteOldLogin\DeletePrevRegContextBuilder;
-    use App\Service\Login\DeleteOldLogin\DeletePrevRegChecker;
+    use App\Service\DeleteConnection\DeleteConnectionContextBuilder;
+    use App\Service\DeleteConnection\DeleteConnectionChecker;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\Routing\Annotation\Route;
 
-    class DeletePrevRegInController extends AbstractController {
-        #[Route('/api/delPreviousReg', name: 'del_previous_reg', methods: ['POST'])]
+    class DeleteConnectionController extends AbstractController {
+        #[Route('/api/deleteConnection', name: 'delete_connection', methods: ['POST'])]
         public function deletePrevious(
             Request $request,
-            DeletePrevRegContextBuilder $builder,
-            DeletePrevRegChecker $delService
+            DeleteConnectionContextBuilder $builder,
+            DeleteConnectionChecker $delService
             ): JsonResponse {
 
             $context = $builder -> build($request);

@@ -1,8 +1,8 @@
 <?php
-    namespace App\Service\ShowConnections\Connections;
+    namespace App\Service\Redirection\ShowConnections\Connections;
 
     use App\Repository\ComputerStatusRepository;
-    use App\Service\ShowConnections\UserDataDTO;
+    use App\Service\Redirection\ShowConnections\UserDataDTO;
 
     class GetConnectionsById implements GetConnectionsInterface
     {

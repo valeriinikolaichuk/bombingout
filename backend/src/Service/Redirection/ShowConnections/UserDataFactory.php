@@ -1,8 +1,8 @@
 <?php
-    namespace App\Service\ShowConnections;
+    namespace App\Service\Redirection\ShowConnections;
 
     use Symfony\Component\HttpFoundation\Request;
-    use App\Service\ShowConnections\GetData\GetDataInterface;
+    use App\Service\Redirection\ShowConnections\GetData\GetDataInterface;
 
     class UserDataFactory
     {
