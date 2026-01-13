@@ -25,6 +25,7 @@
             {
                 $context -> usersId   = (int)$data['usersId'];
                 $context -> id_status = (int)$data['id_status'];
+                $context -> hasDeleteCriteria = (string)$data['hasDeleteCriteria'];
             }
         }
     }

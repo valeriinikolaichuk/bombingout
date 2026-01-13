@@ -182,7 +182,7 @@ services:
     
     App\Service\DeleteConnection\CleanConnection\DeleteConnectionFailure:
         tags:
-            - { name: 'app.delete_checker', priority: 1000 }
+            - { name: 'app.delete_checker', priority: -1000 }
     
     App\Service\DeleteConnection\CleanConnection\DeleteAllConnections:
         tags:
@@ -190,7 +190,7 @@ services:
 
     App\Service\DeleteConnection\CleanConnection\DeletePreviousRegService:
         tags:
-            - { name: 'app.delete_checker', priority: -1000 }
+            - { name: 'app.delete_checker', priority: 1000 }
 
     App\Service\DeleteConnection\DeleteConnectionChecker:
         public: true

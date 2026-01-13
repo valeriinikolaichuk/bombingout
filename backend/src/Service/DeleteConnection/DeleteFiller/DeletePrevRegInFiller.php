@@ -27,6 +27,7 @@
                 $context -> usersId    = (int)$data['usersId'];
                 $context -> usersIp    = (string)$data['usersIp'];
                 $context -> usersAgent = (string)$data['usersAgent'];
+                $context -> hasDeleteCriteria = (string)$data['hasDeleteCriteria'];
             }
         }
     }
