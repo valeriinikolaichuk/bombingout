@@ -20,7 +20,9 @@
             $context = $builder -> build($request);
             $result = $delService -> deleteEntry($context);
 
-            return new JsonResponse($result);
+            return new JsonResponse(
+                $result -> toArray()
+            );
         }
     }
 ?>

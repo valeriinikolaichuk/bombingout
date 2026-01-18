@@ -3,13 +3,20 @@ import { deleteOldConnections } from './functions/deleteOldConnections.js';
 
 export function checkConnectionsButtons(dialog){
     const continueBtn = document.getElementById('continueBtn');
-    continueBtn.addEventListener('click', async() => {
+    const deleteBtn = document.getElementById('deleteBtn');
+
+    continueBtn.replaceWith(continueBtn.cloneNode(true));
+    deleteBtn.replaceWith(deleteBtn.cloneNode(true));
+
+    const newContinueBtn = document.getElementById('continueBtn');
+    const newDeleteBtn = document.getElementById('deleteBtn');
+
+    newContinueBtn.addEventListener('click', async() => {
         await checkAdmin();
         dialog.close();
     });
 
-    const deleteBtn = document.getElementById('deleteBtn');
-    deleteBtn.addEventListener('click', () => {
+    newDeleteBtn.addEventListener('click', () => {
         deleteOldConnections();
         dialog.close();
     });

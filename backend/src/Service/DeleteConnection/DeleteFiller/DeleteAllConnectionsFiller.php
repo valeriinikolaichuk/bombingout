@@ -2,7 +2,7 @@
     namespace App\Service\DeleteConnection\DeleteFiller;
 
     use App\Service\DeleteConnection\DeleteConnectionFillerInterface;
-    use App\Service\DeleteConnection\DeleteConnectionContext;
+    use App\Service\DeleteConnection\DeleteConnectionDTO\DeleteConnectionContext;
 
     use Symfony\Component\HttpFoundation\Request;
 

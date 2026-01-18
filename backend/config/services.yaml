@@ -179,18 +179,7 @@ services:
         resource: '../src/Service/DeleteConnection/CleanConnection/*'
         autowire: true
         autoconfigure: true
-    
-    App\Service\DeleteConnection\CleanConnection\DeleteConnectionFailure:
-        tags:
-            - { name: 'app.delete_checker', priority: -1000 }
-    
-    App\Service\DeleteConnection\CleanConnection\DeleteAllConnections:
-        tags:
-            - { name: 'app.delete_checker', priority: 0 }
-
-    App\Service\DeleteConnection\CleanConnection\DeletePreviousRegService:
-        tags:
-            - { name: 'app.delete_checker', priority: 1000 }
+        tags: ['app.delete_checker']
 
     App\Service\DeleteConnection\DeleteConnectionChecker:
         public: true
@@ -206,6 +195,7 @@ services:
         exclude: 
             - '../src/Service/Redirection/Actions/*'
             - '../src/Service/Redirection/RequestHandler/*'
+            - '../src/Service/Redirection/RequestAction/*'
             - '../src/Service/Redirection/CheckAdmin/Filler/*'
             - '../src/Service/Redirection/ShowConnections/GetData/*'
             - '../src/Service/Redirection/ShowConnections/Connections/*'
@@ -218,7 +208,7 @@ services:
         autoconfigure: true
         tags: ['app.redirect_actions']
 
-    App\Service\Redirection\ActionFactory:
+    App\Service\Redirection\PageActionFactory:
         public: true
         autowire: true
         autoconfigure: true
@@ -237,6 +227,19 @@ services:
         autoconfigure: true
         arguments:
             $handlers: !tagged_iterator app.request_handler
+
+    App\Service\Redirection\RequestAction\:
+        resource: '../src/Service/Redirection/RequestAction/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.request_action']
+
+    App\Service\Redirection\RequestActionFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $requestActions: !tagged_iterator app.request_action
 
     App\Service\Redirection\CheckAdmin\Filler\:
         resource: '../src/Service/Redirection/CheckAdmin/Filler/*'

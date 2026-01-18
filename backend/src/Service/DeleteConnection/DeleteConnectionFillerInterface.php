@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\DeleteConnection;
 
+    use App\Service\DeleteConnection\DeleteConnectionDTO\DeleteConnectionContext;
+
     use Symfony\Component\HttpFoundation\Request;
 
     interface DeleteConnectionFillerInterface

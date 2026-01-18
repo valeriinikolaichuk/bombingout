@@ -3,27 +3,22 @@
 
     use App\Service\Redirection\RequestHandler;
 
-    use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\HttpFoundation\Response;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
-    use Symfony\Component\HttpFoundation\RedirectResponse;
-
-    class LogoutAction implements ActionInterface
+    class LogoutAction implements PageActionInterface
     {
-        public function __construct(private RequestHandler $handler) {}
+        public function __construct(
+            private RequestHandler $handler
+        ) {}
 
         public function supports(string $action): bool
         {
             return $action === 'logout';
         }
 
-        public function action(Request $request, string $action): Response
+        public function action(string $action): string
         {
-            /** @var SessionInterface $session */
-            $session = $request -> getSession();
-            $this -> handler -> handle($session, $action);
+            $result = $this -> handler -> handle($action);
 
-            return new RedirectResponse('/');
+            return $result;
         }
     }
 ?>

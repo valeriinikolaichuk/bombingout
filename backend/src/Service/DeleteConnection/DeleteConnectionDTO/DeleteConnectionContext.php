@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\DeleteConnection;
+    namespace App\Service\DeleteConnection\DeleteConnectionDTO;
 
     class DeleteConnectionContext
     {

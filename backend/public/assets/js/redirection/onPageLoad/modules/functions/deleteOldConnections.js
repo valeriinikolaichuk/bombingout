@@ -19,7 +19,7 @@ export async function deleteOldConnections(){
 
     let tableData = await response.json();
 
-    if (tableData == 'ok'){
+    if (tableData.message == 'ok'){
         const message = {
             en: "Connections have been deleted",
             uk: "3'єднання видалені",

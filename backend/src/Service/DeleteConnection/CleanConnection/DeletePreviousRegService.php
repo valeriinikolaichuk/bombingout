@@ -2,7 +2,8 @@
     namespace App\Service\DeleteConnection\CleanConnection;
 
     use App\Service\DeleteConnection\DeleteConnectionInterface;
-    use App\Service\DeleteConnection\DeleteConnectionContext;
+    use App\Service\DeleteConnection\DeleteConnectionDTO\DeleteConnectionContext;
+    use App\Service\DeleteConnection\DeleteConnectionDTO\CleanConnectionDTO;
 
     use Doctrine\DBAL\Connection;
 
@@ -19,8 +20,11 @@
                 $context -> usersAgent !== null;
         }
 
-        public function execute(DeleteConnectionContext $context): array 
-        {
+        public function execute(
+            CleanConnectionDTO $dto, 
+            DeleteConnectionContext $context
+        ): CleanConnectionDTO {
+
             $usersId = $context -> usersId;
             $usersIp = $context -> usersIp;
             $usersAgent = $context -> usersAgent;
@@ -36,10 +40,10 @@
                 ]
             );
 
-            return [
-                'success' => true, 
-                'message' => 'entry deleted'
-            ];
+            $dto -> success = true;
+            $dto -> message = 'entry deleted';
+
+            return $dto;
         }
     }
 ?>

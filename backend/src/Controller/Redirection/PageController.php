@@ -9,7 +9,8 @@
         #[Route(
             '/{page}', 
             name: 'page', 
-            requirements: ['page' => 'admin|weighingIn|scoreboard|order|bars|information|timer']
+            requirements: ['page' => 'admin|weighingIn|scoreboard|order|bars|information|timer'], 
+            methods: ['GET']
         )]
         public function show(string $page): Response 
         {

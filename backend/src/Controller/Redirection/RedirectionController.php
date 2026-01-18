@@ -1,7 +1,7 @@
 <?php
     namespace App\Controller\Redirection;
 
-    use App\Service\Redirection\ActionFactory;
+    use App\Service\Redirection\PageActionFactory;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
@@ -12,12 +12,14 @@
         #[Route('/redirect', name: 'redirection', methods: ['POST'])]
         public function redirectToPage(
             Request $request,
-            ActionFactory $factory
+            PageActionFactory $factory
         ): Response {
 
             $action = $request -> request ->get('action');
 
-            return $factory -> handle($action, $request);
+            $result = $factory -> handle($action);
+
+            return $this ->redirectToRoute($result);
         }
     }
 ?>
