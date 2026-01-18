@@ -6,7 +6,7 @@
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    class SetClientsStatus implements RequestHandlerInterface
+    class SetStatus implements RequestHandlerInterface
     {
         public function __construct(
             private RequestActionFactory $factory
