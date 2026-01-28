@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}bars{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/bars.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plates.css') }}">
+{% endblock %}
+
+{% block body %}
+    <script>
+        window.appData = {{ {
+            lang: lang,
+            num: users_id,
+            num_st: id_status,
+            status: status
+        }|json_encode|raw }};
+    </script>
+
+    <div style="width: 100%; height: 100%;">
+        <div style="padding-top: 2px; padding-left: 10px;">
+            {% include 'clients/components/button_redirection.html.twig' %}
+        </div>
+        <div class="plates_box">
+            <div class="plates"> 
+                <div class="barbell"></div> 
+                <div class="white"></div>
+{#                   {% if plate is defined %}
+                        {% include 'components/plates.html.twig' %}
+                    {% endif %}#}
+                <div>
+                    <div class="grip"></div>
+                    <div class="cylinder"></div>
+                    <div class="rabbet"></div>
+                    <div class="cylinder_2"></div>
+                    <div class="end">
+                        <div class="cutout-top"></div>
+                        <div class="latch"></div>
+                        <div class="cutout-bottom"></div>
+                    </div>
+                </div>
+            </div>
+{#}            <?php
+                if (isset($weight)){
+                    echo '<div class="container"><div class="attemptstyle"><b>'.Config::$attempt.' attempt</b></div>';
+                    echo '<div class="weightstyle"><b>'.$weight.'</b></div></div>';
+                }
+            ?>
+            {% if weight is defined %}
+            <div class="container">
+                <div class="attemptstyle">
+                    <b>{{ attempt }} attempt</b>
+                </div>
+                <div class="weightstyle">
+                    <b>{{ weight }}</b>
+                </div>
+            </div>
+        {% endif %}#}
+        </div>
+        <div>
+            <table>
+{#                <?php
+                    if (isset($participant)){
+                        require_once 'components/bars_table.php';
+                    } else {
+                        echo '<tr><td class="load" style="text-align: center;"><h1 data-en="DISCS SEQUENCE" data-uk="ПОРЯДОК ДИСКІВ" data-pl="KOLEJNOŚĆ TALERZY"></h1></td></tr>';
+                    }
+                ?>
+                  {% if participant is defined %}
+                {% include 'components/bars_table.twig' %}
+            {% else %}
+                <tr>
+                    <td class="load" style="text-align: center;">
+                        <h1
+                            data-en="DISCS SEQUENCE"
+                            data-uk="ПОРЯДОК ДИСКІВ"
+                            data-pl="KOLEJNOŚĆ TALERZY">
+                        </h1>
+                    </td>
+                </tr>
+            {% endif %}#}
+            </table>
+        </div>
+    </div>
+    {#    {% include 'templates_admin/postForm.html.twig' %}#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
+    {#<?php
+        require_once 'templates_admin/postForm.php';
+
+        echo '<script>const lang = "'.Config::$lang.'";';
+        echo ' const id_status = '.Config::$id_status.'</script>';
+    ?>
+    <script src="assets/switchLanguage.js"></script>
+    <script src="assets/checkSessionStatus.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage(lang);
+                        checkSessionStatus();
+            setInterval(checkSessionStatus, 20 * 60 * 1000);
+            let lastCheck = Date.now();
+            setInterval(() => {
+                const now = Date.now();
+                if (now - lastCheck > 120 * 1000){
+                    console.log('waking up');
+                    checkSessionStatus();
+                }
+                lastCheck = now;
+            }, 10000);
+        });
+    </script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="assets/socket_client.js"></script>
+</body>
+</html>#}
+{% endblock %}

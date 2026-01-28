@@ -14,11 +14,14 @@
             return $action === 'logout';
         }
 
-        public function action(string $action): string
+        public function action(string $action): array
         {
             $result = $this -> handler -> handle($action);
 
-            return $result;
+            return [
+                'route_name' => 'home',
+                'parameters' => []
+            ];
         }
     }
 ?>

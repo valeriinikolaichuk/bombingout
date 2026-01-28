@@ -2,9 +2,8 @@
     namespace App\Service\Redirection\RequestAction;
 
     use App\Service\Redirection\Persistence\ComputerStatusWriter;
-    use App\Enum\PageEnum;
 
-    class SetClientsStatus implements RequestActionInterface
+    class UnsetClientsStatus implements RequestActionInterface
     {
         public function __construct(
             private ComputerStatusWriter $writer, 
@@ -12,7 +11,7 @@
 
         public function supports(string $action): bool
         {
-            return PageEnum::tryFrom($action) !== null;
+            return $action === 'redirect';
         }
 
         public function action(
@@ -22,9 +21,9 @@
 
             $idStatus = (int)$data['id_status'];
 
-            $this -> writer -> saveData($idStatus, $action);
+            $this -> writer -> saveData($idStatus, '');
 
-            return $action;
+            return 'success';
         }
     }
 ?>

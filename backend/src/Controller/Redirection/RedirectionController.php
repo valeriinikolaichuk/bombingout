@@ -9,7 +9,7 @@
     use Symfony\Component\Routing\Annotation\Route;
 
     class RedirectionController extends AbstractController {
-        #[Route('/redirect', name: 'redirection', methods: ['POST'])]
+        #[Route('/redirect', name: 'redirection', methods: ['GET', 'POST'])]
         public function redirectToPage(
             Request $request,
             PageActionFactory $factory
@@ -19,7 +19,10 @@
 
             $result = $factory -> handle($action);
 
-            return $this ->redirectToRoute($result);
+            return $this ->redirectToRoute(
+                $result['route_name'],
+                $result['parameters']
+            );
         }
     }
 ?>

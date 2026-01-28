@@ -12,7 +12,12 @@
         {
             return 
                 $session -> has('status') && 
-                $session -> get('status') !== 'participant';
+                $session -> get('status') !== 'participant' &&
+                $session -> has('id') &&
+                $session -> has('id_status') &&
+                $session -> has('language') && 
+                $session -> has('status') &&
+                !$session -> has('action');
         }
 
         public function resolve(Request $request, SessionInterface $session): array
@@ -23,6 +28,7 @@
                     'lang'      => $session -> get('language'),
                     'users_id'  => $session -> get('id'),
                     'id_status' => $session -> get('id_status'),
+                    'status'    => $session -> get('status')
                 ],
             ];
         }

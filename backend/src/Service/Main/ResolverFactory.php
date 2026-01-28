@@ -1,19 +1,26 @@
 <?php
     namespace App\Service\Main;
 
+    use App\Service\Http\SessionAwareTrait;
     use App\Exception\NoPageResolverFoundException;
 
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\RequestStack;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class ResolverFactory
     {
+        use SessionAwareTrait;
+
         /** @var iterable<PageResolverInterface> */
+        private iterable $resolvers;
+
         public function __construct(
-            private RequestStack $requestStack,
-            private iterable $resolvers
-        ) {}
+            RequestStack $requestStack,
+            iterable $resolvers
+        ) {
+            $this -> requestStack = $requestStack;
+            $this -> resolvers = $resolvers;           
+        }
 
         public function resolve(Request $request): array
         {
@@ -26,17 +33,6 @@
             }
 
             throw new NoPageResolverFoundException($request -> getPathInfo());
-        }
-
-        private function getSession(): SessionInterface
-        {
-            $request = $this -> requestStack ->getCurrentRequest();
-
-            if (!$request || !$request ->hasSession()) {
-                throw new \LogicException('Session is not available');
-            }
-
-            return $request ->getSession();
         }
     }
 ?>

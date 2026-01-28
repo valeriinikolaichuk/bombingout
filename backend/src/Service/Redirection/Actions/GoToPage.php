@@ -2,7 +2,7 @@
     namespace App\Service\Redirection\Actions;
 
     use App\Service\Redirection\RequestHandler;
-    use App\Service\Redirection\PageRegistry;
+    use App\Enum\PageEnum;
 
     class GoToPage implements PageActionInterface
     {
@@ -12,14 +12,17 @@
 
         public function supports(string $action): bool
         {
-            return PageRegistry::isAllowed($action);
+            return PageEnum::tryFrom($action) !== null;
         }
 
-        public function action(string $action): string
+        public function action(string $action): array
         {
             $result = $this -> handler -> handle($action);
 
-            return $action;
+            return [
+                'route_name' => 'home',
+                'parameters' => []
+            ];
         }
     }
 ?>

@@ -11,9 +11,10 @@
             private RequestActionFactory $factory
         ) {}
         
-        public function supports(string $action): bool
+        public function supports(SessionInterface $session, string $action): bool
         {
-            return $action === 'logout';
+            return $action === 'logout' && 
+                $session -> has('id_status');
         }
 
         public function execute(SessionInterface $session, string $action): string 

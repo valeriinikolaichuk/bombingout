@@ -5,6 +5,6 @@
     {
         public function supports(string $action): bool;
 
-        public function action(string $action): string;
+        public function action(string $action): array;
     }
 ?>

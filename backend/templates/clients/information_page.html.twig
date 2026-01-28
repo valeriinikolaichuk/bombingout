@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}information{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/information.css') }}">
+{% endblock %}
+
+{% block body %}
+    <script>
+        window.appData = {{ {
+            lang: lang,
+            num: users_id,
+            num_st: id_status,
+            status: status
+        }|json_encode|raw }};
+    </script>
+
+    <div class="redirection">
+        {% include 'clients/components/button_redirection.html.twig' %}
+    </div>
+    <div class="info attempt_discipline">
+        {#<?php
+            if (Config::$discipline !== '' && Config::$attempt !== ''){
+                $discipline_text = Config::$discipline;
+                if (Config::$discipline == 'bench_press'){
+                    $discipline_text = str_replace("_", " ", Config::$discipline);
+                }
+                echo "<div>".$discipline_text." ".Config::$attempt." attempt</div>";
+            } else {
+                echo "<div>discipline attempt</div>";
+            }
+        ?>
+
+        {% if discipline is not empty and attempt is not empty %}
+        {% set discipline_text = discipline %}
+        {% if discipline == 'bench_press' %}
+            {% set discipline_text = discipline|replace({'_': ' '}) %}
+        {% endif %}
+            <div>{{ discipline_text }} {{ attempt }} attempt</div>
+        {% else %}
+            <div>discipline attempt</div>
+        {% endif %}#}
+    </div>
+    <div class="info category">
+        {#<?php
+            if (isset($participant[0]["category"])){
+                echo $participant[0]["category"];
+            } else {
+                echo "category";
+            }
+        ?>
+
+        {{ participant[0].category ?? 'category' }}#}
+    </div>
+    <div class="surname_name">
+{#        <?php
+            if (isset($participant[0]["surname_name"])){
+                $fullName = $participant[0]["surname_name"];
+                if (str_contains($fullName, ' ')) {
+                    $parts = explode(" ", $fullName, 2);
+                    echo "<div class='surname_name surname'>{$parts[0]}</div>";
+                    echo "<div class='surname_name name'>{$parts[1]}</div>";
+                } else {
+                    echo "<div class='surname_name surname'>".$fullName."</div>";
+                    echo "<div class='surname_name name'></div>";
+                }
+            } else {
+                echo "<div class='surname_name surname'>SURNAME</div>";
+                echo "<div class='surname_name name'>NAME</div>";
+            }
+        ?>
+        {% if participant[0].surname_name is defined %}
+        {% set fullName = participant[0].surname_name %}
+        {% if ' ' in fullName %}
+            {% set parts = fullName|split(' ', 2) %}
+            <div class="surname_name surname">{{ parts[0] }}</div>
+            <div class="surname_name name">{{ parts[1] }}</div>
+        {% else %}
+            <div class="surname_name surname">{{ fullName }}</div>
+            <div class="surname_name name"></div>
+        {% endif %}
+        {% else %}
+            <div class="surname_name surname">SURNAME</div>
+            <div class="surname_name name">NAME</div>
+        {% endif %}#}
+    </div>
+    <div class="region">    
+{#        <?php
+            if (isset($participant[0]["region"])){
+                echo $participant[0]["region"];
+            } else {
+                echo "region";
+            }
+        ?>
+        {{ participant[0].region ?? 'region' }}
+#}
+    </div>
+    <div class="weight">
+{#}        <?php
+            if (isset($weight) && $weight != 'empty'){
+                echo $weight;
+            } else {
+                echo "00.0";
+            }
+        ?>
+        {% if weight is defined and weight != 'empty' %}
+        {{ weight }}
+        {% else %}
+            00.0
+        {% endif %}
+#}
+    </div>
+
+{#    {% include 'templates_admin/postForm.twig' %}#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
+{#    <?php
+        require_once 'templates_admin/postForm.php';
+
+        echo '<script>const lang = "'.Config::$lang.'";';
+        echo ' const id_status = '.Config::$id_status.'</script>';
+    ?>
+    <script src="assets/switchLanguage.js"></script>
+    <script src="assets/clients_js/information.js"></script>
+    <script src="assets/checkSessionStatus.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage(lang);
+            checkSessionStatus();
+            setInterval(checkSessionStatus, 20 * 60 * 1000);
+            let lastCheck = Date.now();
+            setInterval(() => {
+                const now = Date.now();
+                if (now - lastCheck > 120 * 1000){
+                    console.log('waking up');
+                    checkSessionStatus();
+                }
+                lastCheck = now;
+            }, 10000);
+        });
+    </script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="assets/socket_client.js"></script>
+</body>
+</html>#}
+{% endblock %}

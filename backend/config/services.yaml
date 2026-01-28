@@ -10,13 +10,14 @@ services:
         exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
 
     App\EventListener\ExceptionListener:
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception }
+        tags: []
+        #    - { name: kernel.event_listener, event: kernel.exception }
 
 # Main Service
     App\Service\Main\Page\LoginPageResolver: ~
     App\Service\Main\Page\ParticipantPageResolver: ~
     App\Service\Main\Page\RedirectionPageResolver: ~
+    App\Service\Main\Page\PagesResolver: ~
 
     App\Service\Main\ResolverFactory:
         arguments:
@@ -24,6 +25,7 @@ services:
                 - '@App\Service\Main\Page\LoginPageResolver'
                 - '@App\Service\Main\Page\ParticipantPageResolver'
                 - '@App\Service\Main\Page\RedirectionPageResolver'
+                - '@App\Service\Main\Page\PagesResolver'
 
 # Login Service
     App\Service\Login\:
@@ -279,3 +281,39 @@ services:
         autoconfigure: true
         arguments:
             $connections: !tagged_iterator app.connections
+
+# GoBack
+
+    App\Service\GoBack\:
+        resource: '../src/Service/GoBack/*'
+        exclude: 
+            - '../src/Service/GoBack/Action/*'
+            - '../src/Service/GoBack/GoBackFiller/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\GoBack\Action\:
+        resource: '../src/Service/GoBack/Action/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.goBack_actions']
+
+    App\Service\GoBack\GoBackFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $goBackResolvers: !tagged_iterator app.goBack_actions
+
+    App\Service\GoBack\GoBackFiller\:
+        resource: '../src/Service/GoBack/GoBackFiller/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.goBack_context']
+
+    App\Service\GoBack\GoBackContextBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $fillersGoBack: !tagged_iterator app.goBack_context

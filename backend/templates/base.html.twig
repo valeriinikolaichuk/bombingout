@@ -13,8 +13,9 @@
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-{#            <script src="{{ asset('assets/js/switchLanguage.js') }}"></script>#}
+            {% block importmap %}
+                {{ importmap('app') }}
+            {% endblock %}
         {% endblock %}
     </body>
 </html>

@@ -1,39 +1,37 @@
 <?php
     namespace App\Service\Redirection;
 
+    use App\Service\Http\SessionAwareTrait;
     use App\Service\Redirection\RequestHandler\RequestHandlerInterface;
 
     use Symfony\Component\HttpFoundation\RequestStack;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class RequestHandler
     {
+        use SessionAwareTrait;
+
         /** @var iterable<RequestHandlerInterface[]> */
+        private iterable $handlers;
+
         public function __construct(
-            private RequestStack $requestStack,
-            private iterable $handlers
-        ) {}
+            RequestStack $requestStack,
+            iterable $handlers
+        ) {
+            $this -> requestStack = $requestStack;
+            $this -> handlers = $handlers;
+        }
 
         public function handle(string $action): string 
         {
             $session = $this ->getSession();
 
             foreach ($this -> handlers as $handler) {
-                if ($handler -> supports($action)) {
+                if ($handler -> supports($session, $action)) {
                     return $handler -> execute($session, $action);
                 }
             }
-        }
 
-        private function getSession(): SessionInterface
-        {
-            $request = $this -> requestStack ->getCurrentRequest();
-
-            if (!$request || !$request ->hasSession()) {
-                throw new \LogicException('Session is not available');
-            }
-
-            return $request ->getSession();
+            return 'home';
         }
     }
 ?>

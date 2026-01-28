@@ -24,18 +24,6 @@
                 ->getResult();
         }
 
-        public function updateCompStatus(int $idStatus, string $status): void
-        {
-            $entity = $this -> find($idStatus);
-
-            if (!$entity) {
-                return;
-            }
-
-            $entity -> setCompStatus($status);
-            $this->_em->flush();
-        }
-
         public function findByIdStatus(array $criteria): ?ComputerStatus
         {
             return $this->createQueryBuilder('cs')

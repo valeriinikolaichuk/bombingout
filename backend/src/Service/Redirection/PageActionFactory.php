@@ -2,6 +2,7 @@
     namespace App\Service\Redirection;
 
     use App\Service\Redirection\Actions\PageActionInterface;
+    use App\Exception\NoPageResolverFoundException;
 
     class PageActionFactory
     {
@@ -10,7 +11,7 @@
             private iterable $actions
         ) {}
 
-        public function handle(string $action): string {
+        public function handle(string $action): array {
 
             foreach ($this -> actions as $handler) {
                 if ($handler -> supports($action)) {

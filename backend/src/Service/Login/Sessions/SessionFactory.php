@@ -1,19 +1,26 @@
 <?php
     namespace App\Service\Login\Sessions;
 
+    use App\Service\Http\SessionAwareTrait;
     use App\Service\Login\Sessions\SessionService\SessionActionInterface;
     use App\Service\Login\LoginDTO\LoginResultDTO;
 
     use Symfony\Component\HttpFoundation\RequestStack;
-    use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
     class SessionFactory
     {
+        use SessionAwareTrait;
+
         /** @var iterable<SessionActionInterface[]> */
+        private iterable $actions;
+
         public function __construct(
-            private RequestStack $requestStack,
-            private iterable $actions
-        ) {}
+            RequestStack $requestStack,
+            iterable $actions
+        ) {
+            $this -> requestStack = $requestStack;
+            $this -> actions = $actions;
+        }
 
         public function create(LoginResultDTO $result): void
         {
@@ -24,17 +31,6 @@
                     $action -> apply($session, $result);
                 }
             }
-        }
-
-        private function getSession(): SessionInterface
-        {
-            $request = $this -> requestStack ->getCurrentRequest();
-
-            if (!$request || !$request ->hasSession()) {
-                throw new \LogicException('Session is not available');
-            }
-
-            return $request ->getSession();
         }
     }
 ?>

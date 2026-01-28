@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}timer{% endblock %}
+
+{% block body %}
+    <script>
+        window.appData = {{ {
+            lang: lang,
+            num: users_id,
+            num_st: id_status,
+            status: status
+        }|json_encode|raw }};
+    </script>
+
+    {% include 'clients/components/button_redirection.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
+{% endblock %}

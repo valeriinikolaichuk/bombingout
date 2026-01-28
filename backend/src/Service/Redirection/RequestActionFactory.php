@@ -1,6 +1,8 @@
 <?php
     namespace App\Service\Redirection;
 
+    use App\Service\Redirection\RequestAction\RequestActionInterface;
+
     class RequestActionFactory
     {
         /** @var iterable<RequestActionInterface[]> */
@@ -17,3 +19,4 @@
             }
         }
     }
+?>

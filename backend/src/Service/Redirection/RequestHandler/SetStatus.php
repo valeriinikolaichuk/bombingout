@@ -2,7 +2,7 @@
     namespace App\Service\Redirection\RequestHandler;
 
     use App\Service\Redirection\RequestActionFactory;
-    use App\Service\Redirection\PageRegistry;
+    use App\Enum\PageEnum;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -12,15 +12,17 @@
             private RequestActionFactory $factory
         ) {}
 
-        public function supports(string $action): bool
+        public function supports(SessionInterface $session, string $action): bool
         {
-            return PageRegistry::isAllowed($action);
+            return PageEnum::tryFrom($action) !== null && 
+                $session -> has('id_status');
         }
 
         public function execute(SessionInterface $session, string $action): string 
         {
-            $data = array();
+            $session -> set('action', $action);
 
+            $data = array();
             $data['id_status'] = $session -> get('id_status');
 
             $result = $this -> factory -> action($data, $action);
