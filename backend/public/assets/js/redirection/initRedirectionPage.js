@@ -6,6 +6,6 @@ import { login } from '../login/login_functions/login.js';
 document.addEventListener('DOMContentLoaded', async() => {
     await checkConnectionsData();
     switchLanguage(window.appData.lang);
-    initButtons();
+    initButtons(window.appData.lang);
     login();
 });

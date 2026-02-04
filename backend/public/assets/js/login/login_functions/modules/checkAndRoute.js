@@ -18,7 +18,7 @@ export function checkAndRoute(json){
             }
 
             alert(mess);
-        } else {
+        } else if(json.message === 'You are already logged in from this browser'){
             errorLoginMessage(json);
             const dialog = document.getElementById("errorLoginDialog");
             dialog.showModal(); 

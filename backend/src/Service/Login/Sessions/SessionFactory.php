@@ -22,7 +22,7 @@
             $this -> actions = $actions;
         }
 
-        public function create(LoginResultDTO $result): void
+        public function create(LoginResultDTO $result): LoginResultDTO
         {
             $session = $this ->getSession();
 
@@ -31,6 +31,8 @@
                     $action -> apply($session, $result);
                 }
             }
+
+            return $result;
         }
     }
 ?>

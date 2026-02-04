@@ -1,4 +1,4 @@
-export function showLoginForm(form, parentClass, btn){
+export function showLoginForm(form, parentClass, btn, lang){
     if (btn.dataset.listener === 'off'){
         btn.dataset.listener = 'on';
 
@@ -12,8 +12,11 @@ export function showLoginForm(form, parentClass, btn){
             this.closeBtn = document.getElementById('close');
             this.cancelBtn = document.getElementById('cancel');
 
-            this.compStatus = document.getElementById('language');
-            this.compStatus.value = parentClass;
+            this.languageValue = document.getElementById('language');
+            this.languageValue.value = lang;
+
+            this.compStatus = document.getElementById('comp_status');
+            this.compStatus.textContent = parentClass;
 
             this.closeBtn.addEventListener('click', () => {
                 btn.dataset.listener = 'off';

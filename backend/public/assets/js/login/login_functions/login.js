@@ -1,5 +1,4 @@
 import { checkAndRoute } from './modules/checkAndRoute.js';
-import { redirectToPage } from './modules/redirectToPage.js';
 import { getLoginData } from './modules/loginData.js';
 
 export function login(){
@@ -22,10 +21,6 @@ export function login(){
         }
 
         let json = await response.json();
-
-        if (json.page){
-            redirectToPage(json);
-        }
 
         checkAndRoute(json);
     });

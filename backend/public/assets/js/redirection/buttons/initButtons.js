@@ -1,6 +1,6 @@
 import { RedirectionActions } from './redirectionActions.js';
 
-export function initButtons(){
+export function initButtons(lang){
     const redirectionAction = new RedirectionActions();
 
     document.querySelectorAll('.button_comp_status').forEach((btn) => {
@@ -16,7 +16,7 @@ export function initButtons(){
                 }
 
                 const parentClass = parentDiv.className;
-                redirectionAction.handleClick(btn, parentClass);
+                redirectionAction.handleClick(btn, parentClass, lang);
             }
         });
     });

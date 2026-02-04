@@ -9,11 +9,14 @@ import { initPopup } from './login_page/initPopup.js';
 document.addEventListener('DOMContentLoaded', () => {
     updateVisibility();
 
+    window.appData = {lang: 'en' };
+
     setLanguage((lang) => {
         switchLanguage(lang);
         setText(lang);
 
         localStorage.setItem('lang', lang);
+        window.appData = {lang: lang };
         window.dispatchEvent(
             new CustomEvent('lang:change', { detail: lang })
         );

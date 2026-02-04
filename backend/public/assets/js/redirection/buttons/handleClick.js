@@ -1,4 +1,4 @@
-export function handleClick(btn, parentClass){
+export function handleClick(btn, parentClass, lang){
     if (this.activeForm) {
         this.activeForm.replaceWith(this.originalBtn);
         this.activeForm = null;
@@ -8,6 +8,6 @@ export function handleClick(btn, parentClass){
     let form = this.createForm(parentClass, btn);
 
     if (parentClass == "admin" || parentClass == "weighingIn"){
-        this.showLoginForm(form, parentClass, btn);
+        this.showLoginForm(form, parentClass, btn, lang);
     }   
 }

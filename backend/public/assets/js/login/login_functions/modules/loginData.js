@@ -3,7 +3,7 @@ export function getLoginData() {
         login: document.getElementById("login")?.value ?? null,
         password: document.getElementById("password")?.value ?? null,
         language: document.getElementById("language")?.value ?? null,
-        page: document.getElementById("page")?.value ?? null,
+        page: document.getElementById("comp_status")?.textContent ?? null,
         type: 'check by login and password',
         loginMethod: 'default'
     };

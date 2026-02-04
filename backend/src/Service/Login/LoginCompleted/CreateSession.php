@@ -17,7 +17,7 @@
 
         public function actions(LoginResultDTO $result): LoginResultDTO
         {
-            $this -> sessionFactory -> create($result);
+            $result = $this -> sessionFactory -> create($result);
 
             return $result;
         }

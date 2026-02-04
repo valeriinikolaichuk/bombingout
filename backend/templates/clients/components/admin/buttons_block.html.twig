@@ -1,0 +1,12 @@
+<button id="showCreateDialog" class="buttonstyle sticky" type="button" 
+    data-en="CREATE" data-uk="СТВОРИТИ" data-pl="UTWORZYĆ" 
+    data-popup="createCompetition" 
+    onclick="
+        window.dispatchEvent(
+            new CustomEvent('popup:open', { detail: 'createCompetition' })
+        )
+    ">CREATE
+</button>
+
+<button id="showOpenDialog" class="buttonstyle" style="position: sticky; left: 120px;" type="button" data-en="OPEN" data-uk="ВІДКРИТИ" data-pl="OTWORZYĆ">OPEN</button>
+<button class="buttonstyle" type="submit" name="nominations_list" value="open" data-en="NOMINATIONS" data-uk="НОМІНАЦІЇ" data-pl="NOMINACJE">NOMINATIONS</button>

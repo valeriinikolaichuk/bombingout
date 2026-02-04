@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}admin page{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main_popups.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main_page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plates.css') }}">
+{% endblock %}
+
+{% block body %}
+    <script>
+        window.appData = {{ {
+            lang: lang,
+            num: users_id,
+            num_st: id_status,
+            status: status
+        }|json_encode|raw }};
+    </script>
+
+    <header id="header">
+        <div id="first_toolbar">
+            {% include 'clients/components/admin/buttons_block.html.twig' %}
+{#            {% include 'main/buttons_create_open.html.twig' %}
+            {% include 'main/button_nominations.html.twig' %}
+
+            {% if status == 'admin' %}
+                {% include 'main/button_all_users.html.twig' %}
+            {% endif %}
+#}
+            {% include 'clients/components/button_redirection.html.twig' %}
+        </div>
+    </header>
+
+    <main>
+{#        {% include 'main/image_main_page.html.twig' %} #}
+{#  {% include 'clients/components/main/popup_create.html.twig' %} #}
+{#        {% include 'main/open_popup.html.twig' %}
+        {% include 'main/popup_add_nomination.html.twig' %}
+        {% include 'postForm.html.twig' %} #}
+        <div id="popup-root"></div>
+    </main>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if app.environment == 'dev' %}
+        <script type="module">
+            import RefreshRuntime from 'http://localhost:5173/@react-refresh'
+            RefreshRuntime.injectIntoGlobalHook(window)
+            window.$RefreshReg$ = () => {}
+            window.$RefreshSig$ = () => (type) => type
+            window.__vite_plugin_react_preamble_installed__ = true
+        </script>
+        <script type="module" src="http://localhost:5173/src/main.jsx"></script>
+    {% endif %}
+
+    <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
+
+    <script type="module" src="{{ asset('assets/js/admin/initAdminPage.js') }}"></script>
+{#
+    <script src="{{ asset('assets/view/view_MainPage/popup_open_info.js') }}"></script>
+    <script src="{{ asset('assets/view/view_MainPage/viewMainPage.js') }}"></script>
+    <script src="{{ asset('assets/view/view_MainPage/viewNomin.js') }}"></script>
+    <script src="{{ asset('assets/view/view_MainPage/viewPopupsValues.js') }}"></script>
+    <script src="{{ asset('assets/view/view_MainPage/viewButtons.js') }}"></script>
+    <script src="{{ asset('assets/view/view_MainPage/initPopups.js') }}"></script>
+
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/viewModelMainPage.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/openCloseModals.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/setUnsetValuesCreateDialog.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/setUnsetButtonsValues.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/popupFormsValidation.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/online_registration.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/viewModelFunctions.js') }}"></script>
+    <script src="{{ asset('assets/viewModels/viewModel_MainPage/sendData.js') }}"></script>
+
+    <script src="{{ asset('assets/switchLanguage.js') }}"></script>
+    <script src="{{ asset('assets/checkSessionStatus.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage(window.appData.lang);
+
+            new InitView();
+
+            checkSessionStatus();
+            setInterval(checkSessionStatus, 20 * 60 * 1000);
+
+            let lastCheck = Date.now();
+            setInterval(() => {
+                const now = Date.now();
+                if (now - lastCheck > 120000) {
+                    console.log('waking up');
+                    checkSessionStatus();
+                }
+                lastCheck = now;
+            }, 10000);
+        });
+    </script>#}
+{% endblock %}

@@ -11,7 +11,6 @@ export function createForm(parentClass, btn){
     submitBtn.style.backgroundColor = "rgba(254, 90, 90, 1)";
     submitBtn.name = "action";
 
-
     if (parentClass == "admin" || parentClass == "weighingIn"){
         submitBtn.setAttribute("data-listener", "off");
     }
