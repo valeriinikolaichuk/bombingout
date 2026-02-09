@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { competitionText as t } from "./popups/i18n/competitionText";
-import { validateForm } from "./popups/validateForm";
 import Select from './popups/config/Select';
 import { divisions, sexes, ageGroups, types, versions } from './popups/config/competitionOptions';
+import { createFormSubmit } from "./popups/createFormSubmit";
 
 export default function CreateCompetition({ mode, lang, onClose }) {
-  const isCreate = mode === 'create';
-  const isEdit   = mode === 'edit';
-
   const [competitionName, setCompetitionName] = useState('');
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
@@ -210,10 +207,7 @@ export default function CreateCompetition({ mode, lang, onClose }) {
               style={{ marginRight: 5 }} 
               type="button" 
               onClick = {() => {
-                const isValid = validateForm({competitionName, country, city, lang});
-
-                if (!validateForm()) return;
-                console.log('FORM OK');
+                createFormSubmit(competitionName, country, city, lang, onClose);
               }}
             >
               {t.buttons.ok[lang]}

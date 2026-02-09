@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main_popups.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main_page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main_table.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plates.css') }}">
 {% endblock %}
 
@@ -19,8 +20,8 @@
         }|json_encode|raw }};
     </script>
 
-    <header id="header">
-        <div id="first_toolbar">
+    <header>
+        <div>
             {% include 'clients/components/admin/buttons_block.html.twig' %}
 {#            {% include 'main/buttons_create_open.html.twig' %}
             {% include 'main/button_nominations.html.twig' %}
@@ -39,6 +40,7 @@
 {#        {% include 'main/open_popup.html.twig' %}
         {% include 'main/popup_add_nomination.html.twig' %}
         {% include 'postForm.html.twig' %} #}
+        <div id="page-root"></div>
         <div id="popup-root"></div>
     </main>
 
