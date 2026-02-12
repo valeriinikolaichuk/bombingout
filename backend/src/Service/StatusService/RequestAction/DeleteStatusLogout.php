@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\Redirection\RequestAction;
+    namespace App\Service\StatusService\RequestAction;
 
-    use App\Service\Redirection\Persistence\ComputerStatusRemover;
+    use App\Service\StatusService\Persistence\ComputerStatusRemover;
 
     class DeleteStatusLogout implements RequestActionInterface
     {

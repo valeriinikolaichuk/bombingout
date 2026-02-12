@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Redirection\RequestAction;
+    namespace App\Service\StatusService\RequestAction;
 
     interface RequestActionInterface
     {

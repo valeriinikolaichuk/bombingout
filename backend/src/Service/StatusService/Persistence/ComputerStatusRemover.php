@@ -1,27 +1,22 @@
 <?php
-    namespace App\Service\Redirection\Persistence;
+    namespace App\Service\StatusService\Persistence;
 
     use Doctrine\DBAL\Connection;
     use Doctrine\DBAL\ParameterType;
 
-    class ComputerStatusWriter {
+    class ComputerStatusRemover
+    {
         public function __construct(private Connection $db) {}
 
-        public function saveData(
-            int $idStatus,
-            ?string $action,
-        ): void {
-
+        public function removeData(int $idStatus): void 
+        {
             $this -> db -> executeStatement(
-                "UPDATE computer_status 
-                SET comp_status = :comp_status
+                "DELETE FROM computer_status 
                 WHERE id_status = :id_status",
                 [
-                    'comp_status' => $action,
                     'id_status'   => $idStatus
                 ],
                 [
-                    'comp_status' => ParameterType::STRING,
                     'id_status'   => ParameterType::INTEGER
                 ]
             );

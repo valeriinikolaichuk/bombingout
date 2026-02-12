@@ -2,7 +2,7 @@
     namespace App\Service\Login\LoginCompleted;
 
     use App\Service\Login\Sessions\SessionFactory;
-    use App\Service\Redirection\RequestActionFactory;
+    use App\Service\StatusService\RequestActionFactory;
     use App\Service\Login\LoginDTO\LoginResultDTO; 
 
     class PageAction implements LoginCompletedInterface

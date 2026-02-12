@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\Redirection;
+    namespace App\Service\StatusService;
 
-    use App\Service\Redirection\RequestAction\RequestActionInterface;
+    use App\Service\StatusService\RequestAction\RequestActionInterface;
 
     class RequestActionFactory
     {

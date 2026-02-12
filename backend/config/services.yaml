@@ -154,6 +154,26 @@ services:
         arguments:
             $actions: !tagged_iterator app.login_session_action
 
+# StatusService
+
+    App\Service\StatusService\:
+        resource: '../src/Service/StatusService/*'
+        exclude: 
+            - '../src/Service/StatusService/RequestAction/*'
+
+    App\Service\StatusService\RequestAction\:
+        resource: '../src/Service/StatusService/RequestAction/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.request_action']
+
+    App\Service\StatusService\RequestActionFactory:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $requestActions: !tagged_iterator app.request_action
+
 # DeleteConnection Service
 
     App\Service\DeleteConnection\:
@@ -197,7 +217,6 @@ services:
         exclude: 
             - '../src/Service/Redirection/Actions/*'
             - '../src/Service/Redirection/RequestHandler/*'
-            - '../src/Service/Redirection/RequestAction/*'
             - '../src/Service/Redirection/CheckAdmin/Filler/*'
             - '../src/Service/Redirection/ShowConnections/GetData/*'
             - '../src/Service/Redirection/ShowConnections/Connections/*'
@@ -229,19 +248,6 @@ services:
         autoconfigure: true
         arguments:
             $handlers: !tagged_iterator app.request_handler
-
-    App\Service\Redirection\RequestAction\:
-        resource: '../src/Service/Redirection/RequestAction/*'
-        autowire: true
-        autoconfigure: true
-        tags: ['app.request_action']
-
-    App\Service\Redirection\RequestActionFactory:
-        public: true
-        autowire: true
-        autoconfigure: true
-        arguments:
-            $requestActions: !tagged_iterator app.request_action
 
     App\Service\Redirection\CheckAdmin\Filler\:
         resource: '../src/Service/Redirection/CheckAdmin/Filler/*'
@@ -317,3 +323,45 @@ services:
         autoconfigure: true
         arguments:
             $fillersGoBack: !tagged_iterator app.goBack_context
+
+# Admin
+## MainPage
+### Competition
+
+    App\Service\Admin\MainPage\Competition\:
+        resource: '../src/Service/Admin/MainPage/Competition/*'
+        exclude: 
+            - '../src/Service/Admin/MainPage/Competition/Filler/*'
+            - '../src/Service/Admin/MainPage/Competition/Result/*'
+        autowire: true
+        autoconfigure: true
+
+    App\Service\Admin\MainPage\Competition\Filler\:
+        resource: '../src/Service/Admin/MainPage/Competition/Filler/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.competition_filler']
+
+    App\Service\Admin\MainPage\Competition\CompetitionContextBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $fillersComp: !tagged_iterator app.competition_filler
+
+    App\Service\Admin\MainPage\Competition\Result\:
+        resource: '../src/Service/Admin/MainPage/Competition/Result/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.competition_service']
+
+    App\Service\Admin\MainPage\Competition\CompetitionService:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $resultComp: !tagged_iterator app.competition_service
+
+    App\Service\Admin\MainPage\Competition\Result\CompetitionDataWriter:
+        tags:
+            - { name: 'app.competition_service', priority: 1000 } 

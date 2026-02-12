@@ -3,7 +3,7 @@
 
     use App\Service\GoBack\GoBackDTO\GoBackContext;
     use App\Service\GoBack\GoBackDTO\ResultDTO;
-    use App\Service\Redirection\RequestActionFactory;
+    use App\Service\StatusService\RequestActionFactory;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
 

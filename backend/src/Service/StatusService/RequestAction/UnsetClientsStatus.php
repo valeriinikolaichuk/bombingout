@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\Redirection\RequestAction;
+    namespace App\Service\StatusService\RequestAction;
 
-    use App\Service\Redirection\Persistence\ComputerStatusWriter;
+    use App\Service\StatusService\Persistence\ComputerStatusWriter;
 
     class UnsetClientsStatus implements RequestActionInterface
     {

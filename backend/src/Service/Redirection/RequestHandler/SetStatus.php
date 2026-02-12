@@ -1,7 +1,7 @@
 <?php
     namespace App\Service\Redirection\RequestHandler;
 
-    use App\Service\Redirection\RequestActionFactory;
+    use App\Service\StatusService\RequestActionFactory;
     use App\Enum\PageEnum;
 
     use Symfony\Component\HttpFoundation\Session\SessionInterface;
