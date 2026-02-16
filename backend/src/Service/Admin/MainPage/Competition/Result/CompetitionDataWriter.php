@@ -64,8 +64,7 @@
                 ]
             );
 
-            $result -> comp_id = (int) $this -> db -> lastInsertId();
-            $context -> comp_id = $result -> comp_id;
+            $context -> comp_id = (int) $this -> db -> lastInsertId();
         }
     }
 ?>
