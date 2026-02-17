@@ -3,13 +3,13 @@
 
     class ResultDTO{
         public ?bool $success = false;
-        public ?int $comp_id = null;
+        public ?bool $compID = false;
 
         public function toArray(): array
         {
             return [
                 'success' => $this -> success,
-                'comp_id' => $this -> comp_id
+                'compID'  => $this -> compID
             ];
         }
     }

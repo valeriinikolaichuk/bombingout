@@ -18,7 +18,8 @@ db.version(1).stores({
     categories,
     nomination,
     preliminary,
-    final
+    final,
+    updatedAt
   `,
   main_table: `
     main_id,
@@ -132,5 +133,12 @@ db.version(1).stores({
 	grp,
 	category,
 	dateTime
+  `,
+  syncQueue: `
+    ++id,
+    actionId,
+    actionType,
+    payload,
+    createdAt
   `
 });

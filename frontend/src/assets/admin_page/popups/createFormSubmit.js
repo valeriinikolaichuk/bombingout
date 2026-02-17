@@ -10,6 +10,7 @@ export async function createFormSubmit(payLoad, lang, onClose){
 
   await db.competitions.put({
     comp_id: 0,
+    users_id: payLoad.usersId,
     competition_name: payLoad.competition_name,
     country: payLoad.country,
     city: payLoad.city,
@@ -20,9 +21,6 @@ export async function createFormSubmit(payLoad, lang, onClose){
     age_group: payLoad.age_group,
     type: payLoad.type,
     categories: payLoad.version,
-    users_id: payLoad.usersId,
-    popupType: payLoad.popupType,
-    id_status: payLoad.id_status,
     updatedAt: Date.now()
   });
 
@@ -30,7 +28,7 @@ export async function createFormSubmit(payLoad, lang, onClose){
 
   await db.syncQueue.add({
     actionId: actionId,
-    actionType: 'UPDATE_COMPETITION',
+    actionType: payLoad.popupType,
     payload: payLoad,
     createdAt: Date.now()
   });  

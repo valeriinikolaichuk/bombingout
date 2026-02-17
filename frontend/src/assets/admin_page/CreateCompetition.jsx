@@ -56,7 +56,7 @@ export default function CreateCompetition({ mode, lang, onClose }) {
           <h3 style={{ textAlign: 'center' }}>{t.titles[mode][lang]}</h3>
         </div>
 
-        <form id="formCreate" method="POST">
+        <form>
           <table className="popupTable">
             <tbody>
               <tr className="popupTable">
@@ -207,7 +207,23 @@ export default function CreateCompetition({ mode, lang, onClose }) {
               style={{ marginRight: 5 }} 
               type="button" 
               onClick = {() => {
-                createFormSubmit(competitionName, country, city, lang, onClose);
+                const payLoad = {
+                  popupType: 'create',
+                  competition_name: competitionName,
+                  country: country,
+                  city: city,
+                  start_date: startDate,
+                  end_date: endDate,
+                  division: division,
+                  sex: sex,
+                  age_group: ageGroup,
+                  type: type,
+                  version: version,
+                  usersId: window.appData.num,
+                  id_status: window.appData.num_st
+                };
+
+                createFormSubmit(payLoad, lang, onClose);
               }}
             >
               {t.buttons.ok[lang]}

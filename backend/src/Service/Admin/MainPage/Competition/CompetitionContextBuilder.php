@@ -1,8 +1,6 @@
 <?php
     namespace App\Service\Admin\MainPage\Competition;
 
-    use Symfony\Component\HttpFoundation\Request;
-
     use App\Service\Admin\MainPage\Competition\CompetitionDTO\CompetitionContext;
     use App\Service\Admin\MainPage\Competition\Filler\CompetitionFillerInterface;
 
@@ -11,10 +9,8 @@
         /** @var CompetitionFillerInterface[] */
         public function __construct(private iterable $fillersComp) {}
 
-        public function build(Request $request): CompetitionContext
+        public function build(array $data): CompetitionContext
         {
-            $data = json_decode($request -> getContent(), true);
-
             $context = new CompetitionContext();
 
             foreach ($this -> fillersComp as $filler) {
