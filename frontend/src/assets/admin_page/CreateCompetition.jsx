@@ -26,7 +26,8 @@ export default function CreateCompetition({ mode, lang, onClose }) {
     }
   }, [endDate]);
 
-  const [division, setDivision] = useState('');
+  const defaultDivision = divisions[0].value;
+  const [division, setDivision] = useState(defaultDivision);
 
   const defaultSex = sexes[0].value;
   const defaultAgeGroup = ageGroups.find(g => g.sex === defaultSex)?.value || '';
@@ -38,8 +39,11 @@ export default function CreateCompetition({ mode, lang, onClose }) {
   ? ageGroups.filter(g => g.sex === sex)
   : [];
 
-  const [type, setType] = useState('');
-  const [version, setVersion] = useState('');
+  const defaultType = types[0].value;
+  const [type, setType] = useState(defaultType);
+
+  const defaultVersion = versions[0].value;
+  const [version, setVersion] = useState(defaultVersion);
 
   const dialogRef = useRef(null);
 
@@ -154,7 +158,8 @@ export default function CreateCompetition({ mode, lang, onClose }) {
                     name="sex"
                     value={sex}
                     onChange={e => {
-                      const newSex = e.target.value; setSex(newSex); 
+                      const newSex = e.target.value; 
+                      setSex(newSex); 
                       const first = ageGroups.find(g => g.sex === newSex);
                       setAgeGroup(first ? first.value : '');
                     }}

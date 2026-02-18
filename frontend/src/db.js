@@ -4,6 +4,7 @@ export const db = new Dexie('DataBase');
 
 db.version(1).stores({
   competitions: `
+    ++id,
     comp_id, 
     users_id, 
     competition_name, 

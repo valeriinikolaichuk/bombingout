@@ -7,7 +7,7 @@ export async function createFormSubmit(payLoad, lang, onClose){
   const isValid = validateForm(payLoad.competition_name, payLoad.country, payLoad.city, lang);
   if (!isValid) return;
   console.log('FORM OK');
-
+console.log(payLoad);
   await db.competitions.put({
     comp_id: 0,
     users_id: payLoad.usersId,
