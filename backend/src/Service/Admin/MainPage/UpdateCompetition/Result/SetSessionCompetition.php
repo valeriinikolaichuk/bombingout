@@ -1,8 +1,8 @@
 <?php
-    namespace  App\Service\Admin\MainPage\Competition\Result;
+    namespace  App\Service\Admin\MainPage\UpdateCompetition\Result;
 
-    use App\Service\Admin\MainPage\Competition\CompetitionDTO\CompetitionContext;
-    use App\Service\Admin\MainPage\Competition\CompetitionDTO\ResultDTO;
+    use App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO\CompetitionContext;
+    use App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO\ResultDTO;
     use App\Service\Http\SessionAwareTrait;
 
     use Symfony\Component\HttpFoundation\RequestStack;
@@ -27,7 +27,7 @@
             $session = $this ->getSession();
             $session -> set('compID', $context -> comp_id);
 
-            $result -> compID = true;
+            $result -> session = true;
         }
     }
 ?>

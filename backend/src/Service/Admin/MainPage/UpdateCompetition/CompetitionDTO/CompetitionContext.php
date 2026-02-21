@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Admin\MainPage\Competition\CompetitionDTO;
+    namespace App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO;
 
     class CompetitionContext{
         public ?string $popupType = null;

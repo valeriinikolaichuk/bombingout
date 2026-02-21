@@ -1,7 +1,7 @@
 <?php
     namespace App\Service;
 
-    use App\Entity\ProcessedAction;
+    use App\Entity\ProcessedActions;
 
     use Doctrine\ORM\EntityManagerInterface;
 
@@ -13,7 +13,7 @@
 
         public function markAsProcessed(string $actionId): void
         {
-            $processed = new ProcessedAction($actionId);
+            $processed = new ProcessedActions($actionId);
 
             $processed ->setActionId($actionId);
             $processed ->setCreatedAt(new \DateTimeImmutable());

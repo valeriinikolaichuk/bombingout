@@ -1,8 +1,8 @@
 <?php
-    namespace App\Service\Admin\MainPage\Competition;
+    namespace App\Service\Admin\MainPage\UpdateCompetition;
 
-    use App\Service\Admin\MainPage\Competition\CompetitionDTO\CompetitionContext;
-    use App\Service\Admin\MainPage\Competition\Filler\CompetitionFillerInterface;
+    use App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO\CompetitionContext;
+    use App\Service\Admin\MainPage\UpdateCompetition\Filler\CompetitionFillerInterface;
 
     class CompetitionContextBuilder
     {

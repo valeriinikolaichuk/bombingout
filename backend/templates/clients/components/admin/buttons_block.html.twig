@@ -8,5 +8,12 @@
     ">CREATE
 </button>
 
-<button id="showOpenDialog" class="buttonstyle" style="position: sticky; left: 120px;" type="button" data-en="OPEN" data-uk="ВІДКРИТИ" data-pl="OTWORZYĆ">OPEN</button>
+<button id="showOpenDialog" class="buttonstyle" style="position: sticky; left: 120px;" type="button" 
+    data-en="OPEN" data-uk="ВІДКРИТИ" data-pl="OTWORZYĆ" 
+    data-popup="openCompetition"
+    onclick="
+        window.dispatchEvent(
+            new CustomEvent('popup:open', { detail: 'openCompetition' })
+        )
+    ">OPEN</button>
 <button class="buttonstyle" type="submit" name="nominations_list" value="open" data-en="NOMINATIONS" data-uk="НОМІНАЦІЇ" data-pl="NOMINACJE">NOMINATIONS</button>

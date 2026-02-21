@@ -1,9 +1,9 @@
 <?php
-    namespace  App\Service\Admin\MainPage\Competition\Result;
+    namespace  App\Service\Admin\MainPage\UpdateCompetition\Result;
 
     use App\Service\StatusService\RequestActionFactory;
-    use App\Service\Admin\MainPage\Competition\CompetitionDTO\CompetitionContext;
-    use App\Service\Admin\MainPage\Competition\CompetitionDTO\ResultDTO;
+    use App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO\CompetitionContext;
+    use App\Service\Admin\MainPage\UpdateCompetition\CompetitionDTO\ResultDTO;
 
     class SetStatusCompetition implements CompetitionResultInterface
     {

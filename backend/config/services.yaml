@@ -326,42 +326,51 @@ services:
 
 # Admin
 ## MainPage
-### Competition
+### UpdateCompetition
 
-    App\Service\Admin\MainPage\Competition\:
-        resource: '../src/Service/Admin/MainPage/Competition/*'
+    App\Service\Admin\MainPage\UpdateCompetition\:
+        resource: '../src/Service/Admin/MainPage/UpdateCompetition/*'
         exclude: 
-            - '../src/Service/Admin/MainPage/Competition/Filler/*'
-            - '../src/Service/Admin/MainPage/Competition/Result/*'
+            - '../src/Service/Admin/MainPage/UpdateCompetition/Filler/*'
+            - '../src/Service/Admin/MainPage/UpdateCompetition/Result/*'
         autowire: true
         autoconfigure: true
 
-    App\Service\Admin\MainPage\Competition\Filler\:
-        resource: '../src/Service/Admin/MainPage/Competition/Filler/*'
+    App\Service\Admin\MainPage\UpdateCompetition\Filler\:
+        resource: '../src/Service/Admin/MainPage/UpdateCompetition/Filler/*'
         autowire: true
         autoconfigure: true
         tags: ['app.competition_filler']
 
-    App\Service\Admin\MainPage\Competition\CompetitionContextBuilder:
+    App\Service\Admin\MainPage\UpdateCompetition\CompetitionContextBuilder:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
             $fillersComp: !tagged_iterator app.competition_filler
 
-    App\Service\Admin\MainPage\Competition\Result\:
-        resource: '../src/Service/Admin/MainPage/Competition/Result/*'
+    App\Service\Admin\MainPage\UpdateCompetition\Result\:
+        resource: '../src/Service/Admin/MainPage/UpdateCompetition/Result/*'
         autowire: true
         autoconfigure: true
         tags: ['app.competition_service']
 
-    App\Service\Admin\MainPage\Competition\CompetitionService:
+    App\Service\Admin\MainPage\UpdateCompetition\CompetitionService:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
             $resultComp: !tagged_iterator app.competition_service
 
-    App\Service\Admin\MainPage\Competition\Result\CompetitionDataWriter:
+    App\Service\Admin\MainPage\UpdateCompetition\Result\CompetitionDataWriter:
         tags:
             - { name: 'app.competition_service', priority: 1000 } 
+
+### GetCompetitionData
+
+    App\Service\Admin\MainPage\GetCompetitionData\:
+        resource: '../src/Service/Admin/MainPage/GetCompetitionData/*'
+        exclude: 
+            - '../src/Service/Admin/MainPage/GetCompetitionData/DataFiller/*'
+        autowire: true
+        autoconfigure: true 
