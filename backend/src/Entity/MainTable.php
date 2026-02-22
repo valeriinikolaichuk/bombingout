@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MainTableRepository;
+use App\Entity\Competitions;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -314,8 +315,9 @@ class MainTable
     #[ORM\Column(nullable: true)]
     private ?int $points_bp = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $comp_id = null;
+    #[ORM\ManyToOne(targetEntity: Competitions::class)]
+    #[ORM\JoinColumn(name: "comp_id", referencedColumnName: "comp_id", nullable: false)]
+    private ?Competitions $competition = null;
 
     public function getId(): ?int
     {
@@ -1522,15 +1524,14 @@ class MainTable
         return $this;
     }
 
-    public function getCompId(): ?int
+    public function getCompetition(): ?Competitions
     {
-        return $this->comp_id;
+        return $this->competition;
     }
 
-    public function setCompId(?int $comp_id): static
+    public function setCompetition(?Competitions $competition): self
     {
-        $this->comp_id = $comp_id;
-
+        $this->competition = $competition;
         return $this;
     }
 }

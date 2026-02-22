@@ -14,5 +14,14 @@
         {
             parent::__construct($registry, Competitions::class);
         }
+
+        public function findByUserId(int $userId): array
+        {
+            return $this->createQueryBuilder('c')
+                ->andWhere('IDENTITY(c.user) = :userId')
+                ->setParameter('userId', $userId)
+                ->getQuery()
+                ->getResult();
+        }
     }
 ?>

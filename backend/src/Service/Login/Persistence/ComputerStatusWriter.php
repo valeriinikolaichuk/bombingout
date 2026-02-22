@@ -1,11 +1,11 @@
 <?php
     namespace App\Service\Login\Persistence;
 
-    use Doctrine\DBAL\Connection;
-    use Doctrine\DBAL\ParameterType;
+    use App\Entity\ComputerStatus;
+    use Doctrine\ORM\EntityManagerInterface;
 
     class ComputerStatusWriter {
-        public function __construct(private Connection $db) {}
+        public function __construct(private EntityManagerInterface $em) {}
 
         public function saveData(
             int $userId,
@@ -15,24 +15,17 @@
             ?string $agent
         ): int {
 
-            $this -> db -> executeStatement(
-                "INSERT INTO computer_status (users_ID, users_status, lang, ip_address, user_agent)
-                 VALUES (:id_user, :users_status, :lang, :ip, :agent)",
-                [
-                    'id_user'      => $userId,
-                    'users_status' => $status,
-                    'lang'         => $language,
-                    'ip'           => $ip,
-                    'agent'        => $agent
-                ],
-                [
-                    'id_user'      => ParameterType::INTEGER,
-                    'users_status' => ParameterType::STRING,
-                    'lang'         => ParameterType::STRING
-                ]
-            );
+            $record = new ComputerStatus();
+            $record -> setUserId($userId);
+            $record -> setUsersStatus($status);
+            $record -> setLang($language);
+            $record -> setIpAddress($ip);
+            $record -> setUserAgent($agent);
 
-            return (int) $this -> db -> lastInsertId();
+            $this -> em ->persist($record);
+            $this -> em ->flush();
+
+            return $record -> getId();
         }
     }
 ?>

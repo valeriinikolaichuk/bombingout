@@ -372,5 +372,32 @@ services:
         resource: '../src/Service/Admin/MainPage/GetCompetitionData/*'
         exclude: 
             - '../src/Service/Admin/MainPage/GetCompetitionData/DataFiller/*'
+            - '../src/Service/Admin/MainPage/GetCompetitionData/ResultsProvider/*'
         autowire: true
         autoconfigure: true 
+
+    App\Service\Admin\MainPage\GetCompetitionData\DataFiller\:
+        resource: '../src/Service/Admin/MainPage/GetCompetitionData/DataFiller/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.competition_data_filler']
+
+    App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $dataFillersComp: !tagged_iterator app.competition_data_filler
+
+    App\Service\Admin\MainPage\GetCompetitionData\ResultsProvider\:
+        resource: '../src/Service/Admin/MainPage/GetCompetitionData/ResultsProvider/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.results_provider']
+
+    App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataService:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $dataFillersComp: !tagged_iterator app.results_provider
