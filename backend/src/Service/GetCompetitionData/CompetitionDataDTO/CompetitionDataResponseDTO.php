@@ -1,0 +1,29 @@
+<?php
+    namespace App\Service\GetCompetitionData\CompetitionDataDTO;
+
+    class CompetitionDataResponseDTO
+    {
+        public function __construct(
+            private ResultDTO $competitions,
+            private ResultDTO $mainTable
+        ) {}
+
+        public function setCompetitions(array $items): void
+        {
+            $this -> competitions = $items;
+        }
+
+        public function setMainTable(array $items): void
+        {
+            $this -> mainTable = $items;
+        }
+
+        public function toArray(): array
+        {
+            return [
+                'competitions' => $this -> competitions -> toArray(),
+                'mainTable'    => $this -> mainTable -> toArray(),
+            ];
+        }
+    }
+?>

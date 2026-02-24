@@ -86,6 +86,12 @@ services:
       - "4000:4000"
     volumes:
       - ./node:/app
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: symfony
     networks:
       - app-network
 

@@ -1,28 +1,27 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-const mysql = require('mysql2');
+const db = require('./db');
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost", 
+        origin: "http://localhost:5173", 
         methods: ["GET", "POST"]
     }
-});
-
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'powerlifting'
 });
 
 const clients = new Map();
 
 io.on('connection', socket => {
     const id_status = socket.handshake.query.id_status;
+    if (!id_status) {
+        console.warn('No id_status provided by client');
+        socket.disconnect();
+        return;
+    }
+
     clients.set(socket.id, id_status);
     console.log('Client connected:', id_status);
 
@@ -32,12 +31,18 @@ io.on('connection', socket => {
             'SELECT MAX(realtime) AS last_update FROM computer_status WHERE id_status = ?',
             [id_status],
             (err, results) => {
-                if (err) return console.error(err);
-                const newUpdate = results[0].last_update;
+                if (err)  {
+                    console.error('DB error:', err);
+                    return console.error(err);
+                }
+
+                const newUpdate = results[0]?.last_update;
+
                 if (lastUpdate && newUpdate && newUpdate.toString() !== lastUpdate.toString()) {
                     console.log(`Table updated for id_status ${id_status}`);
                     socket.emit('tableUpdated');
                 }
+
                 lastUpdate = newUpdate;
             }
         );
@@ -50,4 +55,5 @@ io.on('connection', socket => {
     });
 });
 
-server.listen(3000, () => console.log('Server running on http://localhost:3000'));
+const PORT = process.env.PORT || 4000;
+server.listen(3000, () => console.log(`Server running on http://localhost:${PORT}`));

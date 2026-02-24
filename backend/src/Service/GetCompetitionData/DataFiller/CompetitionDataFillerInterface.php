@@ -1,7 +1,7 @@
 <?php
-    namespace  App\Service\Admin\MainPage\GetCompetitionData\DataFiller;
+    namespace  App\Service\GetCompetitionData\DataFiller;
 
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
+    use App\Service\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
 
     interface CompetitionDataFillerInterface
     {

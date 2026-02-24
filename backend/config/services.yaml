@@ -366,38 +366,38 @@ services:
         tags:
             - { name: 'app.competition_service', priority: 1000 } 
 
-### GetCompetitionData
+# GetCompetitionData
 
-    App\Service\Admin\MainPage\GetCompetitionData\:
-        resource: '../src/Service/Admin/MainPage/GetCompetitionData/*'
+    App\Service\GetCompetitionData\:
+        resource: '../src/Service/GetCompetitionData/*'
         exclude: 
-            - '../src/Service/Admin/MainPage/GetCompetitionData/DataFiller/*'
-            - '../src/Service/Admin/MainPage/GetCompetitionData/ResultsProvider/*'
+            - '../src/Service/GetCompetitionData/DataFiller/*'
+            - '../src/Service/GetCompetitionData/ResultsProvider/*'
         autowire: true
         autoconfigure: true 
 
-    App\Service\Admin\MainPage\GetCompetitionData\DataFiller\:
-        resource: '../src/Service/Admin/MainPage/GetCompetitionData/DataFiller/*'
+    App\Service\GetCompetitionData\DataFiller\:
+        resource: '../src/Service/GetCompetitionData/DataFiller/*'
         autowire: true
         autoconfigure: true
         tags: ['app.competition_data_filler']
 
-    App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataBuilder:
+    App\Service\GetCompetitionData\CompetitionDataBuilder:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
             $dataFillersComp: !tagged_iterator app.competition_data_filler
 
-    App\Service\Admin\MainPage\GetCompetitionData\ResultsProvider\:
-        resource: '../src/Service/Admin/MainPage/GetCompetitionData/ResultsProvider/*'
+    App\Service\GetCompetitionData\ResultsProvider\:
+        resource: '../src/Service/GetCompetitionData/ResultsProvider/*'
         autowire: true
         autoconfigure: true
         tags: ['app.results_provider']
 
-    App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataService:
+    App\Service\GetCompetitionData\CompetitionDataService:
         public: true
         autowire: true
         autoconfigure: true
         arguments:
-            $dataFillersComp: !tagged_iterator app.results_provider
+            $providers: !tagged_iterator app.results_provider

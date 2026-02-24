@@ -15,11 +15,11 @@
             parent::__construct($registry, MainTable::class);
         }
 
-        public function findByCompId(int $compID): array
+        public function findByUserId(int $userId): array
         {
             return $this->createQueryBuilder('c')
-                ->andWhere('IDENTITY(c.competition) = :compId')
-                ->setParameter('compId', $compID)
+                ->andWhere('IDENTITY(c.user) = :userId')
+                ->setParameter('userId', $userId)
                 ->getQuery()
                 ->getResult();
         }

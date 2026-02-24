@@ -1,8 +1,8 @@
 <?php
-    namespace App\Service\Admin\MainPage\GetCompetitionData;
+    namespace App\Service\GetCompetitionData;
 
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
-    use App\Service\Admin\MainPage\GetCompetitionData\DataFiller\CompetitionDataFillerInterface;
+    use App\Service\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
+    use App\Service\GetCompetitionData\DataFiller\CompetitionDataFillerInterface;
 
     class CompetitionDataBuilder
     {

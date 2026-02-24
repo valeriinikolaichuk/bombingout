@@ -1,14 +1,14 @@
 <?php
-    namespace  App\Service\Admin\MainPage\GetCompetitionData\DataFiller;
+    namespace  App\Service\GetCompetitionData\DataFiller;
 
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
+    use App\Service\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
 
     class CompetitionListFiller implements CompetitionDataFillerInterface
     {
         public function supports(array $data): bool
         {
             return isset($data['dataType'])
-                && $data['dataType'] === 'openPopup'  
+                && $data['dataType'] === 'getAll'  
                 && isset($data['usersId']);
         }
 

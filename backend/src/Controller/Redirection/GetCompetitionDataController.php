@@ -1,8 +1,8 @@
 <?php
-    namespace App\Controller\Admin;
+    namespace App\Controller\Redirection;
 
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataBuilder;
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataService;
+    use App\Service\GetCompetitionData\CompetitionDataBuilder;
+    use App\Service\GetCompetitionData\CompetitionDataService;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;

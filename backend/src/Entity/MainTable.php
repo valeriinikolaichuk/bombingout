@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MainTableRepository;
 use App\Entity\Competitions;
+use App\Entity\UserReg;
+
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -318,6 +320,10 @@ class MainTable
     #[ORM\ManyToOne(targetEntity: Competitions::class)]
     #[ORM\JoinColumn(name: "comp_id", referencedColumnName: "comp_id", nullable: false)]
     private ?Competitions $competition = null;
+
+    #[ORM\ManyToOne(targetEntity: UserReg::class)]
+    #[ORM\JoinColumn(name: 'users_id', referencedColumnName: 'id', nullable: false)]
+    private ?UserReg $user = null;
 
     public function getId(): ?int
     {
@@ -1532,6 +1538,17 @@ class MainTable
     public function setCompetition(?Competitions $competition): self
     {
         $this->competition = $competition;
+        return $this;
+    }
+
+    public function getUser(): ?UserReg
+    {
+        return $this->user;
+    }
+
+    public function setUser(?UserReg $user): static
+    {
+        $this->user = $user;
         return $this;
     }
 }

@@ -1,7 +1,7 @@
 <?php
-    namespace App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO;
+    namespace App\Service\GetCompetitionData\CompetitionDataDTO;
 
-    use App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\ResultDTO\ResultItemDTOInterface;
+    use App\Service\GetCompetitionData\CompetitionDataDTO\ResultDTO\ResultItemDTOInterface;
 
     class ResultDTO
     {

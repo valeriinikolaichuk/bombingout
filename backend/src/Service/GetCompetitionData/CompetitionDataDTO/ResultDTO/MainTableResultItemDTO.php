@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\ResultDTO;
+    namespace App\Service\GetCompetitionData\CompetitionDataDTO\ResultDTO;
 
     use App\Entity\MainTable;
 
@@ -107,10 +107,11 @@
             private ?int $rnk_fcst,
             private ?int $points,
             private ?int $points_bp,
-            private ?int $comp_id
+            private ?int $comp_id,
+            private ?int $user
         ) {}
 
-        public static function fromEntity(Competitions $e): self
+        public static function fromEntity(MainTable $e): self
         {
             return new self(
                 $e ->getId(),
@@ -214,7 +215,8 @@
                 $e ->getRnkFcst(),
                 $e ->getPoints(),
                 $e ->getPointsBp(),
-                $e ->getCompetition()
+                $e ->getCompetition(),
+                $e ->getUser()
             );
         }
 
@@ -322,7 +324,8 @@
                 'rnk_fcst'              => $this -> rnk_fcst,
                 'points'                => $this -> points,
                 'points_bp'             => $this -> points_bp,
-                'comp_id'               => $this -> comp_id
+                'comp_id'               => $this -> comp_id,
+                'users_id'              => $this -> user
             ];
         }
     }

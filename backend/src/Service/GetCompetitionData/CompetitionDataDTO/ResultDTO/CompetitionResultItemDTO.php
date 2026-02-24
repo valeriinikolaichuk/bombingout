@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Admin\MainPage\GetCompetitionData\CompetitionDataDTO\ResultDTO;
+    namespace App\Service\GetCompetitionData\CompetitionDataDTO\ResultDTO;
 
     use App\Entity\Competitions;
 
