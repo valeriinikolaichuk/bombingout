@@ -24,7 +24,8 @@
 
                 match ($provider -> getType()) {
                     'competitions' => $response -> setCompetitions($result),
-                    'mainTable' => $response -> setMainTable($result),
+                    'mainTable'    => $response -> setMainTable($result),
+                    'sessions'     => $response -> setSessionsTable($result)
                 };
             }
 

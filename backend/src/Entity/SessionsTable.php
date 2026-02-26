@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SessionsTableRepository;
+use App\Entity\UserReg;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SessionsTableRepository::class)]
@@ -30,6 +31,10 @@ class SessionsTable
 
     #[ORM\Column(nullable: true)]
     private ?\DateTime $dateTime = null;
+
+    #[ORM\ManyToOne(targetEntity: UserReg::class)]
+    #[ORM\JoinColumn(name: 'users_id', referencedColumnName: 'id', nullable: false)]
+    private ?UserReg $user = null;
 
     public function getId(): ?int
     {
@@ -105,6 +110,17 @@ class SessionsTable
     {
         $this->dateTime = $dateTime;
 
+        return $this;
+    }
+
+    public function getUser(): ?UserReg
+    {
+        return $this->user;
+    }
+
+    public function setUser(?UserReg $user): static
+    {
+        $this->user = $user;
         return $this;
     }
 }

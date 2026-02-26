@@ -16,6 +16,15 @@ class SessionsTableRepository extends ServiceEntityRepository
         parent::__construct($registry, SessionsTable::class);
     }
 
+    public function findByUserId(int $userId): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('IDENTITY(c.user) = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return SessionsTable[] Returns an array of SessionsTable objects
     //     */

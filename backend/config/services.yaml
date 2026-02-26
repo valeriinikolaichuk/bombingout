@@ -13,6 +13,16 @@ services:
         tags: []
         #    - { name: kernel.event_listener, event: kernel.exception }
 
+    App\Twig\:
+        resource: '../src/Twig'
+        tags: ['twig.extension']
+
+    App\Twig\ViteExtension:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+            $env: '%kernel.environment%'
+        tags: ['twig.extension']
+
 # Main Service
     App\Service\Main\Page\LoginPageResolver: ~
     App\Service\Main\Page\ParticipantPageResolver: ~
