@@ -53,5 +53,5 @@
         </script>
         <script type="module" src="http://localhost:5173/src/main.jsx"></script>
     {% endif %}
-    <script type="module" src="{{ asset('assets/js/login/initLoginPage.js') }}"></script>
+    {{ vite_entry('login') }}
 {% endblock %}
