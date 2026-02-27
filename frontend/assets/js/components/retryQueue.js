@@ -1,3 +1,5 @@
+import { db } from '../../db.js';
+
 let isSyncing = false;
 
 export async function retryQueuedRequests(maxRetries = 5) {

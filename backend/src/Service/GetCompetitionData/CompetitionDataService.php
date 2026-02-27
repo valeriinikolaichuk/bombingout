@@ -4,6 +4,7 @@
     use App\Service\GetCompetitionData\ResultsProvider\ResultsProviderInterface;
     use App\Service\GetCompetitionData\CompetitionDataDTO\CompetitionDataContext;
     use App\Service\GetCompetitionData\CompetitionDataDTO\CompetitionDataResponseDTO;
+    use App\Service\GetCompetitionData\CompetitionDataDTO\ResultDTO;
 
     class CompetitionDataService
     {
@@ -12,7 +13,11 @@
 
         public function execute(CompetitionDataContext $context): CompetitionDataResponseDTO
         {
-            $response = new CompetitionDataResponseDTO();
+            $response = new CompetitionDataResponseDTO(
+                new ResultDTO([]),
+                new ResultDTO([]),
+                new ResultDTO([])
+            );
 
             foreach ($this -> providers as $provider) {
 
@@ -21,11 +26,12 @@
                 }
 
                 $result = $provider -> getResults($context);
+                $resultDTO = new ResultDTO($result);
 
                 match ($provider -> getType()) {
-                    'competitions' => $response -> setCompetitions($result),
-                    'mainTable'    => $response -> setMainTable($result),
-                    'sessions'     => $response -> setSessionsTable($result)
+                    'competitions' => $response -> setCompetitions($resultDTO),
+                    'mainTable'    => $response -> setMainTable($resultDTO),
+                    'sessions'     => $response -> setSessionsTable($resultDTO)
                 };
             }
 

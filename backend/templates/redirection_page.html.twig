@@ -61,5 +61,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script type="module" src="{{ asset('assets/js/redirection/initRedirectionPage.js') }}"></script>
+    {{ vite_entry('redirection') }}
 {% endblock %}

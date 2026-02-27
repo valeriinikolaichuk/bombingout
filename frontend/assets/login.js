@@ -1,5 +1,5 @@
 import { updateVisibility } from './js/login/login_page/updateVisibility.js';
-import { switchLanguage } from './switchLanguage.js';
+import { switchLanguage } from './js/components/switchLanguage.js';
 import { setText } from './js/login/login_page/setText.js';
 import { setLanguage } from './js/login/login_page/setLanguage.js';
 import { login } from './js/login/login_functions/login.js';

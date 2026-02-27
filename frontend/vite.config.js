@@ -8,14 +8,21 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  plugins: [react(),],
 
   build: {
     outDir: '../backend/public/build',  // ← Symfony public/build
     emptyOutDir: true,
     manifest: true,
+
+    rollupOptions: {
+      input: {
+        app: path.resolve(__dirname, 'assets/app.js'), 
+        app: path.resolve(__dirname, 'assets/login.js'),
+        app: path.resolve(__dirname, 'assets/redirection.js'),
+        app: path.resolve(__dirname, 'assets/admin.js'),
+      },
+    },
   },
 
   server: {

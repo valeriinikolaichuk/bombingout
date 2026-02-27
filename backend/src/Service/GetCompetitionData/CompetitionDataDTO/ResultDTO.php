@@ -6,6 +6,7 @@
     class ResultDTO
     {
         /** @var ResultItemDTOInterface[] */
+
         public function __construct(
             private array $items
         ) {}

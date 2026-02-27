@@ -9,17 +9,17 @@
             private ResultDTO $sessionsTable,
         ) {}
 
-        public function setCompetitions(array $items): void
+        public function setCompetitions(ResultDTO $items): void
         {
             $this -> competitions = $items;
         }
 
-        public function setMainTable(array $items): void
+        public function setMainTable(ResultDTO $items): void
         {
             $this -> mainTable = $items;
         }
 
-        public function setSessionsTable(array $items): void
+        public function setSessionsTable(ResultDTO $items): void
         {
             $this -> sessionsTable = $items;
         }
