@@ -14,7 +14,4 @@ document.addEventListener('DOMContentLoaded', async() => {
             await retryQueuedRequests();
         }
     );
-
-    
-    //    const initView = new InitView();
 });
