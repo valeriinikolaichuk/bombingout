@@ -36,3 +36,11 @@ An open platform for developing, shipping, and running applications. It allows t
 #### [Symfony](https://symfony.com/)
 An open-source, free PHP framework designed for building complex web applications, APIs, and microservices.
 
+#### [MySQL](https://www.mysql.com/)
+An open-source relational database management system based on SQL. It provides a fast, reliable, and scalable solution for managing structured data, widely used for web applications and content management systems.
+
+#### [Vite](https://vite.dev/)
+A frontend tool that provides an extremely fast development environment.  It leverages native browser modules for instant server start and uses Rollup to generate highly optimized static assets for production.
+
+#### [React](https://react.dev/)
+A JavaScript library for building user interfaces, primarily for single-page applications.  It allows developers to create reusable UI components and manage complex application states efficiently through a virtual DOM.
