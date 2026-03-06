@@ -32,3 +32,7 @@ weight selection, and real-time result display. The interface is optimized for u
 
 #### [Docker](https://www.docker.com/)
 An open platform for developing, shipping, and running applications. It allows to package application and all its dependencies into standardized, lightweight containers. 
+
+#### [Symfony](https://symfony.com/)
+An open-source, free PHP framework designed for building complex web applications, APIs, and microservices.
+
