@@ -27,3 +27,8 @@
 **Online Platform for Managing Powerlifting Competitions**  
 This project is built to manage powerlifting competitions. It enables full control over athlete attempts,
 weight selection, and real-time result display. The interface is optimized for use on the competition platform.
+
+### Built With
+
+#### [Docker](https://www.docker.com/)
+An open platform for developing, shipping, and running applications. It allows to package application and all its dependencies into standardized, lightweight containers. 
