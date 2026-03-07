@@ -1,10 +1,9 @@
 import { Application } from '@hotwired/stimulus';
-import TablesController from './tables_controller';
+import MainTableController from './main_table_controller.js';
 
 const application = Application.start();
 
-application.register('table', TablesController);
+application.register('main_table', MainTableController);
 // application.register('popup', PopupController);
-// application.register('form', FormController);
 
 export default application;

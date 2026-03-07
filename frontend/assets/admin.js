@@ -1,5 +1,5 @@
 import { switchLanguage } from './js/components/switchLanguage.js';
-import { retryQueuedRequests } from './js/components/retryQueue.js';
+import { retryQueuedRequests } from './retryQueue.js';
 import { actions } from './js/components/actions/actions.js';
 import { buttonReturn } from './js/components/buttonReturn.js';
 

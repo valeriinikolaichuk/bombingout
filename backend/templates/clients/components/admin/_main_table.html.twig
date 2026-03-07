@@ -1,0 +1,21 @@
+<form  id="formElem">
+    <table class="main_table" data-listenerset="false">
+        <thead>
+            {% include 'clients/components/admin/main_table/_main_table_header.html.twig' %}
+        </thead>
+        <tbody  id="table_body">
+            {% include 'clients/components/admin/main_table/_input_line.html.twig' %}
+
+            {% if rows is defined and rows|length >= 1 %}
+                {% set x = 11 %}
+                {% for row in rows|reverse %}
+                    {% include 'clients/components/admin/main_table/_main_table_body.html.twig' with {
+                        row: row,
+                        index: loop.index
+                    } %}
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <input type="submit" hidden>
+</form>
