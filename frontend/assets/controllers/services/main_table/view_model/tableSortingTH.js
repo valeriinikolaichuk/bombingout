@@ -10,4 +10,4 @@ export function tableSortingTH(event){
     const rowsArray = tableSorting(event.target, tbodyObj.tbody);
     tbodyObj.tbody.append(...rowsArray);
     newNumber(tbodyObj.tableNumber);
-}
+};

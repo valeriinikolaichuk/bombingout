@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import About from './assets/login_page_popups/About';
 import CreateCompetition from './assets/admin_page/CreateCompetition';
+import OpenCompetition from './assets/admin_page/OpenCompetition';
 
 const POPUPS = {
   about: About,
   createCompetition: CreateCompetition,
+  openCompetition: OpenCompetition,
 };
 
 export default function PopupContent() {

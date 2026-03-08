@@ -1,5 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
+import { ViewModelMainTable } from './services/main_table/viewModelMainTable.js';
 import { ViewMainTable } from './services/main_table/viewMainTable.js';
+import { db } from '../db.js';
 
 export default class extends Controller {
     connect() {
@@ -29,10 +31,13 @@ export default class extends Controller {
     reloadTable = async (event) => {
         const rows = event.detail?.rows ?? [];
 
-        const response = await fetch('/mainTable', {
+        const response = await fetch('/tableController', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ rows })
+            body: JSON.stringify({
+                rows: rows,
+                type: 'main_table'
+            })
         });
 
         const html = await response.text();
@@ -40,7 +45,7 @@ export default class extends Controller {
         this.element.innerHTML = html;
     }
 
-    initTable() {
+    async initTable() {
         const formElement = this.element.getElementById("formElem");
 
         if (!formElement) return;
@@ -49,8 +54,16 @@ export default class extends Controller {
             this.view.destroy?.();
         }
 
-        this.view = new ViewMainTable(formElement);
+        this.vmMainTable = new ViewModelMainTable();
+        this.view = new ViewMainTable(this.vmMainTable, formElement);
+
+        const rows = await db.main_table
+            .where('comp_id')
+            .equals(this.compID)
+            .toArray();
+
+        this.vmMainTable.fillTable(rows);
 
         console.log("MainTable connected");
     }
-}
+};

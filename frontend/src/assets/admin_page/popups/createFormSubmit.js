@@ -1,56 +1,66 @@
 import { validateForm } from "./validateForm";
-import { db } from '../../../db';
-//import { updateCompetitionData } from "./updateCompetitionData";
-import { competitionCreated } from "./i18n/resultMessages";
+import { db } from '../../../../assets/db';
+import { loadNewTable } from "./createFormSubmit/loadNewTable";
+import { writeCompDataToIndexed } from "./createFormSubmit/writeCompDataToIndexed";
+import { getRowsCountForCompetition } from "./getRowsCountForCompetition";
 
 export async function createFormSubmit(payLoad, lang, onClose){
-  const isValid = validateForm(payLoad.competition_name, payLoad.country, payLoad.city, lang);
-  if (!isValid) return;
-  console.log('FORM OK');
-console.log(payLoad);
-  await db.competitions.put({
-    comp_id: 0,
-    users_id: payLoad.usersId,
-    competition_name: payLoad.competition_name,
-    country: payLoad.country,
-    city: payLoad.city,
-    start_date: payLoad.start_date,
-    end_date: payLoad.end_date,
-    division: payLoad.division,
-    sex: payLoad.sex,
-    age_group: payLoad.age_group,
-    type: payLoad.type,
-    categories: payLoad.version,
-    updatedAt: Date.now()
-  });
+    const isValid = validateForm(payLoad.competition_name, payLoad.country, payLoad.city, lang);
+    if (!isValid) return;
+    console.log('FORM OK');
 
-  const actionId = crypto.randomUUID();
+    const compId = crypto.randomUUID();
 
-  await db.syncQueue.add({
-    actionId: actionId,
-    actionType: payLoad.popupType,
-    payload: payLoad,
-    createdAt: Date.now()
-  });  
+    try {
+        let response = await fetch('/api/updateCompetitionData', {
+            method: "POST",
+            credentials: "include",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                comp_id: compId,
+                ...payLoad
+            })
+        });
 
-  try {
-//    await updateCompetitionData();
+        if (!response.ok){
+            throw new Error('error by path: /api/updateCompetitionData');
+        }
 
-    alert(competitionCreated[lang]);
-    onClose();
+        let updateResult = await response.json();
 
-  } catch (error) {
-    console.warn('Saved locally. Will sync later.');
-  }
+        if (!updateResult.success || !updateResult.session || !updateResult.status){
+            throw new Error('Server failed to update competition data');
+        }
 
-//  updateCompetitionData(payLoad, lang, onClose);
-  
+        writeCompDataToIndexed(compId, payLoad);
+        const rows = getRowsCountForCompetition(compId);
+        loadNewTable(rows, lang, onClose);
 
-/*  window.dispatchEvent(
-    new CustomEvent('popup:createCompetition:success', {
-      detail: { competitionName } 
-    })
-  );*/
 
-//  window.dispatchEvent(new Event('table:reload'));
+
+    } catch (error) {
+
+        writeCompDataToIndexed(compId, payLoad);
+
+        console.warn('Server unavailable. Saving to syncQueue.', error);
+
+        const actionId = crypto.randomUUID();
+
+        await db.syncQueue.add({
+            actionId: actionId,
+            actionType: payLoad.popupType,
+            endpoint: '/api/updateCompetitionData',
+            method: 'POST',
+            payload: {
+                comp_id: compId,
+                ...payLoad
+            },
+            status: 'pending',
+            retries: 0,
+            createdAt: Date.now()
+        });
+
+        const rows = getRowsCountForCompetition(compId);
+        loadNewTable(rows, lang, onClose);
+    }
 }

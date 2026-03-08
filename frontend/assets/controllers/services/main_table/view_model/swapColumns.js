@@ -18,4 +18,4 @@ export function swapColumns(fromIndex, toIndex, rows){
             row.insertBefore(fromCell, toCell);
         }
     });
-}
+};

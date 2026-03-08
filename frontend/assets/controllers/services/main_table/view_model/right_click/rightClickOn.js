@@ -1,7 +1,5 @@
-import { rightClick } from "../../view/rightClick.js";
-
 export function rightClickOn(){
-    const rightClickToolbar = rightClick();
+    const rightClickToolbar = document.getElementById('right_click');
 
     rightClickToolbar.classList.remove("right_click");
     rightClickToolbar.classList.add("right_click_active");

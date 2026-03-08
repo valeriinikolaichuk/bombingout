@@ -1,10 +1,8 @@
-import { ViewModelMainTable } from './viewModelMainTable.js';
-import { rightClick } from './view/rightClick.js';
 import { handleMouseMove } from './view/resizeColumn/handleMouseMove.js';
 import { stopResize } from './view/resizeColumn/stopResize.js';
 
-export function ViewMainTable(formElement){
-    this.vmMainTable = new ViewModelMainTable();
+export function ViewMainTable(vmMainTable, formElement){
+    this.vmMainTable = vmMainTable;
 
     this.langUkColumns = document.querySelectorAll('[data-lang-show]');
     this.vmMainTable.toggleLangColumns(this.langUkColumns);
@@ -105,4 +103,4 @@ export function ViewMainTable(formElement){
 
     this.headInputLine = document.getElementById('tr0');
     this.headInputLine.addEventListener('input', this.vmMainTable.addCoeffInputLine);
-}
+};
