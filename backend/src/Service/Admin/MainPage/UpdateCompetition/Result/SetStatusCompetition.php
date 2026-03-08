@@ -13,8 +13,7 @@
 
         public function supports(CompetitionContext $context): bool
         {
-            return $context -> popupType === 'create' 
-                && $context -> comp_id !== null;
+            return $context -> popupType === 'create';
         }
 
         public function execute(CompetitionContext $context, ResultDTO $result): void
@@ -29,7 +28,7 @@
             $actionResult = $this -> factory -> action($data, $action);
 
             if ($actionResult == 'success'){
-                $result -> success = true;
+                $result -> status = true;
             }
         }
     }

@@ -8,6 +8,7 @@
         public function supports(array $data): bool
         {
             return isset($data['popupType'])
+                && isset($data['compId']) 
                 && isset($data['usersId']) 
                 && isset($data['competition_name']) 
                 && isset($data['country']) 
@@ -24,6 +25,7 @@
         public function fill(array $data, CompetitionContext $context): void
         {
             $context -> popupType = $data['popupType'];
+            $context -> $comp_id = $data['compId'];
             $context -> usersId = (int)$data['usersId'];
 
             $context -> competition_name = $data['competition_name'];

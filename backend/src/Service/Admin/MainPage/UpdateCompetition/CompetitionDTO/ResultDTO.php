@@ -4,14 +4,14 @@
     class ResultDTO{
         public ?bool $success = false;
         public ?bool $session = false;
-        public ?int $compID = null;
+        public ?bool $status = false;
 
         public function toArray(): array
         {
             return [
                 'success' => $this -> success,
                 'session' => $this -> session,
-                'compID'  => $this -> compID
+                'status'  => $this -> status
             ];
         }
     }

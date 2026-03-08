@@ -4,7 +4,7 @@
     class CompetitionContext{
         public ?string $popupType = null;
 
-        public ?int $comp_id = null;
+        public ?string $comp_id = null;
         public ?int $usersId = null;
         public ?int $id_status = null;
 

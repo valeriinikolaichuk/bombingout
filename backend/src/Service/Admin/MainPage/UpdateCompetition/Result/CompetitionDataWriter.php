@@ -14,8 +14,7 @@
 
         public function supports(CompetitionContext $context): bool
         {
-            return $context -> popupType === 'create' 
-                && $context -> comp_id === null;
+            return $context -> popupType === 'create';
         }
 
         public function execute(CompetitionContext $context, ResultDTO $result): void
@@ -27,7 +26,9 @@
             }
 
             $competition = new Competitions();
+            
             $competition -> setUser($user);
+            $competition -> setCompId($context -> comp_id ?? null);
             $competition -> setCompetitionName($context -> competition_name ?? null);
             $competition -> setCountry($context -> country ?? null);
             $competition -> setCity($context -> city ?? null);
@@ -42,8 +43,7 @@
             $this -> em ->persist($competition);
             $this -> em ->flush();
 
-            $context -> comp_id = (int)$competition -> getId();
-            $result -> compID = (int)$competition -> getId();
+            $result -> success = true;
         }
     }
 ?>
