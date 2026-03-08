@@ -43,7 +43,7 @@ export function ViewMainTable(formElement){
             this.vmMainTable.eventRightClick(evRightClick.target.id, this.deleteParticipant);
         });
 
-        this.rightClickToolbar = rightClick();
+        this.rightClickToolbar = document.getElementById('right_click');
         this.rightClickToolbar.addEventListener('click', (event) => {
             event.preventDefault();
             this.deleteParticipant = document.getElementById('id_delete');
@@ -103,14 +103,6 @@ export function ViewMainTable(formElement){
         });
     });
 
-
-
-
-
-
-
     this.headInputLine = document.getElementById('tr0');
     this.headInputLine.addEventListener('input', this.vmMainTable.addCoeffInputLine);
-
-    this.initView = new InitView();
 }

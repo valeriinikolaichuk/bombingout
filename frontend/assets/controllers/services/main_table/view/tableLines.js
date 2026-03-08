@@ -1,8 +1,12 @@
+import { initCoeff } from "./initCoeff.js";
+
 export function TableLines(mainId){
     this.mainId = mainId;
     this.trId = document.getElementById('tr'+this.mainId);
     this.tdDd = document.getElementById('tdDd'+this.mainId);
     this.tdMo = document.getElementById('tdMo'+this.mainId);
+
+    this.initCoeff = initCoeff.bind(this);
 
     this.tdElement = new Proxy({}, {
         get: (_, prop) => {

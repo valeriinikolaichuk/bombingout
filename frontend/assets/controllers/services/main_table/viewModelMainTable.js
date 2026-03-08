@@ -8,6 +8,7 @@ import { deleteThisParticipant } from './view_model/deleteThisParticipant.js';
 import { getVisualIndex } from './view_model/getVisualIndex.js';
 import { swapColumns } from './view_model/swapColumns.js';
 import { resizeColumn } from "../../view_model/resizeColumn.js";
+import { addCoeffInputLine } from './view_model/addCoeffInputLine.js';
 
 export function ViewModelMainTable(){
     this.toggleLangColumns = toggleLangColumns.bind(this);
@@ -20,7 +21,5 @@ export function ViewModelMainTable(){
     this.getVisualIndex = getVisualIndex.bind(this);
     this.swapColumns = swapColumns.bind(this);
     this.resizeColumn = resizeColumn.bind(this);
-
-    
-    this.addCoeffInputLine = this.addCoeffInputLine.bind(this);
+    this.addCoeffInputLine = addCoeffInputLine.bind(this);
 }
