@@ -19,8 +19,8 @@ class ComputerStatus
     #[ORM\Column(name: "comp_status", length: 60, nullable: false, options: ["default" => ""])]
     private ?string $comp_status = '';
 
-    #[ORM\Column(name: "comp_id", type: "integer", nullable: false, options: ["default" => 0])]
-    private ?int $comp_id = 0;
+    #[ORM\Column(name: "comp_id", type: "binary", length: 36, unique: true, nullable: false, options: ["default" => ""])]
+    private ?string $comp_id = '';
 
     #[ORM\Column(name: "sessions_name", length: 60, nullable: false, options: ["default" => ""])]
     private ?string $sessions_name = '';
@@ -63,8 +63,8 @@ class ComputerStatus
         return $this;
     }
 
-    public function getCompId(): int { return $this->comp_id; }
-    public function setCompId(int $comp_id): static {
+    public function getCompId(): string { return $this->comp_id; }
+    public function setCompId(string $comp_id): static {
         $this->comp_id = $comp_id;
         return $this;
     }

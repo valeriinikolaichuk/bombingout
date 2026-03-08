@@ -10,9 +10,9 @@ use App\Entity\UserReg;
 #[ORM\Entity(repositoryClass: CompetitionsRepository::class)]
 class Competitions {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(name: "comp_id", type: "integer")]
-    private ?int $comp_id = null;
+    #[ORM\GeneratedValue(strategy: "NONE")]
+    #[ORM\Column(name: "comp_id", type: "binary", length: 36, unique: true)]
+    private ?string $comp_id = null;
 
     #[ORM\Column(name: "competition_name", length: 150, nullable: true)]
     private ?string $competition_name = null;
@@ -57,7 +57,11 @@ class Competitions {
     #[ORM\Column(name: "final", type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $final = null;
 
-    public function getCompId(): ?int { return $this->comp_id; }
+    public function getCompId(): ?string { return $this->comp_id; }
+    public function setCompId(string $comp_id): self {
+        $this->comp_id = $comp_id;
+        return $this;
+    }
 
     public function getCompetitionName(): ?string { return $this->competition_name; }
     public function setCompetitionName(?string $competition_name): static {
