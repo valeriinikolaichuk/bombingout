@@ -16,7 +16,8 @@
             lang: lang,
             num: users_id,
             num_st: id_status,
-            status: status
+            status: status,
+            compID: compID|default(null)
         }|json_encode|raw }};
     </script>
 
@@ -41,9 +42,12 @@
         {% include 'main/popup_add_nomination.html.twig' %}
         {% include 'postForm.html.twig' %} #}
 
-        <div id="page-root"></div>
-        <div id="popup-root"></div>
+        <turbo-frame
+            id="main-table"
+            data-controller="main_table"
+        </turbo-frame>
 
+        <div id="popup-root"></div>
     </main>
 
 {% endblock %}
@@ -61,23 +65,24 @@
         <script type="module" src="http://localhost:5173/src/main.jsx"></script>
     {% endif %}
 
-    <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
-
-    <script type="module" src="{{ asset('assets/js/admin/initAdminPage.js') }}"></script>
 {#
     <script src="{{ asset('assets/view/view_MainPage/popup_open_info.js') }}"></script>
+
     <script src="{{ asset('assets/view/view_MainPage/viewMainPage.js') }}"></script>
+
     <script src="{{ asset('assets/view/view_MainPage/viewNomin.js') }}"></script>
     <script src="{{ asset('assets/view/view_MainPage/viewPopupsValues.js') }}"></script>
     <script src="{{ asset('assets/view/view_MainPage/viewButtons.js') }}"></script>
     <script src="{{ asset('assets/view/view_MainPage/initPopups.js') }}"></script>
 
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/viewModelMainPage.js') }}"></script>
+
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/openCloseModals.js') }}"></script>
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/setUnsetValuesCreateDialog.js') }}"></script>
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/setUnsetButtonsValues.js') }}"></script>
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/popupFormsValidation.js') }}"></script>
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/online_registration.js') }}"></script>
+
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/viewModelFunctions.js') }}"></script>
     <script src="{{ asset('assets/viewModels/viewModel_MainPage/sendData.js') }}"></script>
 
@@ -104,4 +109,6 @@
             }, 10000);
         });
     </script>#}
+
+    {{ vite_entry('admin') }}
 {% endblock %}

@@ -1,0 +1,123 @@
+<tr id="tr0" class="input_line sticky" style="top: 86px; z-index: 7;" data-type="input">
+    <td style="display: none;">
+        <input id="td110" type="hidden" name="main_id" value="-1"></td>
+    <td class="input_colore sticky" id="td120" style="font-size: 18px; z-index: 6;"></td>
+    <td class="input_colore sticky" style="z-index: 6;">
+        <input id="td130" class="input" type="text" name="surname_name" size="40"></td>
+    <td class="input_colore sticky" style="z-index: 6;">
+        <select id="tdDd0" class="input" name="day">
+            {% for day in 0..31 %}
+                <option value="{{ day }}">{{ day }}</option>
+            {% endfor %}
+        </select>
+    </td>
+    <td class="input_colore sticky" style="z-index: 6;">
+        <select id="tdMo0" class="input" name="month">
+            {% for month in 0..12 %}
+                <option value="{{ month }}">{{ month }}</option>
+            {% endfor %}
+        </select>
+    </td>
+    <td class="input_colore sticky" style="z-index: 6;">
+        <select id="td140" class="input" name="year">
+            <option value="0000">0000</option>
+            {% for year in 1935..2015 %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+    </td>
+    <td class="input_colore sticky" style="z-index: 6;">
+        <select id="td150" class="input" name="category">
+            <option value=""></option>
+            {#
+                if (Config::$compVERSION == 'IBSA'){
+                    if (Config::$compSEX == 'men'){
+                        require 'categories_men_IBSA.php';
+                    } else {
+                        require 'categories_women_IBSA.php';
+                    } 
+                }
+            #}
+        </select>
+    </td>
+    <td class="input_colore">
+        <input id="td160" class="input" type="number" min="0" max="200" step="0.01" name="bodyweight"></td>
+    <td class="input_colore" id="td170"></td>
+    <td style="display: none;">
+        <input id="coeff_input0" type="hidden" name="iPF_GL_Cf" value=""></td>
+    <td class="input_colore">
+        <select id="td180" class="input" name="grp">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+    </td>
+    <td class="input_colore">
+        <input id="td190" class="input" style="text-align: center; font-size: 15px" type="number" min="0" max="999" step="1" name="lot"></td>
+    <td class="input_colore" data-lang-show="uk">
+        <input id="td200" class="input" type="text" name="rank_class"></td>
+    <td class="input_colore">
+        <input id="td210" class="input" type="text" name="region"></td>
+    <td class="input_colore">
+        <input id="td220" class="input" type="text" name="city"></td>
+    <td class="input_colore">
+        <input id="td230" class="input" type="text" name="club"></td>
+    <td class="input_colore">
+        <input id="td240" class="input" type="text" name="trener_1"></td>
+    <td class="input_colore">
+        <input id="td250" class="input" type="text" name="trener_2"></td>
+    <td class="input_colore">
+        <input id="td260" class="input" type="text" name="trener_3"></td>
+    <td class="input_colore">
+        <input id="td270" class="input" type="text" name="trener_4"></td>
+    <td class="input_colore">
+        <input id="td280" class="input" type="text" name="titles"></td>
+    <td class="input_colore" id="personally290">
+        <input id="td290" class="input" type="checkbox" name="personally" value="-1"></td>
+    <td class="input_colore" id="out_of_comp300">
+        <input id="td300" class="input" type="checkbox" name="out_of_comp" value="-1"></td>
+    <td class="input_colore" id="md310">
+        <input id="td310" class="input" type="checkbox" name="md" value="-1"></td>
+    <td class="input_colore" id="dbl320">
+        <input id="td320" class="input" type="checkbox" name="dbl" value="-1"></td>
+    <td class="input_colore" id="squat_nom330" data-discipline="powerlifting">
+        <input id="td330" class="input" type="number" min="0" max="999" step="0.5" name="squat_nom"></td>
+    <td class="input_colore" id="bench_press_nom340">
+        <input id="td340" class="input" type="number" min="0" max="999" step="0.5" name="bench_press_nom"></td>
+    <td class="input_colore" id="deadlift_nom350" data-discipline="powerlifting">
+        <input id="td350" class="input" type="number" min="0" max="999" step="0.5" name="deadlift_nom"></td>
+    <td class="input_colore" id="td360" data-discipline="powerlifting"></td>
+    <td style="display: none;">
+        <input id="total_nom0" type="hidden" min="0" max="9999" step="0.5" name="total_nom" value=""></td>
+    <td class="input_colore" id="squat_1370" data-discipline="powerlifting">
+        <input id="td370" class="input" type="number" min="0" max="999" step="0.5" name="squat_1"></td>
+    <td class="input_colore" id="bench_press_1380">
+        <input id="td380" class="input" type="number" min="0" max="999" step="0.5" name="bench_press_1"></td>
+    <td class="input_colore" id="deadlift_1390" data-discipline="powerlifting">
+        <input id="td390" class="input" type="number" min="0" max="999" step="0.5" name="deadlift_1"></td>
+    <td class="input_colore" id="td400" data-discipline="powerlifting"></td>
+    <td style="display: none;">
+        <input id="total_att0" type="hidden" min="0" max="9999" step="0.5" name="total_1_att" value=""></td>
+    <td class="input_colore" id="td410" data-discipline="bench_press"></td>
+    <td class="input_colore" id="td420" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td430"></td>
+    <td class="input_colore" id="td440" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td450" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td460" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td470" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td480" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td490" data-discipline="bench_press"></td>
+    <td class="input_colore" id="td500" data-discipline="bench_press"></td>
+    <td class="input_colore" id="td510" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td520" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td530" data-discipline="powerlifting"></td>
+    <td class="input_colore" id="td540" data-discipline="bench_press"></td>
+    <td class="input_colore" id="td550" data-discipline="bench_press"></td>
+    <td class="input_colore" id="td560" data-discipline="bench_press"></td>
+</tr>
