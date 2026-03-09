@@ -411,3 +411,40 @@ services:
         autoconfigure: true
         arguments:
             $providers: !tagged_iterator app.results_provider
+
+# Admin
+## Tables
+
+    App\Service\Admin\Tables\:
+        resource: '../src/Service/Admin/Tables/*'
+        exclude: 
+            - '../src/Service/Admin/Tables/Filler/*'
+            - '../src/Service/Admin/Tables/TableService/*'
+        autowire: true
+        autoconfigure: true 
+
+    App\Service\Admin\Tables\Filler\:
+        resource: '../src/Service/Admin/Tables/Filler/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.table_data_filler']
+
+    App\Service\Admin\Tables\TableContextBuilder:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $tableFillers: !tagged_iterator app.table_data_filler
+
+    App\Service\Admin\Tables\TableService\:
+        resource: '../src/Service/Admin/Tables/TableService/*'
+        autowire: true
+        autoconfigure: true
+        tags: ['app.table_service']
+
+    App\Service\Admin\Tables\TableService:
+        public: true
+        autowire: true
+        autoconfigure: true
+        arguments:
+            $tableResolvers: !tagged_iterator app.table_service

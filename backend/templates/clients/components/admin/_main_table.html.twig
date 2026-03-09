@@ -19,3 +19,9 @@
     </table>
     <input type="submit" hidden>
 </form>
+
+<script>
+    if (window.appData) {
+        window.appData.compID = {{ compID|json_encode|raw }};
+    }
+</script>
