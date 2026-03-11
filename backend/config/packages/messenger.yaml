@@ -28,3 +28,5 @@ framework:
 
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
+
+            App\Message\CompetitionCreatedMessage: async
