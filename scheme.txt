@@ -1,0 +1,247 @@
+                          MainController
+                                ↓
+SessionAwareTrait ------> ResolverFactory <------------------------------------------------------------------.
+                                ↓                                                                            |
+                       PageResolverInterface                                                          PageResultDTO
+         _______________________|_________________________ ____________________________                      ↑
+        ↓                       ↓                         ↓                            ↓                     |
+LoginPageResolver    RedirectionPageResolver     ParticipantPageResolver         PagesResolver <-- PageEnum  |
+        ↓                       ↓                         ↓                            ↓                     |
+login_page.html.twig   redirection_page.html.twig   dashboard_page.html.twig   $page.'.html.twig' -----------'
+
+
+                            login_page.html.twig
+                                    ↓
+                                   JSON ---> JS ---> MainController
+                                    ↓↑
+                             LoginController <--------------------.
+                                    ↓                             |
+                              LoginFactory            <-----------|
+                                    ↓                             |     
+                           LoginMethodInterface       <-----------|
+                            ________|_________                    |
+                                    ↓                             |
+LoginContextBuilder <======= LoginMethodDefault <-----------------|
+          ↓                         |      |                      |
+ContextFillerInterface              |      '======================|=========================> LoginCompleted
+ _________↓_________                |                             |                                  ↑
+          ↓                         |                             |                                  |
+      [ Filler ]                    |                             |                                  |
+          ↓                         ↓                             |                                  |
+    LoginContext  --------->  StrategyFactory -----------> LoginResultDTO                            |
+                                    ↓                                                                ↓
+LoginCheckerResolver <-----> StrategyAbstract                                             LoginCompletedInterface 
+         |                 _________↓_________                           ____________________________↓____________________________
+         |                          ↓                                   ↓↑                           ↓↑                           ↓↑
+         |                  LoginStrategyDefault <----.           SaveLoginData                CreateSession                  PageAction
+         ↓                          ↓                 |                 ↓↑       LoginResultDTO      ↓↑                            ↑
+VerificationInterface       LoginResultBuilder        |        ComputerStatusWriter    ⬑---- SessionFactory <---------------------'
+_________↓_________                 ↓                 |                 ↓↑                           ↓   ⬑---- SessionAwareTrait
+         ↓                      [ Result ]            |             Connection             SessionActionInterface 
+LoginPasswordChecker                ↓                 |                        ______________________↓______________________ 
+        ↓↑                    LoginResultDTO          |                       ↓             |               ↓               |
+UserRegRepository                                     ↓               SessionActionLogin    ↓    SessionActionParticipant   ↓
+        ↓↑                                   LoginPolicyResolver                    SessionActionStatusId              SessionActionPage
+     UserReg                                 _________↓_________ 
+                                                      ↓
+                                          ExistingEnvironmentPolicy ⇄ ComputerStatusReader 
+                                                      ↓                         ↓↑
+                                                LoginResultDTO              Connection                      
+
+           login_page.html.twig
+                    ↓
+         errorLoginPopup.html.twig
+                    ↓↑
+                   JSON    JSON <---------------------------------------------------------------------------------------.
+                    ↓↑       ↓  ⬐------------------------------------------------------------------------------.       |
+        DeleteConnectionController ====> DeleteConnectionChecker                                                |       |
+                    ↓                            ↑       |                                                      |       |
+        DeleteConnectionContextBuilder           |       '---------------------------.                          |       |
+                    ↓                            |                                   ↓                          |       |
+        DeleteConnectionFillerInterface          |                       DeleteConnectionInterface              |       |
+             _______↓_______                     |                 __________________↓__________________        |       |
+            ↓               ↓                    |                ↓                                     ↓       |       |
+DeletePrevRegInFiller DeleteAllConnectionsFiller |      DeletePreviousRegService          DeleteAllConnections  |       |
+            ↓               ↓                    |                |_____________________________________|       |       |
+        DeleteConnectionContext -----------------'                          ↓                  ↓                |       |
+                                                                        Connection      CleanConnectionDTO ----'        |
+                                                                                                                        |
+redirection_page.html.twig <--------------------.       .---------------------------------------------------------------'
+            ↓                                   |       |
+           JSON ---> JS -----------> dialog_connections.html.twig ---> JS ----------> checkAdmin.js
+            ↓↑                                                                             ↓↑
+  ShowConnectionsController  ⇄  ShowConnectionsPresenter               .-------> CheckAdminController <---------> AdminChecker
+       |            |   ↑___________________________                   |                  ↓                           ↓↑
+       ↓            ↓                               |                  |        CheckAdminContextBuilder   ComputerStatusRepository
+UserDataFactory   ConnectionsFactory                |                  |                  ↓                           ↓↑
+       ↓            ↑            |                  |                  |       CheckAdminFillerInterface        ComputerStatus
+GetDataInterface    |            |                  |                  |        __________↓__________
+_______↓_______     |            |                  |                  |                  ↓
+       ↓            |            |                  |                  |        UserIdCheckAdminFiller
+   GetUsersId       |            |                  |                  |                  ↓
+       ↓            |            |                  |                  '--------- CheckAdminContext
+  UserDataDTO ------'            ↓                  |       
+                      GetConnectionsInterface       |
+                       __________↓__________        |
+                                 ↓                  |
+                         GetConnectionsById --------' 
+                                ↓↑
+                      ComputerStatusRepository
+                                ↓↑
+                          ComputerStatus
+                                                        
+                                                         
+..._page.html.twig      redirection_page.html.twig                      
+        ↑                             ↓                                           
+MainController <--------------.      POST     
+                              |       ↓                                                
+                            RedirectionController <--------- array -----.      
+                                      ↓                                 |               
+                              PageActionFactory   <--------- string ----|                         
+                                      ↓                                 |    
+                             PageActionInterface                        |               
+                     _________________↓_________________                |              
+                    ↓                 ↓                 ↓               |                       
+           .---> GoToPage       LogoutAction   ReturnToRedirectionPage  | 
+           |        |_________________|_________________|               |
+           |                          ↓                                 |
+           |                    RequestHandler <--- RequestStack -------'       
+           |                          ↓↑                                                    
+           |               RequestHandlerInterface                                         
+           |            ______________↓↑_____________                   
+           |           ↓                             ↓                  
+PageEnum --|-----> SetStatus                   SessionLogout          
+           |           ↑______________ ______________↑                  ________________________________________
+           |                          |                                ↓                                        |
+           |                          '---------------------> RequestActionFactory <--------------------.       | 
+           |                                                           ↓                                |       |                      
+           |                                                 RequestActionInterface                     |       |
+           |                         __________________________________↓__________________              |       |  
+           |                        ↓↑                 ↓↑              ↓↑                 ↓↑            |       |                       
+           '---------------> SetClientsStatus UnsetClientsStatus DeleteStatusLogout SetCompetition      |       |
+                                        ↓              ↓               ↓                   ↓            |       |
+                                      ComputerStatusWriter    ComputerStatusRemover  CompetitionUpdater |       |    
+                                                ↓                       ↓                  ↓            |       |
+                                            Connection              Connection         Connection       |       |
+                                                                                                        |       |
+                                                                                                        |       |
+..._page.html.twig                button_redirection.html.twig                                          |       |
+        ↑                                      ↓↑                                                       |       |
+MainController <--------------------------.   JSON                                                      |       |
+                                          |    ↓↑                                                       |       |
+SessionAwareTrait --> GoBackFactory <== GoBackController <----------.                                   |       |
+                        |       ↑               ↓                   |                                   |       |
+            ____________|       |       GoBackContextBuilder        |                                   |       |
+           ↓                    |               ↓                   |                                   |       |
+    GoBackInterface --------.   |      GoBackFillerInterface        |                                   |       |
+      _____↓____            |   |       ________↓________           |                                   |       |
+     ↓          ↓           |   |               ↓                   |                                   |       |
+DelSession SetSession       |   |        RedirectPageData           |                                   |       |
+                ↑           |   |               ↓                   |                                   |       |
+                |           |   '--------- GoBackContext            |                                   |       |
+                |           |                                       |                                   |       |
+                |           '------- ResultDTO ---------------------'                                   |       |
+                |_______________________________________________________________________________________|       |
+                                                                                                                |
+
+ redirection_page.html.twig
+             ↓
+    initredirectionPage.js
+             ↓
+     fetchAndSaveData
+             ↓↑
+            JSON         _____________________________________________________________________________________________________________________
+             ↓↑         ↓                                                                                                                     |
+GetCompetitionDataController =========> CompetitionDataService                                                                                |
+             ↓                             ↑  |         ↓                                                                                     |
+    CompetitionDataBuilder                 |  |  CompetitionDataResponseDTO -> ResultDTO [$items] -> toArray() ===> ResultItemDTOInterface    |
+             ↓                             |  |__                              ResultDTO [$items] -> toArray()         |                      |
+CompetitionDataFillerInterface             |     |   .-----------------------> ResultDTO [$items] -> toArray()         |                      |
+  ___________↓___________                  |     |   |                                                                 |                      |
+             ↓                             |     |   |                        _______________________ _________________↓_____                 |
+      [ DataFiller ]                       |     |   |                       ↓                       ↓                       ↓                |
+             ↓                             |     |   |          SessionsTableResultItemDTO  CompetitionResultItemDTO  MainTableResultItemDTO  |
+ CompetitionDataContext ----context--------'     |   |                       |_______________________|_______________________|                |
+                                                 |   |                                               ↓                                        |
+                                                 |   |                                           toArray() -----------------------------------'
+                                                 |   |
+                                                 |   '---------------------------------------------.
+                                                 ↓                                                 |
+                                        ResultsProviderInterface                                   |
+                                         ___________↓___________                                   |
+                                        ↓                       ↓                                  |
+ CompetitionsRepository <--> CompetitionsProvider      MainTableProvider <--> MainTableRepository  |
+                                        |_______________________|                                  |     
+                                                    ↓                                              |
+                                          ResultItemDTOInterface                                   |
+            ____________________________ ___________↓___________                                   |
+           ↓                            ↓                       ↓                                  |
+SessionsTableResultItemDTO CompetitionResultItemDTO           MainTableResultItemDTO               |
+   |   ::fromEntity          |   ::fromEntity                ::fromEntity    |                     |
+   ↓            |            ↓          |                        |           ↓                     |
+SessionsTable   |       Competitions    |                        |      MainTable                  |
+                |_______________________|________________________|                                 |
+                                        ↓                                                          |
+                                      array -------------------------------------------------------'
+
+
+          admin_page.html.twig
+<button data-popup="createCompetition">
+                    ↓
+                main.jsx                                                                                        |
+                    ↓                                                                                           |
+            PopupContent.jsx                                                                          RequestActionFactory
+                    ↓                                                                                           |
+           CreateCompetition.jsx                                                                                |
+                    ↓                                                                                           |
+  .------- createFormSubmit.js <--------------------------------------------------------------------------------|-------.
+  |                 ↓                                                                                           |       |
+  |               JSON                                                                                          |       |
+  |                 ↓                                                                                           |       |                           
+  |     UpdateCompetitionController =======> CompetitionService                                                 |       |
+  |                 ↓                           ↑       |                                                       |       |
+  |     CompetitionContextBuilder               |       |                                                       |       |
+  |                 ↓                           |       |                                                       |       |                        
+  |     CompetitionFillerInterface              |       |                                                       |       |                 
+  |      ___________↓___________                |       |                                                       |       |                
+  |                 ↓                           |       |                                                       |       |               
+  |             [ Filler ]                      |       |                                                       |       |
+  |                 ↓                           |       |                                                       |       |           
+  |        CompetitionContext ------------------'       |                                                       |       |
+  |                                                     ↓                                                       |       |
+  |                                         CompetitionResultInterface                                          |       |
+  |                                          ___________↓___________________________________                    |       |
+  |                                         ↓                       ↓                       ↓                   |       |
+  |               Connection --> CompetitionDataWriter   SetSessionCompetition   SetStatusCompetition <- string '       |
+  |                                         |                 ↑     |_______________________|                           |
+  |                                         |                 |                 ↓                                       |
+  |                                         |        SessionAwareTrait      ResultDTO ----------------------------------'
+  ↓                                         |
+writeCompDataToIndexed.js --> db.js         |
+     loadNewTable.js                        '---------------------------------------------------------------------------.
+            ↓                                                                                                           |
+CustomEvent("main-table:reload", { detail: { rows } })                                                                  |
+            ↓                                                                                                           ↓
+         index.js                                                                                               CompetitionCreatedMessage
+            ↓                                                                                                           ↓
+  main_table_controller.js                                                                                      CompetitionCreatedHandler
+            |                                                   
+            '---------------> TableController <=============> TableService <--- SessionAwareTrait
+                                    ↓                           ↑       ↑
+                            TableContextBuilder                 |       |
+                                    ↓                           |       |
+                           TableFillerInterface                 |       |
+                           _________↓_________                  |       |
+                                    ↓                           |       |
+                             MainTableFiller                    |       |
+                                    ↓                           |       |
+                                [ Filler ]                      |       |
+                                    ↓                           |       |
+                              TableContext ---------------------'       |
+                                                                        ↓
+                                                              TableServiceInterface
+                                                                ________↓________
+                                                                        ↓
+                                                                    MainTable
+                                                                        ↓
+                                                               _main_table.html.twig
