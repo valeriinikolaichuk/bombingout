@@ -1,5 +1,5 @@
 <?php
-    namespace App\Service\Main\Page;
+    namespace App\Service\Admin\Tables\TableService;
 
     use App\Service\Admin\Tables\TableContext;
 

@@ -7,6 +7,7 @@
     {
         public function __construct(
             private ?int $comp_id,
+            public ?int $usersId,
             private ?string $competition_name,
             private ?string $country,
             private ?string $city,
@@ -23,6 +24,7 @@
         {
             return new self(
                 $e ->getCompId(),
+                $e ->getUser(),
                 $e ->getCompetitionName(),
                 $e ->getCountry(),
                 $e ->getCity(),
@@ -40,6 +42,7 @@
         {
             return [
                 'comp_id'          => $this -> comp_id,
+                'users_id'         => $this -> user,
                 'competition_name' => $this -> competition_name,
                 'country'          => $this -> country,
                 'city'             => $this -> city,

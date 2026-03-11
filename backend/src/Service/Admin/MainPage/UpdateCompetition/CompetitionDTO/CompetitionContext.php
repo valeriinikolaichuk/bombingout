@@ -6,8 +6,6 @@
 
         public ?string $comp_id = null;
         public ?int $usersId = null;
-        public ?int $id_status = null;
-
         public ?string $competition_name = null;
         public ?string $country = null;
         public ?string $city = null;

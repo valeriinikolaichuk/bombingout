@@ -224,8 +224,7 @@ export default function CreateCompetition({ mode, lang, onClose }) {
                   sex: sex,
                   type: type,
                   version: version,
-                  usersId: window.appData.num,
-                  id_status: window.appData.num_st
+                  usersId: window.appData.num
                 };
 
                 createFormSubmit(payLoad, lang, onClose);
