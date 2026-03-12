@@ -21,6 +21,7 @@ export default defineConfig({
         app: path.resolve(__dirname, 'assets/login.js'),
         app: path.resolve(__dirname, 'assets/redirection.js'),
         app: path.resolve(__dirname, 'assets/admin.js'),
+        app: path.resolve(__dirname, 'assets/scoreboard.js'),
       },
     },
   },

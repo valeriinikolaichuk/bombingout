@@ -19,7 +19,8 @@ db.version(1).stores({
     nomination,
     preliminary,
     final,
-    updatedAt
+    updatedAt,
+	event_id
   `,
   main_table: `
     main_id,
@@ -125,7 +126,8 @@ db.version(1).stores({
 	points_bp,
 	comp_id, 
     users_id, 
-    updatedAt
+    updatedAt,
+	event_id
   `,
   sessions_table: `
     id_sessions,
@@ -136,7 +138,8 @@ db.version(1).stores({
 	category,
 	dateTime,
     users_id, 
-    updatedAt
+    updatedAt,
+	event_id
   `,
   syncQueue: `
     ++id,

@@ -31,7 +31,8 @@ export async function fetchAndSaveData(usersId) {
       const withUpdatedAt = (items = []) =>
         items.map(i => ({
           ...i,
-          updatedAt: i.updatedAt || now
+          updatedAt: i.updatedAt || now,
+          event_id: crypto.randomUUID()
         }));
 
         await db.competitions.bulkPut(withUpdatedAt(data.competitions));

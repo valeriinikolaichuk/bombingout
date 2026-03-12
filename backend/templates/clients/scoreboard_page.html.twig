@@ -12,7 +12,8 @@
             lang: lang,
             num: users_id,
             num_st: id_status,
-            status: status
+            status: status,
+            compID: compID|default(null)
         }|json_encode|raw }};
     </script>
 
@@ -51,7 +52,6 @@
     {{ parent() }}
     <script type="module" src="{{ asset('assets/js/buttonReturn.js') }}"></script>
 {#
-    <script src="assets/switchLanguage.js"></script>
     <script src="assets/clients_js/scoreboard.js"></script>
     <script src="assets/checkSessionStatus.js"></script>
     <script>
@@ -70,6 +70,7 @@
             }, 10000);
         });
     </script>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script src="assets/socket_client.js"></script>#}
+#}
+
+    {{ vite_entry('scoreboard') }}
 {% endblock %}
