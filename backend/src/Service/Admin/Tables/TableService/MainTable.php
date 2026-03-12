@@ -18,8 +18,10 @@
             return [
                 'template' => 'clients/components/admin/_main_table.html.twig',
                 'data' => [
-                    'rows'   => $context -> rows,
-                    'compID' => $session -> get('compID')
+                    'rows'        => $context -> rows,
+                    'compID'      => $session -> get('compID'),
+                    'compVersion' => $session -> get('compVersion'),
+                    'compSex'     => $session -> get('compSex')
                 ],
             ];
         }

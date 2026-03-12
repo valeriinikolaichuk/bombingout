@@ -14,6 +14,10 @@ export async function writeCompDataToIndexed(compId, payLoad){
         sex: payLoad.sex,
         type: payLoad.type,
         categories: payLoad.version,
-        updatedAt: Date.now()
+        nomination: null,
+        preliminary: null,
+        final: null,
+        updatedAt: Date.now(),
+        event_id: crypto.randomUUID()
     });
 }

@@ -17,7 +17,10 @@
             private ?string $sex,
             private ?string $age_group,
             private ?string $type,
-            private ?string $version
+            private ?string $version,
+            private ?string $nomination,
+            private ?\DateTimeImmutable $preliminary,
+            private ?\DateTimeImmutable $final
         ) {}
 
         public static function fromEntity(Competitions $e): self
@@ -34,7 +37,10 @@
                 $e ->getSex(),
                 $e ->getAgeGroup(),
                 $e ->getType(),
-                $e ->getCategories()
+                $e ->getCategories(),
+                $e ->getNomination(),
+                $e ->getPreliminary(),
+                $e ->getFinal()
             );
         }
 
@@ -52,7 +58,10 @@
                 'sex'              => $this -> sex,
                 'age_group'        => $this -> age_group,
                 'type'             => $this -> type,
-                'version'          => $this -> version
+                'version'          => $this -> version,
+                'nomination'       => $this -> nomination,
+                'preliminary'      => $this -> preliminary?->format('Y-m-d'),
+                'final'            => $this -> final?->format('Y-m-d')
             ];
         }
     }

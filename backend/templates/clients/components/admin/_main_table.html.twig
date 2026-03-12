@@ -23,5 +23,7 @@
 <script>
     if (window.appData) {
         window.appData.compID = {{ compID|json_encode|raw }};
+        window.appData.compVersion = {{ compVersion|json_encode|raw }};
+        window.appData.compSex = {{ compSex|json_encode|raw }};
     }
 </script>

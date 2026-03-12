@@ -29,6 +29,9 @@
                             'age_group'        => $message -> age_group,
                             'type'             => $message -> type,
                             'version'          => $message -> version,
+                            'nomination'       => null,
+                            'preliminary'      => null,
+                            'final'            => null,
                             'event_id'         => Uuid::uuid4()->toString()
                         ]
                     ]

@@ -25,6 +25,8 @@
         {
             $session = $this ->getSession();
             $session -> set('compID', $context -> comp_id);
+            $session -> set('compVersion', $context -> version);
+            $session -> set('compSex', $context -> sex);
 
             $result -> session = true;
         }
