@@ -19,7 +19,7 @@ class ComputerStatus
     #[ORM\Column(name: "comp_status", length: 60, nullable: false, options: ["default" => ""])]
     private ?string $comp_status = '';
 
-    #[ORM\Column(name: "comp_id", type: "binary", length: 36, unique: true, nullable: false, options: ["default" => ""])]
+    #[ORM\Column(name: "comp_id", type: "string", length: 36, unique: true, nullable: false, options: ["default" => ""])]
     private ?string $comp_id = '';
 
     #[ORM\Column(name: "sessions_name", length: 60, nullable: false, options: ["default" => ""])]

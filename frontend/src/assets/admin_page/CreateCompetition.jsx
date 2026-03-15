@@ -227,6 +227,10 @@ export default function CreateCompetition({ mode, lang, onClose }) {
                   usersId: window.appData.num
                 };
 
+                window.dispatchEvent(
+                  new Event('image:close')
+                );
+
                 createFormSubmit(payLoad, lang, onClose);
               }}
             >

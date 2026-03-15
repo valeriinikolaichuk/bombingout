@@ -1,6 +1,5 @@
 import { validateForm } from "./validateForm";
 import { db } from '../../../../assets/db';
-import { loadNewTable } from "./createFormSubmit/loadNewTable";
 import { writeCompDataToIndexed } from "./createFormSubmit/writeCompDataToIndexed";
 import { getRowsCountForCompetition } from "./getRowsCountForCompetition";
 
@@ -8,6 +7,8 @@ export async function createFormSubmit(payLoad, lang, onClose){
     const isValid = validateForm(payLoad.competition_name, payLoad.country, payLoad.city, lang);
     if (!isValid) return;
     console.log('FORM OK');
+
+    onClose();
 
     const compId = crypto.randomUUID();
 
@@ -34,9 +35,12 @@ export async function createFormSubmit(payLoad, lang, onClose){
 
         writeCompDataToIndexed(compId, payLoad);
         const rows = getRowsCountForCompetition(compId);
-        loadNewTable(rows, lang, onClose);
 
-
+        document.dispatchEvent(
+            new CustomEvent("main-table:reload", {
+                detail: { rows }
+            })
+        );
 
     } catch (error) {
 
@@ -61,6 +65,11 @@ export async function createFormSubmit(payLoad, lang, onClose){
         });
 
         const rows = getRowsCountForCompetition(compId);
-        loadNewTable(rows, lang, onClose);
+
+        document.dispatchEvent(
+            new CustomEvent("main-table:reload", {
+                detail: { rows }
+            })
+        );
     }
 }

@@ -1,4 +1,4 @@
-<button id="showCreateDialog" class="buttonstyle sticky" type="button" 
+<button class="buttonstyle sticky" type="button" 
     data-en="CREATE" data-uk="СТВОРИТИ" data-pl="UTWORZYĆ" 
     data-popup="createCompetition" 
     onclick="
@@ -8,12 +8,23 @@
     ">CREATE
 </button>
 
-<button id="showOpenDialog" class="buttonstyle" style="position: sticky; left: 120px;" type="button" 
+<button class="buttonstyle" style="position: sticky; left: 120px;" type="button" 
     data-en="OPEN" data-uk="ВІДКРИТИ" data-pl="OTWORZYĆ" 
     data-popup="openCompetition"
     onclick="
         window.dispatchEvent(
             new CustomEvent('popup:open', { detail: 'openCompetition' })
         )
-    ">OPEN</button>
+    ">OPEN
+</button>
+
 <button class="buttonstyle" type="submit" name="nominations_list" value="open" data-en="NOMINATIONS" data-uk="НОМІНАЦІЇ" data-pl="NOMINACJE">NOMINATIONS</button>
+
+{#<button form="grouping" formmethod="POST" class="buttonstyle" style="position: sticky; left: 240px;" type="submit" data-en="GROUPING" data-uk="ГРУПУВАННЯ" data-pl="GRUPOWANIE">GROUPING</button>
+<button form="attempts_table" formmethod="POST" class="buttonstyle" style="position: sticky; left: 360px;" type="submit" data-en="ATTEMPTS" data-uk="ПІДХОДИ" data-pl="PODEJŚCIA">ATTEMPTS</button>
+<button form="nomin_id" formmethod="POST" class="buttonstyle" style="position: sticky; left: 480px;" type="submit" data-en="CURR NOMIN" data-uk="ПOTOЧHA HOM" data-pl="AKT NOMIN">CURR NOMIN</button>#}
+
+<button class="buttonstyle buttonCloseTable" style="position: sticky; left: 600px;" type="button" 
+    data-en="CLOSE" data-uk="ЗАКРИТИ" data-pl="ZAMKNĄĆ" 
+    >CLOSE
+</button>

@@ -1,18 +1,13 @@
 import { Controller } from '@hotwired/stimulus';
-import { ViewModelMainTable } from './services/main_table/viewModelMainTable.js';
-import { ViewMainTable } from './services/main_table/viewMainTable.js';
-import { db } from '../db.js';
+import { initMainTable } from './services/main_table/initMainTable';
 
 export default class extends Controller {
     connect() {
+        console.log("Stimulus MainTableController connected");
+
         document.addEventListener(
             "main-table:reload",
             this.reloadTable
-        );
-
-        this.element.addEventListener(
-            "turbo:frame-load",
-            this.initTable
         );
     }
 
@@ -20,11 +15,6 @@ export default class extends Controller {
         document.removeEventListener(
             "main-table:reload",
             this.reloadTable
-        );
-
-        this.element.removeEventListener(
-            "turbo:frame-load",
-            this.initTable
         );
     }
 
@@ -43,27 +33,7 @@ export default class extends Controller {
         const html = await response.text();
 
         this.element.innerHTML = html;
-    }
 
-    async initTable() {
-        const formElement = this.element.getElementById("formElem");
-
-        if (!formElement) return;
-
-        if (this.view) {
-            this.view.destroy?.();
-        }
-
-        this.vmMainTable = new ViewModelMainTable();
-        this.view = new ViewMainTable(this.vmMainTable, formElement);
-
-        const rows = await db.main_table
-            .where('comp_id')
-            .equals(this.compID)
-            .toArray();
-
-        this.vmMainTable.fillTable(rows);
-
-        console.log("MainTable connected");
+        await initMainTable(this);
     }
 };

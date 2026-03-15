@@ -11,7 +11,7 @@ use App\Entity\UserReg;
 class Competitions {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "NONE")]
-    #[ORM\Column(name: "comp_id", type: "binary", length: 36, unique: true)]
+    #[ORM\Column(name: "comp_id", type: "string", length: 36, unique: true)]
     private ?string $comp_id = null;
 
     #[ORM\Column(name: "competition_name", length: 150, nullable: true)]

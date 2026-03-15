@@ -36,4 +36,4 @@ export default function PopupContent() {
     lang = {lang} 
     onClose = {() => setType(null)} 
   />;
-}
+};

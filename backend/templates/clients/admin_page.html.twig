@@ -23,35 +23,34 @@
         }|json_encode|raw }};
     </script>
 
-    <header>
-        <div>
-            {% include 'clients/components/admin/buttons_block.html.twig' %}
-{#            {% include 'main/buttons_create_open.html.twig' %}
-            {% include 'main/button_nominations.html.twig' %}
+    <div class="main">
+        <header>
+            <div>
+                {% include 'clients/components/admin/buttons_block.html.twig' %}
+    {#            {% include 'main/buttons_create_open.html.twig' %}
+                {% include 'main/button_nominations.html.twig' %}
 
-            {% if status == 'admin' %}
-                {% include 'main/button_all_users.html.twig' %}
-            {% endif %}
-#}
-            {% include 'clients/components/button_redirection.html.twig' %}
-        </div>
-    </header>
+                {% if status == 'admin' %}
+                    {% include 'main/button_all_users.html.twig' %}
+                {% endif %}
+    #}
+                {% include 'clients/components/button_redirection.html.twig' %}
+            </div>
+        </header>
 
-    <main>
-{#        {% include 'main/image_main_page.html.twig' %} #}
+        <main>
+    {#        {% include 'main/open_popup.html.twig' %}
+            {% include 'main/popup_add_nomination.html.twig' %}
+            {% include 'postForm.html.twig' %} #}
 
-{#        {% include 'main/open_popup.html.twig' %}
-        {% include 'main/popup_add_nomination.html.twig' %}
-        {% include 'postForm.html.twig' %} #}
-
-        <turbo-frame
-            id="main-table"
-            data-controller="main_table"
-        </turbo-frame>
-
+            <turbo-frame
+                id="main-table"
+                data-controller="main_table"
+            </turbo-frame>
+        </main>
+        <div id="page-root"></div>
         <div id="popup-root"></div>
-    </main>
-
+    </div>
 {% endblock %}
 
 {% block javascripts %}

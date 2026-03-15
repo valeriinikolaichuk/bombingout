@@ -14,4 +14,8 @@ document.addEventListener('DOMContentLoaded', async() => {
             await retryQueuedRequests();
         }
     );
+
+    window.dispatchEvent(
+        new CustomEvent('image:open', { detail: 'image' })
+    )
 });

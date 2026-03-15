@@ -9,4 +9,4 @@ export function resizeColumn(event, startX, startWidth, resizer, allThs, allTrs)
             cell.style.width = newWidth + 'px';
         }
     });
-}
+};

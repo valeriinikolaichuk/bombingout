@@ -1,4 +1,4 @@
-import { retryQueuedRequests } from './js/components/retryQueue.js';
+import { retryQueuedRequests } from './retryQueue.js';
 import { fetchAndSaveData } from './js/redirection/fetchAndSaveData.js';
 import { checkConnectionsData } from './js/redirection/onPageLoad/checkConnectionsData.js';
 import { switchLanguage } from './js/components/switchLanguage.js';

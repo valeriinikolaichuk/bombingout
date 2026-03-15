@@ -148,7 +148,7 @@ DelSession SetSession       |   |        RedirectPageData           |           
              ↓
     initredirectionPage.js
              ↓
-     fetchAndSaveData
+     fetchAndSaveData.js ---> db.js
              ↓↑
             JSON         _____________________________________________________________________________________________________________________
              ↓↑         ↓                                                                                                                     |
@@ -177,7 +177,7 @@ CompetitionDataFillerInterface             |     |   .-----------------------> R
             ____________________________ ___________↓___________                                   |
            ↓                            ↓                       ↓                                  |
 SessionsTableResultItemDTO CompetitionResultItemDTO           MainTableResultItemDTO               |
-   |   ::fromEntity          |   ::fromEntity                ::fromEntity    |                     |
+   |   ::fromEntity          |   ::fromEntity                 ::fromEntity   |                     |
    ↓            |            ↓          |                        |           ↓                     |
 SessionsTable   |       Competitions    |                        |      MainTable                  |
                 |_______________________|________________________|                                 |
@@ -218,25 +218,25 @@ SessionsTable   |       Competitions    |                        |      MainTabl
   |                       CompetitionCreatedMessage  SessionAwareTrait      ResultDTO ----------------------------------'
   ↓                                         |
 writeCompDataToIndexed.js --> db.js         '----------------------Symfony\Component\Messenger--------------------------.
-     loadNewTable.js                                                                                                    |
+            |                                                                                                           |
             ↓                                                                                                           ↓
 CustomEvent("main-table:reload", { detail: { rows } })                                                              RabbitMQ
             ↓                                                                                                           ↓
          index.js                                                                                                     worker
             ↓                                                                                                           ↓
   main_table_controller.js                                                                                   CompetitionCreatedHandler
-            |                                                                                                           ↓
-            '---------------> TableController <=============> TableService <--- SessionAwareTrait         server.js HTTP POST → Node (/admin-update)
-                                    ↓                           ↑       ↑                                 io.emit("competitionCreated", data.payload)
-                            TableContextBuilder                 |       |                                               ↓
-                                    ↓                           |       |                                          websocket.js
-                           TableFillerInterface                 |       |                                               ↓
-                           _________↓_________                  |       |                                         eventRouter.js -----> competition_created
-                                    ↓                           |       |                                               ↓                       ↓
-                             MainTableFiller                    |       |                                        ALL CLIENTS PAGES        db.competitions
-                                    ↓                           |       |
-                                [ Filler ]                      |       |
-                                    ↓                           |       |
+        |       ↓                                                                                                       ↓
+        |   reloadTable ---> TableController <==============> TableService <--- SessionAwareTrait         server.js HTTP POST → Node (/admin-update)
+        ↓                           ↓                           ↑       ↑                                 io.emit("competitionCreated", data.payload)
+    initTable               TableContextBuilder                 |       |                                               ↓
+        ↓                           ↓                           |       |                                          websocket.js
+ViewModelMainTable         TableFillerInterface                 |       |                                               ↓
+        ↓                  _________↓_________                  |       |                                         eventRouter.js -----> competition_created
+  ViewMainTable                     ↓                           |       |                                               ↓                       ↓
+        ↓                    MainTableFiller                    |       |                                        ALL CLIENTS PAGES        db.competitions
+  db.main_table                     ↓                           |       |
+        ↓                       [ Filler ]                      |       |
+    fillTable                       ↓                           |       |
                               TableContext ---------------------'       |
                                                                         ↓
                                                               TableServiceInterface

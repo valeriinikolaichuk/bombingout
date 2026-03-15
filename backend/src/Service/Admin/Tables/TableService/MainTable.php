@@ -16,7 +16,7 @@
         public function resolve(TableContext $context, SessionInterface $session): array
         {
             return [
-                'template' => 'clients/components/admin/_main_table.html.twig',
+                'table' => 'clients/components/admin/_main_table.html.twig',
                 'data' => [
                     'rows'        => $context -> rows,
                     'compID'      => $session -> get('compID'),

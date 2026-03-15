@@ -14,7 +14,7 @@ class SessionsTable
     #[ORM\Column]
     private ?int $id_sessions = null;
 
-    #[ORM\Column(name: "comp_id", type: "binary", length: 36, nullable: false)]
+    #[ORM\Column(name: "comp_id", type: "string", length: 36, nullable: false)]
     private ?string $comp_id = null;
 
     #[ORM\Column(length: 100, nullable: true)]

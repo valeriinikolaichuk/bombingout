@@ -1,31 +1,13 @@
-{#    $day; $month; $year; #}
 <tr id="tr{{ row.main_id }}" data-type="html">
     <td id="td{{ x }}{{ row.main_id }}" style="display: none;">{{ row.main_id }}</td>
     <td id="td{{ x + 1 }}{{ row.main_id }}" class="table_number sticky" style="left: 0px; background-color: white;">{{ index }}</td>
     <td id="td{{ x + 2 }}{{ row.main_id }}" class="sticky" style="left: 37px; background-color: rgb(245, 245, 245);">
         <div class="table_border"></div>
     </td>
-{#
-            if ($athlete[$a]["date_of_birth"] != NULL){
-                $dateOfBirth = dateOfBirth_function($athlete[$a]["date_of_birth"]);
-                $year = $dateOfBirth[0];
-                $month = $dateOfBirth[1];
-                $day = $dateOfBirth[2];
-            } else {
-                $year = '';
-                $month = '';
-                $day = '';
-            }
-#}
     <td id="tdDd{{ row.main_id }}" class="sticky" style="left: 337px; text-align: center; background-color: rgb(245, 245, 245);"></td>
     <td id="tdMo{{ row.main_id }}" class="sticky" style="left: 392px; text-align: center; background-color: rgb(245, 245, 245);"></td>
     <td id="td{{ x + 3 }}{{ row.main_id }}" class="sticky" style="left: 447px; text-align: center; background-color: rgb(245, 245, 245);"></td>
-{#
-            if (Config::$lang == 'uk'){
-                $catUK = str_replace("kg", "кг", $athlete[$a]["category"]);
-                $athlete[$a]["category"] = $catUK;
-            }
-#}
+
     <td id="td{{ x + 4 }}{{ row.main_id }}" class="sticky" style="left: 522px; background-color: rgb(245, 245, 245);"></td>
     <td id="td{{ x + 5 }}{{ row.main_id }}"></td>
     <td id="td{{ x + 6 }}{{ row.main_id }}" style="font-size: 17px;"></td>
@@ -42,29 +24,10 @@
     <td id="td{{ x + 16 }}{{ row.main_id }}"></td>
     <td id="td{{ x + 17 }}{{ row.main_id }}"></td>
 
-    <td><input id="td{{ x + 18 }}{{ row.main_id }}" class="input" type="checkbox" 
-{#            if ($athlete[$a]["personally"] > 0){
-                echo 'checked="checked"';
-            }; #}
-    ></td>
-
-    <td><input id="td{{ x + 19 }}{{ row.main_id }}" class="input" type="checkbox" 
-{#            if ($athlete[$a]["out_of_comp"] > 0){
-                echo 'checked="checked"';
-            }; #}
-    ></td>
-
-    <td><input id="td{{ x + 20 }}{{ row.main_id }}" class="input" type="checkbox" 
-{#            if ($athlete[$a]["MD"] > 0){
-                echo 'checked="checked"';
-            }; #}
-    ></td>
-
-    <td><input id="td{{ x + 21 }}{{ row.main_id }}" class="input" type="checkbox" 
-{#            if ($athlete[$a]["dbl"] > 0){
-                echo 'checked="checked"';
-            }; #}
-    ></td>
+    <td><input id="td{{ x + 18 }}{{ row.main_id }}" class="input" type="checkbox"></td>
+    <td><input id="td{{ x + 19 }}{{ row.main_id }}" class="input" type="checkbox"></td>
+    <td><input id="td{{ x + 20 }}{{ row.main_id }}" class="input" type="checkbox"></td>
+    <td><input id="td{{ x + 21 }}{{ row.main_id }}" class="input" type="checkbox"></td>
 
     <td id="td{{ x + 22 }}{{ row.main_id }}" style="font-size: 17px;" data-discipline="powerlifting"></td>
     <td id="td{{ x + 23 }}{{ row.main_id }}" style="font-size: 17px;"></td>
@@ -86,14 +49,6 @@
     <td id="td{{ x + 37 }}{{ row.main_id }}" style="font-size: 17px;" data-discipline="powerlifting"></td>
     <td id="td{{ x + 38 }}{{ row.main_id }}" style="font-size: 17px;" data-discipline="bench_press"></td>
     <td id="td{{ x + 39 }}{{ row.main_id }}" style="font-size: 17px;" data-discipline="bench_press"></td>
-{#
-            $key = ["rnk_fcst", "ranking", "points", "bench_press_rnk_fcst", "bench_press_rnk", "points_bp"];
-            for ($index = 0; $index < 6; $index++){
-                if ($athlete[$a][$key[$index]] == null || $athlete[$a][$key[$index]] == 0){
-                    $athlete[$a][$key[$index]] = '';
-                }
-            }
-#}
     <td id="td{{ x + 40 }}{{ row.main_id }}" style="font-size: 17px; text-align: center;" data-discipline="powerlifting"></td>
     <td id="td{{ x + 41 }}{{ row.main_id }}" style="font-size: 17px; text-align: center;" data-discipline="powerlifting"></td>
     <td id="td{{ x + 42 }}{{ row.main_id }}" style="font-size: 17px; text-align: center;" data-discipline="powerlifting"></td>
@@ -101,32 +56,3 @@
     <td id="td{{ x + 44 }}{{ row.main_id }}" style="font-size: 17px; text-align: center;" data-discipline="bench_press"></td>
     <td id="td{{ x + 45 }}{{ row.main_id }}" style="font-size: 17px; text-align: center;" data-discipline="bench_press"></td>
 </tr>
-
-{#         ++$b;
-    }
-
-    function dateOfBirth_function($date_of_birth){
-        $year = substr($date_of_birth, 0, 4);
-        $month = substr($date_of_birth, 5, 2);
-        $day = substr($date_of_birth, 8, 2);
-            
-        if ($year == '0000'){
-            $year = '';
-        }
-
-        if ($month == '00'){
-            $month = '';            
-        }
-
-        if ($day == '00'){
-            $day = '';
-        }
-
-        $dateOfBirth = array();
-        $dateOfBirth[0] = $year;
-        $dateOfBirth[1] = $month;
-        $dateOfBirth[2] = $day;
-
-        return $dateOfBirth;
-    }
- #}

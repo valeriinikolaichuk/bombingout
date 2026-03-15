@@ -1,3 +1,4 @@
+import { destroyMainTable } from './view_model/destroyMainTable.js';
 import { toggleLangColumns } from './view_model/toggleLangColumns.js';
 import { toggleDiciplineColumns } from './view_model/toggleDiciplineColumns.js';
 import { tableSortingTH } from './view_model/tableSortingTH.js';
@@ -7,10 +8,13 @@ import { eventRightClick } from './view_model/eventRightClick.js';
 import { deleteThisParticipant } from './view_model/deleteThisParticipant.js';
 import { getVisualIndex } from './view_model/getVisualIndex.js';
 import { swapColumns } from './view_model/swapColumns.js';
-import { resizeColumn } from "../../view_model/resizeColumn.js";
+import { resizeColumn } from './view_model/resizeColumn.js';
 import { addCoeffInputLine } from './view_model/addCoeffInputLine.js';
+import { tableLoadingFailed } from './view_model/tableLoadingFailed.js';
+import { fillTable } from './view_model/fillTable.js';
 
 export function ViewModelMainTable(){
+    this.destroyMainTable = destroyMainTable.bind(this);
     this.toggleLangColumns = toggleLangColumns.bind(this);
     this.toggleDiciplineColumns = toggleDiciplineColumns.bind(this);
     this.tableSortingTH = tableSortingTH.bind(this);
@@ -22,4 +26,6 @@ export function ViewModelMainTable(){
     this.swapColumns = swapColumns.bind(this);
     this.resizeColumn = resizeColumn.bind(this);
     this.addCoeffInputLine = addCoeffInputLine.bind(this);
-}
+    this.tableLoadingFailed = tableLoadingFailed.bind(this);
+    this.fillTable = fillTable.bind(this);
+};

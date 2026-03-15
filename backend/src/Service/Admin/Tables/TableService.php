@@ -26,12 +26,16 @@
         {
             $session = $this ->getSession();
 
-            foreach ($this -> tableResolvers as $resolver) {
-                if ($resolver -> supports($context, $session)) 
-                {
+            foreach ($this -> tableResolvers as $resolver) 
+            {
+                if ($resolver -> supports($context, $session)) {
                     return $resolver -> resolve($context, $session);
                 }
             }
+
+            return [
+                'table' => 'clients/components/admin/_error_table.html.twig'
+            ];
         }
     }
 ?>

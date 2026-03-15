@@ -10,7 +10,7 @@
 
         public function updateData(int $usersId, int $comp_id): void 
         {
-            $this -> connection -> executeStatement(
+            $this -> db -> executeStatement(
                 'UPDATE computer_status 
                 SET comp_id = :comp_id 
                 WHERE users_ID = :usersId',

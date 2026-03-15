@@ -37,8 +37,10 @@
             $competition -> setCompetitionName($context -> competition_name ?? null);
             $competition -> setCountry($context -> country ?? null);
             $competition -> setCity($context -> city ?? null);
-            $competition -> setStartDate($context -> start_date ?? null);
-            $competition -> setEndDate($context -> end_date ?? null);
+            $competition -> setStartDate(
+                $context->start_date ? \DateTime::createFromImmutable($context->start_date) : null);
+            $competition -> setEndDate(
+                $context->end_date ? \DateTime::createFromImmutable($context->end_date) : null);
             $competition -> setDivision($context -> division ?? null);
             $competition -> setAgeGroup($context -> age_group ?? null);
             $competition -> setSex($context -> sex ?? null);

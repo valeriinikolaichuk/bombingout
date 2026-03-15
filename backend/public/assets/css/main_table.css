@@ -1,7 +1,6 @@
 .main {
-    width: max-content;
-    min-height: 643px;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .second_toolbar {
@@ -68,4 +67,11 @@ th[draggable="true"] {
 
 .yellowline {
     background-color: rgb(255, 255, 215);
+}
+
+.table-error-container {
+    padding-right: 50px;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(200, 200, 200);
 }
