@@ -24,13 +24,13 @@ PUBLIC "-//W3C//DTD SVG 1.1//EN"
    <line x1="814.5" y1="2172" x2="818.03553390593" y2="2168.4644660941" style="stroke:#bbb;stroke-width:2;"/>
    <line x1="256" y1="130" x2="259.53553390593" y2="133.53553390593" style="stroke:#bbb;stroke-width:2;"/>
    <line x1="256" y1="130" x2="259.53553390593" y2="126.46446609407" style="stroke:#bbb;stroke-width:2;"/>
-   <line x1="246" y1="493" x2="256" y2="493" style="stroke:#0b0;stroke-width:1;"/>
-   <line x1="261" y1="130" x2="251" y2="130" style="stroke:#0b0;stroke-width:1;"/>
-   <line x1="256" y1="493" x2="261" y2="130" style="stroke:#0b0;stroke-width:1;"/>
-   <line x1="253.5" y1="493" x2="249.96446609407" y2="496.53553390593" style="stroke:#0b0;stroke-width:2;"/>
-   <line x1="253.5" y1="493" x2="249.96446609407" y2="489.46446609407" style="stroke:#0b0;stroke-width:2;"/>
-   <line x1="256" y1="130" x2="259.53553390593" y2="133.53553390593" style="stroke:#0b0;stroke-width:2;"/>
-   <line x1="256" y1="130" x2="259.53553390593" y2="126.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="246" y1="493" x2="256" y2="493" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="261" y1="130" x2="251" y2="130" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="256" y1="493" x2="261" y2="130" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="253.5" y1="493" x2="249.96446609407" y2="496.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="253.5" y1="493" x2="249.96446609407" y2="489.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="256" y1="130" x2="259.53553390593" y2="133.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="256" y1="130" x2="259.53553390593" y2="126.46446609407" style="stroke:#cb0;stroke-width:2;"/>
    <rect width="137" height="20" x="466" y="102" style="fill:#007;stroke:black;"/>
    <text width="137" height="20" x="471" y="116" style="fill:#fff;" font-family="Arial" font-size="16px"> competitions</text>
    <rect width="137" height="20" x="466" y="122" style="fill:none;stroke:black;"/>
