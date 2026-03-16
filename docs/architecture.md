@@ -47,9 +47,9 @@ Powerlifting Competition System: backend system + database + real-time messaging
 - No controllers, classes, or database details are shown
 - Purpose: give a high-level overview of the system and its interactions
 
-## Level 2 Containers / Modules
+## Level 2 - Containers / Modules
 
-## Level 3 High-Level Flow
+## Level 3 - High-Level Flow
 <pre>               User opens website
                        ↓
                  Landing page
