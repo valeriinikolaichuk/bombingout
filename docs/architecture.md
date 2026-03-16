@@ -16,13 +16,13 @@ It does not include implementation details, only the roles and how they interact
                                      +---------------------------------+
                                                       ↓
      ---------------------------------------------------------------------------------------------
-     ↓                   ↓                   ↓                 ↓                ↓                ↓
-SCOREBOARD            LIFTING               DISCS         INFORMATION         TIMER          WEIGHING
- Display               ORDER              SEQUENCE          Display          Display            IN
- (Shows               Display              Display         (Athlete           (Lift           Device
- results,            (Order of            (Order of          info)          countdown,      (manages 
- predict              athlete             plates for                      session start)    weighing in
- results)            attempts)           current/next                                       procedure)
+     ↓                   ↓                    ↓                ↓                ↓                ↓
+SCOREBOARD            LIFTING               DISCS         INFORMATION         TIMER           WEIGHING
+ Display               ORDER              SEQUENCE          Display          Display             IN
+ (Shows               Display              Display         (Athlete           (Lift            Device
+ results,            (Order of            (Order of          info)          countdown,       (manages 
+ predict              athlete             plates for                      session start)     weighing in
+ results)            attempts)           current/next                                        procedure)
 </pre>
 ### Description of Level 1
 
