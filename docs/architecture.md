@@ -5,6 +5,16 @@ This document describes the **high-level architecture** of the Powerlifting Comp
 This high-level diagram shows the **main actors and the system**, and the core scenarios supported by the Powerlifting Competition System.  
 It does not include implementation details, only the roles and how they interact with the system.
 
+               Admin Device
+ (manages competitions, registrations,
+  start groups, session updates,
+  pre- and post-competition documentation)
+                     |
+                     v
+       +--------------------------------+
+       | Powerlifting Competition System |
+       +--------------------------------+
+
 ### Description of Level 1
 
 Admin Device: main device used by organizers to manage the competition, register participants, create start groups, enter and display live updates, manage pre- and post-competition documentation.
