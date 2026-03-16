@@ -65,3 +65,8 @@ A minimalist wrapper for ***IndexedDB*** designed to simplify client-side storag
 
 #### [SheetJS (XLSX)](https://sheetjs.com/)
 A JavaScript library for reading, manipulating, and writing spreadsheet data in various formats. It allows to generate ***Excel*** files directly in the browser, enabling seamless data export from client-side storage or UI components without server-side processing.
+
+## Project Structure
+
+For a detailed explanation of the system architecture see:  
+➡ [Architecture Documentation](docs/architecture.md)
