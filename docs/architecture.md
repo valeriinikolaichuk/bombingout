@@ -62,7 +62,9 @@ for the current device.
 |redirection_page.html.twig|Template for scenario selection / redirection page|
 |dashboard_page.html.twig|Template for participant / registration page|
 |$page.'.html.twig'|Generic page template dynamically resolved by PagesResolver|
-|PageEnum|Enum defining all possible admin/client page scenarios (Admin, Scoreboard, Timer…)|
+|PageEnum|Enum defining all possible admin/client page scenarios (Admin, Scoreboard, Timer…)|  
+
+➡ [Page Resolution Module](docs/mjdules/page_resolution_module.md)
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
