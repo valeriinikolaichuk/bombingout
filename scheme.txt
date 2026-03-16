@@ -2,8 +2,8 @@
                                 ↓
 SessionAwareTrait ------> ResolverFactory <------------------------------------------------------------------.
                                 ↓                                                                            |
-                       PageResolverInterface                                                          PageResultDTO
-         _______________________|_________________________ ____________________________                      ↑
+                       PageResolverInterface                                                               array
+         _______________________|_________________________ ____________________________                      |
         ↓                       ↓                         ↓                            ↓                     |
 LoginPageResolver    RedirectionPageResolver     ParticipantPageResolver         PagesResolver <-- PageEnum  |
         ↓                       ↓                         ↓                            ↓                     |
