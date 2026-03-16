@@ -2,8 +2,5 @@
 
 ## ER Diagram
 
-![ER Diagram](diagrams/er-diagram.svg)
+![ER Diagram](database/symfony.svg)
 
-## SQL Schema
-
-[Download schema.sql](database/symfony.sql)
