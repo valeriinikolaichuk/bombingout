@@ -2,5 +2,5 @@
 
 ## ER Diagram
 
-![ER Diagram](database/symfony.svg)
+![ER Diagram](symfony.svg)
 
