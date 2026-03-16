@@ -60,4 +60,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # -------------------------
- /scheme.txt
+scheme.txt
+scheme_javaScript.txt
