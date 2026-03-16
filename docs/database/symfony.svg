@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="51 65 1104 2175" width="1053px" height="2110px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="502" y1="131" x2="492" y2="131" style="stroke:#333;stroke-width:1;"/>
+   <line x1="266" y1="115" x2="256" y2="115" style="stroke:#333;stroke-width:1;"/>
+   <line x1="492" y1="131" x2="266" y2="115" style="stroke:#333;stroke-width:1;"/>
+   <line x1="494.5" y1="131" x2="498.03553390593" y2="134.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="494.5" y1="131" x2="498.03553390593" y2="127.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="118.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="111.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="927" y1="2130" x2="917" y2="2130" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="649" y1="111" x2="639" y2="111" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="917" y1="2130" x2="649" y2="111" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="919.5" y1="2130" x2="923.03553390593" y2="2133.5355339059" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="919.5" y1="2130" x2="923.03553390593" y2="2126.4644660941" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="644" y1="111" x2="647.53553390593" y2="114.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="644" y1="111" x2="647.53553390593" y2="107.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="927" y1="2150" x2="917" y2="2150" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="266" y1="115" x2="256" y2="115" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="917" y1="2150" x2="266" y2="115" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="919.5" y1="2150" x2="923.03553390593" y2="2153.5355339059" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="919.5" y1="2150" x2="923.03553390593" y2="2146.4644660941" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="118.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="111.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="248" y1="834" x2="258" y2="834" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="266" y1="115" x2="256" y2="115" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="258" y1="834" x2="266" y2="115" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="255.5" y1="834" x2="251.96446609407" y2="837.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="255.5" y1="834" x2="251.96446609407" y2="830.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="118.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="261" y1="115" x2="264.53553390593" y2="111.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <rect width="137" height="20" x="502" y="81" style="fill:#007;stroke:black;"/>
+   <text width="137" height="20" x="507" y="95" style="fill:#fff;" font-family="Arial" font-size="16px"> competitions</text>
+   <rect width="137" height="20" x="502" y="101" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="115" style="fill:black;" font-family="Arial" font-size="16px">comp_id</text>
+   <rect width="137" height="20" x="502" y="121" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="135" style="fill:black;" font-family="Arial" font-size="16px">users_id</text>
+   <rect width="137" height="20" x="502" y="141" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="155" style="fill:black;" font-family="Arial" font-size="16px">competition_name</text>
+   <rect width="137" height="20" x="502" y="161" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="175" style="fill:black;" font-family="Arial" font-size="16px">country</text>
+   <rect width="137" height="20" x="502" y="181" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="195" style="fill:black;" font-family="Arial" font-size="16px">city</text>
+   <rect width="137" height="20" x="502" y="201" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="215" style="fill:black;" font-family="Arial" font-size="16px">start_date</text>
+   <rect width="137" height="20" x="502" y="221" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="235" style="fill:black;" font-family="Arial" font-size="16px">end_date</text>
+   <rect width="137" height="20" x="502" y="241" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="255" style="fill:black;" font-family="Arial" font-size="16px">division</text>
+   <rect width="137" height="20" x="502" y="261" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="275" style="fill:black;" font-family="Arial" font-size="16px">age_group</text>
+   <rect width="137" height="20" x="502" y="281" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="295" style="fill:black;" font-family="Arial" font-size="16px">sex</text>
+   <rect width="137" height="20" x="502" y="301" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="315" style="fill:black;" font-family="Arial" font-size="16px">type</text>
+   <rect width="137" height="20" x="502" y="321" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="335" style="fill:black;" font-family="Arial" font-size="16px">categories</text>
+   <rect width="137" height="20" x="502" y="341" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="355" style="fill:black;" font-family="Arial" font-size="16px">nomination</text>
+   <rect width="137" height="20" x="502" y="361" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="375" style="fill:black;" font-family="Arial" font-size="16px">preliminary</text>
+   <rect width="137" height="20" x="502" y="381" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="507" y="395" style="fill:black;" font-family="Arial" font-size="16px">final</text>
+   <rect width="124" height="20" x="137" y="316" style="fill:#007;stroke:black;"/>
+   <text width="124" height="20" x="142" y="330" style="fill:#fff;" font-family="Arial" font-size="16px"> computer_status</text>
+   <rect width="124" height="20" x="137" y="336" style="fill:#aea;stroke:black;"/>
+   <text width="124" height="20" x="142" y="350" style="fill:black;" font-family="Arial" font-size="16px">id_status</text>
+   <rect width="124" height="20" x="137" y="356" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="370" style="fill:black;" font-family="Arial" font-size="16px">users_ID</text>
+   <rect width="124" height="20" x="137" y="376" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="390" style="fill:black;" font-family="Arial" font-size="16px">comp_status</text>
+   <rect width="124" height="20" x="137" y="396" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="410" style="fill:black;" font-family="Arial" font-size="16px">comp_id</text>
+   <rect width="124" height="20" x="137" y="416" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="430" style="fill:black;" font-family="Arial" font-size="16px">sessions_name</text>
+   <rect width="124" height="20" x="137" y="436" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="450" style="fill:black;" font-family="Arial" font-size="16px">discipline</text>
+   <rect width="124" height="20" x="137" y="456" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="470" style="fill:black;" font-family="Arial" font-size="16px">attempt</text>
+   <rect width="124" height="20" x="137" y="476" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="490" style="fill:black;" font-family="Arial" font-size="16px">users_status</text>
+   <rect width="124" height="20" x="137" y="496" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="510" style="fill:black;" font-family="Arial" font-size="16px">lang</text>
+   <rect width="124" height="20" x="137" y="516" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="530" style="fill:black;" font-family="Arial" font-size="16px">grp_page</text>
+   <rect width="124" height="20" x="137" y="536" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="550" style="fill:black;" font-family="Arial" font-size="16px">realtime</text>
+   <rect width="124" height="20" x="137" y="556" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="570" style="fill:black;" font-family="Arial" font-size="16px">ip_address</text>
+   <rect width="124" height="20" x="137" y="576" style="fill:none;stroke:black;"/>
+   <text width="124" height="20" x="142" y="590" style="fill:black;" font-family="Arial" font-size="16px">user_agent</text>
+   <rect width="205" height="20" x="68" y="1140" style="fill:#007;stroke:black;"/>
+   <text width="205" height="20" x="73" y="1154" style="fill:#fff;" font-family="Arial" font-size="16px"> doctrine_migration_versions</text>
+   <rect width="205" height="20" x="68" y="1160" style="fill:none;stroke:black;"/>
+   <text width="205" height="20" x="73" y="1174" style="fill:black;" font-family="Arial" font-size="16px">version</text>
+   <rect width="205" height="20" x="68" y="1180" style="fill:none;stroke:black;"/>
+   <text width="205" height="20" x="73" y="1194" style="fill:black;" font-family="Arial" font-size="16px">executed_at</text>
+   <rect width="205" height="20" x="68" y="1200" style="fill:none;stroke:black;"/>
+   <text width="205" height="20" x="73" y="1214" style="fill:black;" font-family="Arial" font-size="16px">execution_time</text>
+   <rect width="162" height="20" x="927" y="80" style="fill:#007;stroke:black;"/>
+   <text width="162" height="20" x="932" y="94" style="fill:#fff;" font-family="Arial" font-size="16px"> main_table</text>
+   <rect width="162" height="20" x="927" y="100" style="fill:#aea;stroke:black;"/>
+   <text width="162" height="20" x="932" y="114" style="fill:black;" font-family="Arial" font-size="16px">main_id</text>
+   <rect width="162" height="20" x="927" y="120" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="134" style="fill:black;" font-family="Arial" font-size="16px">surname_name</text>
+   <rect width="162" height="20" x="927" y="140" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="154" style="fill:black;" font-family="Arial" font-size="16px">date_of_birth</text>
+   <rect width="162" height="20" x="927" y="160" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="174" style="fill:black;" font-family="Arial" font-size="16px">bodyweight</text>
+   <rect width="162" height="20" x="927" y="180" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="194" style="fill:black;" font-family="Arial" font-size="16px">category</text>
+   <rect width="162" height="20" x="927" y="200" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="214" style="fill:black;" font-family="Arial" font-size="16px">category_num</text>
+   <rect width="162" height="20" x="927" y="220" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="234" style="fill:black;" font-family="Arial" font-size="16px">grp</text>
+   <rect width="162" height="20" x="927" y="240" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="254" style="fill:black;" font-family="Arial" font-size="16px">lot</text>
+   <rect width="162" height="20" x="927" y="260" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="274" style="fill:black;" font-family="Arial" font-size="16px">rank_class</text>
+   <rect width="162" height="20" x="927" y="280" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="294" style="fill:black;" font-family="Arial" font-size="16px">region</text>
+   <rect width="162" height="20" x="927" y="300" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="314" style="fill:black;" font-family="Arial" font-size="16px">city</text>
+   <rect width="162" height="20" x="927" y="320" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="334" style="fill:black;" font-family="Arial" font-size="16px">club</text>
+   <rect width="162" height="20" x="927" y="340" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="354" style="fill:black;" font-family="Arial" font-size="16px">trener_1</text>
+   <rect width="162" height="20" x="927" y="360" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="374" style="fill:black;" font-family="Arial" font-size="16px">trener_2</text>
+   <rect width="162" height="20" x="927" y="380" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="394" style="fill:black;" font-family="Arial" font-size="16px">trener_3</text>
+   <rect width="162" height="20" x="927" y="400" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="414" style="fill:black;" font-family="Arial" font-size="16px">trener_4</text>
+   <rect width="162" height="20" x="927" y="420" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="434" style="fill:black;" font-family="Arial" font-size="16px">titles</text>
+   <rect width="162" height="20" x="927" y="440" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="454" style="fill:black;" font-family="Arial" font-size="16px">personally</text>
+   <rect width="162" height="20" x="927" y="460" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="474" style="fill:black;" font-family="Arial" font-size="16px">out_of_comp</text>
+   <rect width="162" height="20" x="927" y="480" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="494" style="fill:black;" font-family="Arial" font-size="16px">md</text>
+   <rect width="162" height="20" x="927" y="500" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="514" style="fill:black;" font-family="Arial" font-size="16px">dbl</text>
+   <rect width="162" height="20" x="927" y="520" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="534" style="fill:black;" font-family="Arial" font-size="16px">squat_nom</text>
+   <rect width="162" height="20" x="927" y="540" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="554" style="fill:black;" font-family="Arial" font-size="16px">bench_press_nom</text>
+   <rect width="162" height="20" x="927" y="560" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="574" style="fill:black;" font-family="Arial" font-size="16px">deadlift_nom</text>
+   <rect width="162" height="20" x="927" y="580" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="594" style="fill:black;" font-family="Arial" font-size="16px">total_nom</text>
+   <rect width="162" height="20" x="927" y="600" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="614" style="fill:black;" font-family="Arial" font-size="16px">squat_1</text>
+   <rect width="162" height="20" x="927" y="620" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="634" style="fill:black;" font-family="Arial" font-size="16px">squat_1_res</text>
+   <rect width="162" height="20" x="927" y="640" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="654" style="fill:black;" font-family="Arial" font-size="16px">squat_1_css</text>
+   <rect width="162" height="20" x="927" y="660" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="674" style="fill:black;" font-family="Arial" font-size="16px">squat_1_fcst</text>
+   <rect width="162" height="20" x="927" y="680" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="694" style="fill:black;" font-family="Arial" font-size="16px">squat_2</text>
+   <rect width="162" height="20" x="927" y="700" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="714" style="fill:black;" font-family="Arial" font-size="16px">squat_2_res</text>
+   <rect width="162" height="20" x="927" y="720" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="734" style="fill:black;" font-family="Arial" font-size="16px">squat_2_css</text>
+   <rect width="162" height="20" x="927" y="740" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="754" style="fill:black;" font-family="Arial" font-size="16px">squat_2_fcst</text>
+   <rect width="162" height="20" x="927" y="760" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="774" style="fill:black;" font-family="Arial" font-size="16px">squat_3</text>
+   <rect width="162" height="20" x="927" y="780" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="794" style="fill:black;" font-family="Arial" font-size="16px">squat_3_res</text>
+   <rect width="162" height="20" x="927" y="800" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="814" style="fill:black;" font-family="Arial" font-size="16px">squat_3_css</text>
+   <rect width="162" height="20" x="927" y="820" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="834" style="fill:black;" font-family="Arial" font-size="16px">squat_3_fcst</text>
+   <rect width="162" height="20" x="927" y="840" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="854" style="fill:black;" font-family="Arial" font-size="16px">squat_4</text>
+   <rect width="162" height="20" x="927" y="860" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="874" style="fill:black;" font-family="Arial" font-size="16px">squat_4_res</text>
+   <rect width="162" height="20" x="927" y="880" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="894" style="fill:black;" font-family="Arial" font-size="16px">squat_4_css</text>
+   <rect width="162" height="20" x="927" y="900" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="914" style="fill:black;" font-family="Arial" font-size="16px">squat_4_fcst</text>
+   <rect width="162" height="20" x="927" y="920" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="934" style="fill:black;" font-family="Arial" font-size="16px">squat_res</text>
+   <rect width="162" height="20" x="927" y="940" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="954" style="fill:black;" font-family="Arial" font-size="16px">squat_fcst</text>
+   <rect width="162" height="20" x="927" y="960" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="974" style="fill:black;" font-family="Arial" font-size="16px">bench_press_1</text>
+   <rect width="162" height="20" x="927" y="980" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="994" style="fill:black;" font-family="Arial" font-size="16px">bench_press_1_res</text>
+   <rect width="162" height="20" x="927" y="1000" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1014" style="fill:black;" font-family="Arial" font-size="16px">bench_press_1_css</text>
+   <rect width="162" height="20" x="927" y="1020" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1034" style="fill:black;" font-family="Arial" font-size="16px">bench_press_1_fcst</text>
+   <rect width="162" height="20" x="927" y="1040" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1054" style="fill:black;" font-family="Arial" font-size="16px">bench_press_2</text>
+   <rect width="162" height="20" x="927" y="1060" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1074" style="fill:black;" font-family="Arial" font-size="16px">bench_press_2_res</text>
+   <rect width="162" height="20" x="927" y="1080" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1094" style="fill:black;" font-family="Arial" font-size="16px">bench_press_2_css</text>
+   <rect width="162" height="20" x="927" y="1100" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1114" style="fill:black;" font-family="Arial" font-size="16px">bench_press_2_fcst</text>
+   <rect width="162" height="20" x="927" y="1120" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1134" style="fill:black;" font-family="Arial" font-size="16px">bench_press_3</text>
+   <rect width="162" height="20" x="927" y="1140" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1154" style="fill:black;" font-family="Arial" font-size="16px">bench_press_3_res</text>
+   <rect width="162" height="20" x="927" y="1160" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1174" style="fill:black;" font-family="Arial" font-size="16px">bench_press_3_css</text>
+   <rect width="162" height="20" x="927" y="1180" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1194" style="fill:black;" font-family="Arial" font-size="16px">bench_press_3_fcst</text>
+   <rect width="162" height="20" x="927" y="1200" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1214" style="fill:black;" font-family="Arial" font-size="16px">bench_press_4</text>
+   <rect width="162" height="20" x="927" y="1220" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1234" style="fill:black;" font-family="Arial" font-size="16px">bench_press_4_res</text>
+   <rect width="162" height="20" x="927" y="1240" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1254" style="fill:black;" font-family="Arial" font-size="16px">bench_press_4_css</text>
+   <rect width="162" height="20" x="927" y="1260" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1274" style="fill:black;" font-family="Arial" font-size="16px">bench_press_4_fcst</text>
+   <rect width="162" height="20" x="927" y="1280" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1294" style="fill:black;" font-family="Arial" font-size="16px">bench_press_res</text>
+   <rect width="162" height="20" x="927" y="1300" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1314" style="fill:black;" font-family="Arial" font-size="16px">bench_press_fcst</text>
+   <rect width="162" height="20" x="927" y="1320" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1334" style="fill:black;" font-family="Arial" font-size="16px">deadlift_1</text>
+   <rect width="162" height="20" x="927" y="1340" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1354" style="fill:black;" font-family="Arial" font-size="16px">deadlift_1_res</text>
+   <rect width="162" height="20" x="927" y="1360" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1374" style="fill:black;" font-family="Arial" font-size="16px">deadlift_1_css</text>
+   <rect width="162" height="20" x="927" y="1380" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1394" style="fill:black;" font-family="Arial" font-size="16px">deadlift_1_fcst</text>
+   <rect width="162" height="20" x="927" y="1400" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1414" style="fill:black;" font-family="Arial" font-size="16px">deadlift_2</text>
+   <rect width="162" height="20" x="927" y="1420" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1434" style="fill:black;" font-family="Arial" font-size="16px">deadlift_2_res</text>
+   <rect width="162" height="20" x="927" y="1440" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1454" style="fill:black;" font-family="Arial" font-size="16px">deadlift_2_css</text>
+   <rect width="162" height="20" x="927" y="1460" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1474" style="fill:black;" font-family="Arial" font-size="16px">deadlift_2_fcst</text>
+   <rect width="162" height="20" x="927" y="1480" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1494" style="fill:black;" font-family="Arial" font-size="16px">deadlift_3</text>
+   <rect width="162" height="20" x="927" y="1500" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1514" style="fill:black;" font-family="Arial" font-size="16px">deadlift_3_res</text>
+   <rect width="162" height="20" x="927" y="1520" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1534" style="fill:black;" font-family="Arial" font-size="16px">deadlift_3_css</text>
+   <rect width="162" height="20" x="927" y="1540" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1554" style="fill:black;" font-family="Arial" font-size="16px">deadlift_3_fcst</text>
+   <rect width="162" height="20" x="927" y="1560" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1574" style="fill:black;" font-family="Arial" font-size="16px">deadlift_4</text>
+   <rect width="162" height="20" x="927" y="1580" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1594" style="fill:black;" font-family="Arial" font-size="16px">deadlift_4_res</text>
+   <rect width="162" height="20" x="927" y="1600" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1614" style="fill:black;" font-family="Arial" font-size="16px">deadlift_4_css</text>
+   <rect width="162" height="20" x="927" y="1620" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1634" style="fill:black;" font-family="Arial" font-size="16px">deadlift_4_fcst</text>
+   <rect width="162" height="20" x="927" y="1640" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1654" style="fill:black;" font-family="Arial" font-size="16px">deadlift_res</text>
+   <rect width="162" height="20" x="927" y="1660" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1674" style="fill:black;" font-family="Arial" font-size="16px">deadlift_fcst</text>
+   <rect width="162" height="20" x="927" y="1680" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1694" style="fill:black;" font-family="Arial" font-size="16px">total_1_att</text>
+   <rect width="162" height="20" x="927" y="1700" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1714" style="fill:black;" font-family="Arial" font-size="16px">total</text>
+   <rect width="162" height="20" x="927" y="1720" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1734" style="fill:black;" font-family="Arial" font-size="16px">total_fcst</text>
+   <rect width="162" height="20" x="927" y="1740" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1754" style="fill:black;" font-family="Arial" font-size="16px">coef</text>
+   <rect width="162" height="20" x="927" y="1760" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1774" style="fill:black;" font-family="Arial" font-size="16px">coef_squat</text>
+   <rect width="162" height="20" x="927" y="1780" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1794" style="fill:black;" font-family="Arial" font-size="16px">coef_squat_fcst</text>
+   <rect width="162" height="20" x="927" y="1800" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1814" style="fill:black;" font-family="Arial" font-size="16px">coef_bench_press</text>
+   <rect width="162" height="20" x="927" y="1820" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1834" style="fill:black;" font-family="Arial" font-size="16px">coef_bench_press_fcst</text>
+   <rect width="162" height="20" x="927" y="1840" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1854" style="fill:black;" font-family="Arial" font-size="16px">coef_deadlift</text>
+   <rect width="162" height="20" x="927" y="1860" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1874" style="fill:black;" font-family="Arial" font-size="16px">coef_deadlift_fcst</text>
+   <rect width="162" height="20" x="927" y="1880" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1894" style="fill:black;" font-family="Arial" font-size="16px">coef_total</text>
+   <rect width="162" height="20" x="927" y="1900" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1914" style="fill:black;" font-family="Arial" font-size="16px">coef_total_fcst</text>
+   <rect width="162" height="20" x="927" y="1920" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1934" style="fill:black;" font-family="Arial" font-size="16px">squat_rnk</text>
+   <rect width="162" height="20" x="927" y="1940" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1954" style="fill:black;" font-family="Arial" font-size="16px">squat_rnk_fcst</text>
+   <rect width="162" height="20" x="927" y="1960" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1974" style="fill:black;" font-family="Arial" font-size="16px">bench_press_rnk</text>
+   <rect width="162" height="20" x="927" y="1980" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="1994" style="fill:black;" font-family="Arial" font-size="16px">bench_press_rnk_fcst</text>
+   <rect width="162" height="20" x="927" y="2000" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2014" style="fill:black;" font-family="Arial" font-size="16px">deadlift_rnk</text>
+   <rect width="162" height="20" x="927" y="2020" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2034" style="fill:black;" font-family="Arial" font-size="16px">deadlift_rnk_fcst</text>
+   <rect width="162" height="20" x="927" y="2040" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2054" style="fill:black;" font-family="Arial" font-size="16px">ranking</text>
+   <rect width="162" height="20" x="927" y="2060" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2074" style="fill:black;" font-family="Arial" font-size="16px">rnk_fcst</text>
+   <rect width="162" height="20" x="927" y="2080" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2094" style="fill:black;" font-family="Arial" font-size="16px">points</text>
+   <rect width="162" height="20" x="927" y="2100" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2114" style="fill:black;" font-family="Arial" font-size="16px">points_bp</text>
+   <rect width="162" height="20" x="927" y="2120" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2134" style="fill:black;" font-family="Arial" font-size="16px">comp_id</text>
+   <rect width="162" height="20" x="927" y="2140" style="fill:none;stroke:black;"/>
+   <text width="162" height="20" x="932" y="2154" style="fill:black;" font-family="Arial" font-size="16px">users_id</text>
+   <rect width="169" height="20" x="66" y="1255" style="fill:#007;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1269" style="fill:#fff;" font-family="Arial" font-size="16px"> messenger_messages</text>
+   <rect width="169" height="20" x="66" y="1275" style="fill:#aea;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1289" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="169" height="20" x="66" y="1295" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1309" style="fill:black;" font-family="Arial" font-size="16px">body</text>
+   <rect width="169" height="20" x="66" y="1315" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1329" style="fill:black;" font-family="Arial" font-size="16px">headers</text>
+   <rect width="169" height="20" x="66" y="1335" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1349" style="fill:black;" font-family="Arial" font-size="16px">queue_name</text>
+   <rect width="169" height="20" x="66" y="1355" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1369" style="fill:black;" font-family="Arial" font-size="16px">created_at</text>
+   <rect width="169" height="20" x="66" y="1375" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1389" style="fill:black;" font-family="Arial" font-size="16px">available_at</text>
+   <rect width="169" height="20" x="66" y="1395" style="fill:none;stroke:black;"/>
+   <text width="169" height="20" x="71" y="1409" style="fill:black;" font-family="Arial" font-size="16px">delivered_at</text>
+   <rect width="137" height="20" x="69" y="1029" style="fill:#007;stroke:black;"/>
+   <text width="137" height="20" x="74" y="1043" style="fill:#fff;" font-family="Arial" font-size="16px"> processed_actions</text>
+   <rect width="137" height="20" x="69" y="1049" style="fill:#aea;stroke:black;"/>
+   <text width="137" height="20" x="74" y="1063" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="137" height="20" x="69" y="1069" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="74" y="1083" style="fill:black;" font-family="Arial" font-size="16px">action_id</text>
+   <rect width="137" height="20" x="69" y="1089" style="fill:none;stroke:black;"/>
+   <text width="137" height="20" x="74" y="1103" style="fill:black;" font-family="Arial" font-size="16px">created_at</text>
+   <rect width="117" height="20" x="131" y="664" style="fill:#007;stroke:black;"/>
+   <text width="117" height="20" x="136" y="678" style="fill:#fff;" font-family="Arial" font-size="16px"> sessions_table</text>
+   <rect width="117" height="20" x="131" y="684" style="fill:#aea;stroke:black;"/>
+   <text width="117" height="20" x="136" y="698" style="fill:black;" font-family="Arial" font-size="16px">id_sessions</text>
+   <rect width="117" height="20" x="131" y="704" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="718" style="fill:black;" font-family="Arial" font-size="16px">comp_id</text>
+   <rect width="117" height="20" x="131" y="724" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="738" style="fill:black;" font-family="Arial" font-size="16px">all_sessions</text>
+   <rect width="117" height="20" x="131" y="744" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="758" style="fill:black;" font-family="Arial" font-size="16px">sessions_name</text>
+   <rect width="117" height="20" x="131" y="764" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="778" style="fill:black;" font-family="Arial" font-size="16px">grp</text>
+   <rect width="117" height="20" x="131" y="784" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="798" style="fill:black;" font-family="Arial" font-size="16px">category</text>
+   <rect width="117" height="20" x="131" y="804" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="818" style="fill:black;" font-family="Arial" font-size="16px">date_time</text>
+   <rect width="117" height="20" x="131" y="824" style="fill:none;stroke:black;"/>
+   <text width="117" height="20" x="136" y="838" style="fill:black;" font-family="Arial" font-size="16px">users_id</text>
+   <rect width="114" height="20" x="142" y="85" style="fill:#007;stroke:black;"/>
+   <text width="114" height="20" x="147" y="99" style="fill:#fff;" font-family="Arial" font-size="16px"> user_reg</text>
+   <rect width="114" height="20" x="142" y="105" style="fill:#aea;stroke:black;"/>
+   <text width="114" height="20" x="147" y="119" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="114" height="20" x="142" y="125" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="147" y="139" style="fill:black;" font-family="Arial" font-size="16px">user</text>
+   <rect width="114" height="20" x="142" y="145" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="147" y="159" style="fill:black;" font-family="Arial" font-size="16px">password</text>
+   <rect width="114" height="20" x="142" y="165" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="147" y="179" style="fill:black;" font-family="Arial" font-size="16px">status</text>
+   <rect width="114" height="20" x="142" y="185" style="fill:none;stroke:black;"/>
+   <text width="114" height="20" x="147" y="199" style="fill:black;" font-family="Arial" font-size="16px">nominations_id</text>
+</svg>
