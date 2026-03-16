@@ -49,6 +49,21 @@ Powerlifting Competition System: backend system + database + real-time messaging
 
 ## Level 2 - Containers / Modules
 
+### Page Resolution Module
+Responsible for determining which page scenario should be loaded
+for the current device.
+|Component / Template| Responsibility / Scenario|
+|----------|-----------|
+|MainController|Handles page rendering and coordinates scenario selection|
+|SessionAwareTrait|Manages session start and session-related context|
+|ResolverFactory|Instantiates the appropriate PageResolver based on the scenario|
+|PageResolverInterface|Contract for resolving pages according to scenario|
+|login_page.html.twig|Entry point / Template for login page|
+|redirection_page.html.twig|Template for scenario selection / redirection page|
+|dashboard_page.html.twig|Template for participant / registration page|
+|$page.'.html.twig'|Generic page template dynamically resolved by PagesResolver|
+|PageEnum|Enum defining all possible admin/client page scenarios (Admin, Scoreboard, Timer…)|
+
 ## Level 3 - High-Level Flow
 <pre>               User opens website
                        ↓
