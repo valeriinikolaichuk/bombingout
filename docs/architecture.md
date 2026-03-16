@@ -64,7 +64,7 @@ for the current device.
 |$page.'.html.twig'|Generic page template dynamically resolved by PagesResolver|
 |PageEnum|Enum defining all possible admin/client page scenarios (Admin, Scoreboard, Timer…)|  
 
-➡ [Page Resolution Module](mjdules/page_resolution_module.md)
+➡ [Page Resolution Module](./modules/page_resolution_module.md)
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
