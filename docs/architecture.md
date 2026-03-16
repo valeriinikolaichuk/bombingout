@@ -2,6 +2,8 @@
 This document describes the **high-level architecture** of the Powerlifting Competition System.
 
 ## Level 1 – System Context
+The system allows configuring multiple computers for different roles during a powerlifting competition.  
+Each device connects to the same system and selects a **scenario** that defines its behavior.  
 This high-level diagram shows the **main actors and the system**, and the core scenarios supported by the Powerlifting Competition System.  
 It does not include implementation details, only the roles and how they interact with the system.
 
@@ -27,7 +29,9 @@ SCOREBOARD            LIFTING               DISCS         INFORMATION         TI
 
 ### Description of Level 1
 
-### Admin Device: main device used by organizers to manage the competition, register participants, create start groups, enter and display live updates, manage pre- and post-competition documentation.
+### Admin Device: 
+main device used by organizers to manage the competition, register participants, create start groups, enter and display live updates, manage pre- and post-competition documentation.
+
 Powerlifting Competition System: backend system + database + real-time messaging.
 
 ### Client Scenarios / Roles:
@@ -38,6 +42,23 @@ Powerlifting Competition System: backend system + database + real-time messaging
 - TIMER Display: controls countdown for attempts and session start
 - WEIGHING IN Client: independent device for judges to weigh participants; data goes directly to the system
 
+#### Notes: 
+- This diagram represents Level 1 of C4 model (System Context)
+- No controllers, classes, or database details are shown
+- Purpose: give a high-level overview of the system and its interactions
+
 ## Containers / Modules
 
 ## High-Level Flow
+<pre>               User opens website
+                       ↓
+                 Landing page
+              (information + login)
+                       ↓
+                Authentication
+                       ↓
+              Scenario selection page
+                       ↓
+             User selects device role
+                       ↓
+        System loads corresponding interface</pre>
