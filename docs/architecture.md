@@ -139,6 +139,8 @@ Updates UI (redirect / error popup)
 | SessionFactory            | sets session variables after the Login Flow, enabling correct routing and page resolution in the `MainController`.|
 | SessionActionInterface    | Contract for session initialization and routing state management |
 
+➡ [Login Module](./modules/login_module.md)
+
 ---
 
 ## Level 3 - High-Level Flow
