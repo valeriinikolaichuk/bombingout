@@ -116,17 +116,23 @@ Handles user authentication, session initialization, and environment validation.
 | LoginController           | Entry point for login requests |
 | LoginFactory              | Creates login method based on context |
 | LoginMethodInterface      | Defines login execution contract |
-| LoginMethodDefault        | Default login implementation |
 | LoginContextBuilder       | Builds login context |
 | ContextFillerInterface    | Fills login context with required data |
-| LoginContext              |Contains entry data|
+| LoginContext              | Contains entry data|
 | StrategyFactory           | Resolves login strategy |
 | StrategyAbstract          | Base class for login strategies |
-| LoginStrategyDefault      | Default login strategy |
-| LoginResultBuilder        | Builds result object |
-| LoginResultDTO            | Contains login result data |
+| LoginCheckerResolver      | Validates login data|
+| VerificationInterface     | Defines login verification contract |
 | LoginPolicyResolver       | Resolves login policy |
 | ExistingEnvironmentPolicy | Validates environment constraints |
+| LoginResultBuilder        | Builds result object |
+| ResultFillerInterface     | Fills login result data |
+| LoginResultDTO            | Contains login result data |
+| LoginCompleted            | Executes environment setup following successful authentication |
+| LoginCompletedInterface   | Defines the contract for executing mandatory actions |
+| ComputerStatusWriter      ||
+| SessionFactory            ||
+| SessionActionInterface    ||
 
 ---
 
