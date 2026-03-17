@@ -98,6 +98,8 @@ for the current device.
 |initPopup|Dispatches a custom event. Closes info popup|
 |PopupContent.jsx|Renders dynamic content. Controls popup lifecycle|
 
+➡ [Login Page Flow Module](./modules/login_page_flow_module.md)
+
 ## Level 3 - High-Level Flow
 <pre>               User opens website
                        ↓
