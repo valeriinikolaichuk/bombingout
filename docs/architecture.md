@@ -141,8 +141,6 @@ Updates UI (redirect / error popup)
 
 ➡ [Login Module](./modules/login_module.md)
 
-
-
 ### Delete Connection Module
 Handles removal of previous user registrations of active connections. Supports multiple usage scenarios - deletePreviousReg (Login Page Flow Module) and manual deletion from redirection page.
 
@@ -164,6 +162,8 @@ Handles removal of previous user registrations of active connections. Supports m
 | DeleteConnectionChecker            | Validates the conditions under which old connections or user registrations can be deleted |
 | DeleteConnectionInterface          | Contract specifying methods for deleting connections; ensures consistent implementation across different deletion scenarios |
 | CleanConnectionDTO | Encapsulates the result of a deletion operation, including success status and descriptive message |
+
+➡ [Delete Connection Module](./modules/delete_connection_module.md)
 
 ---
 
