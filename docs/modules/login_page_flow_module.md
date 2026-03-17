@@ -17,12 +17,12 @@ login_page.html.twig
         |     |                                    |                    |
         |     '--- checkAndRoute <-----JSON--------'                    |
         |               |   |                                           |
-        |               |   |-> json.message                            |
-        |               |   '-> errorLoginMessage                       |
-        |               ↓               |                               |
-        |         MainController        |                               |
-        |                               |                               |
-        |---> deletePreviousReg <-------'                               |
+        |               |   |-> json.message                            |---> PopupContent.jsx ---> main.jsx
+        |               |   '-> errorLoginMessage                       |           |
+        |               ↓               |                               |           |-About.jsx <-- about.en.json
+        |         MainController        |                               |           |               about.pl.json
+        |                               |                               |           |               about.uk.json
+        |---> deletePreviousReg <-------'                               |           |-
         |       |↑         ↓                                            |
         |      JSON     deleteMessage                                   |
         |       ↓|                                                      |
@@ -37,12 +37,6 @@ login_page.html.twig
                                                             data        |
                                                             run         |
                                                             extras      |
-                     _________________________________________|_________|
-                    ↓
-main.jsx <--- PopupContent.jsx
-                    |
-                    |-About.jsx <-- about.en.json
-                    |               about.pl.json
-                    |               about.uk.json
-                    |-
+                                                              |_________|
+
 </pre>
