@@ -141,6 +141,30 @@ Updates UI (redirect / error popup)
 
 ➡ [Login Module](./modules/login_module.md)
 
+
+
+### Delete Connection Module
+Handles removal of previous user registrations of active connections. Supports multiple usage scenarios - deletePreviousReg (Login Page Flow Module) and manual deletion from redirection page.
+
+**Data Sources / Triggers**
+- Login Page → old user data detected during login
+- Redirection / dialog_connections → existing connections displayed in popup
+
+**Responsibilities:**
+- Delete old data from the system
+- Build deletion context
+- Update clients via `ComputerStatus`
+
+| Component                          | Responsibility |
+|------------------------------------|----------------|
+| DeleteConnectionController         | Entry point for deletion requests; behavior depends on scenario |
+| DeleteConnectionContextBuilder     | Builds context for deletion |
+| DeleteConnectionFillerInterface    | Fills context with required data |
+| DeleteConnectionContext            | DTO / context for deletion |
+| DeleteConnectionChecker            | Validates the conditions under which old connections or user registrations can be deleted |
+| DeleteConnectionInterface          | Contract specifying methods for deleting connections; ensures consistent implementation across different deletion scenarios |
+| CleanConnectionDTO | Encapsulates the result of a deletion operation, including success status and descriptive message |
+
 ---
 
 ## Level 3 - High-Level Flow
