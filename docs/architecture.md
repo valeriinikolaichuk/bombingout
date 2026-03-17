@@ -111,6 +111,11 @@ Handles user authentication, session initialization, and environment validation.
 - Initialize session
 - Return structured result (`LoginResultDTO`)
 
+**Frontend Interaction**
+Triggered by: login_page.js, redirection_page.html.twig (relogin)
+Sends: credentials via fetch
+Updates UI (redirect / error popup)
+
 | Component                 | Responsibility |
 |---------------------------|----------------|
 | LoginController           | Entry point for login requests |
@@ -130,8 +135,8 @@ Handles user authentication, session initialization, and environment validation.
 | LoginResultDTO            | Contains login result data |
 | LoginCompleted            | Executes environment setup following successful authentication |
 | LoginCompletedInterface   | Defines the contract for executing mandatory actions |
-| ComputerStatusWriter      ||
-| SessionFactory            ||
+| ComputerStatusWriter      | Persists and updates client state in the `computer_status` table, enabling interaction and synchronization between connected devices |
+| SessionFactory            | sets session variables after the Login Flow, enabling correct routing and page resolution in the `MainController`.|
 | SessionActionInterface    ||
 
 ---
