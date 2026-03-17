@@ -82,7 +82,11 @@ for the current device.
 
 |Component| Responsibility |
 |----------|-----------|
-
+|login_page.html.twig|A Twig template that integrates the login interface with a dedicated user guide section. Twig template loads Vite bundle|
+|login.js|The script initializes core functions once the DOM is fully loaded|
+|updateVisibility|Adapts UI visibility to different screen sizes and device types|
+|setLanguage|Handles multi-language support by dynamic content swapping|
+|login||
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
