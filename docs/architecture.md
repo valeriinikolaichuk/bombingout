@@ -90,11 +90,13 @@ for the current device.
 |login_page.html.twig|Integrates the login interface with a dedicated user guide section. Twig template loads Vite bundle|
 |login.js|The script initializes core functions once the DOM is fully loaded|
 |updateVisibility|Adapts UI visibility to different screen sizes and device types|
-|setLanguage|Handles multi-language support by dynamic content swapping|
+|setLanguage|Handles multi-language support by dynamic content swapping. Dispatches a custom event|
 |login|Handles the login lifecycle: sends credentials and redirects the user upon successful authentication|
 |getLoginData|Sends JSON credentials via fetch. Interacts with `LoginController`|
 |checkAndRoute|Validates the response, and either redirects the user or displays an error message. Interacts with `MainController`|
 |deletePreviousReg|Clears stale session data via JSON fetch to reset the authentication state after a block. Interacts with `DeleteConnectionController`|
+|initPopup|Dispatches a custom event. Closes info popup|
+|PopupContent.jsx|Renders dynamic content. Controls popup lifecycle|
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
