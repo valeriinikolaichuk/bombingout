@@ -95,7 +95,7 @@ for the current device.
 |getLoginData|Sends JSON credentials via fetch. Interacts with `LoginController`|
 |checkAndRoute|Validates the response, and either redirects the user or displays an error message. Interacts with `MainController`|
 |deletePreviousReg|Clears stale session data via JSON fetch to reset the authentication state after a block. Interacts with `DeleteConnectionController`|
-|initPopup|Dispatches a custom event. Closes info popup|
+|initPopup|Dispatches a custom event. Closes info popup. Interacts with `PopupContent.jsx`|
 |PopupContent.jsx|Renders dynamic content. Controls popup lifecycle|
 
 ➡ [Login Page Flow Module](./modules/login_page_flow_module.md)
