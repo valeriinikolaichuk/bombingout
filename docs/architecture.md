@@ -67,26 +67,34 @@ for the current device.
 ➡ [Page Resolution Module](./modules/page_resolution_module.md)
 
 ### Login Page Flow Module
-**Role:** handles client-side login logic.  The JS code is modular and built using **Vite**. 
+**Role:** 
+- Handles client-side login logic.
+- Integrates the login interface with a dedicated user guide section.
+- The JS code is modular and built using **Vite**.
+- Dispatches a custom DOM event that is listened to by the **React** application, which then dynamically renders the popup content.
 
 **Responsibilities:**
 - Validate user input
 - Send login request to backend (`LoginController`)
 - Receive `LoginResultDTO` as JSON
 - Update page UI (success, error, redirect)
+- React dynamically renders popup content
 
 **Interactions:**
 - Twig template: `login_page.html.twig`
-- Backend: Symfony `LoginController`
+- Backend: Symfony `LoginController` ` MainController` `DeleteConnectionController`
 - DTO: `LoginResultDTO`
 
 |Component| Responsibility |
 |----------|-----------|
-|login_page.html.twig|A Twig template that integrates the login interface with a dedicated user guide section. Twig template loads Vite bundle|
+|login_page.html.twig|Integrates the login interface with a dedicated user guide section. Twig template loads Vite bundle|
 |login.js|The script initializes core functions once the DOM is fully loaded|
 |updateVisibility|Adapts UI visibility to different screen sizes and device types|
 |setLanguage|Handles multi-language support by dynamic content swapping|
-|login||
+|login|Handles the login lifecycle: sends credentials and redirects the user upon successful authentication|
+|getLoginData|Sends JSON credentials via fetch. Interacts with `LoginController`|
+|checkAndRoute|Validates the response, and either redirects the user or displays an error message. Interacts with `MainController`|
+|deletePreviousReg|Clears stale session data via JSON fetch to reset the authentication state after a block. Interacts with `DeleteConnectionController`|
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
