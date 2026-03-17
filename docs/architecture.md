@@ -137,7 +137,7 @@ Updates UI (redirect / error popup)
 | LoginCompletedInterface   | Defines the contract for executing mandatory actions |
 | ComputerStatusWriter      | Persists and updates client state in the `computer_status` table, enabling interaction and synchronization between connected devices |
 | SessionFactory            | sets session variables after the Login Flow, enabling correct routing and page resolution in the `MainController`.|
-| SessionActionInterface    ||
+| SessionActionInterface    | Contract for session initialization and routing state management |
 
 ---
 
