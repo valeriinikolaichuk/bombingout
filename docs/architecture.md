@@ -47,6 +47,8 @@ Powerlifting Competition System: backend system + database + real-time messaging
 - No controllers, classes, or database details are shown
 - Purpose: give a high-level overview of the system and its interactions
 
+---
+
 ## Level 2 - Containers / Modules
 
 ### Page Resolution Module
@@ -95,8 +97,44 @@ for the current device.
 |getLoginData|Sends JSON credentials via fetch. Interacts with `LoginController`|
 |checkAndRoute|Validates the response, and either redirects the user or displays an error message. Interacts with `MainController`|
 |deletePreviousReg|Clears stale session data via JSON fetch to reset the authentication state after a block. Interacts with `DeleteConnectionController`|
-|initPopup|Dispatches a custom event. Closes info popup|
+|initPopup|Dispatches a custom event. Closes info popup. Interacts with `PopupContent.jsx`|
 |PopupContent.jsx|Renders dynamic content. Controls popup lifecycle|
+
+➡ [Login Page Flow Module](./modules/login_page_flow_module.md)
+
+### Login Module  
+Handles user authentication, session initialization, and environment validation.
+
+**Responsibilities:**
+- Authenticate user credentials
+- Validate login conditions (environment, session, policies)
+- Initialize session
+- Return structured result (`LoginResultDTO`)
+
+| Component                 | Responsibility |
+|---------------------------|----------------|
+| LoginController           | Entry point for login requests |
+| LoginFactory              | Creates login method based on context |
+| LoginMethodInterface      | Defines login execution contract |
+| LoginContextBuilder       | Builds login context |
+| ContextFillerInterface    | Fills login context with required data |
+| LoginContext              | Contains entry data|
+| StrategyFactory           | Resolves login strategy |
+| StrategyAbstract          | Base class for login strategies |
+| LoginCheckerResolver      | Validates login data|
+| VerificationInterface     | Defines login verification contract |
+| LoginPolicyResolver       | Resolves login policy |
+| ExistingEnvironmentPolicy | Validates environment constraints |
+| LoginResultBuilder        | Builds result object |
+| ResultFillerInterface     | Fills login result data |
+| LoginResultDTO            | Contains login result data |
+| LoginCompleted            | Executes environment setup following successful authentication |
+| LoginCompletedInterface   | Defines the contract for executing mandatory actions |
+| ComputerStatusWriter      ||
+| SessionFactory            ||
+| SessionActionInterface    ||
+
+---
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
