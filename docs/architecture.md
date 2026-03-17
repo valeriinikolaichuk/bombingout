@@ -66,6 +66,24 @@ for the current device.
 
 ➡ [Page Resolution Module](./modules/page_resolution_module.md)
 
+### Login Page Flow Module
+**Role:** handles client-side login logic.  The JS code is modular and built using **Vite**. 
+
+**Responsibilities:**
+- Validate user input
+- Send login request to backend (`LoginController`)
+- Receive `LoginResultDTO` as JSON
+- Update page UI (success, error, redirect)
+
+**Interactions:**
+- Twig template: `login_page.html.twig`
+- Backend: Symfony `LoginController`
+- DTO: `LoginResultDTO`
+
+|Component| Responsibility |
+|----------|-----------|
+
+
 ## Level 3 - High-Level Flow
 <pre>               User opens website
                        ↓
