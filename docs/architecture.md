@@ -47,6 +47,8 @@ Powerlifting Competition System: backend system + database + real-time messaging
 - No controllers, classes, or database details are shown
 - Purpose: give a high-level overview of the system and its interactions
 
+---
+
 ## Level 2 - Containers / Modules
 
 ### Page Resolution Module
@@ -99,6 +101,34 @@ for the current device.
 |PopupContent.jsx|Renders dynamic content. Controls popup lifecycle|
 
 ➡ [Login Page Flow Module](./modules/login_page_flow_module.md)
+
+### Login Module  
+Handles user authentication, session initialization, and environment validation.
+
+**Responsibilities:**
+- Authenticate user credentials
+- Validate login conditions (environment, session, policies)
+- Initialize session
+- Return structured result (`LoginResultDTO`)
+
+| Component                 | Responsibility |
+|---------------------------|----------------|
+| LoginController           | Entry point for login requests |
+| LoginFactory              | Creates login method based on context |
+| LoginMethodInterface      | Defines login execution contract |
+| LoginMethodDefault        | Default login implementation |
+| LoginContextBuilder       | Builds login context |
+| ContextFillerInterface    | Fills login context with required data |
+| LoginContext              |Contains entry data|
+| StrategyFactory           | Resolves login strategy |
+| StrategyAbstract          | Base class for login strategies |
+| LoginStrategyDefault      | Default login strategy |
+| LoginResultBuilder        | Builds result object |
+| LoginResultDTO            | Contains login result data |
+| LoginPolicyResolver       | Resolves login policy |
+| ExistingEnvironmentPolicy | Validates environment constraints |
+
+---
 
 ## Level 3 - High-Level Flow
 <pre>               User opens website
