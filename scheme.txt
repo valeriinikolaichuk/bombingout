@@ -10,7 +10,7 @@ LoginPageResolver    RedirectionPageResolver     ParticipantPageResolver        
 login_page.html.twig   redirection_page.html.twig   dashboard_page.html.twig   $page.'.html.twig' -----------'
 
 
-                            login_page.html.twig
+        login_page.html.twig | redirection_page.html.twig (relogin)
                                     ↓
                                    JSON ---> JS ---> MainController
                                     ↓↑
