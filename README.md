@@ -4,7 +4,11 @@
   <h4>beta version</h4>
   <h3><a href="https://bombingout.com">BOMBINGOUT.COM</a></h3>
 </div>
-  <br />
+
+---
+### Note:   
+#### The project is under migration to Angular (Frontend) and NestJS (Backend) to implement an offline-first approach.
+---
 <details open="open">
 <summary>Contents</summary>
 
@@ -42,14 +46,8 @@ A programmer-oriented testing framework for PHP. It is an instance of the xUnit 
 #### [MySQL](https://www.mysql.com/)
 An open-source relational database management system based on SQL. It provides a fast, reliable, and scalable solution for managing structured data, widely used for web applications and content management systems.
 
-#### [RabbitMQ](https://www.rabbitmq.com/)
-An open-source message-broker software that acts as a message-oriented middleware. It allows different services in your application to communicate with each other asynchronously by using a robust queuing system, ensuring high availability and scalability for distributed systems.
-
-#### [Node.js & WebSockets](https://nodejs.org/en)
-A powerful combination used to build real-time applications. Node.js handles asynchronous connections efficiently, while WebSockets allow the server to push instant updates to clients, making it ideal for chats, notifications, or live dashboards.
-
-#### [Vite](https://vite.dev/)
-A frontend tool that provides an extremely fast development environment.  It leverages native browser modules for instant server start and uses Rollup to generate highly optimized static assets for production.
+#### [WebSockets](https://nodejs.org/en)
+Used to build real-time applications. WebSockets allow the server to push instant updates to clients, making it ideal for chats, notifications, or live dashboards.
 
 #### [React](https://react.dev/)
 A JavaScript library for building user interfaces, primarily for single-page applications.  It allows developers to create reusable UI components and manage complex application states efficiently through a virtual DOM.
